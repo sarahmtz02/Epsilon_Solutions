@@ -5,9 +5,9 @@ module.exports = class Empleados {
     //Constructor de la clase. PROBLABLEMENTE VAMOS A NECESITAR PONER TODOS LOS ATRIBUTOS EN UN FUTURO!!
     constructor(nuevo_nombre, nuevo_apellidop, nuevo_apellidom, nuevo_nivoverall, nuevo_equipo, nuevo_email, nuevo_password) {
         this.nombre = nuevo_nombre;
-        this.apellidop = nuevo_apellidop;
-        this.apellidom = nuevo_apellidom;
-        this.nivoverall = nuevo_nivoverall;
+        this.apellidoP = nuevo_apellidop;
+        this.apellidoM = nuevo_apellidom;
+        this.nivOverall = nuevo_nivoverall;
         this.equipo = nuevo_equipo;
         this.email = nuevo_email;
         this.password = nuevo_password;
