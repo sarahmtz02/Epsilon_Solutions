@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
 const rutas_users = require('./routes/user.routes');
+const rutas_empleados = require('./routes/empleados.routes')
 const path = require('path');
 
 app.set('view engine', 'ejs');
@@ -24,6 +25,7 @@ app.use(session({
 }));
 
 app.use('/users', rutas_users);
+app.use('/empleados', rutas_empleados);
 
 //Middleware
 app.use((request, response, next) => {

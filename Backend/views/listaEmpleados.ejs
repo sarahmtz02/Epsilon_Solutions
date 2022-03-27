@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs') %>
+
+<h1 id="principal">Lista de Empleados</h1><br>
+<p>A continuación todos los empleados en la empresa:</p>
+
+<!-- EMPLEADOS -->>
+
+<table class = "center">
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Correo Electrónico</th>
+        <th>Equipo</th>
+    </tr>
+    <% for (let empleado of empleados) { %>
+        <tr>
+            <td><%- empleado.nombre -%></td>
+            <td><%- empleado.apellidop -%></td>
+            <td><%- empleado.apellidom -%></td>
+            <td><%- empleado.email -%></td>
+            <td><%- empleado.equipo -%></td>
+        </tr>
+    <%} %>
+</table>
