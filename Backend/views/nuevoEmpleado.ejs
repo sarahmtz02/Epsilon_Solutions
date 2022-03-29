@@ -1,0 +1,43 @@
+<%- include('templates/head.ejs') %>
+
+<body>
+    <h1 id="principal">Empleados</h1>
+    <h2>Agregar un nuevo Empleado:</h2>
+    <br>
+    <form action="/empleados/nuevoEmpleado" method="POST">
+    <label for="nombre">Nombre: </label>
+    <input type="text" id="nombre" name="nombre" placeholder="Juan">
+    <br><br>
+    <label for="nombre">Apellido Paterno: </label> <br>
+    <textarea rows = "5" cols = "60" id = "apellidoP" name = "apellidoP" placeholder="Perez"></textarea><br>
+    <br><br>
+    <label for="nombre">Apellido Materno: </label> <br>
+    <textarea rows = "5" cols = "60" id = "apellidoM" name = "apellidoM" placeholder="Godinez"></textarea><br>
+    <br><br>
+    <label for="nombre">Nivel People: </label> <br>
+    <textarea rows = "5" cols = "60" id = "nivPeople" name = "nivPeople" placeholder="2.5"></textarea><br>
+    <br><br>
+    <label for="nombre">Nivel Craft: </label> <br>
+    <textarea rows = "5" cols = "60" id = "nivCraft" name = "nivCraft" placeholder="2.5"></textarea><br>
+    <br><br>
+    <label for="nombre">Nivel Business: </label> <br>
+    <textarea rows = "5" cols = "60" id = "nivBusiness" name = "nivBusiness" placeholder="2.5"></textarea><br>
+    <br><br>
+    <label for="nombre">Puesto: </label> <br>
+    <textarea rows = "5" cols = "60" id = "puesto" name = "puesto" placeholder="Programmer"></textarea><br>
+    <br><br>
+    <label for="nombre">Equipo: </label> <br>
+    <textarea rows = "5" cols = "60" id = "equipo" name = "equipo" placeholder="ZeCore Client"></textarea><br>
+    <br><br>
+    <label for="nombre">Correo Electrónico: </label> <br>
+    <textarea rows = "5" cols = "60" id = "email" name = "email" placeholder="name@example.com"></textarea><br>
+    <br><br>
+    <label for="nombre">Contraseña: </label> <br>
+    <textarea rows = "5" cols = "60" id = "password" name = "password" placeholder="Password"></textarea><br>
+    <br><br>
+    <a><input type ="submit" value="Guardar"></a>
+    </form>
+    <br><br>
+    <a href="/empleados"><button type="button" class="btn btn-secondary">Regresar al listado de empleados</button></a>
+    </div>
+</body>

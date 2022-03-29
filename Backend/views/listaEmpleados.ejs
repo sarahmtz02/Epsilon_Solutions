@@ -1,4 +1,4 @@
-<%- include('includes/head.ejs') %>
+<%- include('templates/head.ejs') %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <h1 id="principal">Lista de Empleados</h1><br>
 <p>A continuación todos los empleados en la empresa:</p>
@@ -27,5 +27,8 @@
         <%} %>
     </tbody>
 </table>
+
+<a href="empleados/nuevoEmpleado"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo empleado</button></a>
+<br><br>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

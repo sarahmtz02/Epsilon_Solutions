@@ -16,7 +16,7 @@ module.exports = class User {
             .then((password_cifrado)=>{
                 return db.execute(
                     'INSERT INTO empleado(nombre, email, password) VALUES(?,?,?)',
-                    [this.nombre, this.username, password_cifrado]);
+                    [this.nombre, this.email, password_cifrado]);
             }).catch((error)=>{
                 console.log(error);
             }); 
