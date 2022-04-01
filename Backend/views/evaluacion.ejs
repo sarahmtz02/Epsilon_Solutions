@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Asignar Mentees</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+
+  <ul id="slide-out" class="sidenav">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img
+            src="https://images.pexels.com/photos/667838/pexels-photo-667838.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        </div>
+        <a href="#user"><img class="circle"
+            src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
+        <a href="#name"><span class="white-text name">Gabriela Espinoza</span></a>
+        <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+      </div>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a class="waves-effect" href="#!"><i class="material-icons">home</i>Inicio</a></li>
+    <li><a class="waves-effect" href="#!"><i class="material-icons">face</i>Perfil</a></li>
+    <li><a class="waves-effect" href="#!"><i class="material-icons">assignment</i>Evaluaciones</a></li>
+    <li><a class="waves-effect" href="#!"><i class="material-icons">remove_red_eye</i>Mis Observaciones</a></li>
+    <li><a class="waves-effect" href="#!"><i class="material-icons">person_add</i>Asignar Mentees</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
+
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">Zebrands</a>
+
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <form action="users/evaluacion" method="POST">
+    <div id="index-banner" class="parallax-container">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <br><br>
+          <h1 class="header center teal-text text-lighten-2">Registro de Mentees</h1>
+          <div class="row center">
+            <h5 class="header col s12 light">En esta sección podrá designar Chapter Members a Chapter Leads o a Chapter
+              Lead Assistants</h5>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s3">
+              <input placeholder="idLider" id="idLider" type="text" class="validate">
+              <label for="idLider">idLider</label>
+            </div>
+            <div class="input-field col s3">
+              <input placeholder="idEmpleado" id="idEmpleado" type="text" class="validate">
+              <label for="idEmpleado">idEmpleado</label>
+            </div>
+            <div class="input-field col s6">
+              <input placeholder="Descripcion" id="descMentees" type="text" class="validate">
+              <label for="descMentees">Descripción de Mentee</label>
+            </div>
+          </div>
+
+          <div class="row center">
+            <input  class="btn-large waves-effect waves-light teal lighten-1" type="submit" value="Enviar">
+          </div>
+          <br><br>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col 22 s12">
+          <h5 class="white-text">Sobre Zebrands</h5>
+          <p class="grey-text text-lighten-4">Somos una familia de marcas enfocadas en ayudar
+            a las personas a disfrutar y mejorar su vida diaria. Brindar productos accesibles, con buena calidad que
+            parten de la necesidad de cada persona conectando con ellos en cada punto de contacto.</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      M.AutoInit();
+    });
+  </script>
+
+</body>
+
+</html>

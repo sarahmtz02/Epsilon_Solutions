@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+    
+<head>
+<% if (email != '') { %>
+    <button class="btn btn-outline-secondary btn-lg" type="button"><a href="/users/dashboard">Volver a Dashboard</a></button>
+    <button class="btn btn-outline-secondary btn-lg" type="button"><%= email %></button>
+    <button class="btn btn-outline-secondary btn-lg" type="button"><a href="/users/logout">Salir</a></button>
+<% } %>
+
+</head>

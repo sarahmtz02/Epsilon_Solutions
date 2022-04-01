@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Evaluadores</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-Cards-v2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+
+<form action="users/asignar" method="POST">
+
+    <body class="d-xxl-flex mx-auto justify-content-xxl-end align-items-xxl-center" id="page-top">
+        <div id="wrapper">
+            <nav class="navbar navbar-light flex-grow-1 align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" data-bs-toggle="tooltip" data-bss-tooltip="" data-aos="fade-right" style="background: #231f20;">
+                <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                        <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                        <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
+                    </a>
+                    <ul class="navbar-nav text-light" id="accordionSidebar">
+                        <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Perfil</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Tabla</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Registrar Empleado</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Asignar Mentees</span></a></li>
+                        <li class="nav-item"><a class="nav-link active" href="blank.html"><i class="fas fa-window-maximize"></i><span>Evaluaciones</span></a></li>
+                    </ul>
+                    <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+                </div>
+            </nav>
+            <div class="flex-column" id="content-wrapper" style="background: url(&quot;assets/img/Zebrands-media/Background.jpeg&quot;) top / contain round;">
+                <div id="content">
+                    <div class="container-fluid">
+                        <h3 class="text-dark mb-1" style="margin-top: 14px;">Evaluaciones</h3>
+                        <hr>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card shadow mb-4" style="width: 310px;height: 264px;padding-left: 0px;margin-left: 20px;">
+                                    <div class="card-header py-3" style="width: 310px;">
+                                        <h6 class="text-primary m-0 fw-bold" style="width: 200px;">Basic Card Example</h6>
+                                    </div>
+                                    <div class="card-body" style="width: 310px;height: 260px;">
+                                        <p class="m-0">The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!</p><button class="btn btn-primary" type="button">Button</button>
+                                        <div>
+                                            <div class="modal fade" role="dialog" tabindex="-1" id="myModal">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4>Modal Title</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="text-center text-muted">Description </p>
+                                                        </div>
+                                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card shadow mb-4" style="width: 310px;height: 264px;padding-left: 0px;margin-left: 20px;">
+                                    <div class="card-header py-3" style="width: 310px;">
+                                        <h6 class="text-primary m-0 fw-bold" style="width: 200px;">Basic Card Example</h6>
+                                    </div>
+                                    <div class="card-body" style="width: 310px;height: 260px;">
+                                        <p class="m-0">The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!</p><button class="btn btn-primary" type="button">Button</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5">
+                                <div class="card shadow mb-4" style="width: 310px;height: 264px;padding-left: 0px;margin-left: 20px;">
+                                    <div class="card-header py-3" style="width: 310px;">
+                                        <h6 class="text-primary m-0 fw-bold" style="width: 200px;">Basic Card Example</h6>
+                                    </div>
+                                    <div class="card-body" style="width: 310px;height: 260px;">
+                                        <p class="m-0">The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!</p><button class="btn btn-primary" type="button">Button</button>
+                                    </div>
+                                </div>
+                                <div class="card shadow mb-4" style="width: 310px;height: 264px;padding-left: 0px;margin-left: 20px;">
+                                    <div class="card-header py-3" style="width: 310px;">
+                                        <h6 class="text-primary m-0 fw-bold" style="width: 200px;">Basic Card Example</h6>
+                                    </div>
+                                    <div class="card-body" style="width: 310px;height: 260px;">
+                                        <p class="m-0">The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!</p><button class="btn btn-primary" type="button">Button</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="text">
+                            <input  class="btn-large waves-effect waves-light teal lighten-1" type="submit" value="Asignar Evaluadores">
+                        </div>
+                    </div>
+                </div>
+            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+
+
+</form>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

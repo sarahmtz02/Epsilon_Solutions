@@ -1,0 +1,31 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<h1 id="principal">Lista de Empleados</h1><br>
+<p>A continuación todos los empleados en la empresa:</p>
+
+<!-- EMPLEADOS -->
+
+<table class="striped" class="centered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Correo Electrónico</th>
+            <th>Equipo</th>
+            <th>Nivel Overall</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (let empleado of empleados) { %>
+            <tr>
+                <td><%- empleado.nombre -%></td>
+                <td><%- empleado.apellidoP + ' ' + empleado.apellidoM -%></td>
+                <td><%- empleado.email -%></td>
+                <td><%- empleado.equipo -%></td>
+                <td><%- empleado.nivOverall.toFixed(1) -%></td>
+            </tr>
+        <%} %>
+    </tbody>
+</table>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
