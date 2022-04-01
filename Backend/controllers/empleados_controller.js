@@ -1,6 +1,9 @@
 const path = require('path');
 // --- MAIN --- //
 const Empleado = require('../models/empleados');
+const Periodo = require('../models/periodo');
+const Mentee = require('../models/mentee');
+const Templates = require('../models/templates');
 const bcrypt = require('bcryptjs');
 
 exports.get_nuevo_empleado = (request, response, next) => {
@@ -39,6 +42,27 @@ exports.listado = (request, response, next) => {
         .catch(err => console.log(err));
 };
 
+exports.templates = (request, response, next) => {
+    Templates.fetchAllTemplates()
+        .then(([rows, fieldData]) => {
+            response.render('templates', {
+                templates: rows,
+                email: request.session.email ? request.session.email : '',
+            })
+        })
+        .catch(err => console.log(err));
+};
+
+exports.periodos = (request, response, next) => {
+    Periodo.fetchAllPeriodos()
+        .then(([rows, fieldData]) => {
+            response.render('periodos', {
+                periodos: rows,
+                email: request.session.email ? request.session.email : '',
+            })
+        })
+        .catch(err => console.log(err));
+};
 
 // -- LOGIN -- //
 exports.get_login = (request, response, next) => {
@@ -99,4 +123,74 @@ exports.logout = (request, response, next) => {
 
 exports.root = (request, response, next) => {
     response.redirect('/empleados/login'); 
+};
+
+
+// PERIODO EVALUACION //
+
+exports.get_nuevo_periodo = (request, response, next) => {
+    console.log('obtiene el método GET')
+    Periodo.fetchAllPeriodos()
+        .then(([rows, fieldData]) => {
+            response.render('nuevoPeriodo', {
+                periodos: rows,
+                email: request.session.email ? request.session.email : '',
+            })
+        })
+        .catch(err => console.log(err));
+};
+
+exports.post_nuevo_periodo = (request, response, next) => {    
+    const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
+    console.log('obtiene el método POST')
+    periodo.save().then(() => {
+        response.setHeader('Set-Cookie', 'ultimo_periodo='+periodo.nombre+'; HttpOnly', 'utf8');
+        response.render()
+    }).catch(err => console.log(err));
+};
+
+// MENTEES //
+
+exports.get_nuevo_mentee = (request, response, next) => {
+    console.log('obtiene el método GET')
+    Mentee.fetchAllMentees()
+        .then(([rows, fieldData]) => {
+            response.render('nuevoMentee', {
+                empleados: rows,
+                email: request.session.email ? request.session.email : '',
+            })
+        })
+        .catch(err => console.log(err));
+};
+
+exports.post_nuevo_mentee = (request, response, next) => {    
+    const mentee = new Mentee(request.body.fk_idLead, request.body.idMentee, request.body.descAsignacion);
+    console.log('obtiene el método POST')
+    mentee.save().then(() => {
+        response.setHeader('Set-Cookie', 'ultimo_mentee='+mentee.nombre+'; HttpOnly', 'utf8');
+        response.render()
+    }).catch(err => console.log(err));
+};
+
+// TEMPLATE
+
+exports.get_nueva_template = (request, response, next) => {
+    console.log('obtiene el método GET')
+    Templates.fetchAllTemplates()
+        .then(([rows, fieldData]) => {
+            response.render('nuevaTemplate', {
+                templates: rows,
+                email: request.session.email ? request.session.email : '',
+            })
+        })
+        .catch(err => console.log(err));
+};
+
+exports.post_nueva_template = (request, response, next) => {    
+    const templates = new Templates(request.body.NombreTemplate);
+    console.log('obtiene el método POST')
+    templates.save().then(() => {
+        response.setHeader('Set-Cookie', 'ultimo_periodo='+templates.nombre+'; HttpOnly', 'utf8');
+        response.render()
+    }).catch(err => console.log(err));
 };

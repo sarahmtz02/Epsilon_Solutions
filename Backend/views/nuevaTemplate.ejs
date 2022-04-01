@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+
+<%- include('templates/sidebar.ejs') %>
+
+<body style="background: url('/img/bg-sire.png');">
+<section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
+    <form action="/empleados/nuevaTemplate" method="POST">
+
+        <label for="NombreTemplate">Nombre del Template: </label>
+        <input type="text" id="NombreTemplate" name="NombreTemplate" >
+        <br><br>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+</section>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
