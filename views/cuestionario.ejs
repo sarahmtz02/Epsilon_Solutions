@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Registrar Respuesta</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+</head>
+
+<form action="users/cuestionario" method="POST">
+
+    <body id="page-top">
+        <div id="wrapper">
+            <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: var(--bs-gray-900);">
+                <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                        <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                        <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
+                    </a>
+                    <hr class="sidebar-divider my-0">
+                    <ul class="navbar-nav text-light" id="accordionSidebar">
+                        <li class="nav-item"><a class="nav-link" href="index.html"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa fa-home fs-4 text-light"></i><span>Inicio</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="table.html"><i class="fa fa-file-text fs-4 text-light"></i><span>Evaluaciones</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle fs-4 text-light"></i><span>Mis Observaciones</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle fs-4 text-light"></i><span>Perfil</span></a></li>
+                        <li class="nav-item"></li>
+                    </ul>
+                    <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+                </div>
+            </nav>
+            <div class="d-flex flex-column" id="content-wrapper">
+                <div id="content">
+                    <div class="container-fluid">
+                        <h3 class="text-dark mb-1">Cuestionario</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Proyectos destacados del año<br></h4>
+                                    <p>¿En qué proyectos/iniciativas pudiste interactuar con &lt;Nombre&gt;? ¿Cuál fue el alcance de<br>dichos proyectos?<br></p><input type="text" style="width: 1150px;height: 105px;">
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-start text-dark mb-1" style="margin-left: 20px;">Dimensión People &amp; Mindset</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>Considerando que &lt;Nombre&gt; está actualmente en el nivel &lt;LVL_P&gt;, ¿con qué nota evalúas su rendimiento en esta dimensión? (marcar en la primera columna de la opción seleccionada<br></p>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 113.5px;"><input type="radio"></td>
+                                                    <td>1. Muy por debajo de las expectativas de su nivel</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 113.5px;"><input type="radio"></td>
+                                                    <td>2. Bajo las expectativas de su nivel</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio"></td>
+                                                    <td>3. De acuerdo a las expectativas de su nivel</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio"></td>
+                                                    <td>4. Sobre las expectativas de su nivel</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio"></td>
+                                                    <td>5. Muy por sobre las expectativas de su nivel</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>Tomando en cuenta las competencias esperadas del nivel &lt;LVL_P&gt; (ver tabla), ¿cuáles crees que son <strong>fortalezas</strong> de &lt;Nombre&gt;? Por favor <strong>argumenta usando ejemplos</strong>. Si consideras que &lt;Nombre&gt; ya ha desarrollado competencias del siguiente nivel, por favor menciónalo también.<br></p><input type="text" style="width: 1150px;height: 105px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Tomando en cuenta las competencias esperadas del nivel &lt;LVL_P&gt; (ver tabla), ¿cuáles crees que son <strong>oportunidades</strong> de &lt;Nombre&gt; y que debería mejorar? Por favor <strong>argumenta usando ejemplos</strong>.<br></p><input type="text" style="width: 1150px;height: 105px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-start text-dark mb-1" style="margin-left: 20px;">Dimensión Business</h3>
+                <hr>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Considerando que &lt;Nombre&gt; está actualmente en el nivel &lt;LVL_B&gt;, ¿con qué <strong>nota</strong> evalúas su rendimiento en esta dimensión?(marcar con una <strong>x</strong> en la primera columna de la opción seleccionada)<br></p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 113.5px;"><input type="radio"></td>
+                                        <td>1. Muy por debajo de las expectativas de su nivel</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 113.5px;"><input type="radio"></td>
+                                        <td>2. Bajo las expectativas de su nivel</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio"></td>
+                                        <td>3. De acuerdo a las expectativas de su nivel</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio"></td>
+                                        <td>4. Sobre las expectativas de su nivel</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio"></td>
+                                        <td>5. Muy por sobre las expectativas de su nivel</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Tomando en cuenta las competencias esperadas del nivel &lt;LVL_B&gt; (ver tabla), ¿cuáles crees que son <strong>fortalezas</strong> de &lt;Nombre&gt;? Por favor <strong>argumenta usando ejemplos</strong>. Si consideras que &lt;Nombre&gt; ya ha desarrollado competencias del siguiente nivel, por favor menciónalo también.<br></p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div><input type="text" style="width: 1150px;height: 105px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Tomando en cuenta las competencias esperadas del nivel &lt;LVL_P&gt; (ver tabla), ¿cuáles crees que son <strong>oportunidades</strong> de &lt;Nombre&gt; y que debería mejorar? Por favor <strong>argumenta usando ejemplos</strong>.<br></p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div><input type="text" style="width: 1150px;height: 105px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Considerando que &lt;Nombre&gt; está actualmente en el nivel &lt;LVL_B&gt;, ¿con qué <strong>nota</strong> evalúas su rendimiento en esta dimensión? (marcar con una <strong>x</strong> en la primera columna de la opción seleccionada)<br></p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 113.5px;"><input type="radio"></td>
+                                        <td>1. Muy por debajo de las expectativas de su nivel</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 113.5px;"><input type="radio"></td>
+                                        <td>2. Bajo las expectativas de su nivel</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio"></td>
+                                        <td>3. De acuerdo a las expectativas de su nivel</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio"></td>
+                                        <td>4. Sobre las expectativas de su nivel</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio"></td>
+                                        <td>5. Muy por sobre las expectativas de su nivel</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Tomando en cuenta las competencias esperadas del nivel &lt;LVL_P&gt; (ver tabla), ¿cuáles crees que son <strong>fortalezas</strong> de &lt;Nombre&gt;? Por favor <strong>argumenta usando ejemplos</strong>. Si consideras que &lt;Nombre&gt; ya ha desarrollado competencias del siguiente nivel, por favor menciónalo también.<br></p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div><input type="text" style="width: 1150px;height: 105px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Tomando en cuenta las competencias esperadas del nivel &lt;LVL_P&gt; (ver tabla), ¿cuáles crees que son <strong>fortalezas</strong> de &lt;Nombre&gt;? Por favor <strong>argumenta usando ejemplos</strong>. Si consideras que &lt;Nombre&gt; ya ha desarrollado competencias del siguiente nivel, por favor menciónalo también.<br></p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div><input type="text" style="width: 1150px;height: 105px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-start text-dark mb-1" style="margin-left: 20px;">Comentarios Finales</h3>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Incluye cualquier comentario adicional que tengas sobre &lt;Nombre&gt; para poder entregárselo en su sesión de feedback.<br></p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr></tr>
+                                        </tbody>
+                                    </table>
+                                </div><input type="text" style="width: 1150px;height: 105px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <input style= "height: 35px ;width:85px; transform: translate(500px)" class="btn-large waves-effect waves-light teal lighten-1" type="submit" value="Guardar">
+                </div>
+                <footer class="bg-white sticky-footer">
+                    <div class="text-center my-auto copyright"><span>Copyright © SIRE 2022</span></div>
+                </footer>
+            </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        </div>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/theme.js"></script>
+    </body>
+</form>
+</html>
