@@ -2,11 +2,12 @@
 <link rel="stylesheet" href="/css/sidebar.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
 
 <%- include('templates/sidebar.ejs') %>
 
 <body style="background: url('/img/bg-sire.png');">
-<section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
+<section class="section-card" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
     <form action="/empleados/nuevaTemplate" method="POST">
 
         <label for="NombreTemplate">Nombre del Template: </label>

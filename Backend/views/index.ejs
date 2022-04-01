@@ -1,12 +1,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/css/section.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-<!-- Para las rutas -->
+<!-- Para las rutas style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;" -->
 
 <body style="background: url('/img/bg-sire.png');">
 <%- include('templates/sidebar.ejs') %>
-<div class="main">
-<section style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
+<div>
+<section class="section-card">
 <h1 id="principal">Dashboard SIRE</p>
     <p>Empleados:</p>
     <a href="/empleados/lista"><button type="button" class="btn btn-outline-secondary">Empleados</button></a>
