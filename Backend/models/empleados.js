@@ -46,7 +46,7 @@ module.exports = class Empleado {
         return bcrypt.hash(this.password, 12)
             .then((password_cifrado)=>{
                 return db.execute(
-                    'INSERT INTO empleado(fechaIng, nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivCraft, nivBusiness, nivOverall, puesto, equipo, email, password, fk_idChapter, fk_idRolJer) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                    'INSERT INTO empleado(fechaIng, nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivCraft, nivBusiness, nivOverall, puesto, equipo, email, password, fk_idChapter, fk_idRolJer, isActive) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                     [this.fechaIng,
                         this.nombre,
                         this.apellidoP,

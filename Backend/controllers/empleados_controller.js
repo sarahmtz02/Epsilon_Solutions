@@ -4,7 +4,7 @@ const Empleado = require('../models/empleados');
 const bcrypt = require('bcryptjs');
 
 exports.get_nuevo_empleado = (request, response, next) => {
-    console.log('obtiene el método')
+    console.log('obtiene el método GET')
     Empleado.fetchAllEmpleados()
         .then(([rows, fieldData]) => {
             response.render('nuevoEmpleado', {
@@ -16,12 +16,13 @@ exports.get_nuevo_empleado = (request, response, next) => {
 };
 
 exports.post_nuevo_empleado = (request, response, next) => {    
-    const empleado = new Empleado(request.body.nombre, request.body.apellidoP,request.body.apellidoM, request.body.nivPeople, 
+    const empleado = 
+    new Empleado(request.body.fechaIng, request.body.nombre, request.body.apellidoP, request.body.apellidoM, request.body.antiguedad, request.body.nivPeople, 
         request.body.nivCraft, request.body.nivBusiness, request.body.nivOverall, request.body.puesto, request.body.equipo, 
-        request.body.email, request.body.password, request.body.fk_idChapter, request.body.fk_idRolSis);
+        request.body.email, request.body.password, request.body.fk_idChapter, request.body.fk_idRolJer, request.body.isActive);
+        console.log('obtiene el método POST')
     empleado.save().then(() => {
-        //response.setHeader('Set-Cookie', 'ultimo_empleado='+empleado.nombre+'; HttpOnly', 'utf8');
-        response.render()
+        response.render('listaEmpleados')
     }).catch(err => console.log(err));
 };
 
