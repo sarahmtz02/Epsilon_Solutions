@@ -1,16 +1,21 @@
 <link rel="stylesheet" href="/css/buttons.css" />
-<nav> <!-- navbar content here  --> </nav>
+<link rel="stylesheet" href="/css/sidebar.css" />
 
 <ul id="slide-out" class="sidenav sidenav-fixed">
-  <li><div class="user-view">
-    <div class="background">
-      <img src="/img/zebrands.png">
+  <li>
+    <div>
+      <img src="/img/logo-sire.png" width="245px">
     </div>
 </li>
-    <li><label class="label-sidebar" type="button">Bienvenido, <%= email %></label>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/dashboard">Dashboard</a></button>
+<br>
+    <li><label class="label-sidebar">Bienvenido a SIRE, <%- email -%></label>
+    <hr>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/dashboard">Inicio</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Evaluaciones</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Mentees</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Mis Observaciones</a></button>
+    <hr>
     <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Empleados</a></button>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Mis Evaluaciones</a></button>
     <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Plantillas</a></button>
     <li><button class="btn-sidebar" type="button"><a href="/empleados/logout">Salir</a></button>
 </ul>

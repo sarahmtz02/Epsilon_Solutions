@@ -6,6 +6,7 @@
     cursor: pointer;
     overflow: hidden;
     outline: none;
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; font-size: 15px;
 }
 
 .label-sidebar {
@@ -18,5 +19,5 @@
     outline: none;
     padding: 6px 8px 6px 16px;
     display: block;
-    font-size: 15px;
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; font-size: 15px;
 }

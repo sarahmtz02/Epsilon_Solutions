@@ -5,7 +5,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #231F20;
     overflow-x: hidden;
     padding-top: 20px;
   }
@@ -13,17 +13,18 @@
   .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     color: #ffff;
     display: block;
   }
   
   .sidenav a:hover {
-    color: #f1f1f1;
+    color: #f1f1f1b7;
   }
 
   .text {
       color: #ffff;
+      font-size: 25px;
   }
   
   .main {
@@ -31,3 +32,11 @@
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
   }
+
+  hr {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background: #fff;
+    opacity: 0.2;
+}

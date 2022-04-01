@@ -1,8 +1,11 @@
-<%- include('templates/sidebar.ejs') %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
 
-<div class="main">
+<%- include('templates/sidebar.ejs') %>
+<body style="background: url('/img/bg-sire.png');">
+<section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
 <h1 id="principal">Lista de Empleados</h1><br>
 <p>A continuación todos los empleados en la empresa:</p>
 
@@ -33,5 +36,6 @@
 
 <a href="/empleados/nuevoEmpleado"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo empleado</button></a>
 <br><br>
-</div>
+</section>
+</body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

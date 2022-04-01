@@ -22,7 +22,8 @@ exports.post_nuevo_empleado = (request, response, next) => {
         request.body.email, request.body.password, request.body.fk_idChapter, request.body.fk_idRolJer, request.body.isActive);
         console.log('obtiene el método POST')
     empleado.save().then(() => {
-        response.render('listaEmpleados')
+        response.setHeader('Set-Cookie', 'ultimo_empleado='+empleado.nombre+'; HttpOnly', 'utf8');
+        response.render()
     }).catch(err => console.log(err));
 };
 
