@@ -1,9 +1,13 @@
-<%- include('templates/sidebar.ejs') %>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
 
-<body>
-    <div class="main">
+<%- include('templates/sidebar.ejs') %>
+
+<body style="background: url('/img/bg-sire.png');">
+    <section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
     <h1 id="principal">Empleados</h1>
     <h2>Agregar un nuevo Empleado:</h2>
     <br>
@@ -71,12 +75,9 @@
         <input type="submit" value="Enviar">
     </form>
     <br><br>
-
-
-
-    <br><br>
     <a href="/empleados/lista"><button type="button" class="btn btn-secondary">Regresar al listado de empleados</button></a>
-    </div>
+    </section>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
