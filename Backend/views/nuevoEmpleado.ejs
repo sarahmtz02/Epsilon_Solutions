@@ -1,43 +1,113 @@
-<%- include('templates/head.ejs') %>
+<%- include('templates/sidebar.ejs') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/css/sidebar.css" />
 
 <body>
     <h1 id="principal">Empleados</h1>
     <h2>Agregar un nuevo Empleado:</h2>
     <br>
     <form action="/empleados/nuevoEmpleado" method="POST">
+    <label for="fechaIng">Fecha de Ingreso: </label>
+    <input type="text" id="fechaIng" name="fechaIng" placeholder="AAAA-MM-DD">
+    <br><br>
     <label for="nombre">Nombre: </label>
     <input type="text" id="nombre" name="nombre" placeholder="Juan">
     <br><br>
     <label for="nombre">Apellido Paterno: </label> <br>
-    <textarea rows = "5" cols = "60" id = "apellidoP" name = "apellidoP" placeholder="Perez"></textarea><br>
+    <textarea rows = "5" cols = "10" id = "apellidoP" name = "apellidoP" placeholder="Perez"></textarea><br>
     <br><br>
     <label for="nombre">Apellido Materno: </label> <br>
-    <textarea rows = "5" cols = "60" id = "apellidoM" name = "apellidoM" placeholder="Godinez"></textarea><br>
+    <textarea rows = "5" cols = "10" id = "apellidoM" name = "apellidoM" placeholder="Godinez"></textarea><br>
     <br><br>
     <label for="nombre">Nivel People: </label> <br>
-    <textarea rows = "5" cols = "60" id = "nivPeople" name = "nivPeople" placeholder="2.5"></textarea><br>
+    <textarea rows = "5" cols = "10" id = "nivPeople" name = "nivPeople" placeholder="2.5"></textarea><br>
     <br><br>
     <label for="nombre">Nivel Craft: </label> <br>
-    <textarea rows = "5" cols = "60" id = "nivCraft" name = "nivCraft" placeholder="2.5"></textarea><br>
+    <textarea rows = "5" cols = "10" id = "nivCraft" name = "nivCraft" placeholder="2.5"></textarea><br>
     <br><br>
     <label for="nombre">Nivel Business: </label> <br>
-    <textarea rows = "5" cols = "60" id = "nivBusiness" name = "nivBusiness" placeholder="2.5"></textarea><br>
+    <textarea rows = "5" cols = "10" id = "nivBusiness" name = "nivBusiness" placeholder="2.5"></textarea><br>
+    <br><br>
+    <label for="nombre">Nivel Overall: </label> <br>
+    <textarea rows = "5" cols = "10" id = "nivOverall" name = "nivOverall" placeholder="2.5"></textarea><br>
     <br><br>
     <label for="nombre">Puesto: </label> <br>
-    <textarea rows = "5" cols = "60" id = "puesto" name = "puesto" placeholder="Programmer"></textarea><br>
+    <textarea rows = "5" cols = "10" id = "puesto" name = "puesto" placeholder="Programmer"></textarea><br>
     <br><br>
     <label for="nombre">Equipo: </label> <br>
-    <textarea rows = "5" cols = "60" id = "equipo" name = "equipo" placeholder="ZeCore Client"></textarea><br>
+    <textarea rows = "5" cols = "10" id = "equipo" name = "equipo" placeholder="ZeCore Client"></textarea><br>
     <br><br>
     <label for="nombre">Correo Electrónico: </label> <br>
-    <textarea rows = "5" cols = "60" id = "email" name = "email" placeholder="name@example.com"></textarea><br>
+    <textarea rows = "5" cols = "10" id = "email" name = "email" placeholder="name@example.com"></textarea><br>
     <br><br>
-    <label for="nombre">Contraseña: </label> <br>
-    <textarea rows = "5" cols = "60" id = "password" name = "password" placeholder="Password"></textarea><br>
+    <label for="nombre">Chapter: </label> <br>
+    <textarea rows = "5" cols = "10" id = "fk_idChapter" name = "fk_idChapter" placeholder="IT"></textarea><br>
     <br><br>
+    <label for="nombre">Rol Jerárquico: </label> <br>
+    <textarea rows = "5" cols = "10" id = "fk_idRolJer" name = "fk_idRolJer" placeholder="Member"></textarea><br>
+    <br><br>
+    <label for="password">Contraseña: </label>
+        <input type="password" id="password" name="password" >
+        <br><br>
     <a><input type ="submit" value="Guardar"></a>
     </form>
+
+    <form action="/users/signup" method="POST">
+
+        <!-- Para los datos personales -->
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" name="nombre" >
+        <br><br>
+        <label for="apellidoP">Apellido Paterno: </label>
+        <input type="text" id="apellidoP" name="apellidoP" >
+        <br><br>
+        <label for="apellidoM">Apellido Materno: </label>
+        <input type="text" id="apellidoM" name="apellidoM" >
+        <br><br>
+
+        <!-- Para los datos empresariales (falta hacer el cálculo, por ahora es manual) -->
+        <label for="nivPeople">Nivel People: </label>
+        <input type="number" step=1 id="nivPeople" name="nivPeople" >
+        <br><br>
+        <label for="nivCraft">Nivel Craft: </label>
+        <input type="number" step=1 id="nivCraft" name="nivCraft" >
+        <br><br>
+        <label for="nivBusiness">Nivel Business: </label>
+        <input type="number" step=1 id="nivBusiness" name="nivBusiness" >
+        <br><br>
+
+        <!-- TEMPORAL -->
+        <label for="nivOverall">Nivel Overall: </label>
+        <input type="number" step=1 id="nivOverall" name="nivOverall" >
+        <br><br>
+
+        <label for="puesto">Puesto: </label>
+        <input type="text" id="puesto" name="puesto" >
+        <br><br>
+        <label for="equipo">Equipo: </label>
+        <input type="text" id="equipo" name="equipo" >
+        <br><br>
+        <label for="email">Correo electrónico: </label>
+        <input type="email" id="email" name="email" >
+        <br><br>
+        <label for="fk_idChapter">Chapter: </label>
+        <input type="number" id="fk_idChapter" name="fk_idChapter" >
+        <br><br>
+        <label for="fk_idRolJer">Rol Jerárquico: </label>
+        <input type="number" id="fk_idRolJer" name="fk_idRolJer" >
+        <br><br>
+        <label for="password">Contraseña: </label>
+        <input type="password" id="password" name="password" >
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+    <br><br>
+
+
+
     <br><br>
     <a href="/empleados"><button type="button" class="btn btn-secondary">Regresar al listado de empleados</button></a>
     </div>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

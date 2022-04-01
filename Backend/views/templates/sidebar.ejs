@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/buttons.css" />
+<nav> <!-- navbar content here  --> </nav>
+
+<ul id="slide-out" class="sidenav sidenav-fixed">
+  <li><div class="user-view">
+    <div class="background">
+      <img src="/img/zebrands.png">
+    </div>
+</li>
+    <li><label class="label-sidebar" type="button">Bienvenido, <%= email %></label>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/dashboard">Dashboard</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Empleados</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Mis Evaluaciones</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Plantillas</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/logout">Salir</a></button>
+</ul>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
