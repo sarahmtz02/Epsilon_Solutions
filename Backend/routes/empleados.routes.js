@@ -4,7 +4,7 @@ const isAuth = require('../util/is-auth.js');
 
 const empleadosController = require('../controllers/empleados_controller');
 
-router.get('/nuevoEmpleado', isAuth, empleadosController.get_nuevo_empleado);
+router.get('/nuevoEmpleado', empleadosController.get_nuevo_empleado);
 router.post('/nuevoEmpleado', empleadosController.post_nuevo_empleado);
 
 router.get('/nuevoPeriodo', isAuth, empleadosController.get_nuevo_periodo);
