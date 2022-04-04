@@ -14,10 +14,10 @@
                 <th>Periodos de Evaluación</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody type="date">
             <% for (let periodo of periodos) { %>
                 <tr>
-                    <td><%- periodo.FechaInicio -%>, <%- periodo.FechaFin -%></td>
+                    <td type="date"><%- periodo.FechaInicio -%>, <%- periodo.FechaFin -%></td>
                 </tr>
             <%} %>
         </tbody>
