@@ -15,7 +15,7 @@ module.exports = class User {
         return bcrypt.hash(this.password, 12)
             .then((password_cifrado)=>{
                 return db.execute(
-                    'INSERT INTO empleado(nombre, email, password) VALUES(?,?,?)',
+                    'INSERT INTO Empleado(nombre, email, password) VALUES(?,?,?)',
                     [this.nombre, this.email, password_cifrado]);
             }).catch((error)=>{
                 console.log(error);
@@ -25,7 +25,7 @@ module.exports = class User {
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static findOne(email) {
-        return db.execute('SELECT * FROM empleado WHERE email=?',
+        return db.execute('SELECT * FROM Empleado WHERE email=?',
             [email]);
     }
 

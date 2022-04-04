@@ -8,12 +8,12 @@ module.exports = class Mentee{
     }
 
     static fetchAllMentees() {
-        console.log(db.execute('SELECT * FROM mentees'));
-         return db.execute('SELECT * FROM mentees');
+        console.log(db.execute('SELECT * FROM Mentees'));
+         return db.execute('SELECT * FROM Mentees');
     }
 
     save() {
-        return db.execute('INSERT INTO mentees (fk_idLead, idMentee, descAsignacion) VALUES (?, ?, ?)',
+        return db.execute('INSERT INTO Mentees (fk_idLead, idMentee, descAsignacion) VALUES (?, ?, ?)',
         [this.fk_idLead, this.idMentee, this.descAsignacion]
     );
     }
