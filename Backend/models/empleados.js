@@ -26,16 +26,10 @@ module.exports = class Empleado {
 
     //Por ahora sin método para guardar nuevos empleados
 
-    getEmpleado(){
+    static getEmpleado(){
         return db.execute('SELECT *  FROM empleado WHERE idEmpleado = (?)',[this.id]
         );
     }
-
-    // PRUEBA, PUEDE QUE NO FUNCIONE:
-    /*getRolSis(){
-        console.log(db.execute('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?'));
-        return db.execute('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?', [this.nombre]);
-    };*/
     
     async getRolSis(){
         //let query = ('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?', [this.nombre]);
@@ -80,7 +74,25 @@ module.exports = class Empleado {
             }); 
     }
 
-    //'INSERT INTO empleado(fechaIng, nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivCraft, nivBusiness, nivOverall, puesto, equipo, email, password, fk_idChapter, fk_idRolJer) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
+    async update(idEmpleado){
+        const result = db.query('UPDATE empleado SET fechaIng=?, nombre = ?, apellidoP=?, apellidoM=?, antiguedad=?, nivPeople=?, nivCraft=?, nivBusiness=?, nivOverall=?, puesto=?, equipo=?, email=?, password=?, fk_idChapter=? fk_idRolJer=?, isActive=? WHERE idEmpleado = ?',
+        [idEmpleado, this.fechaIng,
+            this.nombre,
+            this.apellidoP,
+            this.apellidoM,
+            this.antiguedad,
+            this.nivPeople,
+            this.nivCraft,
+            this.nivBusiness,
+            this.nivOverall,
+            this.puesto,
+            this.equipo,
+            this.email,
+            password_cifrado,
+            this.fk_idChapter,
+            this.fk_idRolJer,
+            this.isActive]);
+    }
 
     static findOne(email) {
         return db.execute('SELECT * FROM empleado WHERE email=?',

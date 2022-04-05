@@ -7,6 +7,11 @@ const empleadosController = require('../controllers/empleados_controller');
 router.get('/nuevoEmpleado', isAuth, empleadosController.get_nuevo_empleado);
 router.post('/nuevoEmpleado', empleadosController.post_nuevo_empleado);
 
+
+
+//router.get('/edit', isAuth, empleadosController.get_edit_empleado);
+//router.post('/edit', empleadosController.post_edit_empleado);
+
 router.get('/nuevoPeriodo', isAuth, empleadosController.get_nuevo_periodo);
 router.post('/nuevoPeriodo', empleadosController.post_nuevo_periodo);
 
@@ -25,5 +30,7 @@ router.use('/periodos', isAuth, empleadosController.periodos);
 
 router.get('/nuevaTemplate', isAuth, empleadosController.get_nueva_template);
 router.post('/nuevaTemplate', empleadosController.post_nueva_template);
+
+router.get('/:idEmpleado', isAuth, empleadosController.getEmpleado);
 
 module.exports = router;

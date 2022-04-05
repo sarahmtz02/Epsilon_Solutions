@@ -32,6 +32,29 @@ exports.post_nuevo_empleado = (request, response, next) => {
 };
 
 
+// Editar empleado:
+
+exports.getEmpleado = (request, response, next) => {
+    console.log(request.params.idEmpleado);
+
+    console.log(request.cookies);
+    Empleado.fetchOneEmpleado(request.params.idEmpleado)
+        .then(([rows, fieldData]) => {
+            console.log(rows);
+            response.render('empleado', {
+                empleados: rows,
+                email: request.session.email ? request.session.email : '',
+                ultimo_empleado: request.cookies.ultimo_empleado ? request.cookies.ultimo_empleado : '',
+            }); 
+        })
+        .catch(err => {
+            console.log(err);
+        }); 
+}
+
+
+//Listado
+
 exports.listado = (request, response, next) => {
     Empleado.fetchAllEmpleados()
         .then(([rows, fieldData]) => {
@@ -106,6 +129,13 @@ exports.login = (request, response, next) => {
                                 console.log(rows[0].id_rol_sistema);
                                 const rolSis = rows[0].id_rol_sistema;
                                 if (rolSis == 1) {
+                                    if(empleado.fk_idRolJer == 1){ // Member
+                                        console.log('Member')
+                                    } else if (empleado.fk_idRolJer == 2){ //Chapter Lead Assistant
+                                        console.log('CLA')
+                                    } else {  //Chapter Leader
+                                        console.log('CL')
+                                    }
                                     console.log('éxito RBAC miembro')
                                     response.redirect('./dashboard');
                                 } else if (rolSis == 2) {
