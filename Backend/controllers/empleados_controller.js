@@ -6,6 +6,7 @@ const Mentee = require('../models/mentee');
 const Templates = require('../models/templates');
 const bcrypt = require('bcryptjs');
 
+
 exports.get_nuevo_empleado = (request, response, next) => {
     console.log('obtiene el método GET')
     Empleado.fetchAllEmpleados()
@@ -89,7 +90,6 @@ exports.login = (request, response, next) => {
                 console.log('no existe el usuario')
                 return response.redirect('/empleados/login');
             }
-
             const empleado = new Empleado(rows[0].fechaIng, rows[0].nombre, rows[0].apellidoP, rows[0].apellidoM, rows[0].antiguedad, 
                 rows[0].nivPeople, rows[0].nivCraft, rows[0].nivBusiness, rows[0].nivOverall, rows[0].puesto, rows[0].equipo, rows[0].email, 
                 rows[0].password, rows[0].fk_idChapter, rows[0].fk_idRolJer, rows[0].isActive);
@@ -100,8 +100,20 @@ exports.login = (request, response, next) => {
                         request.session.email = empleado.email;
                         console.log('success')
                         return request.session.save(err => {
-                            response.redirect('./dashboard');
-                            console.log('success redirect')
+                            //empleado.getRolSis();
+                            res = 0;
+                            empleado.getRolSis().then(([rows])=>{
+                                console.log(rows[0].id_rol_sistema);
+                                const rolSis = rows[0].id_rol_sistema;
+                                if (rolSis == 1) {
+                                    console.log('éxito RBAC miembro')
+                                    response.redirect('./dashboard');
+                                } else if (rolSis == 2) {
+                                    console.log('éxito RBAC admin')
+                                    response.redirect('./dashboard');
+                                }
+                            });
+                            
                         });
                     }
                     console.log('password incorrecto')

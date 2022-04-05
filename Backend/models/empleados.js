@@ -31,6 +31,18 @@ module.exports = class Empleado {
         );
     }
 
+    // PRUEBA, PUEDE QUE NO FUNCIONE:
+    /*getRolSis(){
+        console.log(db.execute('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?'));
+        return db.execute('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?', [this.nombre]);
+    };*/
+    
+    async getRolSis(){
+        //let query = ('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?', [this.nombre]);
+        res = await db.query('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?', [this.nombre]);
+        return res;
+    };
+
     static fetchOneEmpleado(idEmpleado) {
         return db.execute('SELECT * FROM empleado WHERE idEmpleado=?', [idEmpleado]);
     }
