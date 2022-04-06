@@ -1,0 +1,83 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+
+<%- include('templates/sidebar.ejs') %>
+
+<body style="background: url('/img/bg-sire.png');">
+    <section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
+    <h1 id="principal">Empleados</h1>
+    <h2>Agregar un nuevo Empleado:</h2>
+    <br>
+
+    <form action="/empleados/nuevoEmpleado" method="POST">
+        <label for="fechaIng">Fecha de ingreso: </label>
+        <input type="date" id="fechaIng" name="fechaIng" >
+        <br><br>
+        <!-- Para los datos personales -->
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" name="nombre" >
+        <br><br>
+        <label for="apellidoP">Apellido Paterno: </label>
+        <input type="text" id="apellidoP" name="apellidoP" >
+        <br><br>
+        <label for="apellidoM">Apellido Materno: </label>
+        <input type="text" id="apellidoM" name="apellidoM" >
+        <br><br>
+
+        <!-- TEMPORAL -->
+        <label for="antiguedad">Antiguedad: </label>
+        <input type="number" min="0" id="antiguedad" name="antiguedad" >
+        <br><br>
+
+        <!-- Para los datos empresariales (falta hacer el cálculo, por ahora es manual) -->
+        <label for="nivPeople">Nivel People: </label>
+        <input type="number" step=1.1 id="nivPeople" name="nivPeople" >
+        <br><br>
+        <label for="nivCraft">Nivel Craft: </label>
+        <input type="number" step=1.1 id="nivCraft" name="nivCraft" >
+        <br><br>
+        <label for="nivBusiness">Nivel Business: </label>
+        <input type="number" step=1.1 id="nivBusiness" name="nivBusiness" >
+        <br><br>
+
+        <!-- TEMPORAL -->
+        <label for="nivOverall">Nivel Overall: </label>
+        <input type="number" step=1.1 id="nivOverall" name="nivOverall" >
+        <br><br>
+
+        <label for="puesto">Puesto: </label>
+        <input type="text" id="puesto" name="puesto" >
+        <br><br>
+        <label for="equipo">Equipo: </label>
+        <input type="text" id="equipo" name="equipo" >
+        <br><br>
+        <label for="email">Correo electrónico: </label>
+        <input type="email" id="email" name="email" >
+        <br><br>
+        <label for="fk_idChapter">Chapter: </label>
+        <input type="number" id="fk_idChapter" name="fk_idChapter" >
+        <br><br>
+        <label for="fk_idRolJer">Rol Jerárquico: </label>
+        <input type="number" id="fk_idRolJer" name="fk_idRolJer" >
+        <br><br>
+        <label for="password">Contraseña: </label>
+        <input type="password" id="password" name="password" >
+        <br><br>
+
+        <!-- TEMPORAL -->
+        <label for="isActive">Status: </label>
+        <input type="number" min="0" max="1" id="isActive" name="isActive" >
+        <br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+    <br><br>
+    <a href="/empleados/lista"><button type="button" class="btn btn-secondary">Regresar al listado de empleados</button></a>
+    </section>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
