@@ -75,8 +75,10 @@ module.exports = class Empleado {
     }
 
     async update(idEmpleado){
-        const result = db.query('UPDATE empleado SET fechaIng=?, nombre = ?, apellidoP=?, apellidoM=?, antiguedad=?, nivPeople=?, nivCraft=?, nivBusiness=?, nivOverall=?, puesto=?, equipo=?, email=?, password=?, fk_idChapter=? fk_idRolJer=?, isActive=? WHERE idEmpleado = ?',
-        [idEmpleado, this.fechaIng,
+        return bcrypt.hash(this.password, 12)
+        .then((password_cifrado)=>{
+        return db.execute('UPDATE empleado SET fechaIng=?,nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,password=?,fk_idChapter=?,fk_idRolJer=?,isActive=? WHERE idEmpleado=?',
+        [this.fechaIng,
             this.nombre,
             this.apellidoP,
             this.apellidoM,
@@ -91,7 +93,11 @@ module.exports = class Empleado {
             password_cifrado,
             this.fk_idChapter,
             this.fk_idRolJer,
-            this.isActive]);
+            this.isActive, 
+            idEmpleado]);
+        }).catch((error)=>{
+            console.log(error);
+        }); 
     }
 
     static findOne(email) {

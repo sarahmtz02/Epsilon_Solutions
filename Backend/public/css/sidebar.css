@@ -33,6 +33,10 @@
     padding: 0px 10px;
   }
 
+  .section-dash {
+    padding: 20px;
+  }
+
   hr {
     width: 100%;
     border: 0;
