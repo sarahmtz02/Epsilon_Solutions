@@ -1,4 +1,5 @@
 const path = require('path');
+const moment = require("moment"); // Para fechas
 
 // --- MAIN --- //
 
@@ -40,6 +41,7 @@ exports.getEmpleado = (request, response, next) => {
                 empleados: rows,
                 email: request.session.email ? request.session.email : '',
                 ultimo_empleado: request.cookies.ultimo_empleado ? request.cookies.ultimo_empleado : '',
+                moment: moment
             }); 
         })
         .catch(err => {

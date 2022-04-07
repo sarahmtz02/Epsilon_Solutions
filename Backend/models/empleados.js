@@ -43,8 +43,8 @@ module.exports = class Empleado {
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAllEmpleados() {
-       console.log(db.execute('SELECT * FROM empleado'));
-        return db.execute('SELECT * FROM empleado');
+       console.log(db.execute('SELECT * FROM empleado WHERE isActive = 1'));
+        return db.execute('SELECT * FROM empleado WHERE isActive = 1');
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
@@ -77,9 +77,8 @@ module.exports = class Empleado {
     async update(idEmpleado){
         return bcrypt.hash(this.password, 12)
         .then((password_cifrado)=>{
-        return db.execute('UPDATE empleado SET fechaIng=?,nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,password=?,fk_idChapter=?,fk_idRolJer=?,isActive=? WHERE idEmpleado=?',
-        [this.fechaIng,
-            this.nombre,
+        return db.execute('UPDATE empleado SET nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,password=?,fk_idChapter=?,fk_idRolJer=?,isActive=? WHERE idEmpleado=?',
+        [this.nombre,
             this.apellidoP,
             this.apellidoM,
             this.antiguedad,
