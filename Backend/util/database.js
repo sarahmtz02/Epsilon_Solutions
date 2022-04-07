@@ -20,6 +20,7 @@ const pool = createPool({
     password: 'dIpxqPIEwLvAmwnGxFl4',
     port: 3306,
     database: 'bpnzdg3qreqalbxfqwow',
+    timezone: 'Z'
 });
 
 module.exports = pool.promise();
