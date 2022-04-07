@@ -28,7 +28,7 @@ exports.dashboard = (request, response, next) => {
 exports.login = (request, response, next) => {
     Empleado.findOne(request.body.email)
         .then(([rows, fielData])=>{
-            console.log('el usuario existe')
+            console.log(request.body.email)
             //Si no existe el usuario, redirige a la pantalla de login
             if (rows.length < 1) {
                 console.log('no existe el usuario')

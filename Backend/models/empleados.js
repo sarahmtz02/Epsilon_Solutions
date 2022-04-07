@@ -27,7 +27,7 @@ module.exports = class Empleado {
     //Por ahora sin método para guardar nuevos empleados
 
     static getEmpleado(){
-        return db.execute('SELECT *  FROM empleado WHERE idEmpleado = (?)',[this.id]
+        return db.execute('SELECT *  FROM Empleado WHERE idEmpleado = (?)',[this.id]
         );
     }
     
@@ -38,13 +38,13 @@ module.exports = class Empleado {
     };
 
     static fetchOneEmpleado(idEmpleado) {
-        return db.execute('SELECT * FROM empleado WHERE idEmpleado=?', [idEmpleado]);
+        return db.execute('SELECT * FROM Empleado WHERE idEmpleado=?', [idEmpleado]);
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAllEmpleados() {
-       console.log(db.execute('SELECT * FROM empleado WHERE isActive = 1'));
-        return db.execute('SELECT * FROM empleado WHERE isActive = 1');
+       console.log(db.execute('SELECT * FROM Empleado WHERE isActive = 1'));
+        return db.execute('SELECT * FROM Empleado WHERE isActive = 1');
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
@@ -52,7 +52,7 @@ module.exports = class Empleado {
         return bcrypt.hash(this.password, 12)
             .then((password_cifrado)=>{
                 return db.execute(
-                    'INSERT INTO empleado(fechaIng, nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivCraft, nivBusiness, nivOverall, puesto, equipo, email, password, fk_idChapter, fk_idRolJer, isActive) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                    'INSERT INTO Empleado(fechaIng, nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivCraft, nivBusiness, nivOverall, puesto, equipo, email, password, fk_idChapter, fk_idRolJer, isActive) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                     [this.fechaIng,
                         this.nombre,
                         this.apellidoP,
@@ -77,7 +77,7 @@ module.exports = class Empleado {
     async update(idEmpleado){
         return bcrypt.hash(this.password, 12)
         .then((password_cifrado)=>{
-        return db.execute('UPDATE empleado SET nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,password=?,fk_idChapter=?,fk_idRolJer=?,isActive=? WHERE idEmpleado=?',
+        return db.execute('UPDATE Empleado SET nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,password=?,fk_idChapter=?,fk_idRolJer=?,isActive=? WHERE idEmpleado=?',
         [this.nombre,
             this.apellidoP,
             this.apellidoM,
@@ -100,7 +100,7 @@ module.exports = class Empleado {
     }
 
     static findOne(email) {
-        return db.execute('SELECT * FROM empleado WHERE email=?',
+        return db.execute('SELECT * FROM Empleado WHERE email=?',
             [email]);
     }
 }

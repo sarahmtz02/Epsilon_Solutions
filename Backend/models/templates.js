@@ -6,12 +6,12 @@ module.exports = class Template{
     }
 
     static fetchAllTemplates() {
-        console.log(db.execute('SELECT * FROM template'));
-         return db.execute('SELECT * FROM template');
+        console.log(db.execute('SELECT * FROM Template'));
+         return db.execute('SELECT * FROM Template');
     }
 
     save() {
-        return db.execute('INSERT INTO template (NombreTemplate) VALUES (?)',
+        return db.execute('INSERT INTO Template (NombreTemplate) VALUES (?)',
         [this.NombreTemplate]
     );
     }
