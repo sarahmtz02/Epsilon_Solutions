@@ -26,10 +26,16 @@ module.exports = class Empleado {
 
     //Por ahora sin método para guardar nuevos empleados
 
-    getEmpleado() {
+    static getEmpleado(){
         return db.execute('SELECT *  FROM Empleado WHERE idEmpleado = (?)',[this.id]
         );
     }
+    
+    async getRolSis(){
+        //let query = ('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?', [this.nombre]);
+        res = await db.query('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?', [this.nombre]);
+        return res;
+    };
 
     static fetchOneEmpleado(idEmpleado) {
         return db.execute('SELECT * FROM Empleado WHERE idEmpleado=?', [idEmpleado]);
@@ -37,8 +43,8 @@ module.exports = class Empleado {
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAllEmpleados() {
-       console.log(db.execute('SELECT * FROM Empleado'));
-        return db.execute('SELECT * FROM Empleado');
+       console.log(db.execute('SELECT * FROM Empleado WHERE isActive = 1'));
+        return db.execute('SELECT * FROM Empleado WHERE isActive = 1');
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
@@ -68,7 +74,30 @@ module.exports = class Empleado {
             }); 
     }
 
-    //'INSERT INTO empleado(fechaIng, nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivCraft, nivBusiness, nivOverall, puesto, equipo, email, password, fk_idChapter, fk_idRolJer) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
+    async update(idEmpleado){
+        return bcrypt.hash(this.password, 12)
+        .then((password_cifrado)=>{
+        return db.execute('UPDATE Empleado SET nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,password=?,fk_idChapter=?,fk_idRolJer=?,isActive=? WHERE idEmpleado=?',
+        [this.nombre,
+            this.apellidoP,
+            this.apellidoM,
+            this.antiguedad,
+            this.nivPeople,
+            this.nivCraft,
+            this.nivBusiness,
+            this.nivOverall,
+            this.puesto,
+            this.equipo,
+            this.email,
+            password_cifrado,
+            this.fk_idChapter,
+            this.fk_idRolJer,
+            this.isActive, 
+            idEmpleado]);
+        }).catch((error)=>{
+            console.log(error);
+        }); 
+    }
 
     static findOne(email) {
         return db.execute('SELECT * FROM Empleado WHERE email=?',
