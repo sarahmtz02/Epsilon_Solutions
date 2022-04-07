@@ -1,0 +1,10 @@
+.section-card {
+    background-color: rgba(255, 255, 255, 0.966);
+    background-repeat: no-repeat;
+    color: #231F20;
+    border-radius: 25px;
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; font-size: 15px;
+    padding: 16px 16px 16px 16px;
+    margin-left: 300px; /* Same as the width of the sidenav *//* Increased text to enable scrolling */
+    padding: 0px 10px;
+}

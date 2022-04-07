@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+
+<%- include('templates/sidebar.ejs') %>
+
+<body style="background: url('/img/bg-sire.png');">
+<section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
+
+    <table class="striped" class="centered">
+        <thead>
+            <tr>
+                <th>Periodos de Evaluación</th>
+            </tr>
+        </thead>
+        <tbody type="date">
+            <% for (let periodo of periodos) { %>
+                <tr>
+                    <td type="date"><%- periodo.FechaInicio -%>, <%- periodo.FechaFin -%></td>
+                </tr>
+            <%} %>
+        </tbody>
+    </table>
+    <a href="/empleados/nuevoPeriodo"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo Periodo</button></a>
+
+</section>
+<br>
