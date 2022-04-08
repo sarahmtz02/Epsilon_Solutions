@@ -41,6 +41,7 @@ router.get('/id-empleado=:idEmpleado', isAuth, empleadosController.getEmpleado);
 router.post('/id-empleado=:idEmpleado', empleadosController.updateEmpleado);
 
 router.get('/id-template=:idTemplate', isAuth, templatesController.getTemplate);
+router.get('/edit-id-template=:idTemplate', isAuth, templatesController.getEditTemplate);
 //router.post('/id-template=:idTemplate', templatesController.updateEmpleado);
 
 module.exports = router;

@@ -55,7 +55,7 @@ exports.post_preguntas = (request, response, next) => {
 
 // Para edición:
 
-exports.getTemplate = (request, response, next) => {
+exports.getEditTemplate = (request, response, next) => {
     console.log(request.params.idTemplate);
     console.log(request.cookies);
     Template.fetchOneTemplate(request.params.idTemplate)
@@ -64,11 +64,37 @@ exports.getTemplate = (request, response, next) => {
             const templates = rows;
             console.log(templates);
             Preguntas.fetchAllPreguntas().then(([rows])=> {
-                response.render('template', {
+                response.render('editarTemplate', {
                     preguntas: rows,
                     templates: templates,
                     email: request.session.email ? request.session.email : '',
                 });
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        }); 
+}
+
+exports.getTemplate = (request, response, next) => {
+    console.log(request.params.idTemplate);
+    console.log(request.cookies);
+    Template.fetchOneTemplate(request.params.idTemplate)
+        .then(([rows, fieldData]) => {
+            console.log(rows);
+            const templates = rows;
+            console.log(templates);
+            Preguntas.fetchAllPreguntas().then(([rows]) => {
+                const preguntas = rows;
+                console.log(preguntas);
+                BancoPreguntas.fetchPreguntasBanco(request.params.idTemplate).then(([rows])=> {
+                    response.render('template', {
+                        bancopreguntas: rows,
+                        templates: templates,
+                        preguntas: preguntas,
+                        email: request.session.email ? request.session.email : '',
+                    });
+                })
             })
         })
         .catch(err => {

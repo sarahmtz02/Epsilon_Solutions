@@ -18,7 +18,8 @@
                     <% for (let template of templates) { %>
                         <tr>
                             <td ><%- template.NombreTemplate -%></td>
-                            <td><a href = "/empleados/id-template=<%-template.idTemplate-%>" class = "btn btn-outline-secondary">Editar</a></td>
+                            <td><a href = "/empleados/id-template=<%-template.idTemplate-%>" class = "btn btn-outline-secondary">Visualizar</a></td>
+                            <td><a href = "/empleados/edit-id-template=<%-template.idTemplate-%>" class = "btn btn-outline-secondary">Editar</a></td>
                         </tr>
                     <%} %>
             </table>
