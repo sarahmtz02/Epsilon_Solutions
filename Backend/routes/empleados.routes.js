@@ -31,12 +31,16 @@ router.get('/dashboard', isAuth, loginController.dashboard);
 router.get('/', isAuth, loginController.root);
 
 // - Controlados por templatesController:
-router.use('/templates', isAuth, templatesController.templates);
+router.use('/listaTemplates', isAuth, templatesController.listado);
 router.get('/nuevaTemplate', isAuth, templatesController.get_nueva_template);
 router.post('/nuevaTemplate', templatesController.post_nueva_template);
+router.post('/postPreguntas', templatesController.post_preguntas);
 
 // - Colocado aquí para evitar redirrecionamiento indebido:
-router.get('/:idEmpleado', isAuth, empleadosController.getEmpleado);
-router.post('/:idEmpleado', empleadosController.updateEmpleado);
+router.get('/id-empleado=:idEmpleado', isAuth, empleadosController.getEmpleado);
+router.post('/id-empleado=:idEmpleado', empleadosController.updateEmpleado);
+
+router.get('/id-template=:idTemplate', isAuth, templatesController.getTemplate);
+//router.post('/id-template=:idTemplate', templatesController.updateEmpleado);
 
 module.exports = router;

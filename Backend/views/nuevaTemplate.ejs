@@ -7,17 +7,19 @@
 <%- include('templates/sidebar.ejs') %>
 
 <body style="background: url('/img/bg-sire.png');">
-<section class="section-card" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
-    <form action="/empleados/nuevaTemplate" method="POST">
-
-        <label for="NombreTemplate">Nombre del Template: </label>
-        <input type="text" id="NombreTemplate" name="NombreTemplate" >
-        <br><br>
-
-        <input type="submit" value="Enviar">
-
-    </form>
-</section>
+    <div class="main">
+        <section class="section-card">
+            <form action="/empleados/nuevaTemplate" method="POST">
+                <h1 id="principal">Creación de nueva Template: </h1>
+                <hr class="db-hr">
+                <label for="NombreTemplate">Nombre del Template: </label>
+                <input type="text" id="NombreTemplate" name="NombreTemplate" >
+                <br><br>
+    
+                <button type="submit">Crear Template</button>
+            </form>
+        </section>
+    </div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

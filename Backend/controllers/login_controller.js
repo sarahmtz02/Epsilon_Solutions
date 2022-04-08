@@ -20,6 +20,10 @@ exports.dashboard = (request, response, next) => {
     console.log('dashboard');
     response.render('index', {
         email: request.session.email ? request.session.email : '',
+        nPeople: request.session.nPeople ? request.session.nPeople : '',
+        nCraft: request.session.nCraft ? request.session.nCraft : '',
+        nBusiness: request.session.nBusiness ? request.session.nBusiness : '',
+        nOverall: request.session.nOverall ? request.session.nOverall : '',
         info: ''
     }); 
 };
@@ -42,6 +46,10 @@ exports.login = (request, response, next) => {
                         request.session.isLoggedIn = true;
                         request.session.empleado = empleado;
                         request.session.email = empleado.email;
+                        request.session.nPeople = empleado.nivPeople;
+                        request.session.nCraft = empleado.nivCraft;
+                        request.session.nBusiness = empleado.nivBusiness;
+                        request.session.nOverall = empleado.nivOverall;
                         console.log('success')
                         return request.session.save(err => {
                             //empleado.getRolSis();
@@ -77,6 +85,8 @@ exports.login = (request, response, next) => {
         });
     
 };
+
+
 
 // - Para cerrar la sesión
 exports.logout = (request, response, next) => {
