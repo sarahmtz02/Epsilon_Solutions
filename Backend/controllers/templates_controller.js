@@ -80,24 +80,70 @@ exports.getTemplate = (request, response, next) => {
     console.log(request.params.idTemplate);
     console.log(request.cookies);
     Template.fetchOneTemplate(request.params.idTemplate)
-        .then(([rows, fieldData]) => {
-            console.log(rows);
-            const templates = rows;
+        .then(([templates, fieldData]) => {
+            request.session.templates = templates;
+            //console.log(rows);
+            //const templates = rows;
             console.log(templates);
-            Preguntas.fetchAllPreguntas().then(([rows]) => {
-                const preguntas = rows;
+            Preguntas.fetchAllPreguntas().then(([preguntas, fieldData]) => {
+                request.session.preguntas = preguntas;
                 console.log(preguntas);
-                BancoPreguntas.fetchPreguntasBanco(request.params.idTemplate).then(([rows])=> {
-                    response.render('template', {
-                        bancopreguntas: rows,
+
+                BancoPreguntas.fetchPreguntasBanco(request.params.idTemplate).then(([bancopreguntas, fieldData])=> {
+                    response.render('editarTemplate', {
+                        
+                        bancopreguntas: bancopreguntas,
                         templates: templates,
                         preguntas: preguntas,
                         email: request.session.email ? request.session.email : '',
-                    });
-                })
+
+                    })
+                }).catch(err => {
+                    console.log(err);
+                }); 
             })
-        })
-        .catch(err => {
+        }).catch(err => {
             console.log(err);
         }); 
 }
+
+
+// Para guardar las preguntas en la Template:
+
+exports.writePreguntas = async (request, response, next) => {
+
+    console.log('Guardar preguntas en Template');
+    console.log(request.body);
+
+    let preguntas = request.session.preguntas;
+    console.log(request.params.idTemplate)
+    console.log('Prueba')
+    console.log(request.session.preguntas);
+    var total = preguntas.length;
+    console.log(preguntas.length);
+
+    //Para obtener los ids de cada pregunta
+    /* Recorro cada cuestinario para obtener sus ids preguntas y los guardo en 
+        un array
+    */
+
+    var idP = [];
+
+    for (i = 0; i < preguntas.length; i++ ) {
+        idP.push(preguntas[i].idPregunta);
+    }
+
+    console.log(idP);
+
+    try {
+        //Ciclo for para realizar insert de preguntas y respuestas
+        for (i = 0; i < total; i++ ) {
+            let res = new BancoPreguntas (request.params.idTemplate, idP[i])
+            await res.save();
+        }
+        response.redirect('/listaTemplates');
+
+    } catch(error) {
+        console.log(error)
+    }
+}  

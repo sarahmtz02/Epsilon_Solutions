@@ -10,7 +10,12 @@ module.exports = class BancoPreguntas{
     save() {
         //var values1 = [[this.fk_idTemplate, this.fk_idPregunta]];
         //var values2 = [[this.fk_idTemplate, this.fk_idPregunta]];
-        return db.query('INSERT INTO BancoPreguntas (fk_idTemplate, fk_idPregunta) VALUES (?, ?)', [this.fk_idTemplate, this.fk_idPregunta]);
+        return db.execute('INSERT INTO BancoPreguntas (fk_idTemplate, fk_idPregunta) VALUES (?, ?)', [this.fk_idTemplate, this.fk_idPregunta]);
+        };
+
+    saveTest() {
+        var values = [[this.fk_idTemplate, this.fk_idPregunta], [this.fk_idTemplate, this.fk_idPregunta]]; //Por el caso nada más vamos a insertar dos, pero en realidad sería el COUNT de las preguntas existentes
+        return db.query('INSERT INTO BancoPreguntas (fk_idTemplate, fk_idPregunta) VALUES ?', [values]); //Pasamos el array ([[[valor, valor]]])
         };
 
     static fetchBancoP(idBancoP) {
