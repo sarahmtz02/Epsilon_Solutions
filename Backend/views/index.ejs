@@ -6,14 +6,50 @@
 
 <body style="background: url('/img/bg-sire.png');">
 <%- include('templates/sidebar.ejs') %>
-<div>
-<section class="section-card">
-<h1 id="principal">Dashboard SIRE</p>
-    <p>Empleados:</p>
-    <a href="/empleados/lista"><button type="button" class="btn btn-outline-secondary">Empleados</button></a>
-    <br><br>
-</section>
-</div>
+
+    <div class="main">
+        <main>
+            <section class="section-dash-main">
+                <h1 id="principal">Resumen de Estado</h1>
+                <hr class="db-hr">
+                <table class="default">
+                    <tr>
+                        <th class="db-dimensions">Dimensiones</th>
+                        <th class="db-indicators">Indicador</th>
+                    </tr>
+                    <tr>
+                        <td>People: </td>
+                        <td><%- nPeople -%></td>
+                    </tr>
+                    <tr>
+                        <td>Craft: </td>
+                        <td><%- nCraft -%></td>
+                    </tr>
+                    <tr>
+                        <td>Business: </td>
+                        <td><%- nBusiness -%></td>
+                    </tr>
+                    <tr>
+                        <td>Niveral Overall: </td>
+                        <td><%- nOverall -%></td>
+                    </tr>
+                </table>
+                <br><br>
+            </section>
+        </main>
+    </div>
+    <div class="secondary">
+    <aside>
+        <section class="section-dash-aside">
+            <h1 id="principal" align="center">Boletín</h1>
+            <hr class="db-hr">
+        </section>
+        <section class="section-dash-aside">
+            <h1 id="principal" align="center">¿Cómo te sientes el día de hoy?</h1>
+            <hr class="db-hr">
+        </section>
+    </aside>
+    </div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

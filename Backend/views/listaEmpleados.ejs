@@ -6,13 +6,14 @@
 
 <%- include('templates/sidebar.ejs') %>
 <body style="background: url('/img/bg-sire.png');">
-<section class="section-card" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
-<h1 id="principal">Lista de Empleados</h1><br>
-<p>A continuación todos los empleados en la empresa:</p>
+<div class="main">
+<section class="section-card">
+<h1 id="principal">Lista de Empleados</h1>
+<hr class="db-hr">
 
 <!-- EMPLEADOS -->
 
-<table class="striped" class="centered">
+<table class="default" class="centered">
     <thead>
         <tr>
             <th>Nombre</th>
@@ -29,16 +30,17 @@
                 <td><%- empleado.apellidoP + ' ' + empleado.apellidoM -%></td>
                 <td><%- empleado.email -%></td>
                 <td><%- empleado.equipo -%></td>
-                <td><%- empleado.nivOverall.toFixed(1) -%></td>
-                <td><a href = "/empleados/<%-empleado.idEmpleado-%>" class = "btn btn-outline-secondary">Editar</a></td>
+                <td><%- empleado.nivOverall -%></td>
+                <td><a href = "/empleados/id-empleado=<%-empleado.idEmpleado-%>" class = "btn btn-outline-secondary">Editar</a></td>
             </tr>
         <%} %>
     </tbody>
 </table>
-
+<hr class="db-hr">
 <a href="/empleados/nuevoEmpleado"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo empleado</button></a>
 <br><br>
 </section>
+</div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>

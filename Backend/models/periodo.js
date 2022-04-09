@@ -7,12 +7,12 @@ module.exports = class Periodo{
     }
 
     static fetchAllPeriodos() {
-        console.log(db.execute('SELECT * FROM periodoevaluacion'));
-         return db.execute('SELECT * FROM periodoevaluacion');
+        console.log(db.execute('SELECT * FROM PeriodoEvaluacion'));
+         return db.execute('SELECT * FROM PeriodoEvaluacion');
     }
 
     save() {
-        return db.execute('INSERT INTO periodoevaluacion (FechaInicio, FechaFin) VALUES (?, ?)',
+        return db.execute('INSERT INTO PeriodoEvaluacion (FechaInicio, FechaFin) VALUES (?, ?)',
         [this.FechaInicio, this.FechaFin]
     );
     }

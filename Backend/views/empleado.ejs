@@ -7,69 +7,129 @@
 <%- include('templates/sidebar.ejs') %>
 
 <body style="background: url('/img/bg-sire.png');">
-    <section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
+    <div class="main">
+    <section class="section-card">
     <h1 id="principal">Empleados</h1>
     <h2>Editar un Empleado:</h2>
     <br>
     <% for (let empleado of empleados) { %>
-    <form action="/empleados/<%-empleado.idEmpleado-%>" method="PUT">
-        <label for="fechaIng">Fecha de ingreso: </label>
-        <input type="date" id="fechaIng" name="fechaIng" placeholder=<%- empleado.fechaIng -%>>
-        <br><br>
+    <form action="/empleados/id-empleado=<%-empleado.idEmpleado-%>" method="POST">
         <!-- Para los datos personales -->
+        
         <label for="nombre">Nombre: </label>
-        <input type="text" id="nombre" name="nombre" placeholder=<%- empleado.nombre -%> >
+        <input type="text" id="nombre" name="nombre" value=<%- empleado.nombre -%> >
         <br><br>
         <label for="apellidoP">Apellido Paterno: </label>
-        <input type="text" id="apellidoP" name="apellidoP" placeholder=<%- empleado.apellidoP -%>>
+        <input type="text" id="apellidoP" name="apellidoP" value=<%- empleado.apellidoP -%>>
         <br><br>
         <label for="apellidoM">Apellido Materno: </label>
-        <input type="text" id="apellidoM" name="apellidoM" placeholder=<%- empleado.apellidoM -%>>
+        <input type="text" id="apellidoM" name="apellidoM" value=<%- empleado.apellidoM -%>>
         <br><br>
 
         <!-- TEMPORAL -->
         <label for="antiguedad">Antiguedad: </label>
-        <input type="number" min="0" id="antiguedad" name="antiguedad" placeholder=<%- empleado.antiguedad -%>>
+        <input type="number" min="0" id="antiguedad" name="antiguedad" value=<%- empleado.antiguedad -%>>
         <br><br>
 
         <!-- Para los datos empresariales (falta hacer el cálculo, por ahora es manual) -->
         <label for="nivPeople">Nivel People: </label>
-        <input type="number" step=1.1 id="nivPeople" name="nivPeople" placeholder=<%- empleado.nivPeople -%>>
+        <label>Nivel Actual: <%- empleado.nivPeople -%></label>
+        <select name="nivPeople" id="nivPeople" class="form-select">
+            <option value=<%- empleado.nivPeople -%> selected><%- empleado.nivPeople -%></option>
+            <option value="1.1">1.1</option>
+            <option value="1.2">1.2</option>
+            <option value="1.3">1.3</option>
+            <option value="2.1">2.1</option>
+            <option value="2.2">2.2</option>
+            <option value="2.3">2.3</option>
+            <option value="3.1">3.1</option>
+            <option value="3.2">3.1</option>
+            <option value="3.3">3.1</option>
+            <option value="4.1">4.1</option>
+            <option value="4.2">4.2</option>
+            <option value="4.3">4.3</option>
+            <option value="5.1">5.1</option>
+            <option value="5.2">5.2</option>
+            <option value="5.3">5.3</option>
+        </select>
         <br><br>
         <label for="nivCraft">Nivel Craft: </label>
-        <input type="number" step=1.1 id="nivCraft" name="nivCraft" placeholder=<%- empleado.nivCraft -%>>
+        <select name="nivCraft" id="nivCraft" class="form-select" value=<%- empleado.nivCraft -%>>
+            <option value=<%- empleado.nivCraft -%> selected><%- empleado.nivCraft -%></option>
+            <option value="1.1">1.1</option>
+            <option value="1.2">1.2</option>
+            <option value="1.3">1.3</option>
+            <option value="2.1">2.1</option>
+            <option value="2.2">2.2</option>
+            <option value="2.3">2.3</option>
+            <option value="3.1">3.1</option>
+            <option value="3.2">3.1</option>
+            <option value="3.3">3.1</option>
+            <option value="4.1">4.1</option>
+            <option value="4.2">4.2</option>
+            <option value="4.3">4.3</option>
+            <option value="5.1">5.1</option>
+            <option value="5.2">5.2</option>
+            <option value="5.3">5.3</option>
+        </select>
         <br><br>
         <label for="nivBusiness">Nivel Business: </label>
-        <input type="number" step=1.1 id="nivBusiness" name="nivBusiness" placeholder=<%- empleado.nivBusiness -%>>
+        <select name="nivBusiness" id="nivBusiness" class="form-select" value=<%- empleado.nivBusiness -%>>
+            <option value=<%- empleado.nivBusiness -%> selected><%- empleado.nivBusiness -%></option>
+            <option value="1.1">1.1</option>
+            <option value="1.2">1.2</option>
+            <option value="1.3">1.3</option>
+            <option value="2.1">2.1</option>
+            <option value="2.2">2.2</option>
+            <option value="2.3">2.3</option>
+            <option value="3.1">3.1</option>
+            <option value="3.2">3.1</option>
+            <option value="3.3">3.1</option>
+            <option value="4.1">4.1</option>
+            <option value="4.2">4.2</option>
+            <option value="4.3">4.3</option>
+            <option value="5.1">5.1</option>
+            <option value="5.2">5.2</option>
+            <option value="5.3">5.3</option>
+        </select>
         <br><br>
 
         <!-- TEMPORAL -->
         <label for="nivOverall">Nivel Overall: </label>
-        <input type="number" step=1.1 id="nivOverall" name="nivOverall" placeholder=<%- empleado.nivOverall -%>>
+        <input type="number" step=1.1 id="nivOverall" name="nivOverall" value=<%- empleado.nivOverall -%>>
         <br><br>
 
         <label for="puesto">Puesto: </label>
-        <input type="text" id="puesto" name="puesto" placeholder=<%- empleado.puesto -%>>
+        <input type="text" id="puesto" name="puesto" value=<%- empleado.puesto -%>>
         <br><br>
         <label for="equipo">Equipo: </label>
-        <input type="text" id="equipo" name="equipo" placeholder=<%- empleado.equipo -%>>
+        <input type="text" id="equipo" name="equipo" value=<%- empleado.equipo -%>>
         <br><br>
         <label for="email">Correo electrónico: </label>
-        <input type="email" id="email" name="email" placeholder=<%- empleado.email -%>>
+        <input type="email" id="email" name="email" value=<%- empleado.email -%>>
         <br><br>
         <label for="fk_idChapter">Chapter: </label>
-        <input type="number" id="fk_idChapter" name="fk_idChapter" placeholder=<%- empleado.email -%>>
+        <select name="fk_idChapter" id="fk_idChapter" class="form-select" value=<%- empleado.fk_idChapter -%>>
+            <option value="1">IT</option>
+        </select>
         <br><br>
         <label for="fk_idRolJer">Rol Jerárquico: </label>
-        <input type="number" id="fk_idRolJer" name="fk_idRolJer" placeholder=<%- empleado.fk_idRolJer -%>>
+        <select name="fk_idRolJer" id="fk_idRolJer" class="form-select" value=<%- empleado.fk_idRolJer -%>>
+            <option value="1">Member</option>
+            <option value="2">Chapter Lead Assistant</option>
+            <option value="3">Chapter Leader</option>
+        </select>
         <br><br>
-        <label for="password">Contraseña: </label>
-        <input type="password" id="password" name="password" placeholder=<%- empleado.password -%>>
+        <label for="password">Nueva Contraseña: </label>
+        <input type="password" id="password" name="password">
         <br><br>
 
         <!-- TEMPORAL -->
         <label for="isActive">Status: </label>
-        <input type="number" min="0" max="1" id="isActive" name="isActive" placeholder=<%- empleado.isActive -%>>
+        <select name="isActive" id="isActive" class="form-select" value=<%- empleado.isActive -%>>
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+        </select>
         <br><br>
 
         <input type="submit" value="Enviar">
@@ -78,7 +138,9 @@
     <br><br>
     <a href="/empleados/lista"><button type="button" class="btn btn-secondary">Regresar al listado de empleados</button></a>
     </section>
+</div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
+
