@@ -20,6 +20,13 @@ exports.dashboard = (request, response, next) => {
     console.log('dashboard');
     response.render('index', {
         email: request.session.email ? request.session.email : '',
+<<<<<<< HEAD
+=======
+        nPeople: request.session.nPeople ? request.session.nPeople : '',
+        nCraft: request.session.nCraft ? request.session.nCraft : '',
+        nBusiness: request.session.nBusiness ? request.session.nBusiness : '',
+        nOverall: request.session.nOverall ? request.session.nOverall : '',
+>>>>>>> Resendiz-kun
         info: ''
     }); 
 };
@@ -42,6 +49,13 @@ exports.login = (request, response, next) => {
                         request.session.isLoggedIn = true;
                         request.session.empleado = empleado;
                         request.session.email = empleado.email;
+<<<<<<< HEAD
+=======
+                        request.session.nPeople = empleado.nivPeople;
+                        request.session.nCraft = empleado.nivCraft;
+                        request.session.nBusiness = empleado.nivBusiness;
+                        request.session.nOverall = empleado.nivOverall;
+>>>>>>> Resendiz-kun
                         console.log('success')
                         return request.session.save(err => {
                             //empleado.getRolSis();
@@ -78,6 +92,11 @@ exports.login = (request, response, next) => {
     
 };
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Resendiz-kun
 // - Para cerrar la sesión
 exports.logout = (request, response, next) => {
     request.session.destroy(() => {
