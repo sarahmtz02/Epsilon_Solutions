@@ -2,16 +2,6 @@ const path = require('path');
 
 // --- MAIN --- //
 
-<<<<<<< HEAD
-const Templates = require('../models/templates');
-
-// TEMPLATES //
-
-exports.templates = (request, response, next) => {
-    Templates.fetchAllTemplates()
-        .then(([rows, fieldData]) => {
-            response.render('templates', {
-=======
 const Template = require('../models/templates');
 const Preguntas = require('../models/pregunta');
 const BancoPreguntas = require('../models/bancopreguntas');
@@ -22,7 +12,6 @@ exports.listado = (request, response, next) => {
     Template.fetchAllTemplates()
         .then(([rows, fieldData]) => {
             response.render('listaTemplates', {
->>>>>>> Resendiz-kun
                 templates: rows,
                 email: request.session.email ? request.session.email : '',
             })
@@ -32,35 +21,16 @@ exports.listado = (request, response, next) => {
 
 exports.get_nueva_template = (request, response, next) => {
     console.log('obtiene el método GET')
-<<<<<<< HEAD
-    Templates.fetchAllTemplates()
-        .then(([rows, fieldData]) => {
-            response.render('nuevaTemplate', {
-                templates: rows,
-                email: request.session.email ? request.session.email : '',
-            })
-        })
-=======
         Preguntas.fetchAllPreguntas().then(([rows]) => {
             response.render('nuevaTemplate', {
                 preguntas: rows,
                 email: request.session.email ? request.session.email : '',
                 })
             })
->>>>>>> Resendiz-kun
         .catch(err => console.log(err));
 };
 
 exports.post_nueva_template = (request, response, next) => {    
-<<<<<<< HEAD
-    const templates = new Templates(request.body.NombreTemplate);
-    console.log('obtiene el método POST')
-    templates.save().then(() => {
-        response.setHeader('Set-Cookie', 'ultimo_periodo='+templates.nombre+'; HttpOnly', 'utf8');
-        response.render()
-    }).catch(err => console.log(err));
-};
-=======
     const templates = new Template(request.body.NombreTemplate);
     console.log('obtiene el método POST');
     templates.save().then(() => {
@@ -105,4 +75,3 @@ exports.getTemplate = (request, response, next) => {
             console.log(err);
         }); 
 }
->>>>>>> Resendiz-kun

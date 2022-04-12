@@ -8,16 +8,12 @@ const loginController = require('../controllers/login_controller');
 const menteesController = require('../controllers/mentees_controller');
 const periodosController = require('../controllers/periodos_controller');
 const templatesController = require('../controllers/templates_controller');
-<<<<<<< HEAD
-=======
 const preguntasController = require('../controllers/preguntas_controller');
->>>>>>> Resendiz-kun
 
 // - Controlados por empleadosController:
 router.use('/lista', isAuth, empleadosController.listado);
 router.get('/nuevoEmpleado', isAuth, empleadosController.get_nuevo_empleado);
 router.post('/nuevoEmpleado', empleadosController.post_nuevo_empleado);
-<<<<<<< HEAD
 
 // - Controlados por periodosController:
 router.use('/periodos', isAuth, periodosController.periodos);
@@ -43,7 +39,6 @@ router.post('/nuevaTemplate', templatesController.post_nueva_template);
 // - Colocado aquí para evitar redirrecionamiento indebido:
 router.get('/:idEmpleado', isAuth, empleadosController.getEmpleado);
 router.post('/:idEmpleado', empleadosController.updateEmpleado);
-=======
 
 // - Controlados por periodosController:
 router.use('/periodos', isAuth, periodosController.periodos);
@@ -73,6 +68,5 @@ router.post('/id-empleado=:idEmpleado', empleadosController.updateEmpleado);
 router.get('/listaPreguntas=:idTemplate', preguntasController.listadoPreguntas);
 router.get('/id-template=:idTemplate', isAuth, templatesController.getTemplate);
 //router.post('/id-template=:idTemplate', templatesController.updateEmpleado);
->>>>>>> Resendiz-kun
 
 module.exports = router;

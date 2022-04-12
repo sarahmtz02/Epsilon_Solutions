@@ -7,11 +7,7 @@ module.exports = class Template {
 
     static fetchAllTemplates() {
         console.log(db.execute('SELECT * FROM Template'));
-<<<<<<< HEAD
-         return db.execute('SELECT * FROM Template');
-=======
         return db.execute('SELECT * FROM Template');
->>>>>>> Resendiz-kun
     }
 
     save() {
