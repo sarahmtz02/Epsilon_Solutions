@@ -24,9 +24,4 @@ module.exports = class Preguntas{
         return db.execute('SELECT *  FROM Pregunta WHERE idPregunta = (?)',[this.id]
         );
     }
-
-    async count(){
-        return db.execute('SELECT COUNT(idPregunta) AS numPreguntas FROM Pregunta');
-    }
-
 }

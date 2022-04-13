@@ -79,18 +79,17 @@ exports.getEditTemplate = (request, response, next) => {
 exports.getTemplate = (request, response, next) => {
     console.log(request.params.idTemplate);
     console.log(request.cookies);
-    Template.fetchOneTemplate(request.params.idTemplate)
+    Template.fetchOneTemplate(request.params.idTemplate)  // Por cada clase (lo verde) le pasas lo que arroja la función
         .then(([templates, fieldData]) => {
-            request.session.templates = templates;
-            //console.log(rows);
-            //const templates = rows;
+            request.session.templates = templates;        // Aquí pasamos los datos del template como variable de sesión
             console.log(templates);
+
             Preguntas.fetchAllPreguntas().then(([preguntas, fieldData]) => {
-                request.session.preguntas = preguntas;
+                request.session.preguntas = preguntas;    // Aquí los de preguntas
                 console.log(preguntas);
 
                 BancoPreguntas.fetchPreguntasBanco(request.params.idTemplate).then(([bancopreguntas, fieldData])=> {
-                    response.render('editarTemplate', {
+                    response.render('editarTemplate', { // En la clases donde haces render pasas las variables de sesión, así ya se puede acceder a ellas en el .ejs
                         
                         bancopreguntas: bancopreguntas,
                         templates: templates,

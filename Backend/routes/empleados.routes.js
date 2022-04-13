@@ -8,6 +8,7 @@ const loginController = require('../controllers/login_controller');
 const menteesController = require('../controllers/mentees_controller');
 const periodosController = require('../controllers/periodos_controller');
 const templatesController = require('../controllers/templates_controller');
+const cuestionarioController = require('../controllers/cuestionario_controller');
 
 // - Controlados por empleadosController:
 router.use('/lista', isAuth, empleadosController.listado);
@@ -36,13 +37,16 @@ router.get('/nuevaTemplate', isAuth, templatesController.get_nueva_template);
 router.post('/nuevaTemplate', templatesController.post_nueva_template);
 //router.post('/postPreguntas', templatesController.writePreguntas);
 
+// - Controlados por cuestionarioController:
+router.use('/evaluaciones', isAuth, cuestionarioController.getMyCuestionarios);
+
 // - Colocado aquí para evitar redirrecionamiento indebido:
 router.get('/id-empleado=:idEmpleado', isAuth, empleadosController.getEmpleado);
 router.post('/id-empleado=:idEmpleado', empleadosController.updateEmpleado);
 
 //router.get('/id-template=:idTemplate', isAuth, templatesController.getTemplate);
 router.get('/edit-id-template=:idTemplate', isAuth, templatesController.getTemplate);
-router.post('/edit-id-template=:idTemplate', templatesController.writePreguntas)
+router.post('/edit-id-template=:idTemplate', templatesController.writePreguntas) // <--- AJUSTAR
 //router.post('/id-template=:idTemplate', templatesController.updateEmpleado);
 
 module.exports = router;
