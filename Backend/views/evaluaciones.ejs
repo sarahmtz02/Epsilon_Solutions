@@ -22,7 +22,7 @@
                                 <p class="card-text">Nivel del evaluado: <%- cuestionario.nivelEvaluado.toFixed(1) %></p>
                                 <% if (cuestionario.isAnswered == 0){ %>
                                     <p class="card-text">Status de evaluación: Sin Contestar</p>
-                                    <a href="/empleados/id-cuestionario=<%-cuestionario.idCuestionario-%>"><label class="btn btn-outline-secondary">Contestar</label></a>
+                                    <a href="/empleados/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn btn-outline-secondary">Contestar</label></a>
                                 <% } else { %>
                                     <p class="card-text">Status de evaluación: Contestada</p>
                                 <%} %>

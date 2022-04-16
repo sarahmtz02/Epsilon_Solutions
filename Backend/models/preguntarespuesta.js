@@ -17,9 +17,15 @@ module.exports = class PreguntaRespuesta {
     }
 
     save() {
-        return db.execute('INSERT INTO PreguntaRespuesta (Respuesta) WHERE idPregunta = ? VALUES (?)',
-        [idPregunta, this.Respuesta]
+        return db.execute('INSERT INTO PreguntaRespuesta (Respuesta) VALUES (?)',
+        [this.Respuesta]
     );
+    }
+
+    saveFeedback(){
+        return db.execute('UPDATE PreguntaRespuesta SET Respuesta=? WHERE fk_idCuestionario = ? AND Template = ? AND idPregunta=? AND Pregunta=?',
+        [this.Respuesta, this.fk_idCuestionario, this.Template, this.idPregunta, this.Pregunta]
+        );
     }
 
     async getTemplateId(){

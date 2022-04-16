@@ -36,12 +36,22 @@ exports.getCuestionario = (request, response, next) => {
                     //request.session.cuestionario = cuestionarios;
                     console.log(cuestionarios);
                     console.log('error no está aquí');
+                    request.session.fk_idTemplate = cuestionarios[0].fk_idTemplate;
+                    console.log(request.session.fk_idTemplate);
 
-                    response.render('feedback', {
-                        cuestionarios: cuestionarios,
-                        feedbacks: feedbacks,
-                        email: request.session.email ? request.session.email : '',
+                    BancoPreguntas.fetchBancoP(request.session.fk_idTemplate).then(([bancoP, fieldData])=> {
+                        console.log(bancoP);
+                        console.log('error no está aquí');
+
+                        response.render('feedback', {
+                            cuestionarios: cuestionarios,
+                            feedbacks: feedbacks,
+                            bancoP: bancoP,
+                            email: request.session.email ? request.session.email : '',
+                        })
                     })
+
+                    
                 }).catch(err => {
                     console.log(err);
                 }); 
@@ -49,4 +59,54 @@ exports.getCuestionario = (request, response, next) => {
     }).catch(err => {
         console.log(err);
     });
+}
+
+
+exports.writeFeedback = async (request, response, next) => {
+
+    console.log('Guardar preguntas en Template');
+    console.log(request.body);
+
+    let feedbacks = request.session.feedbacks;
+    console.log(request.params.idCuestionario)
+    console.log('Prueba')
+    var total = feedbacks.length;
+    console.log(feedbacks.length);
+
+    //Para obtener los ids de cada pregunta
+    /* Recorro cada cuestinario para obtener sus ids preguntas y los guardo en 
+        un array
+    */
+
+    var idP = [];
+
+    for (i = 0; i < feedbacks.length; i++ ) {
+        idP.push(feedbacks[i].idPregunta);
+    }
+
+    var preguntas = [];
+
+    for (i = 0; i < feedbacks.length; i++ ) {
+        preguntas.push(feedbacks[i].Pregunta);
+    }
+
+    var respuestas = [];
+    for (i = 1; i <= feedbacks.length; i++ ) {
+        respuestas.push(request.body[i]);
+    }
+
+    console.log(respuestas)
+
+    try {
+        //Ciclo for para realizar insert de preguntas y respuestas
+        for (i = 0; i < total; i++ ) {
+            let res = new PreguntaRespuesta (request.params.idCuestionario, request.session.fk_idTemplate, idP[i], preguntas[i], respuestas[i])
+            await res.saveFeedback();
+        }
+        console.log('success?')
+        response.redirect('/empleados/evaluaciones');
+
+    } catch(error) {
+        console.log(error)
+    }
 }

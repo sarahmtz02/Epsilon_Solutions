@@ -49,6 +49,7 @@ router.get('/edit-id-template=:idTemplate', isAuth, templatesController.getTempl
 router.post('/edit-id-template=:idTemplate', templatesController.writePreguntas) // <--- AJUSTAR
 //router.post('/id-template=:idTemplate', templatesController.updateEmpleado);
 
-router.get('/id-cuestionario=:idCuestionario', isAuth, cuestionarioController.getCuestionario);
+router.get('/feedback=:idCuestionario', isAuth, cuestionarioController.getCuestionario);
+router.post('/feedback=:idCuestionario', isAuth, cuestionarioController.writeFeedback);
 
 module.exports = router;
