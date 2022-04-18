@@ -16,13 +16,14 @@ module.exports = class PreguntaRespuesta {
         return db.execute('SELECT * FROM PreguntaRespuesta WHERE fk_idCuestionario = (?)', [idCuestionario]);
     }
 
+    // Prueba de stored procedure:
     save() {
-        return db.execute('INSERT INTO PreguntaRespuesta (Respuesta) VALUES (?)',
-        [this.Respuesta]
+        return db.execute('CALL registrarRespuestas (?,?,?,?,?)',
+        [this.Respuesta, this.fk_idCuestionario, this.Template, this.idPregunta, this.Pregunta]
     );
     }
 
-    saveFeedback(){
+    saveFeedback(){ // Sin stored procedure
         return db.execute('UPDATE PreguntaRespuesta SET Respuesta=? WHERE fk_idCuestionario = ? AND Template = ? AND idPregunta=? AND Pregunta=?',
         [this.Respuesta, this.fk_idCuestionario, this.Template, this.idPregunta, this.Pregunta]
         );

@@ -101,7 +101,7 @@ exports.writeFeedback = async (request, response, next) => {
         //Ciclo for para realizar insert de preguntas y respuestas
         for (i = 0; i < total; i++ ) {
             let res = new PreguntaRespuesta (request.params.idCuestionario, request.session.fk_idTemplate, idP[i], preguntas[i], respuestas[i])
-            await res.saveFeedback();
+            await res.save();
         }
         console.log('success?')
         response.redirect('/empleados/evaluaciones');
