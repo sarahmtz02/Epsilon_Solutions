@@ -8,7 +8,7 @@ const session = require('express-session');
 //const csrfProtection = csrf();
 
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 const rutas_empleados = require('./routes/empleados.routes')
 const path = require('path');
