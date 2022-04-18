@@ -74,6 +74,9 @@ exports.login = (request, response, next) => {
                                 } else if (rolSis == 2) {
                                     console.log('éxito RBAC admin')
                                     response.redirect('./dashboard');
+                                } else {
+                                    //por ahora para facilitar el ingreos a cualquier persona
+                                    response.redirect('./dashboard');
                                 }
                             });
                             
