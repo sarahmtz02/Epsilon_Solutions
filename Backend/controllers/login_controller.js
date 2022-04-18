@@ -24,7 +24,12 @@ exports.dashboard = (request, response, next) => {
         nCraft: request.session.nCraft ? request.session.nCraft : '',
         nBusiness: request.session.nBusiness ? request.session.nBusiness : '',
         nOverall: request.session.nOverall ? request.session.nOverall : '',
+<<<<<<< HEAD
     });
+=======
+        info: ''
+    }); 
+>>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
 };
 
 // - Autenticación del usuario
@@ -53,7 +58,10 @@ exports.login = (request, response, next) => {
                         request.session.nCraft = empleado.nivCraft;
                         request.session.nBusiness = empleado.nivBusiness;
                         request.session.nOverall = empleado.nivOverall;
+<<<<<<< HEAD
                         
+=======
+>>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
                         console.log('success')
                         return request.session.save(err => {
                             //empleado.getRolSis();

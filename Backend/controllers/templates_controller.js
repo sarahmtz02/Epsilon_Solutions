@@ -55,7 +55,11 @@ exports.post_preguntas = (request, response, next) => {
 
 // Para edición:
 
+<<<<<<< HEAD
 exports.getEditTemplate = (request, response, next) => {
+=======
+exports.getTemplate = (request, response, next) => {
+>>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
     console.log(request.params.idTemplate);
     console.log(request.cookies);
     Template.fetchOneTemplate(request.params.idTemplate)
@@ -64,7 +68,11 @@ exports.getEditTemplate = (request, response, next) => {
             const templates = rows;
             console.log(templates);
             Preguntas.fetchAllPreguntas().then(([rows])=> {
+<<<<<<< HEAD
                 response.render('editarTemplate', {
+=======
+                response.render('template', {
+>>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
                     preguntas: rows,
                     templates: templates,
                     email: request.session.email ? request.session.email : '',
@@ -75,6 +83,7 @@ exports.getEditTemplate = (request, response, next) => {
             console.log(err);
         }); 
 }
+<<<<<<< HEAD
 
 exports.getTemplate = (request, response, next) => {
     console.log(request.params.idTemplate);
@@ -146,3 +155,5 @@ exports.writePreguntas = async (request, response, next) => {
         console.log(error)
     }
 }  
+=======
+>>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc

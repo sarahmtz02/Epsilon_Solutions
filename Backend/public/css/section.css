@@ -6,6 +6,11 @@
     font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; font-size: 15px;
     padding: 25px 25px 25px 25px;
     margin: 50px; /* Same as the width of the sidenav *//* Increased text to enable scrolling */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
 }
 
 .section-dash-main{
@@ -80,4 +85,8 @@
 tr{
     background: #FFFFFF;
     box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
+<<<<<<< HEAD
+=======
+>>>>>>> Resendiz-kun
+>>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
 }
