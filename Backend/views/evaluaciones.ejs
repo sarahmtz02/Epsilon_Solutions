@@ -10,16 +10,14 @@
         <section class="section-card">
             <h1 id="principal">Mis evaluaciones: </h1>
             <hr class="db-hr">
-
                     <% for (let cuestionario of cuestionarios) { %>
                         <div class = "row">
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
-                                
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title">Persona a evaluar: <%- cuestionario.idEvaluado %></h5>
-                                            <p class="card-text">Nivel del evaluado: <%- cuestionario.nivelEvaluado.toFixed(1) %></p>
+                                            <h5 class="card-title">Evaluación no. <%- cuestionario.idCuestionario %></h5>
+                                            <p class="card-text">Fecha: (pasar fecha)</p>
                                             <% if (cuestionario.isAnswered == 0){ %>
                                                 <p class="card-text">Status de evaluación: Sin Contestar</p>
                                                 <a href="/empleados/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn btn-dark">Contestar</label></a>
@@ -33,6 +31,7 @@
                             </div>
                         </div>
                     <%} %>
+                
             <hr class="db-hr">
             <br><br>
         </section>

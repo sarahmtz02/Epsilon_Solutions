@@ -15,6 +15,11 @@ module.exports = class Cuestionario{
         return db.execute('SELECT * FROM Cuestionario WHERE fk_idEvaluador = ?', [idEmpleado]);
     }
 
+    static fetchCuestionarioData(idEvaluado) {
+        //console.log('SELECT nombre, apellidoM, apellidoP FROM Empleado, Cuestionario WHERE idEmpleado = ?', [idEvaluado]);
+        return db.execute('SELECT nombre, apellidoM, apellidoP FROM Empleado WHERE idEmpleado = ? ', [idEvaluado]);
+    }
+
     save() { // Por ahora dejo esto a un lado
         return db.execute('INSERT INTO Cuestionario (descPregunta) VALUES (?)',
         [this.descPregunta]
