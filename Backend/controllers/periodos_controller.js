@@ -1,5 +1,4 @@
 const path = require('path');
-
 // --- MAIN --- //
 
 const Periodo = require('../models/periodo');
@@ -30,10 +29,18 @@ exports.get_nuevo_periodo = (request, response, next) => {
 };
 
 exports.post_nuevo_periodo = (request, response, next) => {    
-    const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
-    console.log('obtiene el método POST')
-    periodo.save().then(() => {
-        response.setHeader('Set-Cookie', 'ultimo_periodo='+periodo.nombre+'; HttpOnly', 'utf8');
-        response.render()
-    }).catch(err => console.log(err));
+    
+    if(request.body.FechaInicio>request.body.FechaFin){
+        console.log("La fecha de inicio es mayor que la de fin")
+    }
+    else{
+        const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
+        console.log('obtiene el método POST')
+        window.alert('El periodo ha sido registrado con exito')
+        periodo.save().then(() => {
+            response.setHeader('Set-Cookie', 'ultimo_periodo='+periodo.nombre+'; HttpOnly', 'utf8');
+            
+        }).catch(err => console.log(err));
+    }
+    
 };

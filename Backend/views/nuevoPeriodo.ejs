@@ -14,17 +14,17 @@
 
     <form action="/empleados/nuevoPeriodo" method="POST">
         <label for="FechaInicio">Fecha de Inicio: </label>
-        <input type="date" id="FechaInicio" name="FechaInicio" >
+        <input type="date" id="FechaInicio" name="FechaInicio" required="" >
         <br><br>
 
         <label for="FechaFin">Fecha Fin: </label>
-        <input type="date" id="FechaFin" name="FechaFin" >
+        <input type="date" id="FechaFin" name="FechaFin" required="" oninput="validate()">
         <br><br>
 
         <input type="submit" value="Enviar">
     </form>
 </section>
 </body>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>

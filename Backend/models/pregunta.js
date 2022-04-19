@@ -5,11 +5,10 @@ module.exports = class Preguntas{
         this.descPregunta = nueva_descPregunta;
     }
 
-    static fetchAllPreguntas(idTemplate) {
+    static fetchAllPreguntas() {
         console.log(db.execute('SELECT * FROM Pregunta'));
-        console.log(idTemplate);
-        return db.execute("SELECT descPregunta FROM Pregunta INNER JOIN BancoPreguntas ON Pregunta.idPregunta =  BancoPreguntas.fk_idPregunta WHERE fk_idTemplate = ?", [idTemplate]);
-     }  
+        return db.execute('SELECT * FROM Pregunta');
+    }
 
     save() {
         return db.execute('INSERT INTO Pregunta (descPregunta) VALUES (?)',
@@ -25,9 +24,4 @@ module.exports = class Preguntas{
         return db.execute('SELECT *  FROM Pregunta WHERE idPregunta = (?)',[this.id]
         );
     }
-
-    async count(){
-        return db.execute('SELECT COUNT(idPregunta) AS numPreguntas FROM Pregunta');
-    }
-
 }
