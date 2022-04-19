@@ -34,7 +34,7 @@ exports.post_nueva_template = (request, response, next) => {
     const templates = new Template(request.body.NombreTemplate);
     console.log('obtiene el método POST');
     templates.save().then(() => {
-            response.render();
+            response.redirect("/empleados/listaTemplates");
         }).catch(err => console.log(err));
 };
 

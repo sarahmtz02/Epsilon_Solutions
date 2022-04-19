@@ -23,6 +23,6 @@ exports.post_nuevo_mentee = (request, response, next) => {
     console.log('obtiene el método POST')
     mentee.save().then(() => {
         response.setHeader('Set-Cookie', 'ultimo_mentee='+mentee.nombre+'; HttpOnly', 'utf8');
-        response.render()
+        response.redirect("/empleados/dashboard")
     }).catch(err => console.log(err));
 };

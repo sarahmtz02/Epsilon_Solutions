@@ -36,10 +36,9 @@ exports.post_nuevo_periodo = (request, response, next) => {
     else{
         const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
         console.log('obtiene el método POST')
-        window.alert('El periodo ha sido registrado con exito')
         periodo.save().then(() => {
-            response.setHeader('Set-Cookie', 'ultimo_periodo='+periodo.nombre+'; HttpOnly', 'utf8');
-            
+            response.redirect("/empleados/dashboard")
+            //response.setHeader('Set-Cookie', 'ultimo_periodo='+periodo.nombre+'; HttpOnly', 'utf8');
         }).catch(err => console.log(err));
     }
     

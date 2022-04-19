@@ -27,6 +27,7 @@ exports.dashboard = (request, response, next) => {
     });
 };
 
+
 // - Autenticación del usuario
 exports.login = (request, response, next) => {
     Empleado.findOne(request.body.email)
@@ -64,6 +65,7 @@ exports.login = (request, response, next) => {
                                 if (rolSis == 1) {
                                     if(empleado.fk_idRolJer == 1){ // Member
                                         console.log('Member')
+                                        
                                     } else if (empleado.fk_idRolJer == 2){ //Chapter Lead Assistant
                                         console.log('CLA')
                                     } else {  //Chapter Leader
