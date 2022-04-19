@@ -35,11 +35,11 @@ exports.getCuestionario = (request, response, next) => {
                 Cuestionario.fetchOneCuestionario(request.params.idCuestionario).then(([cuestionarios, fieldData])=> {
                     //request.session.cuestionario = cuestionarios;
                     console.log(cuestionarios);
-                    console.log('error no está aquí');
-                    request.session.fk_idTemplate = cuestionarios[0].fk_idTemplate;
-                    console.log(request.session.fk_idTemplate);
+                    console.log('fk_idTemplate');
+                    request.params.fk_idTemplate = cuestionarios[0].fk_idTemplate;
+                    console.log(request.params.fk_idTemplate);
 
-                    BancoPreguntas.fetchBancoP(request.session.fk_idTemplate).then(([bancoP, fieldData])=> {
+                    BancoPreguntas.fetchBancoP(request.params.fk_idTemplate).then(([bancoP, fieldData])=> {
                         console.log(bancoP);
                         console.log('error no está aquí');
 
@@ -100,7 +100,7 @@ exports.writeFeedback = async (request, response, next) => {
     try {
         //Ciclo for para realizar insert de preguntas y respuestas
         for (i = 0; i < total; i++ ) {
-            let res = new PreguntaRespuesta (request.params.idCuestionario, request.session.fk_idTemplate, idP[i], preguntas[i], respuestas[i])
+            let res = new PreguntaRespuesta (request.params.idCuestionario, request.params.fk_idTemplate, idP[i], preguntas[i], respuestas[i])
             await res.save();
         }
         console.log('success?')

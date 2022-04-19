@@ -8,11 +8,7 @@ const loginController = require('../controllers/login_controller');
 const menteesController = require('../controllers/mentees_controller');
 const periodosController = require('../controllers/periodos_controller');
 const templatesController = require('../controllers/templates_controller');
-<<<<<<< HEAD
-const cuestionarioController = require('../controllers/cuestionario_controller');
-=======
 const preguntasController = require('../controllers/preguntas_controller');
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
 
 // - Controlados por empleadosController:
 router.use('/lista', isAuth, empleadosController.listado);
