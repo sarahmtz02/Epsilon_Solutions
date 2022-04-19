@@ -2,27 +2,39 @@
 <link rel="stylesheet" href="/css/sidebar.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+<%-moment.locale('es-mx')-%>
 
 <%- include('templates/sidebar.ejs') %>
 
 <body style="background: url('/img/bg-sire.png');">
-<section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
 
-    <table class="striped" class="centered">
-        <thead>
-            <tr>
-                <th>Periodos de Evaluación</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for (let periodo of periodos) { %>
-                <tr>
-                    <td><%- periodo.FechaInicio -%>, <%- periodo.FechaFin -%></td>
-                </tr>
-            <%} %>
-        </tbody>
-    </table>
-    <a href="/empleados/nuevoPeriodo"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo Periodo</button></a>
+    <div class="main">
+        <section class="section-card">
+            <h2 align="center">Periodos de Evaluación:</h2>
+            <hr class="db-hr">
+            <% if (periodos.length > 0) { %>
+                <% for (let periodo of periodos) { %>
+                    <div class = "row">
+                        
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Periodo del <%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%> al <%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></h5>
+                                        <p class="card-text">Fecha de Inicio: <%- moment.tz(periodo.FechaInicio, 'UTC').format("YYYY-MM-DD")%></p>
+                                        <p class="card-text">Fecha de finalización: <%- moment.tz(periodo.FechaFin, 'UTC').format("YYYY-MM-DD")%></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%} %>
 
- </section>
-<br>
+            <%} else { %>
+                <p>Por ahora, no hay ningún periodo de evaluación activo.</p>
+            <% } %> 
+            <a href="/empleados/nuevoPeriodo"><button type="button" class="btn btn-dark">Registrar un nuevo Periodo</button></a>
+        </section>
+    </div>
+</body>

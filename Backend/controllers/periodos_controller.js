@@ -1,5 +1,5 @@
 const path = require('path');
-
+const moment = require("moment-timezone"); // Para fechas
 // --- MAIN --- //
 
 const Periodo = require('../models/periodo');
@@ -11,6 +11,7 @@ exports.periodos = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('periodos', {
                 periodos: rows,
+                moment: moment,
                 email: request.session.email ? request.session.email : '',
             })
         })
@@ -23,6 +24,7 @@ exports.get_nuevo_periodo = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('nuevoPeriodo', {
                 periodos: rows,
+                moment: moment,
                 email: request.session.email ? request.session.email : '',
             })
         })
@@ -34,6 +36,6 @@ exports.post_nuevo_periodo = (request, response, next) => {
     console.log('obtiene el método POST')
     periodo.save().then(() => {
         response.setHeader('Set-Cookie', 'ultimo_periodo='+periodo.nombre+'; HttpOnly', 'utf8');
-        response.render()
+        response.redirect('/empleados/periodos')
     }).catch(err => console.log(err));
 };
