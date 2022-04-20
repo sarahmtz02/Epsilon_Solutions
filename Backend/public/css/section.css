@@ -1,0 +1,83 @@
+.section-card {
+    background-color:#ffff;
+    color: #231F20;
+    border-radius: 4px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; font-size: 15px;
+    padding: 25px 25px 25px 25px;
+    margin: 50px; /* Same as the width of the sidenav *//* Increased text to enable scrolling */
+}
+
+.section-dash-main{
+    position: absolute;
+    background-color:#ffff;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 716px;
+    height: 821px;
+    margin: 15px;
+    padding: 25px 25px 25px 25px;
+}
+
+.section-dash-aside{
+    background-color:#ffff;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 358px;
+    height: 403px;
+    margin: 15px;
+    padding: 25px 25px 25px 25px;
+}
+
+.db-hr{
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background: #777777;
+}
+
+.db-dimensions{
+    background: #61366E;
+    color: #fff;
+    box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
+    position: static;
+    width: 305.5px;
+    height: 48px;
+    left: 0px;
+    top: 0px;
+
+    font-family:  Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 32px;
+    padding: 15px 0px 15px 15px;
+}
+
+.db-indicators{
+    background: #005CB9;
+    color: #fff;
+    box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
+    position: static;
+    width: 305.5px;
+    height: 48px;
+    left: 0px;
+    top: 0px;
+
+    font-family:  Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 32px;
+    padding: 15px 0px 15px 15px;
+}
+
+.default{
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+}
+
+tr{
+    background: #FFFFFF;
+    box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
+}
