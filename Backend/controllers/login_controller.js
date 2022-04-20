@@ -18,6 +18,7 @@ exports.get_login = (request, response, next) => {
 // - Para renderizar el dashboard
 exports.dashboard = (request, response, next) => {
     console.log('dashboard');
+    
     response.render('index', {
         email: request.session.email ? request.session.email : '',
         nPeople: request.session.nPeople ? request.session.nPeople : '',

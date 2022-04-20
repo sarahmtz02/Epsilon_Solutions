@@ -1,4 +1,6 @@
 const path = require('path');
+const moment = require("moment-timezone"); // Para fechas
+const res = require('express/lib/response');
 
 // --- MAIN --- //
 
@@ -6,21 +8,104 @@ const Cuestionario = require('../models/cuestionario');
 const PreguntaRespuesta = require('../models/preguntarespuesta');
 const Template = require('../models/templates');
 const Preguntas = require('../models/pregunta');
+const Empleado = require('../models/empleados');
+const Periodo = require('../models/periodo');
 const BancoPreguntas = require('../models/bancopreguntas');
 
 // Para visualizar los cuestionarios a contestar:
 
-exports.getMyCuestionarios = async (request, response, next) => {
+exports.getMyCuestionarios = async (request, response, next) => { // REEMPLAZADO POR FETCH
     console.log(request.session.idEmpleado);
     console.log(request.cookies);
+
+    const date = new Date();
+    const currentDate = new Date(date.toDateString());
+
     Cuestionario.fetchMyCuestionarios(request.session.idEmpleado).then(([cuestionarios, fieldData]) => {
         console.log(cuestionarios);
+        request.params.fk_idPeriodo = cuestionarios[0].fk_idPeriodo;
+
+        Cuestionario.getEmpleados(request.session.idEmpleado).then(([empleados, fieldData]) => {
+            console.log(empleados);
+
+            Periodo.fetchOnePeriodo(request.params.fk_idPeriodo).then(([periodos, fieldData]) => {
+                response.render('evaluaciones', {
+                    periodos: periodos,
+                    empleados: empleados,
+                    fecha: currentDate,
+                    cuestionarios: cuestionarios,
+                    moment: moment,
+                    email: request.session.email ? request.session.email : '',
+                })
+            }).catch(err => {
+                console.log(err);
+            }); 
+        })
+    }).catch(err => {
+        console.log(err);
+    }); 
+};
+
+exports.fetchCuestionarios = async (request, response, next) => {
+    const date = new Date();
+    const currentDate = new Date(date.toDateString());
+    const periodo = await Cuestionario.getPeriodo();
+    console.log(periodo)
+    const cuestionarios = await Cuestionario.fetchMyCuestionarios(request.session.idEmpleado);
+    const requests = await Cuestionario.getMyRequests(request.session.idEmpleado);
+    console.log(requests)
+    request.session.requests = requests.length;
+    
+    Cuestionario.getEmpleados(request.session.idEmpleado).then(([empleados, fieldData]) => {
         response.render('evaluaciones', {
+            fecha: currentDate,
             cuestionarios: cuestionarios,
+            periodos: periodo,
+            requests: requests,
+            empleados: empleados,
+            moment: moment,
             email: request.session.email ? request.session.email : '',
         })
-    })
-};
+    }).catch(err => {
+        console.log(err);
+    }); 
+}
+
+exports.nuevoCuestionario = async (request,response,next) => {
+    console.log(request.body);
+    let evaluadores = request.body.nombre;
+    console.log(evaluadores);
+    let numRequests = request.session.requests;
+    console.log(numRequests);
+    let array = Array.isArray(evaluadores);
+    console.log(request.body.periodo);
+    console.log(request.session.idEmpleado);
+    console.log(request.session.nOverall);
+    //let str = typeof evaluadores === 'string';
+    /*
+    if (lvlEv <= 1.6 && lvlEv >= 1.1) {
+        request.params.idTemplate = 1;
+    } else if (lvlEv <= 2.6 && lvlEv >= 2.1) { 
+        request.params.idTemplate = 2;
+    }*/
+    // ...etc
+    //console.log(request.params.idTemplate);
+    if (array && ((numRequests + evaluadores.length) <= 5)) {
+
+        for await (let evaluador of evaluadores ) {
+            const evaluadorId = await Cuestionario.getIdEvaluador(evaluador);
+            console.log(evaluadorId[0].idEmpleado);
+            const req = new Cuestionario(request.body.periodo, 1, evaluadorId[0].idEmpleado, request.session.idEmpleado,
+                request.session.nOverall);
+
+            req.save()
+            console.log('success?');
+        }
+    } else {
+        console.log('error');
+    }
+    response.redirect('/empleados/evaluaciones')
+}
 
 exports.getCuestionario = (request, response, next) => {
     console.log(request.params.idCuestionario);

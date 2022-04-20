@@ -11,6 +11,11 @@ module.exports = class Periodo{
          return db.execute('SELECT * FROM PeriodoEvaluacion');
     }
 
+    static fetchOnePeriodo(fk_idPeriodo) {
+        console.log(db.execute('SELECT * FROM PeriodoEvaluacion WHERE idPeriodo = ?', [fk_idPeriodo]));
+        return db.execute('SELECT * FROM PeriodoEvaluacion WHERE idPeriodo = ?', [fk_idPeriodo]);
+    }
+
     save() {
         return db.execute('INSERT INTO PeriodoEvaluacion (FechaInicio, FechaFin) VALUES (?, ?)',
         [this.FechaInicio, this.FechaFin]

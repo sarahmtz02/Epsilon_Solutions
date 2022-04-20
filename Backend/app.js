@@ -9,6 +9,7 @@ const session = require('express-session');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 const rutas_empleados = require('./routes/empleados.routes')
 const path = require('path');
@@ -18,7 +19,8 @@ app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(bodyParser.urlencoded({extended: false}));
+
+
 app.use(cookieParser());
 
 app.use(session({

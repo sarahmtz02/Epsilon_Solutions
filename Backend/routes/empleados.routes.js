@@ -38,7 +38,8 @@ router.post('/nuevaTemplate', templatesController.post_nueva_template);
 //router.post('/postPreguntas', templatesController.writePreguntas);
 
 // - Controlados por cuestionarioController:
-router.use('/evaluaciones', isAuth, cuestionarioController.getMyCuestionarios);
+router.get('/evaluaciones', isAuth, cuestionarioController.fetchCuestionarios); 
+router.post('/evaluaciones', isAuth, cuestionarioController.nuevoCuestionario);
 
 // - Colocado aquí para evitar redirrecionamiento indebido:
 router.get('/id-empleado=:idEmpleado', isAuth, empleadosController.getEmpleado);
