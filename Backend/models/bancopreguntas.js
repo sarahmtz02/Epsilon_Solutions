@@ -32,7 +32,12 @@ module.exports = class BancoPreguntas{
     }
 
     static getBancoP(){
-        return db.execute('SELECT *  FROM BancoPreguntas WHERE idBancoP = (?)',[this.id]
-        );
+        return db.execute('SELECT *  FROM BancoPreguntas WHERE idBancoP = (?)',[this.id]).then(([rows, fielData]) => {
+            return rows;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
     }
 }

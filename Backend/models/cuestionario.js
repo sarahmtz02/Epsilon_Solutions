@@ -58,6 +58,16 @@ module.exports = class Cuestionario{
         );
     }
 
+    static getNewIdC (){
+        return db.execute('CALL p_getIdCuestionario').then(([rows, fielData]) => {
+            return rows;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });;
+    }    
+
     static getPeriodo() {
         return db.execute('SELECT * FROM PeriodoEvaluacion ORDER BY idPeriodo DESC LIMIT 1;').then(([rows, fielData]) => {
             return rows;
@@ -76,5 +86,37 @@ module.exports = class Cuestionario{
             console.log(error);
             return 0;
         });
+    }
+
+    static totalPreguntas(idTemplate) {
+        return db.execute('SELECT COUNT(idBancoP) AS totalPreguntas FROM BancoPreguntas WHERE fk_idTemplate = ?', [idTemplate]).then(([rows, fielData]) => {
+            return rows[0].totalPreguntas;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
+    }
+    
+    static getPreguntas(idTemplate){
+        return db.execute('SELECT bp.idBancoP, bp.fk_idPregunta, p.descPregunta FROM BancoPreguntas bp, Pregunta p WHERE fk_idTemplate = ? AND p.idPregunta = bp.fk_idPregunta', [idTemplate]).then(([rows, fielData]) => {
+            return rows;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
+    }
+
+    static insertIntoPR(idCuestionario, fk_idPregunta) {
+        return db.execute('INSERT INTO PreguntaRespuesta (fk_idCuestionario, idPregunta) VALUES (?, ?)', [idCuestionario, fk_idPregunta])
+    }
+
+    static insertIdPreg(fk_idPregunta) {
+        return db.execute('INSERT INTO PreguntaRespuesta (idPregunta) VALUES (?)', [fk_idPregunta])
+    }
+
+    static fillPregRes(idCuestionario) {
+        return db.execute('CALL crearPR (?)', [idCuestionario])
     }
 }

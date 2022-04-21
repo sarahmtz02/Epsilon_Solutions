@@ -17,7 +17,7 @@ module.exports = class PreguntaRespuesta {
     }
 
     // Prueba de stored procedure:
-    save() {
+    saveAns() {
         return db.execute('CALL registrarRespuestas (?,?,?,?,?)',
         [this.Respuesta, this.fk_idCuestionario, this.Template, this.idPregunta, this.Pregunta]
     );

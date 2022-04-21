@@ -77,7 +77,7 @@ exports.nuevoCuestionario = async (request,response,next) => {
     console.log(evaluadores);
     let numRequests = request.session.requests;
     console.log(numRequests);
-    let array = Array.isArray(evaluadores);
+    let isArray = Array.isArray(evaluadores);
     console.log(request.body.periodo);
     console.log(request.session.idEmpleado);
     console.log(request.session.nOverall);
@@ -90,16 +90,44 @@ exports.nuevoCuestionario = async (request,response,next) => {
     }*/
     // ...etc
     //console.log(request.params.idTemplate);
-    if (array && ((numRequests + evaluadores.length) <= 5)) {
+
+    if (isArray && ((numRequests + evaluadores.length) <= 5)) {
 
         for await (let evaluador of evaluadores ) {
+            // Proceso para crear un nuevo cuestionario: //
             const evaluadorId = await Cuestionario.getIdEvaluador(evaluador);
+            const cuestId = await Cuestionario.getNewIdC(); //Para obtener el id del nuevo cuestionario = ultid+1
+            const preguntasData = await Cuestionario.getPreguntas(1);
+
+            let idP = []
+
+            for (let i = 0; i < preguntasData.length; i++){
+                idP.push(preguntasData[i].fk_idPregunta)
+            }
+            console.log(idP);
+
+            console.log(cuestId[0][0].nuevoIdCuest)
+            
             console.log(evaluadorId[0].idEmpleado);
             const req = new Cuestionario(request.body.periodo, 1, evaluadorId[0].idEmpleado, request.session.idEmpleado,
                 request.session.nOverall);
 
-            req.save()
-            console.log('success?');
+            req.save();
+            
+            //Una vez se guarda el nuevo cuestionario se debe llamar al procedure que crea su registro para sacar los datos de preguntas y respuestas
+            console.log('success save en cuestionarios');
+            console.log(cuestId[0][0].nuevoIdCuest);
+
+            const Bp = await Cuestionario.totalPreguntas(1);
+            console.log(Bp);
+            
+            for (let i = 0; i < Bp; i++) {
+                console.log('iteration')
+                await Cuestionario.insertIntoPR(cuestId[0][0].nuevoIdCuest, idP[i]);
+                await Cuestionario.fillPregRes(cuestId[0][0].nuevoIdCuest);
+                
+            }
+            
         }
     } else {
         console.log('error');
@@ -190,7 +218,7 @@ exports.writeFeedback = async (request, response, next) => {
         //Ciclo for para realizar insert de preguntas y respuestas
         for (i = 0; i < total; i++ ) {
             let res = new PreguntaRespuesta (request.params.idCuestionario, request.params.fk_idTemplate, idP[i], preguntas[i], respuestas[i])
-            await res.save();
+            await res.saveAns();
         }
         console.log('success?')
         response.redirect('/empleados/evaluaciones');

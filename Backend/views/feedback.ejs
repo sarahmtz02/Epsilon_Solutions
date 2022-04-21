@@ -15,7 +15,7 @@
                     <% for (let datosEmpleado of datosEmpleados) { %> <!-- Para los datos del evaluado, en realidad debe ser una vista -->
             
                     <h1 id="principal">Estás Evaluando a: <%-datosEmpleado.nombre-%> <%-datosEmpleado.apellidoP-%> <%-datosEmpleado.apellidoM-%></h1>
-                    <h2 id="principal">Nivel Overall: <%- cuestionario.nivelEvaluado.toFixed(1) %></h2>
+                    <h2 id="principal">Nivel Overall: <%- cuestionario.nivelEvaluado %></h2>
                     <hr class="db-hr">
                     <br>
                     <p>Contesta las siguientes preguntas de la manera más honesta: </p>
