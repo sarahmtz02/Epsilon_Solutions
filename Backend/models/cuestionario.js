@@ -119,4 +119,14 @@ module.exports = class Cuestionario{
     static fillPregRes(idCuestionario) {
         return db.execute('CALL crearPR (?)', [idCuestionario])
     }
+
+    static getCurrentTempC(idCuestionario){
+        return db.execute('SELECT fk_idTemplate FROM Cuestionario WHERE idCuestionario = ?', [idCuestionario]).then(([rows, fielData]) => {
+            return rows[0].fk_idTemplate;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
+    }
 }

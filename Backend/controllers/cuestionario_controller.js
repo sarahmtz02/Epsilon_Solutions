@@ -183,8 +183,8 @@ exports.writeFeedback = async (request, response, next) => {
 
     console.log('Guardar preguntas en Template');
     console.log(request.body);
-
     let feedbacks = request.session.feedbacks;
+    const idTemp = await Cuestionario.getCurrentTempC(request.params.idCuestionario);
     console.log(request.params.idCuestionario)
     console.log('Prueba')
     var total = feedbacks.length;
@@ -200,24 +200,26 @@ exports.writeFeedback = async (request, response, next) => {
     for (i = 0; i < feedbacks.length; i++ ) {
         idP.push(feedbacks[i].idPregunta);
     }
-
+    console.log(idP);
     var preguntas = [];
 
     for (i = 0; i < feedbacks.length; i++ ) {
         preguntas.push(feedbacks[i].Pregunta);
     }
-
+    console.log(preguntas);
     var respuestas = [];
     for (i = 1; i <= feedbacks.length; i++ ) {
         respuestas.push(request.body[i]);
     }
 
-    console.log(respuestas)
+    console.log(respuestas);
+
+    console.log(idTemp);
 
     try {
         //Ciclo for para realizar insert de preguntas y respuestas
         for (i = 0; i < total; i++ ) {
-            let res = new PreguntaRespuesta (request.params.idCuestionario, request.params.fk_idTemplate, idP[i], preguntas[i], respuestas[i])
+            let res = new PreguntaRespuesta (request.params.idCuestionario, idTemp, idP[i], preguntas[i], respuestas[i])
             await res.saveAns();
         }
         console.log('success?')
