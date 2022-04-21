@@ -6,45 +6,9 @@ const res = require('express/lib/response');
 
 const Cuestionario = require('../models/cuestionario');
 const PreguntaRespuesta = require('../models/preguntarespuesta');
-const Template = require('../models/templates');
-const Preguntas = require('../models/pregunta');
-const Empleado = require('../models/empleados');
-const Periodo = require('../models/periodo');
 const BancoPreguntas = require('../models/bancopreguntas');
 
-// Para visualizar los cuestionarios a contestar:
-
-exports.getMyCuestionarios = async (request, response, next) => { // REEMPLAZADO POR FETCH
-    console.log(request.session.idEmpleado);
-    console.log(request.cookies);
-
-    const date = new Date();
-    const currentDate = new Date(date.toDateString());
-
-    Cuestionario.fetchMyCuestionarios(request.session.idEmpleado).then(([cuestionarios, fieldData]) => {
-        console.log(cuestionarios);
-        request.params.fk_idPeriodo = cuestionarios[0].fk_idPeriodo;
-
-        Cuestionario.getEmpleados(request.session.idEmpleado).then(([empleados, fieldData]) => {
-            console.log(empleados);
-
-            Periodo.fetchOnePeriodo(request.params.fk_idPeriodo).then(([periodos, fieldData]) => {
-                response.render('evaluaciones', {
-                    periodos: periodos,
-                    empleados: empleados,
-                    fecha: currentDate,
-                    cuestionarios: cuestionarios,
-                    moment: moment,
-                    email: request.session.email ? request.session.email : '',
-                })
-            }).catch(err => {
-                console.log(err);
-            }); 
-        })
-    }).catch(err => {
-        console.log(err);
-    }); 
-};
+// Para traer todos los datos de los cuestionarios que le toca contestar al empleado en sesión
 
 exports.fetchCuestionarios = async (request, response, next) => {
     const date = new Date();
@@ -70,6 +34,8 @@ exports.fetchCuestionarios = async (request, response, next) => {
         console.log(err);
     }); 
 }
+
+// Para asignar evaluadores y generar sus respectivos cuestionarios y tablas donde se van a registrar las respuestas
 
 exports.nuevoCuestionario = async (request,response,next) => {
     console.log(request.body);
@@ -135,17 +101,19 @@ exports.nuevoCuestionario = async (request,response,next) => {
     response.redirect('/empleados/evaluaciones')
 }
 
+// Para obtener los datos generales del cuestionario seleccionado
+
 exports.getCuestionario = (request, response, next) => {
     console.log(request.params.idCuestionario);
     console.log(request.cookies);
-    PreguntaRespuesta.fetchFeedback(request.params.idCuestionario)  // Por cada clase (lo verde) le pasas lo que arroja la función
+    PreguntaRespuesta.fetchFeedback(request.params.idCuestionario)  
         .then(([feedbacks, fieldData]) => {
-            request.session.feedbacks = feedbacks;        // Aquí pasamos los datos del template como variable de sesión
+            request.session.feedbacks = feedbacks;        
             console.log(feedbacks);
             console.log('error no está aquí');
 
                 Cuestionario.fetchOneCuestionario(request.params.idCuestionario).then(([cuestionarios, fieldData])=> {
-                    //request.session.cuestionario = cuestionarios;
+                    
                     console.log(cuestionarios);
                     console.log('fk_idTemplate');
                     request.params.fk_idTemplate = cuestionarios[0].fk_idTemplate;
@@ -178,6 +146,7 @@ exports.getCuestionario = (request, response, next) => {
     });
 }
 
+// Para contestar las preguntas del cuestionario seleccionado
 
 exports.writeFeedback = async (request, response, next) => {
 
