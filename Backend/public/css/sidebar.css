@@ -11,9 +11,9 @@
   }
   
   .sidenav a {
-    padding: 6px 8px 6px 16px;
+    padding: 5px 8px 6px 25px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 17px;
     color: #ffff;
     display: block;
   }
@@ -28,7 +28,7 @@
   }
   
   .main {
-    margin-left: 300px; /* Same as the width of the sidenav */
+    margin-left: 302px; /* Same as the width of the sidenav */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
   }
@@ -48,5 +48,5 @@
     border: 0;
     height: 1px;
     background: #fff;
-    opacity: 0.2;
+    opacity: 0.5;
 }

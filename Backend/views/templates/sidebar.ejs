@@ -1,23 +1,33 @@
 <link rel="stylesheet" href="/css/buttons.css" />
 <link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/solid.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <ul id="slide-out" class="sidenav sidenav-fixed">
   <li>
     <div>
-      <img src="/img/logo-sire.png" width="245px">
+      <img src="/img/logo-sire.png" width="220px">
     </div>
 </li>
 <br>
     <li><label class="label-sidebar">Bienvenido a SIRE, <%- email -%></label>
     <hr>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/dashboard">Inicio</a></button>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/evaluaciones">Mis Evaluaciones</a></button>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/nuevoMentee">Mentees</a></button>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Mis Observaciones</a></button>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/periodos">Periodos de Evaluación</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/dashboard"><i class="material-icons">dashboard</i>   Inicio</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/evaluaciones"><i class="material-icons">assignment</i>   Mis Evaluaciones</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/nuevoMentee"><i class="material-icons">face</i>   Mentees</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista"><i class="material-icons">assignment</i>   Mis Observaciones</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/periodos"><i class="material-icons">date_range</i>   Periodos de Evaluación</a></button>
     <hr>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista">Empleados</a></button>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/listaTemplates">Templates</a></button>
-    <li><button class="btn-sidebar" type="button"><a href="/empleados/logout">Salir</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/lista"><i class="material-icons">assignment_ind</i>   Empleados</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/listaTemplates"><i class="material-icons">assignment</i>   Templates</a></button>
+    <li><button class="btn-sidebar" type="button"><a href="/empleados/logout"><i class="material-icons">exit_to_app</i>   Salir</a></button>
 </ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"> menu</i></a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        M.AutoInit();
+    });
+</script>
