@@ -12,12 +12,16 @@ module.exports = class Cuestionario{
 
     static fetchMyCuestionarios(idEmpleado) {
         //console.log(db.execute('SELECT * FROM Cuestionario WHERE fk_idEvaluador = ?', [idEmpleado]));
+<<<<<<< HEAD
         return db.execute('SELECT * FROM Cuestionario WHERE fk_idEvaluador = ?', [idEmpleado]);
     }
 
     static fetchCuestionarioData(idEvaluado) {
         //console.log('SELECT nombre, apellidoM, apellidoP FROM Empleado, Cuestionario WHERE idEmpleado = ?', [idEvaluado]);
         return db.execute('SELECT nombre, apellidoM, apellidoP FROM Empleado WHERE idEmpleado = ? ', [idEvaluado]);
+=======
+        return db.execute('SELECT * FROM Cuestionario WHERE isAnswered = 0 AND fk_idEvaluador = ?', [idEmpleado]);
+>>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
     }
 
     save() { // Por ahora dejo esto a un lado

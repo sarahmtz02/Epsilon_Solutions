@@ -6,6 +6,7 @@
 
 <%- include('templates/sidebar.ejs') %>
 <body style="background: url('/img/bg-sire.png');">
+<<<<<<< HEAD
     <div class="main">
         <section class="section-card">
             <h1 id="principal">Mis evaluaciones: </h1>
@@ -39,3 +40,39 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
+=======
+<div class="main">
+<section class="section-card">
+<h1 id="principal">Mis evaluaciones: </h1>
+<hr class="db-hr">
+
+        <% for (let cuestionario of cuestionarios) { %>
+            <div class = "row">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                    
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Persona a evaluar: <%- cuestionario.idEvaluado %></h5>
+                                <p class="card-text">Nivel del evaluado: <%- cuestionario.nivelEvaluado.toFixed(1) %></p>
+                                <% if (cuestionario.isAnswered == 0){ %>
+                                    <p class="card-text">Status de evaluación: Sin Contestar</p>
+                                    <a href="/empleados/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn btn-outline-secondary">Contestar</label></a>
+                                <% } else { %>
+                                    <p class="card-text">Status de evaluación: Contestada</p>
+                                    <button type="button" class="btn btn-dark" disabled>Contestar</button>
+                                <%} %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <%} %>
+<hr class="db-hr">
+<br><br>
+</section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+>>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa

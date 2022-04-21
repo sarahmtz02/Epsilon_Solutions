@@ -10,6 +10,7 @@ const BancoPreguntas = require('../models/bancopreguntas');
 
 // Para visualizar los cuestionarios a contestar:
 
+<<<<<<< HEAD
 exports.getMyCuestionarios = async (request, response, next) => {
     console.log(request.session.idEmpleado);
     console.log(request.cookies);
@@ -20,6 +21,19 @@ exports.getMyCuestionarios = async (request, response, next) => {
             email: request.session.email ? request.session.email : '',
         })
     })
+=======
+exports.getMyCuestionarios = (request, response, next) => {
+    console.log(request.session.idEmpleado);
+    console.log(request.cookies);
+    Cuestionario.fetchMyCuestionarios(request.session.idEmpleado)
+        .then(([rows, fieldData]) => {
+            response.render('evaluaciones', {
+                cuestionarios: rows,
+                email: request.session.email ? request.session.email : '',
+            })
+        })
+        .catch(err => console.log(err));
+>>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
 };
 
 exports.getCuestionario = (request, response, next) => {
@@ -34,6 +48,7 @@ exports.getCuestionario = (request, response, next) => {
                 Cuestionario.fetchOneCuestionario(request.params.idCuestionario).then(([cuestionarios, fieldData])=> {
                     //request.session.cuestionario = cuestionarios;
                     console.log(cuestionarios);
+<<<<<<< HEAD
                     console.log('fk_idTemplate');
                     request.params.fk_idTemplate = cuestionarios[0].fk_idTemplate;
                     request.params.idEvaluado = cuestionarios[0].idEvaluado;
@@ -54,12 +69,33 @@ exports.getCuestionario = (request, response, next) => {
                                 email: request.session.email ? request.session.email : '',
                             })
                         })
+=======
+                    console.log('error no está aquí');
+                    request.session.fk_idTemplate = cuestionarios[0].fk_idTemplate;
+                    console.log(request.session.fk_idTemplate);
+
+                    BancoPreguntas.fetchBancoP(request.session.fk_idTemplate).then(([bancoP, fieldData])=> {
+                        console.log(bancoP);
+                        console.log('error no está aquí');
+
+                        response.render('feedback', {
+                            cuestionarios: cuestionarios,
+                            feedbacks: feedbacks,
+                            bancoP: bancoP,
+                            email: request.session.email ? request.session.email : '',
+                        })
+                    })
+>>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
 
                     
                 }).catch(err => {
                     console.log(err);
                 }); 
+<<<<<<< HEAD
             })
+=======
+            
+>>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
     }).catch(err => {
         console.log(err);
     });
@@ -104,7 +140,11 @@ exports.writeFeedback = async (request, response, next) => {
     try {
         //Ciclo for para realizar insert de preguntas y respuestas
         for (i = 0; i < total; i++ ) {
+<<<<<<< HEAD
             let res = new PreguntaRespuesta (request.params.idCuestionario, request.params.fk_idTemplate, idP[i], preguntas[i], respuestas[i])
+=======
+            let res = new PreguntaRespuesta (request.params.idCuestionario, request.session.fk_idTemplate, idP[i], preguntas[i], respuestas[i])
+>>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
             await res.save();
         }
         console.log('success?')

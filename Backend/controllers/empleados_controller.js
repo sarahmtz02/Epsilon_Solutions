@@ -24,8 +24,8 @@ exports.post_nuevo_empleado = (request, response, next) => {
         request.body.email, request.body.password, request.body.fk_idChapter, request.body.fk_idRolJer, request.body.isActive);
         console.log('obtiene el método POST')
     empleado.save().then(() => {
-        response.setHeader('Set-Cookie', 'ultimo_empleado='+empleado.nombre+'; HttpOnly', 'utf8');
-        response.render();
+        //response.setHeader('Set-Cookie', 'ultimo_empleado='+empleado.nombre+'; HttpOnly', 'utf8');
+        response.redirect("/empleados/lista");
     }).catch(err => console.log(err));
 };
 
@@ -58,7 +58,11 @@ exports.updateEmpleado = (request, response, next) => {
     console.log(request.params.idEmpleado);
     console.log(request.cookies);
     empleado.update(request.params.idEmpleado).then(() => {
+<<<<<<< HEAD
         response.render();
+=======
+        response.redirect("/empleados/lista");
+>>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
     }).catch(err => console.log(err));
 };
 

@@ -10,6 +10,7 @@
     <div class="main">
         <form method="POST">
             <section class="section-card">
+<<<<<<< HEAD
                 <% for (let cuestionario of cuestionarios) { %>
                 <% var nombre = 1 %>
                     <% for (let datosEmpleado of datosEmpleados) { %> <!-- Para los datos del evaluado, en realidad debe ser una vista -->
@@ -42,3 +43,40 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
+=======
+                <% var nombre = 1 %>
+
+                <% for (let cuestionario of cuestionarios) { %> <!-- Para los datos del evaluado, en realidad debe ser una vista -->
+        
+                <h1 id="principal">Estás Evaluando a: <%-cuestionario.idEvaluado-%></h1>
+                <hr class="db-hr">
+                <br><br>
+
+                
+                <p>Contesta las siguientes preguntas de la manera más honesta: </p>
+                <br><br>
+
+                <% for (let feedback of feedbacks) { %> <!-- Para contestar las preguntas -->
+                    <h5 id = "<%= feedback.idPregunta %>">
+                        <%= feedback.Pregunta %>
+                    </h5>
+
+                    <div class="mb-3">
+                        <textarea class="form-control" name=<%= nombre %> id=<% feedback.idPregunta %> rows="3"></textarea>
+                    </div>
+                    <br><br>
+                    <% nombre ++  %>
+                <%} %>
+                
+                <%} %> 
+                <a href="/empleados/evaluaciones"><input type="submit" class="btn btn-dark" value="Enviar"></a>
+            
+            </section>
+        </form>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+>>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
