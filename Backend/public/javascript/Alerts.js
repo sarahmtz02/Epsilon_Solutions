@@ -10,6 +10,14 @@ async function validate() {
     }
 }
 
+async function LoginIU(){
+    Swal.fire({
+        icon: 'error',
+        title: '¡ERROR! Este usuario no existe.',
+        showConfirmButton: true,
+      })            
+}
+
 async function good(){
     Swal.fire({
         icon: 'success',

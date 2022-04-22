@@ -27,10 +27,6 @@ exports.dashboard = (request, response, next) => {
     });
 };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
 // - Autenticación del usuario
 exports.login = (request, response, next) => {
     Empleado.findOne(request.body.email)
@@ -68,10 +64,7 @@ exports.login = (request, response, next) => {
                                 if (rolSis == 1) {
                                     if(empleado.fk_idRolJer == 1){ // Member
                                         console.log('Member')
-<<<<<<< HEAD
-=======
                                         
->>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
                                     } else if (empleado.fk_idRolJer == 2){ //Chapter Lead Assistant
                                         console.log('CLA')
                                     } else {  //Chapter Leader
