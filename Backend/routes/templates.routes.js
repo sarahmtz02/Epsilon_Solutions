@@ -7,8 +7,9 @@ const templatesController = require('../controllers/templates_controller');
 // Para Template
 
 router.use('/listaTemplates', isAuth, templatesController.listado);
+router.post('/deletePregunta=:idPregunta', isAuth, templatesController.delete_pregunta);
 
 router.get('/template=:idTemplate', templatesController.getTemplate);
-router.post('/template=:idTemplate', templatesController.writePreguntas)
+router.post('/template=:idTemplate', templatesController.post_preguntas)
 
 module.exports = router;

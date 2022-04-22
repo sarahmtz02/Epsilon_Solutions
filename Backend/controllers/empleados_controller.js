@@ -29,7 +29,7 @@ exports.post_nuevo_empleado = (request, response, next) => {
         console.log('obtiene el método POST')
     empleado.save().then(() => {
         response.setHeader('Set-Cookie', 'ultimo_empleado='+empleado.nombre+'; HttpOnly', 'utf8');
-        response.render();
+        response.redirect('/lista');
     }).catch(err => console.log(err));
 };
 
@@ -40,7 +40,7 @@ exports.getEmpleado = (request, response, next) => {
     console.log(request.cookies);
     Empleado.fetchOneEmpleado(request.params.idEmpleado)
         .then(([rows, fieldData]) => {
-            console.log(rows);
+            //console.log(rows);
             response.render('empleado', {
                 empleados: rows,
                 rol: request.session.idRol ? request.session.idRol : '',
@@ -58,15 +58,17 @@ exports.getEmpleado = (request, response, next) => {
 }
 
 exports.updateEmpleado = (request, response, next) => {
-    const empleado = 
-    new Empleado(request.body.fechaIng, request.body.nombre, request.body.apellidoP, request.body.apellidoM, request.body.antiguedad, request.body.nivPeople, 
+    console.log(request.params.idEmpleado);
+    console.log(request.body)
+    const empleado = new Empleado(request.body.fechaIng, request.body.nombre, request.body.apellidoP, request.body.apellidoM, request.body.antiguedad, request.body.nivPeople, 
         request.body.nivCraft, request.body.nivBusiness, request.body.nivOverall, request.body.puesto, request.body.equipo, 
         request.body.email, request.body.password, request.body.fk_idChapter, request.body.fk_idRolJer, request.body.isActive);
-        console.log('obtiene el método POST')    
-    console.log(request.params.idEmpleado);
+        
+    console.log('UPDATE')    
+    
     console.log(request.cookies);
     empleado.update(request.params.idEmpleado).then(() => {
-        response.render();
+        response.redirect('/lista');
     }).catch(err => console.log(err));
 };
 

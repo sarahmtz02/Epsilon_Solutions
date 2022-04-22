@@ -35,4 +35,6 @@ module.exports = class PreguntaRespuesta {
         return res;
     };
 
+    
+
 }

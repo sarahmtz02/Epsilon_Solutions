@@ -208,7 +208,7 @@ exports.writeFeedback = async (request, response, next) => {
             await res.saveAns();
         }
         console.log('success?')
-        response.redirect('/empleados/evaluaciones');
+        response.redirect('/evaluaciones');
 
     } catch(error) {
         console.log(error)
