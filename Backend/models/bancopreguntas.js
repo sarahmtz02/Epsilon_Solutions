@@ -8,8 +8,6 @@ module.exports = class BancoPreguntas{
     }
 
     save() {
-        //var values1 = [[this.fk_idTemplate, this.fk_idPregunta]];
-        //var values2 = [[this.fk_idTemplate, this.fk_idPregunta]];
         return db.execute('INSERT INTO BancoPreguntas (fk_idTemplate, fk_idPregunta) VALUES (?, ?)', [this.fk_idTemplate, this.fk_idPregunta]);
         };
 

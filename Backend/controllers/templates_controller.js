@@ -14,28 +14,13 @@ exports.listado = (request, response, next) => {
             response.render('listaTemplates', {
                 templates: rows,
                 email: request.session.email ? request.session.email : '',
+                rol: request.session.idRol ? request.session.idRol : '',
+                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
             })
         })
         .catch(err => console.log(err));
-};
-
-exports.get_nueva_template = (request, response, next) => {
-    console.log('obtiene el método GET')
-        Preguntas.fetchAllPreguntas().then(([rows]) => {
-            response.render('nuevaTemplate', {
-                preguntas: rows,
-                email: request.session.email ? request.session.email : '',
-                })
-            })
-        .catch(err => console.log(err));
-};
-
-exports.post_nueva_template = (request, response, next) => {    
-    const templates = new Template(request.body.NombreTemplate);
-    console.log('obtiene el método POST');
-    templates.save().then(() => {
-            response.render();
-        }).catch(err => console.log(err));
 };
 
 exports.post_preguntas = (request, response, next) => {
@@ -77,6 +62,7 @@ exports.getEditTemplate = (request, response, next) => {
 }
 
 exports.getTemplate = (request, response, next) => {
+    console.log('obtiene el método GET');
     console.log(request.params.idTemplate);
     console.log(request.cookies);
     Template.fetchOneTemplate(request.params.idTemplate)  // Por cada clase (lo verde) le pasas lo que arroja la función
@@ -89,12 +75,16 @@ exports.getTemplate = (request, response, next) => {
                 console.log(preguntas);
 
                 BancoPreguntas.fetchPreguntasBanco(request.params.idTemplate).then(([bancopreguntas, fieldData])=> {
-                    response.render('editarTemplate', { // En la clases donde haces render pasas las variables de sesión, así ya se puede acceder a ellas en el .ejs
+                    response.render('currentTemplate', { // En la clases donde haces render pasas las variables de sesión, así ya se puede acceder a ellas en el .ejs
                         
                         bancopreguntas: bancopreguntas,
                         templates: templates,
                         preguntas: preguntas,
                         email: request.session.email ? request.session.email : '',
+                        rol: request.session.idRol ? request.session.idRol : '',
+                        idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                        nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                        apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
 
                     })
                 }).catch(err => {
@@ -140,7 +130,7 @@ exports.writePreguntas = async (request, response, next) => {
             let res = new BancoPreguntas (request.params.idTemplate, idP[i])
             await res.save();
         }
-        response.redirect('/listaTemplates');
+        response.redirect('/templates');
 
     } catch(error) {
         console.log(error)

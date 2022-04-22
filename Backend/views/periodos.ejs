@@ -1,15 +1,14 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/css/sidebar.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/buttons.css" />
 <link rel="stylesheet" href="/css/section.css" />
-<%-moment.locale('es-mx')-%>
 
-<%- include('templates/sidebar.ejs') %>
-
-<body style="background: url('/img/bg-sire.png');">
-
-    <div class="main">
+<%- include('templates/sidebarTest1.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+    <div>
         <section class="section-card">
             <h2 align="center">Periodos de Evaluación:</h2>
             <hr class="db-hr">
@@ -34,7 +33,6 @@
             <%} else { %>
                 <p>Por ahora, no hay ningún periodo de evaluación activo.</p>
             <% } %> 
-            <a href="/empleados/nuevoPeriodo"><button type="button" class="btn btn-dark">Registrar un nuevo Periodo</button></a>
+            <a href="/periodos/nuevoPeriodo"><button type="button" class="btn btn-dark">Registrar un nuevo Periodo</button></a>
         </section>
     </div>
-</body>

@@ -26,6 +26,12 @@ exports.fetchCuestionarios = async (request, response, next) => {
             cuestionarios: cuestionarios,
             periodos: periodo,
             requests: requests,
+            rol: request.session.idRol ? request.session.idRol : '',
+            periodo: request.body.periodo ? request.body.periodo : '',
+            idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+            nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+            apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+            nOverall: request.session.nOverall ? request.session.nOverall : '',
             empleados: empleados,
             moment: moment,
             email: request.session.email ? request.session.email : '',
@@ -64,7 +70,12 @@ exports.nuevoCuestionario = async (request,response,next) => {
             const evaluadorId = await Cuestionario.getIdEvaluador(evaluador);
             const cuestId = await Cuestionario.getNewIdC(); //Para obtener el id del nuevo cuestionario = ultid+1
             const preguntasData = await Cuestionario.getPreguntas(1);
+            console.log(cuestId[0][0]);
 
+            if (cuestId[0][0].nuevoIdCuest == null){
+                cuestId[0][0].nuevoIdCuest == 1;
+            }
+            console.log(cuestId[0][0].nuevoIdCuest);
             let idP = []
 
             for (let i = 0; i < preguntasData.length; i++){
@@ -98,7 +109,7 @@ exports.nuevoCuestionario = async (request,response,next) => {
     } else {
         console.log('error');
     }
-    response.redirect('/empleados/evaluaciones')
+    response.redirect('/evaluaciones')
 }
 
 // Para obtener los datos generales del cuestionario seleccionado
@@ -130,6 +141,11 @@ exports.getCuestionario = (request, response, next) => {
                             response.render('feedback', {
                                 cuestionarios: cuestionarios,
                                 datosEmpleados: datosEmpleados,
+                                rol: request.session.idRol ? request.session.idRol : '',
+                                periodo: request.body.periodo ? request.body.periodo : '',
+                                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
                                 feedbacks: feedbacks,
                                 bancoP: bancoP,
                                 email: request.session.email ? request.session.email : '',
@@ -198,3 +214,19 @@ exports.writeFeedback = async (request, response, next) => {
         console.log(error)
     }
 }
+
+exports.main = (request, response, next) => {
+    let roles = [1, 2]; // roles autorizados
+    response.render('index', { // mandamos su informacion al sidenav
+        email: request.session.email ? request.session.email : '',
+        rol: request.session.idRol ? request.session.idRol : '',
+        roles_autorizados: roles,
+        idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+        nivel_P: request.session.nPeople ? request.session.nPeople : '',
+        nivel_C: request.session.nCraft ? request.session.nCraft : '',
+        nivel_B: request.session.nBusiness ? request.session.nBusiness : '',
+        nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+        apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+
+    });
+};

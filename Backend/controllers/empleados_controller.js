@@ -11,6 +11,10 @@ exports.get_nuevo_empleado = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('nuevoEmpleado', {
                 empleados: rows,
+                rol: request.session.idRol ? request.session.idRol : '',
+                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
                 email: request.session.email ? request.session.email : '',
             })
         })
@@ -39,6 +43,10 @@ exports.getEmpleado = (request, response, next) => {
             console.log(rows);
             response.render('empleado', {
                 empleados: rows,
+                rol: request.session.idRol ? request.session.idRol : '',
+                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
                 email: request.session.email ? request.session.email : '',
                 ultimo_empleado: request.cookies.ultimo_empleado ? request.cookies.ultimo_empleado : '',
                 moment: moment
@@ -69,6 +77,10 @@ exports.listado = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('listaEmpleados', {
                 empleados: rows,
+                rol: request.session.idRol ? request.session.idRol : '',
+                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
                 email: request.session.email ? request.session.email : '',
             })
         })
