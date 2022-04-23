@@ -1,6 +1,5 @@
 const path = require('path');
 const moment = require("moment-timezone"); // Para fechas
-const res = require('express/lib/response');
 
 // --- MAIN --- //
 

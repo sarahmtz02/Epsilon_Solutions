@@ -1,0 +1,79 @@
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<div>
+    <section class="section-card">
+        <% if (success != '') { %>
+            <div class="alert alert-success" role="alert">
+                <strong>Atención! </strong><%- success -%>
+            </div>
+        <%} %>
+        <h1 id="principal">Asignación de Mentees: </h1>
+        <hr class="db-hr">
+        <h3>Selecciona a un Mentor y asignale un mentorado:</h3>
+
+        <form action="/mentees/panelMentees" method="POST">
+            <input id="periodo" name="periodo" type="hidden" value="<%= periodo.idPeriodo %>">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h3>Mentores: </h3>
+                        <select id="nomMentor" name="nomMentor" class="form-control">
+                        <% for (let mentor of mentores) { %>
+                            <option><%= mentor.nombre %> <%= mentor.apellidoP %></option>
+                        <% } %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h3>Empleados: </h3>
+                        <select id="nomMentorado" name="nomMentorado" class="form-control">
+                        <% for (let empleado of empleados) { %>
+                            <option><%= empleado.nombre %> <%= empleado.apellidoP %></option>
+                        <% } %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <label>Agrega un comentario a la asignación: </label>
+            <input type="text" class="form-control input-lg" id="inputlg" name="descAsignacion"></input>
+            <br>
+            <button type="submit" class="btn btn-dark w-100">Asignar</button>
+        </form>
+        <br><br>
+        <h1>Lista de Mentees asignados:</h1>
+        <br><br>
+        <table class="table table-striped" class="centered">
+            <tr>
+                <th>Nombre del Mentorado:</th>
+                <th>Nivel:</th>
+                <th>Asignación:</th>
+                <th>Periodo:</th>
+            </tr>
+            <tbody>
+                <% for (let dataMentee of dataMentees) { %>
+                <tr>
+                    <td><%- dataMentee.nombre -%> <%- dataMentee.apellidoP -%> <%- dataMentee.apellidoM -%></td>
+                    <td><%- dataMentee.nivOverall -%></td>
+                    <td><%- dataMentee.descAsignacion -%></td>
+                    <td><%- moment.tz(dataMentee.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(dataMentee.FechaFin, 'UTC').format("LL") -%></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<%- include('templates/footer.ejs') %>

@@ -11,6 +11,7 @@ const rutas_newPeriodo = require('./routes/newPeriodo.routes');
 const rutas_newEval = require('./routes/newEvaluacion.routes');
 const rutas_leadPanel = require('./routes/leadPanel.routes');
 const rutas_template = require('./routes/templates.routes');
+const rutas_mentees = require('./routes/mentees.routes');
 
 const app = express();
 path = require('path');
@@ -45,6 +46,7 @@ app.use('/empleados', rutas_empleados);
 app.use('/evaluacion', rutas_newEval);
 app.use('/periodos', rutas_newPeriodo);
 app.use('/templates', rutas_template);
+app.use('/mentees', rutas_mentees)
 
 
 //app.use(csrfProtection); 
