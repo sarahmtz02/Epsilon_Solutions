@@ -8,8 +8,6 @@ module.exports = class BancoPreguntas{
     }
 
     save() {
-        //var values1 = [[this.fk_idTemplate, this.fk_idPregunta]];
-        //var values2 = [[this.fk_idTemplate, this.fk_idPregunta]];
         return db.execute('INSERT INTO BancoPreguntas (fk_idTemplate, fk_idPregunta) VALUES (?, ?)', [this.fk_idTemplate, this.fk_idPregunta]);
         };
 
@@ -32,7 +30,12 @@ module.exports = class BancoPreguntas{
     }
 
     static getBancoP(){
-        return db.execute('SELECT *  FROM BancoPreguntas WHERE idBancoP = (?)',[this.id]
-        );
+        return db.execute('SELECT *  FROM BancoPreguntas WHERE idBancoP = (?)',[this.id]).then(([rows, fielData]) => {
+            return rows;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
     }
 }

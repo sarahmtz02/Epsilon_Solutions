@@ -11,6 +11,10 @@ exports.get_nuevo_empleado = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('nuevoEmpleado', {
                 empleados: rows,
+                rol: request.session.idRol ? request.session.idRol : '',
+                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
                 email: request.session.email ? request.session.email : '',
             })
         })
@@ -24,8 +28,8 @@ exports.post_nuevo_empleado = (request, response, next) => {
         request.body.email, request.body.password, request.body.fk_idChapter, request.body.fk_idRolJer, request.body.isActive);
         console.log('obtiene el método POST')
     empleado.save().then(() => {
-        //response.setHeader('Set-Cookie', 'ultimo_empleado='+empleado.nombre+'; HttpOnly', 'utf8');
-        response.redirect("/empleados/lista");
+        response.setHeader('Set-Cookie', 'ultimo_empleado='+empleado.nombre+'; HttpOnly', 'utf8');
+        response.render();
     }).catch(err => console.log(err));
 };
 
@@ -39,6 +43,10 @@ exports.getEmpleado = (request, response, next) => {
             console.log(rows);
             response.render('empleado', {
                 empleados: rows,
+                rol: request.session.idRol ? request.session.idRol : '',
+                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
                 email: request.session.email ? request.session.email : '',
                 ultimo_empleado: request.cookies.ultimo_empleado ? request.cookies.ultimo_empleado : '',
                 moment: moment
@@ -58,7 +66,7 @@ exports.updateEmpleado = (request, response, next) => {
     console.log(request.params.idEmpleado);
     console.log(request.cookies);
     empleado.update(request.params.idEmpleado).then(() => {
-        response.redirect("/empleados/lista");
+        response.render();
     }).catch(err => console.log(err));
 };
 
@@ -69,6 +77,10 @@ exports.listado = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('listaEmpleados', {
                 empleados: rows,
+                rol: request.session.idRol ? request.session.idRol : '',
+                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
                 email: request.session.email ? request.session.email : '',
             })
         })

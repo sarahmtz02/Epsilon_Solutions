@@ -1,31 +1,56 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/css/sidebar.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
 
-<%- include('templates/sidebar.ejs') %>
+<%- include('templates/sidebarTest1.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
 
-<body style="background: url('/img/bg-sire.png');">
-<section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
 
-    <h1 id="principal">Periodos de Evaluación</h1>
-    <h2>Agregar un nuevo periodo de evaluación:</h2>
-    <br>
+    <div>
+        <section class="section-card">
 
-    <form action="/empleados/nuevoPeriodo" method="POST">
-        <label for="FechaInicio">Fecha de Inicio: </label>
-        <input type="date" id="FechaInicio" name="FechaInicio" required="" >
-        <br><br>
+            <h1 id="principal">Periodos de Evaluación</h1>
+            <h2>Agregar un nuevo periodo:</h2>
+            <br>
 
-        <label for="FechaFin">Fecha Fin: </label>
-        <input type="date" id="FechaFin" name="FechaFin" required="" oninput="validate()">
-        <div id="same"></div>
-        <br><br>
-        <input type="submit" value="Enviar" onclick="good()">
-    </form>
-</section>
-<script src="/javascript/Alerts.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <form action="/periodos/nuevoPeriodo" method="POST">
+                <label for="FechaInicio">Fecha de Inicio: </label>
+                <input type="datetime-local" id="FechaInicio" name="FechaInicio" >
+                <br><br>
+
+                <label for="FechaFin">Fecha Fin: </label>
+                <input type="datetime-local" id="FechaFin" name="FechaFin" >
+                <br><br>
+
+                <button type="submit" class="btn btn-dark" id="btnRegPeriodo" onclick="checkDate()">Registrar</button>
+            </form>
+        </section>
+    </div>
+</body>
+
+<script>
+    
+    function checkDate() {
+        var fechaInicio = document.getElementById("FechaInicio");
+        var fechaFin = document.getElementById("FechaFin");
+
+        fechaInicio = moment(fechaInicio).utc().format("YYYY-MM-DD");
+        fechaFin = moment(fechaFin).utc().format("YYYY-MM-DD");
+
+        console.log(fechaInicio);
+        console.log(fechaFin);
+
+        if (fechaFin < fechaInicio) {
+            alert("La fecha final no puede ser menor a la fecha inicial")
+        } else if (fechaFin == fechaInicio) {
+            alert("La fecha final no puede ser el mismo día que la fecha inicial")
+        }
+    }
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
-</body>

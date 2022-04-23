@@ -7,26 +7,38 @@
 
 <body style="background: url('/img/bg-sire.png');">
 <section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
-    <form action="/empleados/nuevoMentee" method="POST">
+    
+    <form action="/nuevoMentee" method="POST">
+        <label for="idMentee">Mentor: </label>
+        <select id="nombreCLA" name="nombreCLA" data-live-search="true" class="selectpicker">
+            <% for (let empleado of empleadosCLA) { %>
+                <option style="background: rgba(77, 70, 70, 0.582)"><%= empleado.nombre %> <%= empleado.apellidoP %> <%= empleado.apellidoM %></option>
+            <% } %>
+        </select>
 
-        <label for="fk_idLead">ID de Chapter Leader: </label>
-        <input type="text" id="fk_idLead" name="fk_idLead" >
         <br><br>
 
         <label for="idMentee">ID del Mentee asignado: </label>
-        <input type="text" id="idMentee" name="idMentee" >
+        <select id="nombreM" name="nombreM" data-live-search="true" class="selectpicker" multiple>
+            <% for (let empleado of empleadosM) { %>
+                <option style="background: rgba(77, 70, 70, 0.582)"><%= empleado.nombre %> <%= empleado.apellidoP %> <%= empleado.apellidoM %></option>
+            <% } %>
+        </select>
         <br><br>
 
         <label for="descAsignacion">Descripción de la asignación: </label>
         <input type="text" id="descAsignacion" name="descAsignacion" >
         <br><br>
 
-        <input type="submit" value="Enviar" onclick="good()">
-
+        <input type="submit" value="Enviar">
     </form>
 </section>
-<script src="/javascript/Alerts.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
+<script>
+    $(document).ready(function () {
+      $('.selectpicker').selectpicker();
+    });
+  </script>
+
+<%- include('templates/footer.ejs') %>

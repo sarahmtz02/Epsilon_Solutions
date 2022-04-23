@@ -103,4 +103,7 @@ module.exports = class Empleado {
         return db.execute('SELECT * FROM Empleado WHERE email=?',
             [email]);
     }
+
+    //SELECT E.idEmpleado, nombre,apellidoP, apellidoM, email, fk_idRolJer, fk_idRolSis, nivPeople, nivCraft, nivBusiness FROM empleado E, registroauth RA WHERE E.idEmpleado = RA.fk_idEmpleado AND email = 'ramiro.lr@test.com' ORDER BY idEmpleado ASC;
+    
 }

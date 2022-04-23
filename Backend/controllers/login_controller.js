@@ -18,6 +18,7 @@ exports.get_login = (request, response, next) => {
 // - Para renderizar el dashboard
 exports.dashboard = (request, response, next) => {
     console.log('dashboard');
+    
     response.render('index', {
         email: request.session.email ? request.session.email : '',
         nPeople: request.session.nPeople ? request.session.nPeople : '',
@@ -26,7 +27,6 @@ exports.dashboard = (request, response, next) => {
         nOverall: request.session.nOverall ? request.session.nOverall : '',
     });
 };
-
 
 // - Autenticación del usuario
 exports.login = (request, response, next) => {
@@ -65,7 +65,6 @@ exports.login = (request, response, next) => {
                                 if (rolSis == 1) {
                                     if(empleado.fk_idRolJer == 1){ // Member
                                         console.log('Member')
-                                        
                                     } else if (empleado.fk_idRolJer == 2){ //Chapter Lead Assistant
                                         console.log('CLA')
                                     } else {  //Chapter Leader
