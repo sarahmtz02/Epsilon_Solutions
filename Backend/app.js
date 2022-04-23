@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
 
 // Rutas a utilizar
 const rutas_empleados = require('./routes/empleados.routes');
@@ -27,8 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Node JS packages
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
 app.use(cookieParser());
+app.use(flash());
 
 app.use(session({
     secret: 'ZeBrands SIRE', 

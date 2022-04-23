@@ -30,7 +30,8 @@ exports.post_preguntas = async (request, response, next) => {
     console.log(request.body.nuevapregunta);
     const idP = await BancoPreguntas.getNewIdPreg();
     console.log(idP)
-    let newBP = new BancoPreguntas (request.params.idTemplate, idP, request.body.nuevapregunta);
+    console.log(request.body.tipoPregunta)
+    let newBP = new BancoPreguntas (request.params.idTemplate, idP, request.body.nuevapregunta, request.body.tipoPregunta);
     await newBP.save2();
 
     response.redirect('/templates/listaTemplates');

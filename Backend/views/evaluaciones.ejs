@@ -1,5 +1,5 @@
 
-<%- include('templates/sidebarTest1.ejs') %>
+<%- include('templates/sidebarMain.ejs') %>
 <% if (rol == 2) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
@@ -13,6 +13,19 @@
     <div>
         <% for (let periodo of periodos) { %>
         <section class="section-card">
+
+            <% if (success != '') { %>
+                <div class="alert alert-success" role="alert">
+                    <strong>Atención! </strong><%- success -%>
+                </div>
+            <%} %>
+
+            <% if (warning != '') { %>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Atención! </strong><%- warning -%>
+                </div>
+            <%} %>
+
             <h1 id="principal">Evaluaciones: </h1>
             <hr class="db-hr">
             <!-- Para las evaluaciones que le fueron asignadas al empleado -->
@@ -30,11 +43,11 @@
                                             <h5 class="card-title">Evaluación no. <%- cuestionario.idCuestionario %></h5>
                                             <p class="card-text">Disponible del: <%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%> al <%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></p>
                                             <% if (cuestionario.isAnswered == 0){ %>
-                                                <p class="card-text">Status de evaluación: Sin Contestar</p>
+                                                <p class="card-text">Status de evaluación: <strong>Sin Contestar</strong></p>
                                                 <a href="/evaluacion/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn btn-dark">Contestar</label></a>
                                             <% } else { %>
-                                                <p class="card-text">Status de evaluación: Contestada</p>
-                                                <label class="btn btn-dark" disabled>Contestar</label>
+                                                <p class="card-text">Status de evaluación: <strong>Contestada</strong></p>
+                                                <button type="button" class="btn btn-secondary btn-lg">Contestar</button>
                                             <%} %>
                                         </div>
                                     </div>
@@ -75,13 +88,6 @@
         </section>
         <%} %>
 </div>
-
-
-<script>
-    $(document).ready(function () {
-      $('.selectpicker').selectpicker();
-    });
-  </script>
 
 <%- include('templates/footer.ejs') %>
 

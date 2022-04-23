@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/css/buttons.css" />
 <link rel="stylesheet" href="/css/section.css" />
 
-<%- include('templates/sidebarTest1.ejs') %>
+<%- include('templates/sidebarMain.ejs') %>
 <% if (rol == 2) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
@@ -55,6 +55,13 @@
                 <form id="insertPregunta" action="/templates/template=<%-template.idTemplate-%>" method="POST">
                     <input type="text" class="form-control input-lg" id="inputlg" name="nuevapregunta"></input>
                     <br>
+                    <label>Selecciona el tipo de pregunta: </label>
+                    <br>
+                    <select name="tipoPregunta" id="tipoPregunta" class="form-select">
+                        <option selected="selected" value="1">Pregunta de Texto</option>
+                        <option value="2">Pregunta Sí/No</option>
+                        <option value="3">Pregunta de Calificación (1 - 5)</option>
+                    </select>
                     <button type="submit" class="btn btn-primary w-100">Añadir nueva pregunta</button>
                 </form>
 

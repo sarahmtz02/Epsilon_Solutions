@@ -21,5 +21,15 @@ module.exports = class Periodo{
         [this.FechaInicio, this.FechaFin]
     );
     }
-
+    static checkOverlap(FechaInicio, FechaFin){
+        console.log('SELECT idPeriodo FROM PeriodoEvaluacion WHERE FechaInicio BETWEEN ? and ?');
+        return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE FechaInicio BETWEEN ? and ?', 
+        [FechaInicio, FechaFin]).then(([rows, fielData]) => {
+            return rows;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });;
+    }
 }

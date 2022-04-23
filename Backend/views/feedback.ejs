@@ -1,4 +1,4 @@
-<%- include('templates/sidebarTest1.ejs') %>
+<%- include('templates/sidebarMain.ejs') %>
 <% if (rol == 2) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
@@ -26,10 +26,45 @@
                             <h5 id = "<%= feedback.idPregunta %>">
                                 <%= feedback.Pregunta %>
                             </h5>
+                                <% if (feedback.tipoPregunta == '1' || feedback.tipoPregunta == '0' || feedback.tipoPregunta == null) {%>
+                                    <div class="mb-3">
+                                        <textarea class="form-control" name=<%= nombre %> id=<% feedback.idPregunta %> rows="3"></textarea>
+                                    </div>
 
-                            <div class="mb-3">
-                                <textarea class="form-control" name=<%= nombre %> id=<% feedback.idPregunta %> rows="3"></textarea>
-                            </div>
+                                <%} else if (feedback.tipoPregunta == '2') { %>
+                                    <div class="mb-3">
+                                        <input class="form-check-input" type="radio" value="1" name=<%= nombre %> id=<% feedback.idPregunta %>  rows="3"></input>
+                                        <label class="form-check-label" for=<% feedback.idPregunta %>>
+                                            Sí
+                                        </label>
+                                        <br>
+                                        <input class="form-check-input" type="radio" value="2" name=<%= nombre %> id=<% feedback.idPregunta %>  rows="3"></input>
+                                        <label class="form-check-label" for=<% feedback.idPregunta %>>
+                                            No
+                                        </label>
+                                    </div>
+                                    <%} else if (feedback.tipoPregunta == '3') { %>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="1" name=<%= nombre %> id=<% feedback.idPregunta %> >
+                                        <label class="form-check-label" for=<% feedback.idPregunta %>>1</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="2" name=<%= nombre %> id=<% feedback.idPregunta %> >
+                                        <label class="form-check-label" for=<% feedback.idPregunta %>>2</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name=<%= nombre %> value="3" id=<% feedback.idPregunta %>>
+                                        <label class="form-check-label" for=<% feedback.idPregunta %>>3</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="4" name=<%= nombre %> id=<% feedback.idPregunta %>>
+                                        <label class="form-check-label" for=<% feedback.idPregunta %>>4</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="5" name=<%= nombre %> id=<% feedback.idPregunta %>>
+                                        <label class="form-check-label" for=<% feedback.idPregunta %>>5</label>
+                                    </div>
+                                <%} %>
                             <br><br>
                             <% nombre ++  %>
                         <%} %>

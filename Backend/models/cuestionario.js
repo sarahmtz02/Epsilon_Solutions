@@ -101,7 +101,7 @@ module.exports = class Cuestionario{
     
     // Obtiene los datos del banco de preguntas correspondiente a la plantilla
     static getPreguntas(idTemplate){
-        return db.execute('SELECT bp.idBancoP, bp.fk_idPregunta, p.descPregunta FROM BancoPreguntas bp, Pregunta p WHERE fk_idTemplate = ? AND p.idPregunta = bp.fk_idPregunta', [idTemplate]).then(([rows, fielData]) => {
+        return db.execute('SELECT bp.idBancoP, bp.fk_idPregunta, bp.tipoPregunta, p.descPregunta FROM BancoPreguntas bp, Pregunta p WHERE fk_idTemplate = ? AND p.idPregunta = bp.fk_idPregunta', [idTemplate]).then(([rows, fielData]) => {
             return rows;
         })
         .catch((error) => {

@@ -35,6 +35,8 @@ exports.fetchCuestionarios = async (request, response, next) => {
             empleados: empleados,
             moment: moment,
             email: request.session.email ? request.session.email : '',
+            warning : request.flash('warning'),
+            success : request.flash('success'),
         })
     }).catch(err => {
         console.log(err);
@@ -49,29 +51,41 @@ exports.nuevoCuestionario = async (request,response,next) => {
     console.log(evaluadores);
     let numRequests = request.session.requests;
     console.log(numRequests);
+    let lvlEv = request.session.nOverall;
     let isArray = Array.isArray(evaluadores);
     console.log(request.body.periodo);
     console.log(request.session.idEmpleado);
-    console.log(request.session.nOverall);
-    //let str = typeof evaluadores === 'string';
-    /*
-    if (lvlEv <= 1.6 && lvlEv >= 1.1) {
-        request.params.idTemplate = 1;
-    } else if (lvlEv <= 2.6 && lvlEv >= 2.1) { 
-        request.params.idTemplate = 2;
-    }*/
-    // ...etc
-    //console.log(request.params.idTemplate);
 
-    if (isArray && ((numRequests + evaluadores.length) <= 5)) {
+    let tempNiv = 0;
+
+    if (lvlEv <= 1.5 && lvlEv >= 1.1) {
+        tempNiv = 1;
+    } else if (lvlEv <= 2.5 && lvlEv >= 2.1) { 
+        tempNiv = 2;
+    } else if (lvlEv <= 3.5 && lvlEv >= 3.1) {
+        tempNiv = 3;
+    } else if (lvlEv <= 4.5 && lvlEv >= 4.1) {
+        tempNiv = 4;
+    } else if (lvlEv <= 5.5 && lvlEv >= 5.1) {
+        tempNiv = 5;
+    };
+    console.log('template nivel:')
+    console.log(tempNiv);
+
+    if (numRequests == 5) {
+        request.flash('warning', 'Has llegado al límite de solicitudes por periodo')
+        response.redirect('/evaluaciones');
+    }
+
+    if (isArray && ((numRequests + evaluadores.length) <= 7)) {
 
         for await (let evaluador of evaluadores ) {
             // Proceso para crear un nuevo cuestionario: //
             const evaluadorId = await Cuestionario.getIdEvaluador(evaluador);
             const cuestId = await Cuestionario.getNewIdC(); //Para obtener el id del nuevo cuestionario = ultid+1
-            const preguntasData = await Cuestionario.getPreguntas(1);
+            const preguntasData = await Cuestionario.getPreguntas(tempNiv);
             console.log(cuestId[0][0]);
-
+            console.log(preguntasData);
             if (cuestId[0][0].nuevoIdCuest == null){
                 cuestId[0][0].nuevoIdCuest == 1;
             }
@@ -82,11 +96,10 @@ exports.nuevoCuestionario = async (request,response,next) => {
                 idP.push(preguntasData[i].fk_idPregunta)
             }
             console.log(idP);
-
             console.log(cuestId[0][0].nuevoIdCuest)
             
             console.log(evaluadorId[0].idEmpleado);
-            const req = new Cuestionario(request.body.periodo, 1, evaluadorId[0].idEmpleado, request.session.idEmpleado,
+            const req = new Cuestionario(request.body.periodo, tempNiv, evaluadorId[0].idEmpleado, request.session.idEmpleado,
                 request.session.nOverall);
 
             req.save();
@@ -95,7 +108,7 @@ exports.nuevoCuestionario = async (request,response,next) => {
             console.log('success save en cuestionarios');
             console.log(cuestId[0][0].nuevoIdCuest);
 
-            const Bp = await Cuestionario.totalPreguntas(1);
+            const Bp = await Cuestionario.totalPreguntas(tempNiv);
             console.log(Bp);
             
             for (let i = 0; i < Bp; i++) {
@@ -109,20 +122,22 @@ exports.nuevoCuestionario = async (request,response,next) => {
     } else {
         console.log('error');
     }
+    request.flash('success', 'Se han enviado tus solicitudes con éxito')
     response.redirect('/evaluaciones')
 }
 
 // Para obtener los datos generales del cuestionario seleccionado
 
-exports.getCuestionario = (request, response, next) => {
+exports.getCuestionario = async (request, response, next) => {
     console.log(request.params.idCuestionario);
     console.log(request.cookies);
     PreguntaRespuesta.fetchFeedback(request.params.idCuestionario)  
         .then(([feedbacks, fieldData]) => {
-            request.session.feedbacks = feedbacks;        
+            request.session.feedbacks = feedbacks;
+            request.params.fk_idPregunta = feedbacks[0].idPregunta;        
             console.log(feedbacks);
             console.log('error no está aquí');
-
+            
                 Cuestionario.fetchOneCuestionario(request.params.idCuestionario).then(([cuestionarios, fieldData])=> {
                     
                     console.log(cuestionarios);
@@ -133,30 +148,22 @@ exports.getCuestionario = (request, response, next) => {
 
                     Cuestionario.fetchCuestionarioData(request.params.idEvaluado).then(([datosEmpleados, fieldData])=> {
                         console.log(datosEmpleados)
-
-                        BancoPreguntas.fetchBancoP(request.params.fk_idTemplate).then(([bancoP, fieldData])=> {
-                            console.log(bancoP);
-                            console.log('error no está aquí');
-
-                            response.render('feedback', {
-                                cuestionarios: cuestionarios,
-                                datosEmpleados: datosEmpleados,
-                                rol: request.session.idRol ? request.session.idRol : '',
-                                periodo: request.body.periodo ? request.body.periodo : '',
-                                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
-                                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
-                                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
-                                feedbacks: feedbacks,
-                                bancoP: bancoP,
-                                email: request.session.email ? request.session.email : '',
-                            })
+                                
+                                response.render('feedback', {
+                                    cuestionarios: cuestionarios,
+                                    datosEmpleados: datosEmpleados,
+                                    rol: request.session.idRol ? request.session.idRol : '',
+                                    periodo: request.body.periodo ? request.body.periodo : '',
+                                    idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                                    nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                                    apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+                                    feedbacks: feedbacks,
+                                    email: request.session.email ? request.session.email : '',
+                                })
                         })
-
-                    
                 }).catch(err => {
                     console.log(err);
                 }); 
-            })
     }).catch(err => {
         console.log(err);
     });

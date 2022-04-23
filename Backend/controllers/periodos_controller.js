@@ -1,5 +1,6 @@
 const path = require('path');
 const moment = require("moment-timezone"); // Para fechas
+
 // --- MAIN --- //
 
 const Periodo = require('../models/periodo');
@@ -20,6 +21,7 @@ exports.root = (request, response, next) => {
                 nivel_B: request.session.nBusiness ? request.session.nBusiness : '',
                 nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
                 apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+                warning_empalme : request.flash('warningE'),
             })
         })
         .catch(err => console.log(err));
@@ -42,11 +44,20 @@ exports.get_nuevo_periodo = (request, response, next) => {
         .catch(err => console.log(err));
 };
 
-exports.post_nuevo_periodo = (request, response, next) => {    
-    const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
-    console.log('obtiene el método POST')
-    periodo.save().then(() => {
+exports.post_nuevo_periodo = async (request, response, next) => {
+    
+    const checkOlap = await Periodo.checkOverlap(request.body.FechaInicio, request.body.FechaFin);
+    console.log(checkOlap);
+
+    if (checkOlap[0] != null) {
+        request.flash('warningE', 'No se pudo agregar el periodo, existe un empalme')
+        response.redirect('/periodos')
+    } else {
+        const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
+        console.log('obtiene el método POST')
+        periodo.save().then(() => {
         response.setHeader('Set-Cookie', 'ultimo_periodo='+periodo.nombre+'; HttpOnly', 'utf8');
         response.redirect('/periodos')
-    }).catch(err => console.log(err));
+        }).catch(err => console.log(err));
+    }
 };

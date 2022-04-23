@@ -3,13 +3,19 @@
 <link rel="stylesheet" href="/css/buttons.css" />
 <link rel="stylesheet" href="/css/section.css" />
 
-<%- include('templates/sidebarTest1.ejs') %>
+<%- include('templates/sidebarMain.ejs') %>
 <% if (rol == 2) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
     <div>
         <section class="section-card">
+            <% if (warning_empalme != '') { %>
+                <div class="alert alert-warning" role="alert">
+                    <strong>Alerta: </strong><%- warning_empalme -%>
+                </div>
+                <%} %>
+
             <h2 align="center">Periodos de Evaluación:</h2>
             <hr class="db-hr">
             <% if (periodos.length > 0) { %>
