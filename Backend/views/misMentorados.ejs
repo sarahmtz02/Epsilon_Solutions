@@ -11,6 +11,12 @@
 
 <div>
     <section class="section-card">
+        <% if (success != '') { %>
+            <div class="alert alert-success" role="alert">
+                <strong>Atención! </strong><%- success -%>
+            </div>
+        <%} %>
+        
         <h1 id="principal">Buen día, <%- nombreSesion %> <%- apellidoPSesion %> </h1>
         <hr class="db-hr">
         <h3>Estos son tus mentorados de éste periodo:</h3>
@@ -29,12 +35,16 @@
                     <td><%- mentorado.nivCraft -%></td>
                     <td><%- mentorado.nivBusiness -%></td>
                     <td><%- mentorado.nivPeople -%></td>
-                    <td><a href = "/mentees/id-mentorado=<%-mentorado.idMentee-%>" class = "btn btn-outline-secondary">Feedback de Compañeros</a></td>
+                    <td><a href = "/mentees/id-mentorado=<%-mentorado.idMentee-%>" class = "btn btn-outline-secondary">Feedback de Compañeros</a>
+                        <a href = "#" class = "btn btn-outline-secondary">Mis Observaciones</a></td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
+        <br>
+        <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
     </section>
+    
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

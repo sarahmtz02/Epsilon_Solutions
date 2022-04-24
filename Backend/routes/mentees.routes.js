@@ -6,6 +6,7 @@ const menteesController = require('../controllers/mentees_controller');
 
 router.get('/panelMentees', isAuth, menteesController.fetchMentees);
 router.post('/panelMentees', isAuth, menteesController.insertMentee);
+router.post('/nuevaObservacion', isAuth, menteesController.nuevaObservacion);
 
 router.get('/misMentorados', isAuth, menteesController.getMentorados);
 router.get('/id-mentorado=:idMentorado', isAuth, menteesController.getEvalMentorado);

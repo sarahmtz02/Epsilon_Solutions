@@ -4,25 +4,14 @@ const moment = require("moment-timezone"); // Para fechas
 // --- MAIN --- //
 
 const Mentee = require('../models/mentee');
+const Observacion = require('../models/observacion');
 
 // MENTEES //
 
-exports.get_nuevo_mentee = (request, response, next) => {
-    console.log('obtiene el método GET')
-    Mentee.fetchAllMentees()
-        .then(([rows, fieldData]) => {
-            response.render('nuevoMentee', {
-                empleados: rows,
-                email: request.session.email ? request.session.email : '',
-            })
-        })
-        .catch(err => console.log(err));
-};
-
 exports.insertMentee = async (request, response, next) => {    
-    const mentorId = await Mentee.getIdMentor(request.body.nomMentor);
+    const mentorId = await Mentee.getIdEmpleado(request.body.nomMentor);
     console.log(mentorId);
-    const mentoradoId = await Mentee.getIdMentorado(request.body.nomMentorado)
+    const mentoradoId = await Mentee.getIdEmpleado(request.body.nomMentorado)
     console.log(mentoradoId);
     const periodo = await Mentee.getPeriodo();
     console.log(periodo);
@@ -79,6 +68,8 @@ exports.getMentorados = async (request, response, next) => {
             apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
             email: request.session.email ? request.session.email : '',
             moment: moment,
+            warning : request.flash('warning'),
+            success : request.flash('success'),
         })
     })
 }
@@ -105,6 +96,9 @@ exports.getResCuest = async (request, response, next) => {
     const idEvaluador = await Mentee.getIdEvaluador(request.params.idCuestionario);
     const idEvaluado = await Mentee.getIdEvaluado(request.params.idCuestionario);
 
+    // Ojo que este método selecciona el periodo más reciente (en el que se está evaluando)
+    const periodo = await Mentee.getPeriodo();
+
     // Para el nombre del evaluador
     Mentee.getNombreEmpleado(idEvaluador).then(([nombreEs, fieldData]) => {
 
@@ -114,6 +108,9 @@ exports.getResCuest = async (request, response, next) => {
                 console.log(answers);
                 response.render('evalMentee', {
                     answers: answers,
+                    idEvaluador: idEvaluador,
+                    idEvaluado: idEvaluado,
+                    periodo: periodo,
                     nombreEs: nombreEs,
                     nombreMs: nombreMs,
                     rol: request.session.idRol ? request.session.idRol : '',
@@ -126,4 +123,15 @@ exports.getResCuest = async (request, response, next) => {
             })
         })
     })
+}
+
+exports.nuevaObservacion = async (request, response, next) => {
+    let newObv = new Observacion (request.body.fk_idEvaluador, request.body.fk_idEvaluado, 
+        request.body.fk_idPeriodo, request.body.descObservacion);
+
+    await newObv.nuevaObservacion().then(() => {
+        request.flash('success', 'Se ha registrado la observación exitosamente')
+        response.redirect('/mentees/misMentorados')
+    })
+    
 }
