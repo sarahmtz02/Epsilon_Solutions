@@ -40,10 +40,8 @@ exports.fetchMentees = async (request, response, next) => {
 
     Mentee.getMentores(request.session.idEmpleado).then(([mentores, fielData]) => {
         
-
         Mentee.getEmpleados(request.session.idEmpleado).then(([empleados, fieldData]) => {
             
-
             Mentee.fetchAllMentees().then(([dataMentees, fielData]) => {
                 
                 response.render('panelMentees', {
@@ -63,6 +61,69 @@ exports.fetchMentees = async (request, response, next) => {
             }).catch(err => {
                 console.log(err);
             }); 
+        })
+    })
+}
+
+exports.getMentorados = async (request, response, next) => {
+    const periodo = await Mentee.getPeriodo();
+
+    Mentee.getMentorados(request.session.idEmpleado).then(([mentorados, fieldData]) => {
+
+        response.render('misMentorados', {
+            periodo: periodo,
+            mentorados: mentorados,
+            rol: request.session.idRol ? request.session.idRol : '',
+            idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+            nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+            apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+            email: request.session.email ? request.session.email : '',
+            moment: moment,
+        })
+    })
+}
+
+exports.getEvalMentorado = async (request, response, next) => {
+    const periodo = await Mentee.getPeriodo();
+    
+    Mentee.getCuestMentorado(request.params.idMentorado, periodo).then(([cuestMentees, fieldData]) => {
+
+        response.render('mentee', {
+            periodo: periodo,
+            cuestMentees: cuestMentees,
+            rol: request.session.idRol ? request.session.idRol : '',
+            idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+            nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+            apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+            email: request.session.email ? request.session.email : '',
+            moment: moment,
+        })
+    })
+}
+
+exports.getResCuest = async (request, response, next) => {
+    const idEvaluador = await Mentee.getIdEvaluador(request.params.idCuestionario);
+    const idEvaluado = await Mentee.getIdEvaluado(request.params.idCuestionario);
+
+    // Para el nombre del evaluador
+    Mentee.getNombreEmpleado(idEvaluador).then(([nombreEs, fieldData]) => {
+
+        Mentee.getNombreEmpleado(idEvaluado).then(([nombreMs, fieldData]) => {
+            console.log(request.params.idCuestionario)
+            Mentee.getAnsCuest(request.params.idCuestionario).then(([answers, fieldData]) => {
+                console.log(answers);
+                response.render('evalMentee', {
+                    answers: answers,
+                    nombreEs: nombreEs,
+                    nombreMs: nombreMs,
+                    rol: request.session.idRol ? request.session.idRol : '',
+                    idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                    nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                    apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+                    email: request.session.email ? request.session.email : '',
+                    moment: moment,
+                })
+            })
         })
     })
 }

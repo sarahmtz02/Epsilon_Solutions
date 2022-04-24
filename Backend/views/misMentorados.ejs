@@ -1,0 +1,42 @@
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<div>
+    <section class="section-card">
+        <h1 id="principal">Buen día, <%- nombreSesion %> <%- apellidoPSesion %> </h1>
+        <hr class="db-hr">
+        <h3>Estos son tus mentorados de éste periodo:</h3>
+        <table class="table table-striped" class="centered">
+            <tr>
+                <th>Nombre del Mentorado:</th>
+                <th>Nivel Craft:</th>
+                <th>Nivel People:</th>
+                <th>Nivel Business:</th>
+                <th>Evaluación:</th>
+            </tr>
+            <tbody>
+                <% for (let mentorado of mentorados) { %>
+                <tr>
+                    <td><%- mentorado.nombre -%> <%- mentorado.apellidoP -%> <%- mentorado.apellidoM -%></td>
+                    <td><%- mentorado.nivCraft -%></td>
+                    <td><%- mentorado.nivBusiness -%></td>
+                    <td><%- mentorado.nivPeople -%></td>
+                    <td><a href = "/mentees/id-mentorado=<%-mentorado.idMentee-%>" class = "btn btn-outline-secondary">Feedback de Compañeros</a></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<%- include('templates/footer.ejs') -%>
