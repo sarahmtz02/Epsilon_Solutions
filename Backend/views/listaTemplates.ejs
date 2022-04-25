@@ -1,17 +1,27 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 <link rel="stylesheet" href="/css/sidebar.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/buttons.css" />
 <link rel="stylesheet" href="/css/section.css" />
 
-<%- include('templates/sidebar.ejs') %>
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
 
-<body style="background: url('/img/bg-sire.png');">
-    <div class="main">
+
+    <div>
         <section class="section-card">
+                <% if (success != '') { %>
+                    <div class="alert alert-success" role="alert">
+                        <strong>Atención! </strong><%- success -%>
+                    </div>
+                <%} %>
+                
             <h1 id="principal">Lista de Templates</h1>
             <hr class="db-hr">
-            <table class="default" class="centered">
+            <table class="table">
                     <tr>
                         <th>Nombre del Template</th>
                     </tr>
@@ -19,17 +29,21 @@
                         <tr>
 <<<<<<< HEAD
                             <td ><%- template.NombreTemplate -%></td>
+<<<<<<< HEAD
                             <td><a href = "/empleados/id-template=<%-template.idTemplate-%>" class = "btn btn-outline-secondary">Visualizar</a></td>
                             <td><a href = "/empleados/edit-id-template=<%-template.idTemplate-%>" class = "btn btn-outline-secondary">Editar</a></td>
 =======
                             <td><a href="/empleados/listaPreguntas=<%-template.idTemplate-%>"><%- template.NombreTemplate -%></a></td>
                             <td><a href = "/empleados/id-template=<%-template.idTemplate-%>" class = "btn btn-outline-secondary">Editar</a></td>
 >>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
+=======
+                            <td><a href = "/templates/template=<%-template.idTemplate-%>" class = "btn btn-outline-secondary">Modificar</a></td>
+>>>>>>> ce3586c295d94382e621ce97a88f2bdf1e445def
                         </tr>
                     <%} %>
             </table>
             <hr class="db-hr">
-            <a href="/empleados/nuevaTemplate"><button type="button" class="btn btn-outline-secondary">Registrar una nueva Template</button></a>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
         </section>
     </div>
     <br>

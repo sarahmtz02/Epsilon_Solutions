@@ -1,8 +1,9 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/css/sidebar.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
 
+<<<<<<< HEAD
 <%- include('templates/sidebar.ejs') %>
 
 <body style="background: url('/img/bg-sire.png');">
@@ -26,3 +27,51 @@
 
 </section>
 <br>
+=======
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+    <div>
+        <section class="section-card">
+            <% if (warning_empalme != '') { %>
+                <div class="alert alert-warning" role="alert">
+                    <strong>Alerta: </strong><%- warning_empalme -%>
+                </div>
+            <%} %>
+            <% if (success != '') { %>
+                <div class="alert alert-success" role="alert">
+                    <strong>Atención! </strong><%- success -%>
+                </div>
+            <%} %>
+            <h2 align="center">Periodos de Evaluación:</h2>
+            <hr class="db-hr">
+            <a href="/periodos/nuevoPeriodo"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo Periodo</button></a>
+            <br><br>
+            <% if (periodos.length > 0) { %>
+                <table class="table table-striped centered">
+                    <tr>
+                        <th>Periodo:</th>
+                        <th>Fecha Inicio:</th>
+                        <th>Fecha de Finalización:</th>
+                        <th>Modificar:</th>
+                    </tr>
+                    <% for (let periodo of periodos) { %>
+                    <tr>
+                        <td><%- periodo.idPeriodo -%></td>
+                        <td><%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%></td>
+                        <td><%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></td>
+                        <td><a href="/periodos/editPeriodo=<%- periodo.idPeriodo -%>" class = "btn btn-outline-secondary btn-sm">Modificar Periodo</a></td>
+                    </tr>
+                    <%} %>
+                </table>
+            <%} else { %>
+                <p>Por ahora, no hay ningún periodo de evaluación activo.</p>
+            <% } %>
+            <br>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
+        </section>
+    </div>
+<%- include('templates/footer.ejs') %>
+>>>>>>> ce3586c295d94382e621ce97a88f2bdf1e445def
