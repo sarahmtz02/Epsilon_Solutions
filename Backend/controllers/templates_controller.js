@@ -18,6 +18,7 @@ exports.listado = (request, response, next) => {
                 idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
                 nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
                 apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+                success : request.flash('success'),
             })
         })
         .catch(err => console.log(err));
@@ -34,6 +35,7 @@ exports.post_preguntas = async (request, response, next) => {
     let newBP = new BancoPreguntas (request.params.idTemplate, idP, request.body.nuevapregunta, request.body.tipoPregunta);
     await newBP.save2();
 
+    request.flash('success', 'Se ha añadido la pregunta con éxito')
     response.redirect('/templates/listaTemplates');
 }
 
@@ -44,6 +46,7 @@ exports.delete_pregunta = async (request, response, next) => {
 
     await BancoPreguntas.deletePregunta(request.params.idPregunta, request.body.idTemplate);
 
+    request.flash('success', 'Se ha eliminado la pregunta con éxito')
     response.redirect('/templates/listaTemplates');
 }
 

@@ -53,7 +53,7 @@
                 <br>
 
                 <form id="insertPregunta" action="/templates/template=<%-template.idTemplate-%>" method="POST">
-                    <input type="text" class="form-control input-lg" id="inputlg" name="nuevapregunta"></input>
+                    <input type="text" class="form-control input-lg" id="insertP" name="nuevapregunta" onkeydown="ENABLE_BTN()"></input>
                     <br>
                     <label>Selecciona el tipo de pregunta: </label>
                     <br>
@@ -62,13 +62,27 @@
                         <option value="2">Pregunta Sí/No</option>
                         <option value="3">Pregunta de Calificación (1 - 5)</option>
                     </select>
-                    <button type="submit" class="btn btn-primary w-100">Añadir nueva pregunta</button>
+                    <button id="guardarP"  type="submit" class="btn btn-primary w-100">Añadir nueva pregunta</button>
                 </form>
 
             <%} %>
             </form>
         </section>
     </div>
+
+    <script>window.onload = function() {
+        document.getElementById('guardarP').disabled = true; 
+    }
+    function ENABLE_BTN() {
+        var EN=document.getElementById('insertP').value;
+        if(EN=='') {
+            document.getElementById('guardarP').disabled=true;
+        } else {
+            document.getElementById('guardarP').disabled=false;
+        }
+    }
+    </script>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
