@@ -75,4 +75,8 @@ module.exports = class BancoPreguntas{
             return 0;
         });
     }
+
+    static getTipoPregunta(idPregunta){
+        return db.execute('SELECT tipoPregunta FROM BancoPreguntas WHERE fk_idPregunta = ?', [idPregunta])
+    }
 }

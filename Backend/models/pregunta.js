@@ -11,6 +11,10 @@ module.exports = class Preguntas{
         return db.execute('SELECT * FROM Pregunta');
     }
 
+    static fetchOnePregunta(idPregunta) {
+        return db.execute('SELECT * FROM Pregunta WHERE idPregunta = ?', [idPregunta]);
+    }
+
     save() {
         return db.execute('INSERT INTO Pregunta (descPregunta, tipoPregunta) VALUES (?, ?)',
         [this.descPregunta, this.tipoPregunta]
@@ -24,5 +28,9 @@ module.exports = class Preguntas{
     static getPregunta(){
         return db.execute('SELECT *  FROM Pregunta WHERE idPregunta = (?)',[this.id]
         );
+    }
+
+    static updatePregunta(descPregunta, idPregunta, tipoPregunta){
+        return db.execute('CALL update_pregunta (?, ?, ?)', [descPregunta, idPregunta, tipoPregunta]);
     }
 }

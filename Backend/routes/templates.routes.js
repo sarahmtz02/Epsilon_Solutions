@@ -9,7 +9,9 @@ const templatesController = require('../controllers/templates_controller');
 router.use('/listaTemplates', isAuth, templatesController.listado);
 router.post('/deletePregunta=:idPregunta', isAuth, templatesController.delete_pregunta);
 
-router.get('/template=:idTemplate', templatesController.getTemplate);
-router.post('/template=:idTemplate', templatesController.post_preguntas)
+router.get('/template=:idTemplate', isAuth, templatesController.getTemplate);
+router.post('/template=:idTemplate', isAuth, templatesController.post_preguntas);
+router.get('/editPregunta=:idPregunta', isAuth, templatesController.getEditPregunta);
+router.post('/editPregunta=:idPregunta', templatesController.updatePregunta);
 
 module.exports = router;

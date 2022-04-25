@@ -21,37 +21,27 @@
                 <input type="text" id="NombreTemplate" name="NombreTemplate" value="<%-template.NombreTemplate-%>" readonly/>
                 <br><br>
                 <%} %>
-                
-                
-
-                    <label>A continuación las preguntas actuales del cuestionario: </label>
+                    <h4>A continuación las preguntas actuales del cuestionario: </h4>
                     <br>
                     <div class="form-group w-100">
-
                         <% for (let templatePregunta of templatePreguntas) { %>
-
                         <form id="deletePregunta" action="/templates/deletePregunta=<%-templatePregunta.idPregunta-%>" method="POST">
-
                             <% for (let template of templates) { %>
                                 <input type="hidden" value="<%-template.idTemplate-%>" name="idTemplate" />
                             <%} %>
-
                             <input type="hidden" value="<%-template.idPregunta-%>" name="idPregunta" />
                             <input type="text" class="form-control input-lg" id="inputlg" readonly value="<%-templatePregunta.descPregunta-%>" name="currentPregunta"/>
+                            <br>
+                            <a href="/templates/editPregunta=<%- templatePregunta.idPregunta -%>" class = "btn btn-outline-secondary w-100">Modificar Pregunta</a>
                             <button type="submit" class="btn btn-danger w-100" ><span><i class="bi bi-x-lg"></i> Eliminar Pregunta</span></button>
                             <br>
                             <br>
-
                         </form>
                         <%} %>
-                        </table>
-                        </div>
-                    <br>
-                    <br>
-                
+                    </div>
+                <h5>Añadir una nueva pregunta:</h5>
                 <label>Escribe la nueva pregunta: </label>
                 <br>
-
                 <form id="insertPregunta" action="/templates/template=<%-template.idTemplate-%>" method="POST">
                     <input type="text" class="form-control input-lg" id="insertP" name="nuevapregunta" onkeydown="ENABLE_BTN()"></input>
                     <br>
@@ -67,6 +57,7 @@
 
             <%} %>
             </form>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
         </section>
     </div>
 
