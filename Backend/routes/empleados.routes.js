@@ -9,14 +9,14 @@ const loginController = require('../controllers/login_controller');
 const menteesController = require('../controllers/mentees_controller');
 const periodosController = require('../controllers/periodos_controller');
 const templatesController = require('../controllers/templates_controller');
-<<<<<<< HEAD
-const cuestionarioController = require('../controllers/cuestionario_controller');
-=======
 const preguntasController = require('../controllers/preguntas_controller');
+<<<<<<< HEAD
 >>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
 =======
 const empleadosController = require('../controllers/user_controller');
 >>>>>>> ce3586c295d94382e621ce97a88f2bdf1e445def
+=======
+>>>>>>> 67c41bd1c6ba85fdff5c89d588bbe31056b2f970
 
 router.get('/login', empleadosController.get_login);
 router.post('/login', empleadosController.login);
