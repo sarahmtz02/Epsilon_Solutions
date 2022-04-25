@@ -50,6 +50,35 @@ exports.delete_pregunta = async (request, response, next) => {
     response.redirect('/templates/listaTemplates');
 }
 
+<<<<<<< HEAD
+=======
+exports.getEditPregunta = async (request, response, next) => {
+    const tipoP = BancoPreguntas.getTipoPregunta(request.params.idPregunta);
+    Preguntas.fetchOnePregunta(request.params.idPregunta).then(([preguntas, fieldData])=> {
+        response.render('editPregunta', {
+            tipoPregunta: tipoP,
+            preguntas: preguntas,
+            email: request.session.email ? request.session.email : '',
+            rol: request.session.idRol ? request.session.idRol : '',
+            idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+            nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+            apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+            email: request.session.email ? request.session.email : '',
+        });
+    })
+}
+
+exports.updatePregunta = async (request, response) => {
+    console.log(request.params.idPregunta);
+    console.log(request.body.descPregunta);
+    console.log(request.body.tipoPregunta)
+    await Preguntas.updatePregunta(request.body.descPregunta, request.params.idPregunta, request.body.tipoPregunta);
+
+    request.flash('success', 'Se ha actualizado la pregunta con éxito')
+    response.redirect('/templates/listaTemplates');
+}
+
+>>>>>>> JMMR
 // Para edición:
 
 exports.getEditTemplate = (request, response, next) => {

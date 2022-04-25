@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+    <div>
+        <section class="section-card">
+                <h5>Modificar Pregunta:</h5>
+                <label>Escribe la nueva pregunta: </label>
+                <br>
+                <% for (let pregunta of preguntas) { %>
+                <form id="insertPregunta" action="/templates/editPregunta=<%- pregunta.idPregunta -%>" method="POST">
+                    <input type="text" class="form-control input-lg" id="insertP" name="descPregunta" value ="<%- pregunta.descPregunta -%>" onkeydown="ENABLE_BTN()"></input>
+                <% } %>
+                    <br>
+                    <label>Selecciona el tipo de pregunta: </label>
+                    <br>
+                    <select name="tipoPregunta" id="tipoPregunta" class="form-select">
+                        <option selected="selected" value="<%- tipoPregunta -%>">Pregunta de Texto</option>
+                        <option value="2">Pregunta Sí/No</option>
+                        <option value="3">Pregunta de Calificación (1 - 5)</option>
+                    </select>
+                    <button id="guardarP"  type="submit" class="btn btn-primary w-100">Añadir nueva pregunta</button>
+                </form>
+            </form>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
+        </section>
+    </div>
+
+    <script>window.onload = function() {
+        document.getElementById('guardarP').disabled = true; 
+    }
+    function ENABLE_BTN() {
+        var EN=document.getElementById('insertP').value;
+        if(EN=='') {
+            document.getElementById('guardarP').disabled=true;
+        } else {
+            document.getElementById('guardarP').disabled=false;
+        }
+    }
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<%- include('templates/footer.ejs') %>
