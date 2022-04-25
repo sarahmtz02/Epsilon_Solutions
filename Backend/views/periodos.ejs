@@ -32,12 +32,7 @@
                         <td><%- periodo.idPeriodo -%></td>
                         <td><%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%></td>
                         <td><%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></td>
-
-                        <% if ((currentPeriodo.FechaInicio <= fecha) && (currentPeriodo.FechaFin >= fecha)) { %>
                         <td><a href="#" class = "btn btn-outline-secondary btn-sm">Modificar Periodo</a></td>
-                        <% } else { %>
-                            <td><a href="#" class = "btn btn-outline-secondary btn-sm" disabled>Modificar Periodo</a></td>
-                        <% } %>
                     </tr>
                     <%} %>
                 </table>
