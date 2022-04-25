@@ -11,9 +11,9 @@ module.exports = class Periodo{
          return db.execute('SELECT * FROM PeriodoEvaluacion');
     }
 
-    static fetchOnePeriodo(fk_idPeriodo) {
-        console.log(db.execute('SELECT * FROM PeriodoEvaluacion WHERE idPeriodo = ?', [fk_idPeriodo]));
-        return db.execute('SELECT * FROM PeriodoEvaluacion WHERE idPeriodo = ?', [fk_idPeriodo]);
+    static fetchOnePeriodo(idPeriodo) {
+        console.log(db.execute('SELECT * FROM PeriodoEvaluacion WHERE idPeriodo = ?', [idPeriodo]));
+        return db.execute('SELECT * FROM PeriodoEvaluacion WHERE idPeriodo = ?', [idPeriodo]);
     }
 
     save() {
@@ -43,5 +43,10 @@ module.exports = class Periodo{
             console.log(error);
             return 0;
         });
+    }
+
+    // Modifica el periodo seleccionado
+    static editPeriodo(FechaInicio, FechaFin, idPeriodo) {
+        return db.execute('UPDATE PeriodoEvaluacion PE SET PE.FechaInicio = ?, PE.FechaFin = ? WHERE PE.idPeriodo = ?', [FechaInicio, FechaFin, idPeriodo])
     }
 }

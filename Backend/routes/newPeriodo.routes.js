@@ -9,4 +9,7 @@ router.post('/nuevoPeriodo', periodosController.post_nuevo_periodo);
 
 router.get('/', isAuth, periodosController.root);
 
+router.get('/editPeriodo=:idPeriodo', isAuth, periodosController.getEditPeriodo);
+router.post('/editPeriodo=:idPeriodo', isAuth, periodosController.updatePeriodo)
+
 module.exports = router;
