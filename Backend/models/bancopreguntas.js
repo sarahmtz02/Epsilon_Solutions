@@ -9,30 +9,18 @@ module.exports = class BancoPreguntas{
     }
 
     save() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        //var values1 = [[this.fk_idTemplate, this.fk_idPregunta]];
-        //var values2 = [[this.fk_idTemplate, this.fk_idPregunta]];
-=======
->>>>>>> ce3586c295d94382e621ce97a88f2bdf1e445def
         return db.execute('INSERT INTO BancoPreguntas (fk_idTemplate, fk_idPregunta) VALUES (?, ?)', [this.fk_idTemplate, this.fk_idPregunta]);
         };
 
     saveTest() {
         var values = [[this.fk_idTemplate, this.fk_idPregunta], [this.fk_idTemplate, this.fk_idPregunta]]; //Por el caso nada más vamos a insertar dos, pero en realidad sería el COUNT de las preguntas existentes
         return db.query('INSERT INTO BancoPreguntas (fk_idTemplate, fk_idPregunta) VALUES ?', [values]); //Pasamos el array ([[[valor, valor]]])
-=======
-        return db.query('INSERT INTO BancoPreguntas (fk_idTemplate, fk_idPregunta) VALUES (?)', [temparray])
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
         };
 
     static fetchBancoP(idBancoP) {
         return db.execute('SELECT * FROM BancoPreguntas WHERE idBancoP=?', [idBancoP]);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     save2() {
         return db.execute('CALL nueva_pregunta (?,?,?,?)',
         [this.fk_idTemplate, this.fk_idPregunta, this.descPregunta, this.tipoPregunta]
@@ -59,7 +47,6 @@ module.exports = class BancoPreguntas{
         });;
     }
 
->>>>>>> ce3586c295d94382e621ce97a88f2bdf1e445def
     static fetchAllBancoP() {
         console.log(db.execute('SELECT * FROM BancoPreguntas'));
         return db.execute('SELECT * FROM BancoPreguntas');
@@ -79,8 +66,6 @@ module.exports = class BancoPreguntas{
         return db.execute('DELETE FROM BancoPreguntas WHERE fk_idPregunta = ? AND fk_idTemplate = ?', [fk_idPregunta, fk_idTemplate]);
     }
 
-=======
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
     static getBancoP(){
         return db.execute('SELECT *  FROM BancoPreguntas WHERE idBancoP = (?)',[this.id]).then(([rows, fielData]) => {
             return rows;

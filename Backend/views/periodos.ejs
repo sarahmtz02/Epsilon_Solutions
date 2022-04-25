@@ -3,45 +3,12 @@
 <link rel="stylesheet" href="/css/buttons.css" />
 <link rel="stylesheet" href="/css/section.css" />
 
-<<<<<<< HEAD
-<%- include('templates/sidebar.ejs') %>
-
-<body style="background: url('/img/bg-sire.png');">
-<section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 67c41bd1c6ba85fdff5c89d588bbe31056b2f970
-    <table class="striped" class="centered">
-        <thead>
-            <tr>
-                <th>Periodos de Evaluación</th>
-            </tr>
-        </thead>
-        <tbody type="date">
-            <% for (let periodo of periodos) { %>
-                <tr>
-                    <td type="date"><%- periodo.FechaInicio -%>, <%- periodo.FechaFin -%></td>
-                </tr>
-            <%} %>
-        </tbody>
-    </table>
-    <a href="/empleados/nuevoPeriodo"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo Periodo</button></a>
-
-</section>
-<br>
-=======
-<<<<<<< HEAD
 <%- include('templates/sidebarMain.ejs') %>
 <% if (rol == 2) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
     <div>
-=======
-    <div class="main">
->>>>>>> 67c41bd1c6ba85fdff5c89d588bbe31056b2f970
         <section class="section-card">
             <% if (warning_empalme != '') { %>
                 <div class="alert alert-warning" role="alert">
@@ -81,10 +48,4 @@
             <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
         </section>
     </div>
-<<<<<<< HEAD
 <%- include('templates/footer.ejs') %>
->>>>>>> ce3586c295d94382e621ce97a88f2bdf1e445def
-=======
-</body>
->>>>>>> e6465134656f78fe0b49f985e91b472589ea9c16
->>>>>>> 67c41bd1c6ba85fdff5c89d588bbe31056b2f970

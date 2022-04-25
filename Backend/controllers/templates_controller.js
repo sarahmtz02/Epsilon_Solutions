@@ -78,11 +78,7 @@ exports.updatePregunta = async (request, response) => {
 
 // Para edición:
 
-<<<<<<< HEAD
 exports.getEditTemplate = (request, response, next) => {
-=======
-exports.getTemplate = (request, response, next) => {
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
     console.log(request.params.idTemplate);
     console.log(request.cookies);
     Template.fetchOneTemplate(request.params.idTemplate)
@@ -91,11 +87,7 @@ exports.getTemplate = (request, response, next) => {
             const templates = rows;
             console.log(templates);
             Preguntas.fetchAllPreguntas().then(([rows])=> {
-<<<<<<< HEAD
                 response.render('editarTemplate', {
-=======
-                response.render('template', {
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
                     preguntas: rows,
                     templates: templates,
                     email: request.session.email ? request.session.email : '',
@@ -106,7 +98,6 @@ exports.getTemplate = (request, response, next) => {
             console.log(err);
         }); 
 }
-<<<<<<< HEAD
 
 exports.getTemplate = async (request, response, next) => {
     console.log('obtiene el método GET');
@@ -179,5 +170,3 @@ exports.writePreguntas = async (request, response, next) => {
         console.log(error)
     }
 }  
-=======
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc

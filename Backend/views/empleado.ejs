@@ -15,19 +15,7 @@
     <h2>Editar un Empleado:</h2>
     <br>
     <% for (let empleado of empleados) { %>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <form action="/empleados/id-empleado=<%-empleado.idEmpleado-%>" method="POST">
-=======
-<<<<<<< HEAD
-    <form action="/empleados/<%-empleado.idEmpleado-%>" method="POST">
-=======
-    <form action="/empleados/id-empleado=<%-empleado.idEmpleado-%>" method="POST">
->>>>>>> Resendiz-kun
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
-=======
     <form action="/id-empleado=<%-empleado.idEmpleado-%>" method="POST">
->>>>>>> ce3586c295d94382e621ce97a88f2bdf1e445def
         <!-- Para los datos personales -->
         
         <label for="nombre">Nombre: </label>
@@ -39,12 +27,10 @@
         <label for="apellidoM">Apellido Materno: </label>
         <input type="text" id="apellidoM" name="apellidoM" value=<%- empleado.apellidoM -%>>
         <br><br>
-
         <!-- TEMPORAL -->
         <label for="antiguedad">Antiguedad: </label>
         <input type="number" min="0" id="antiguedad" name="antiguedad" value=<%- empleado.antiguedad -%>>
         <br><br>
-
         <!-- Para los datos empresariales (falta hacer el cálculo, por ahora es manual) -->
         <label for="nivPeople">Nivel People: </label>
         <label>Nivel Actual: <%- empleado.nivPeople -%></label>
@@ -107,13 +93,11 @@
             <option value="5.3">5.3</option>
         </select>
         <br><br>
-
         <!-- TEMPORAL -->
         <label for="nivOverall">Nivel Overall: </label>
         <input name="nivOverall" id="nivOverall" readonly value="<%- empleado.nivOverall -%>">
         <br><br>
         <br><br>
-
         <label for="puesto">Puesto: </label>
         <input type="text" id="puesto" name="puesto" value=<%- empleado.puesto -%>>
         <br><br>
@@ -138,7 +122,6 @@
         <label for="password">Nueva Contraseña: </label>
         <input type="password" id="password" name="password">
         <br><br>
-
         <!-- TEMPORAL -->
         <label for="isActive">Status: </label>
         <select name="isActive" id="isActive" class="form-select" value=<%- empleado.isActive -%>>
@@ -146,7 +129,6 @@
             <option value="2">Inactivo</option>
         </select>
         <br><br>
-
         <input type="submit" value="Enviar">
     </form>
     <%} %>
@@ -174,4 +156,3 @@
         calcNivOv();
     }
     </script>
-
