@@ -1,31 +1,53 @@
 const express = require('express');
-const app = express();
-
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
+
+// Rutas a utilizar
+const rutas_empleados = require('./routes/empleados.routes');
+const rutas_evaluacion = require('./routes/evaluacion.routes');
+const rutas_newPeriodo = require('./routes/newPeriodo.routes');
+const rutas_newEval = require('./routes/newEvaluacion.routes');
+const rutas_leadPanel = require('./routes/leadPanel.routes');
+const rutas_template = require('./routes/templates.routes');
+const rutas_mentees = require('./routes/mentees.routes');
+
+const app = express();
+path = require('path');
+
+// EJS Config.
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
+// Static
+app.use(express.static(path.join(__dirname, 'public')));
 
 //const csrf = require('csurf');
 //const csrfProtection = csrf();
 
-const bodyParser = require('body-parser');
+// Node JS packages
 app.use(bodyParser.urlencoded({extended: true}));
-
-const rutas_empleados = require('./routes/empleados.routes')
-const path = require('path');
-
-app.set('view engine', 'ejs');
-app.set('views', 'views');
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(flash());
 
 app.use(session({
-    secret: 'Prueba de Cookies', 
+    secret: 'ZeBrands SIRE', 
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió 
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
 }));
+
+// Routes
+app.use('/', rutas_evaluacion);
+app.use('/', rutas_leadPanel);
+
+app.use('/empleados', rutas_empleados);
+app.use('/evaluacion', rutas_newEval);
+app.use('/periodos', rutas_newPeriodo);
+app.use('/templates', rutas_template);
+app.use('/mentees', rutas_mentees)
+
 
 //app.use(csrfProtection); 
 
@@ -33,8 +55,6 @@ app.use(session({
     response.locals.csrfToken = request.csrfToken();
     next();
 });*/
-
-app.use('/empleados', rutas_empleados);
 
 //Middleware
 app.use((request, response, next) => {

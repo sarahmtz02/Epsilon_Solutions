@@ -1,8 +1,9 @@
 const db = require('../util/database');
 
 module.exports = class Preguntas{
-    constructor(nueva_descPregunta) {
-        this.descPregunta = nueva_descPregunta;
+    constructor(nueva_descPregunta, nuevo_tipoPregunta) {
+        this.descPregunta = nueva_descPregunta,
+        this.tipoPregunta = nuevo_tipoPregunta;
     }
 
     static fetchAllPreguntas() {
@@ -11,8 +12,8 @@ module.exports = class Preguntas{
     }
 
     save() {
-        return db.execute('INSERT INTO Pregunta (descPregunta) VALUES (?)',
-        [this.descPregunta]
+        return db.execute('INSERT INTO Pregunta (descPregunta, tipoPregunta) VALUES (?, ?)',
+        [this.descPregunta, this.tipoPregunta]
     );
     }
 

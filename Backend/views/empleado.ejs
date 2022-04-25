@@ -1,19 +1,21 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/css/sidebar.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/buttons.css" />
 <link rel="stylesheet" href="/css/section.css" />
 
-<%- include('templates/sidebar.ejs') %>
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
 
-<body style="background: url('/img/bg-sire.png');">
-    <div class="main">
+    <div>
     <section class="section-card">
     <h1 id="principal">Empleados</h1>
     <h2>Editar un Empleado:</h2>
     <br>
     <% for (let empleado of empleados) { %>
-    <form action="/empleados/id-empleado=<%-empleado.idEmpleado-%>" method="POST">
+    <form action="/id-empleado=<%-empleado.idEmpleado-%>" method="POST">
         <!-- Para los datos personales -->
         
         <label for="nombre">Nombre: </label>
@@ -34,7 +36,7 @@
         <!-- Para los datos empresariales (falta hacer el cálculo, por ahora es manual) -->
         <label for="nivPeople">Nivel People: </label>
         <label>Nivel Actual: <%- empleado.nivPeople -%></label>
-        <select name="nivPeople" id="nivPeople" class="form-select">
+        <select name="nivPeople" id="nivPeople" class="form-select" onchange="calcNivOv()">
             <option value=<%- empleado.nivPeople -%> selected><%- empleado.nivPeople -%></option>
             <option value="1.1">1.1</option>
             <option value="1.2">1.2</option>
@@ -54,7 +56,7 @@
         </select>
         <br><br>
         <label for="nivCraft">Nivel Craft: </label>
-        <select name="nivCraft" id="nivCraft" class="form-select" value=<%- empleado.nivCraft -%>>
+        <select name="nivCraft" id="nivCraft" class="form-select" value=<%- empleado.nivCraft -%> onchange="calcNivOv()">
             <option value=<%- empleado.nivCraft -%> selected><%- empleado.nivCraft -%></option>
             <option value="1.1">1.1</option>
             <option value="1.2">1.2</option>
@@ -74,7 +76,7 @@
         </select>
         <br><br>
         <label for="nivBusiness">Nivel Business: </label>
-        <select name="nivBusiness" id="nivBusiness" class="form-select" value=<%- empleado.nivBusiness -%>>
+        <select name="nivBusiness" id="nivBusiness" class="form-select" value=<%- empleado.nivBusiness -%> onchange="calcNivOv()">
             <option value=<%- empleado.nivBusiness -%> selected><%- empleado.nivBusiness -%></option>
             <option value="1.1">1.1</option>
             <option value="1.2">1.2</option>
@@ -96,7 +98,8 @@
 
         <!-- TEMPORAL -->
         <label for="nivOverall">Nivel Overall: </label>
-        <input type="number" step=1.1 id="nivOverall" name="nivOverall" value=<%- empleado.nivOverall -%>>
+        <input name="nivOverall" id="nivOverall" readonly value="<%- empleado.nivOverall -%>">
+        <br><br>
         <br><br>
 
         <label for="puesto">Puesto: </label>
@@ -140,11 +143,17 @@
     </section>
 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 </body>
+=======
+
+<%- include('templates/footer.ejs') %>
+>>>>>>> 9959fb5536b5304e5b6cb85e7de2df0b84866d9a
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 
+<<<<<<< HEAD
 =======
 <script src="/javascript/Alerts.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -152,3 +161,20 @@
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 >>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
+=======
+<script>
+    function calcNivOv() {
+        var nP =document.getElementById("nivPeople").value;
+        var nB =document.getElementById("nivBusiness").value;
+        var nC =document.getElementById("nivCraft").value;
+        var res = Math.min(nB+1, nC, nP+1);
+        document.getElementById("nivOverall").innerHTML = res.toFixed(1);
+        document.getElementById("nivOverall").value = res.toFixed(1);
+    }
+    
+    window.onload = function() {
+        calcNivOv();
+    }
+    </script>
+
+>>>>>>> 9959fb5536b5304e5b6cb85e7de2df0b84866d9a

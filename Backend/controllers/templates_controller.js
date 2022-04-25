@@ -14,25 +14,18 @@ exports.listado = (request, response, next) => {
             response.render('listaTemplates', {
                 templates: rows,
                 email: request.session.email ? request.session.email : '',
+                rol: request.session.idRol ? request.session.idRol : '',
+                idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
             })
         })
         .catch(err => console.log(err));
 };
 
-exports.get_nueva_template = (request, response, next) => {
-    console.log('obtiene el método GET')
-        Preguntas.fetchAllPreguntas().then(([rows]) => {
-            response.render('nuevaTemplate', {
-                preguntas: rows,
-                email: request.session.email ? request.session.email : '',
-                })
-            })
-        .catch(err => console.log(err));
-};
-
-exports.post_nueva_template = (request, response, next) => {    
-    const templates = new Template(request.body.NombreTemplate);
+exports.post_preguntas = async (request, response, next) => {
     console.log('obtiene el método POST');
+<<<<<<< HEAD
     templates.save().then(() => {
 <<<<<<< HEAD
             response.render();
@@ -41,20 +34,28 @@ exports.post_nueva_template = (request, response, next) => {
 >>>>>>> 839310d2b006207e79bafffdb7d65a673d4facfa
         }).catch(err => console.log(err));
 };
+=======
+    console.log(request.params.idTemplate);
+    console.log(request.body);
+    console.log(request.body.nuevapregunta);
+    const idP = await BancoPreguntas.getNewIdPreg();
+    console.log(idP)
+    console.log(request.body.tipoPregunta)
+    let newBP = new BancoPreguntas (request.params.idTemplate, idP, request.body.nuevapregunta, request.body.tipoPregunta);
+    await newBP.save2();
 
-exports.post_preguntas = (request, response, next) => {
-    const templates = new Template(request.body.NombreTemplate);
-    const bancoP = new BancoPreguntas(request.body.fk_idTemplate, request.body.fk_idPregunta);
-    console.log('obtiene el método POST');
-    res = 0;
-    templates.getTemplateId().then(([rows])=> {
-        console.log(rows[0].idTemplate);
-        const templateId = rows[0].idTemplate;
-        bancoP.fk_idTemplate = templateId;
-        bancoP.save().then(() => {
-            response.render();
-        }).catch(err => console.log(err));
-    });
+    response.redirect('/templates/listaTemplates');
+}
+>>>>>>> 9959fb5536b5304e5b6cb85e7de2df0b84866d9a
+
+exports.delete_pregunta = async (request, response, next) => {
+    console.log('DELETE');
+    console.log(request.body.idTemplate)
+    console.log(request.params.idPregunta);
+
+    await BancoPreguntas.deletePregunta(request.params.idPregunta, request.body.idTemplate);
+
+    response.redirect('/templates/listaTemplates');
 }
 
 // Para edición:
@@ -80,9 +81,12 @@ exports.getEditTemplate = (request, response, next) => {
         }); 
 }
 
-exports.getTemplate = (request, response, next) => {
+exports.getTemplate = async (request, response, next) => {
+    console.log('obtiene el método GET');
     console.log(request.params.idTemplate);
     console.log(request.cookies);
+    const templatePreguntas = await BancoPreguntas.fetchPreguntasBanco(request.params.idTemplate);
+    console.log(templatePreguntas);
     Template.fetchOneTemplate(request.params.idTemplate)  // Por cada clase (lo verde) le pasas lo que arroja la función
         .then(([templates, fieldData]) => {
             request.session.templates = templates;        // Aquí pasamos los datos del template como variable de sesión
@@ -91,19 +95,17 @@ exports.getTemplate = (request, response, next) => {
             Preguntas.fetchAllPreguntas().then(([preguntas, fieldData]) => {
                 request.session.preguntas = preguntas;    // Aquí los de preguntas
                 console.log(preguntas);
-
-                BancoPreguntas.fetchPreguntasBanco(request.params.idTemplate).then(([bancopreguntas, fieldData])=> {
-                    response.render('editarTemplate', { // En la clases donde haces render pasas las variables de sesión, así ya se puede acceder a ellas en el .ejs
+                    response.render('currentTemplate', { // En la clases donde haces render pasas las variables de sesión, así ya se puede acceder a ellas en el .ejs
                         
-                        bancopreguntas: bancopreguntas,
+                        templatePreguntas: templatePreguntas,
                         templates: templates,
                         preguntas: preguntas,
                         email: request.session.email ? request.session.email : '',
-
+                        rol: request.session.idRol ? request.session.idRol : '',
+                        idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                        nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                        apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
                     })
-                }).catch(err => {
-                    console.log(err);
-                }); 
             })
         }).catch(err => {
             console.log(err);

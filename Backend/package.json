@@ -23,7 +23,12 @@
   "dependencies": {
     "ajax": "^0.0.4",
     "bcryptjs": "^2.4.3",
+<<<<<<< HEAD
     "chart.js": "^3.7.1",
+=======
+    "bootstrap-select": "^1.13.18",
+    "connect-flash": "^0.1.1",
+>>>>>>> 9959fb5536b5304e5b6cb85e7de2df0b84866d9a
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",
     "ejs": "^3.0.2",
