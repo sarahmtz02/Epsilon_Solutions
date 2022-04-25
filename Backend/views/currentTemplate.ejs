@@ -21,39 +21,6 @@
                 <input type="text" id="NombreTemplate" name="NombreTemplate" value="<%-template.NombreTemplate-%>" readonly/>
                 <br><br>
                 <%} %>
-<<<<<<< HEAD
-                
-                
-
-                    <label>A continuación las preguntas actuales del cuestionario: </label>
-                    <br>
-                    <div class="form-group w-100">
-
-                        <% for (let templatePregunta of templatePreguntas) { %>
-
-                        <form id="deletePregunta" action="/templates/deletePregunta=<%-templatePregunta.idPregunta-%>" method="POST">
-
-                            <% for (let template of templates) { %>
-                                <input type="hidden" value="<%-template.idTemplate-%>" name="idTemplate" />
-                            <%} %>
-
-                            <input type="hidden" value="<%-template.idPregunta-%>" name="idPregunta" />
-                            <input type="text" class="form-control input-lg" id="inputlg" readonly value="<%-templatePregunta.descPregunta-%>" name="currentPregunta"/>
-                            <button type="submit" class="btn btn-danger w-100" ><span><i class="bi bi-x-lg"></i> Eliminar Pregunta</span></button>
-                            <br>
-                            <br>
-
-                        </form>
-                        <%} %>
-                        </table>
-                        </div>
-                    <br>
-                    <br>
-                
-                <label>Escribe la nueva pregunta: </label>
-                <br>
-
-=======
                     <h4>A continuación las preguntas actuales del cuestionario: </h4>
                     <br>
                     <div class="form-group w-100">
@@ -75,7 +42,6 @@
                 <h5>Añadir una nueva pregunta:</h5>
                 <label>Escribe la nueva pregunta: </label>
                 <br>
->>>>>>> JMMR
                 <form id="insertPregunta" action="/templates/template=<%-template.idTemplate-%>" method="POST">
                     <input type="text" class="form-control input-lg" id="insertP" name="nuevapregunta" onkeydown="ENABLE_BTN()"></input>
                     <br>

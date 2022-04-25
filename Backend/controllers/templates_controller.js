@@ -50,8 +50,6 @@ exports.delete_pregunta = async (request, response, next) => {
     response.redirect('/templates/listaTemplates');
 }
 
-<<<<<<< HEAD
-=======
 exports.getEditPregunta = async (request, response, next) => {
     const tipoP = BancoPreguntas.getTipoPregunta(request.params.idPregunta);
     Preguntas.fetchOnePregunta(request.params.idPregunta).then(([preguntas, fieldData])=> {
@@ -78,7 +76,6 @@ exports.updatePregunta = async (request, response) => {
     response.redirect('/templates/listaTemplates');
 }
 
->>>>>>> JMMR
 // Para edición:
 
 exports.getEditTemplate = (request, response, next) => {

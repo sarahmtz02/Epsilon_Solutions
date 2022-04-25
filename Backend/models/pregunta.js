@@ -11,13 +11,10 @@ module.exports = class Preguntas{
         return db.execute('SELECT * FROM Pregunta');
     }
 
-<<<<<<< HEAD
-=======
     static fetchOnePregunta(idPregunta) {
         return db.execute('SELECT * FROM Pregunta WHERE idPregunta = ?', [idPregunta]);
     }
 
->>>>>>> JMMR
     save() {
         return db.execute('INSERT INTO Pregunta (descPregunta, tipoPregunta) VALUES (?, ?)',
         [this.descPregunta, this.tipoPregunta]
@@ -32,11 +29,8 @@ module.exports = class Preguntas{
         return db.execute('SELECT *  FROM Pregunta WHERE idPregunta = (?)',[this.id]
         );
     }
-<<<<<<< HEAD
-=======
 
     static updatePregunta(descPregunta, idPregunta, tipoPregunta){
         return db.execute('CALL update_pregunta (?, ?, ?)', [descPregunta, idPregunta, tipoPregunta]);
     }
->>>>>>> JMMR
 }

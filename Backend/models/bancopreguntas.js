@@ -75,11 +75,8 @@ module.exports = class BancoPreguntas{
             return 0;
         });
     }
-<<<<<<< HEAD
-=======
 
     static getTipoPregunta(idPregunta){
         return db.execute('SELECT tipoPregunta FROM BancoPreguntas WHERE fk_idPregunta = ?', [idPregunta])
     }
->>>>>>> JMMR
 }
