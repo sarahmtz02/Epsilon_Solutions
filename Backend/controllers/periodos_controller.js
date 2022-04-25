@@ -8,11 +8,14 @@ moment.locale('es-mx');
 // PERIODO EVALUACION //
 
 exports.root = (request, response, next) => {
+    const date = new Date();
+    const currentDate = new Date(date.toDateString());
     Periodo.fetchAllPeriodos()
         .then(([rows, fieldData]) => {
             response.render('periodos', {
                 periodos: rows,
                 moment: moment,
+                fecha: currentDate,
                 email: request.session.email ? request.session.email : '',
                 rol: request.session.idRol ? request.session.idRol : '',
                 idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
@@ -29,10 +32,16 @@ exports.root = (request, response, next) => {
 
 exports.get_nuevo_periodo = (request, response, next) => {
     console.log('obtiene el método GET')
+    const date = new Date();
+    const currentDate = new Date(date.toDateString());
+    const currentPeriodo = Periodo.getPeriodo();
+    console.log(currentDate);
     Periodo.fetchAllPeriodos()
         .then(([rows, fieldData]) => {
             response.render('nuevoPeriodo', {
                 periodos: rows,
+                fecha: currentDate,
+                currentPeriodos: currentPeriodo,
                 moment: moment,
                 email: request.session.email ? request.session.email : '',
                 rol: request.session.idRol ? request.session.idRol : '',

@@ -71,7 +71,9 @@ exports.getMentorados = async (request, response, next) => {
             warning : request.flash('warning'),
             success : request.flash('success'),
         })
-    })
+    }).catch(err => {
+        console.log(err);
+    }); 
 }
 
 exports.getEvalMentorado = async (request, response, next) => {
@@ -89,7 +91,9 @@ exports.getEvalMentorado = async (request, response, next) => {
             email: request.session.email ? request.session.email : '',
             moment: moment,
         })
-    })
+    }).catch(err => {
+        console.log(err);
+    }); 
 }
 
 exports.getResCuest = async (request, response, next) => {
@@ -121,12 +125,14 @@ exports.getResCuest = async (request, response, next) => {
                     moment: moment,
                 })
             })
-        })
+        }).catch(err => {
+            console.log(err);
+        }); 
     })
 }
 
 exports.nuevaObservacion = async (request, response, next) => {
-    let newObv = new Observacion (request.body.fk_idEvaluador, request.body.fk_idEvaluado, 
+    let newObv = new Observacion (request.body.fk_idEvaluado, request.session.idEmpleado, 
         request.body.fk_idPeriodo, request.body.descObservacion);
 
     await newObv.nuevaObservacion().then(() => {
@@ -134,4 +140,59 @@ exports.nuevaObservacion = async (request, response, next) => {
         response.redirect('/mentees/misMentorados')
     })
     
+}
+
+exports.misObservaciones = async (request, response, next) => {
+
+    Observacion.getObservaciones(request.session.idEmpleado, request.params.idMentorado).then(([observaciones, fieldData]) => {
+        console.log(observaciones);
+        response.render('misObservaciones', {
+            observaciones: observaciones,
+            rol: request.session.idRol ? request.session.idRol : '',
+            idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+            nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+            apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+            email: request.session.email ? request.session.email : '',
+            moment: moment,
+        })
+    }).catch(err => {
+        console.log(err);
+    }); 
+}
+
+exports.deleteObservacion = async (request, response, next) => {
+    console.log('DELETE');
+
+    await Observacion.deleteObservacion(request.body.idObservacion);
+
+    request.flash('success', 'Se ha eliminado la observación exitosamente')
+    response.redirect('/mentees/misMentorados')
+}
+
+exports.getOneObservacion = async (request, response, next) => {
+    console.log('GET FOR EDIT');
+
+    Observacion.getOneObservacion(request.params.idObservacion).then(([observaciones, fieldData]) => {
+        response.render('editObservacion', {
+            observaciones: observaciones,
+            rol: request.session.idRol ? request.session.idRol : '',
+            idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+            nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+            apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+            email: request.session.email ? request.session.email : '',
+            moment: moment,
+        })
+    }).catch(err => {
+        console.log(err);
+    }); 
+}
+
+exports.updateObservacion = async (request, response, next) => {
+    console.log(request.params.idObservacion);
+    console.log(request.body.descObservacion)
+
+    await Observacion.updateObservacion(request.body.descObservacion, request.params.idObservacion).then(() => {
+        request.flash('success', 'Se ha actualizado la observación exitosamente')
+        response.redirect('/mentees/misMentorados')
+    })
 }

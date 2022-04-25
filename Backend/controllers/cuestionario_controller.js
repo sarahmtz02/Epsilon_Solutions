@@ -54,7 +54,7 @@ exports.nuevoCuestionario = async (request,response,next) => {
     let isArray = Array.isArray(evaluadores);
     console.log(request.body.periodo);
     console.log(request.session.idEmpleado);
-
+    let unexpectedError = false;
     let tempNiv = 0;
 
     if (lvlEv <= 1.5 && lvlEv >= 1.1) {
@@ -71,13 +71,16 @@ exports.nuevoCuestionario = async (request,response,next) => {
     console.log('template nivel:')
     console.log(tempNiv);
 
-    if (numRequests == 5) {
-        request.flash('warning', 'Has llegado al límite de solicitudes por periodo')
-        response.redirect('/evaluaciones');
+    if (numRequests < 1) {
+        request.flash('warning', 'Por favor selecciona al menos un evaluador')
     }
 
-    if (isArray && ((numRequests + evaluadores.length) <= 7)) {
+    if (numRequests >= 5) {
+        request.flash('warning', 'Has llegado al límite de solicitudes por periodo')
+    }
 
+    if (isArray && ((numRequests + evaluadores.length) <= 5)) {
+        
         for await (let evaluador of evaluadores ) {
             // Proceso para crear un nuevo cuestionario: //
             const evaluadorId = await Cuestionario.getIdEvaluador(evaluador);
@@ -120,8 +123,14 @@ exports.nuevoCuestionario = async (request,response,next) => {
         }
     } else {
         console.log('error');
+        unexpectedError = true;
     }
-    request.flash('success', 'Se han enviado tus solicitudes con éxito')
+    if (unexpectedError == true) {
+        request.flash('warning', 'Ha ocurrido un error')
+    }
+    else {
+        request.flash('success', 'Se han enviado tus solicitudes con éxito')
+    }
     response.redirect('/evaluaciones')
 }
 

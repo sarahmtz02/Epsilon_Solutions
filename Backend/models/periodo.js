@@ -21,6 +21,7 @@ module.exports = class Periodo{
         [this.FechaInicio, this.FechaFin]
     );
     }
+
     static checkOverlap(FechaInicio, FechaFin){
         console.log('SELECT idPeriodo FROM PeriodoEvaluacion WHERE FechaInicio BETWEEN ? and ?');
         return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE FechaInicio BETWEEN ? and ?', 
@@ -31,5 +32,16 @@ module.exports = class Periodo{
             console.log(error);
             return 0;
         });;
+    }
+
+    // Obtiene el periodo más reciente
+    static getPeriodo() {
+        return db.execute('SELECT * FROM PeriodoEvaluacion ORDER BY idPeriodo DESC LIMIT 1;').then(([rows, fielData]) => {
+            return rows;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
     }
 }

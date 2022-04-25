@@ -12,22 +12,20 @@
 
     <div>
         <section class="section-card">
-
             <h1 id="principal">Periodos de Evaluación</h1>
             <h2>Agregar un nuevo periodo:</h2>
             <br>
-
             <form action="/periodos/nuevoPeriodo" method="POST">
                 <label for="FechaInicio">Fecha de Inicio: </label>
-                <input type="datetime-local" id="FechaInicio" name="FechaInicio" >
+                <input type="date" id="FechaInicio" name="FechaInicio" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>">
                 <br><br>
-
                 <label for="FechaFin">Fecha Fin: </label>
-                <input type="datetime-local" id="FechaFin" name="FechaFin" >
+                <input type="date" id="FechaFin" name="FechaFin" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>">
                 <br><br>
-
-                <button type="submit" class="btn btn-dark" id="btnRegPeriodo" onclick="checkDate()">Registrar</button>
+                <button type="submit" class="btn btn-outline-secondary" id="btnRegPeriodo" onclick="checkDate()">Registrar</button>
             </form>
+            <br>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
         </section>
     </div>
 </body>

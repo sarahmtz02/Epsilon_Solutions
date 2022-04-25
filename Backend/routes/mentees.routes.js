@@ -11,5 +11,10 @@ router.post('/nuevaObservacion', isAuth, menteesController.nuevaObservacion);
 router.get('/misMentorados', isAuth, menteesController.getMentorados);
 router.get('/id-mentorado=:idMentorado', isAuth, menteesController.getEvalMentorado);
 router.get('/evalMentee=:idCuestionario', isAuth, menteesController.getResCuest);
+router.get('/observaciones-id-mentorado=:idMentorado', isAuth, menteesController.misObservaciones);
+
+router.get('/editObservacion=:idObservacion', isAuth, menteesController.getOneObservacion);
+router.post('/editObservacion=:idObservacion', isAuth, menteesController.updateObservacion);
+router.post('/deleteObservacion=:idObservacion', isAuth, menteesController.deleteObservacion)
 
 module.exports = router;
