@@ -10,23 +10,6 @@
     <div class="main">
         <section class="section-card">
             <% for (let template of templates) { %>
-<<<<<<< HEAD
-                <h1 id="principal">Visualizar Template: </h1>
-                <hr class="db-hr">
-                <label for="NombreTemplate">Nombre del Template: </label>
-                <input type="text" id="NombreTemplate" name="NombreTemplate" value="<%-template.NombreTemplate-%>" />
-                <br><br>
-                <!-- Para los seleccionar las preguntas -->
-                <p>Este Template se compone de las siguientes preguntas: </p>
-                <br><br>
-                <% for (let pregunta of preguntas) { %>
-                    <li for="fk_idPregunta" readonly><%- pregunta.descPregunta -%></li>
-                    <br><br>
-                <%} %>
-                    
-
-            <%} %>
-=======
             <form action="/empleados/id-template=<%-template.idTemplate-%>" method="POST">
                 <h1 id="principal">Editar Template: </h1>
                 <hr class="db-hr">
@@ -50,7 +33,6 @@
                 
             <%} %>
                 <button type="submit">Guardar Template</button>
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
             </form>
         </section>
     </div>
