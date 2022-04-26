@@ -18,6 +18,7 @@ exports.listado = (request, response, next) => {
                 idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
                 nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
                 apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+                warning : request.flash('warning'),
                 success : request.flash('success'),
             })
         })
@@ -32,11 +33,18 @@ exports.post_preguntas = async (request, response, next) => {
     const idP = await BancoPreguntas.getNewIdPreg();
     console.log(idP)
     console.log(request.body.tipoPregunta)
-    let newBP = new BancoPreguntas (request.params.idTemplate, idP, request.body.nuevapregunta, request.body.tipoPregunta);
-    await newBP.save2();
 
-    request.flash('success', 'Se ha añadido la pregunta con éxito')
-    response.redirect('/templates/listaTemplates');
+    if (request.body.nuevapregunta == '') {
+        request.flash('warning', 'La pregunta debe de llevar un encabezado!')
+        response.redirect('/templates/listaTemplates');
+    } else {
+        let newBP = new BancoPreguntas (request.params.idTemplate, idP, request.body.nuevapregunta, request.body.tipoPregunta);
+    
+        await newBP.save2();
+
+        request.flash('success', 'Se ha añadido la pregunta con éxito')
+        response.redirect('/templates/listaTemplates');
+    }
 }
 
 exports.delete_pregunta = async (request, response, next) => {
@@ -70,10 +78,16 @@ exports.updatePregunta = async (request, response) => {
     console.log(request.params.idPregunta);
     console.log(request.body.descPregunta);
     console.log(request.body.tipoPregunta)
-    await Preguntas.updatePregunta(request.body.descPregunta, request.params.idPregunta, request.body.tipoPregunta);
 
-    request.flash('success', 'Se ha actualizado la pregunta con éxito')
-    response.redirect('/templates/listaTemplates');
+    if (request.body.descPregunta == '') {
+        request.flash('warning', 'La pregunta debe de llevar un encabezado!')
+        response.redirect('/templates/listaTemplates');
+    } else {
+        await Preguntas.updatePregunta(request.body.descPregunta, request.params.idPregunta, request.body.tipoPregunta);
+
+        request.flash('success', 'Se ha actualizado la pregunta con éxito')
+        response.redirect('/templates/listaTemplates');
+    }
 }
 
 // Para edición:

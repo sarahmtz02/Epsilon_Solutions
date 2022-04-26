@@ -43,7 +43,7 @@
                 <label>Escribe la nueva pregunta: </label>
                 <br>
                 <form id="insertPregunta" action="/templates/template=<%-template.idTemplate-%>" method="POST">
-                    <input type="text" class="form-control input-lg" id="insertP" name="nuevapregunta" onkeydown="ENABLE_BTN()"></input>
+                    <input type="text" class="form-control input-lg" id="insertP" name="nuevapregunta" onkeydown="ENABLE_BTN()" oninput="validate(this)"></input>
                     <br>
                     <label>Selecciona el tipo de pregunta: </label>
                     <br>
@@ -72,6 +72,13 @@
             document.getElementById('guardarP').disabled=false;
         }
     }
+    </script>
+
+    <script>
+        function validate(input){
+            if(/^\s/.test(input.value))
+                input.value = '';
+            }
     </script>
 
 
