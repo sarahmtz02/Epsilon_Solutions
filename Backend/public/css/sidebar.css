@@ -1,3 +1,11 @@
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+  
+
 .sidenav {
     height: 100%;
     width: 300px;
@@ -13,7 +21,8 @@
   .sidenav a {
     padding: 5px 8px 6px 25px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
+    text-align:right;
     color: #ffff;
     display: block;
   }
