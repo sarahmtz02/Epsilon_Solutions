@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+    <div>
+        <section class="section-card">
+            <% for (let template of templates) { %>
+                
+                <h1 id="principal">Visualizar Template: </h1>
+                <hr class="db-hr">
+                
+                <% for (let template of templates) { %>
+                <label for="NombreTemplate">Nombre del Template: </label>
+                <input type="text" id="NombreTemplate" name="NombreTemplate" value="<%-template.NombreTemplate-%>" readonly/>
+                <br><br>
+                <%} %>
+                    <h4>A continuación las preguntas actuales del cuestionario: </h4>
+                    <br>
+                    <div class="form-group w-100">
+                        <% for (let templatePregunta of templatePreguntas) { %>
+                        <form id="deletePregunta" action="/templates/deletePregunta=<%-templatePregunta.idPregunta-%>" method="POST">
+                            <% for (let template of templates) { %>
+                                <input type="hidden" value="<%-template.idTemplate-%>" name="idTemplate" />
+                            <%} %>
+                            <input type="hidden" value="<%-template.idPregunta-%>" name="idPregunta" />
+                            <input type="text" class="form-control input-lg" id="inputlg" readonly value="<%-templatePregunta.descPregunta-%>" name="currentPregunta"/>
+                            <br>
+                            <a href="/templates/editPregunta=<%- templatePregunta.idPregunta -%>" class = "btn btn-outline-secondary w-100">Modificar Pregunta</a>
+                            <button type="submit" class="btn btn-danger w-100" ><span><i class="bi bi-x-lg"></i> Eliminar Pregunta</span></button>
+                            <br>
+                            <br>
+                        </form>
+                        <%} %>
+                    </div>
+                <h5>Añadir una nueva pregunta:</h5>
+                <label>Escribe la nueva pregunta: </label>
+                <br>
+                <form id="insertPregunta" action="/templates/template=<%-template.idTemplate-%>" method="POST">
+                    <input type="text" class="form-control input-lg" id="insertP" name="nuevapregunta" onkeydown="ENABLE_BTN()"></input>
+                    <br>
+                    <label>Selecciona el tipo de pregunta: </label>
+                    <br>
+                    <select name="tipoPregunta" id="tipoPregunta" class="form-select">
+                        <option selected="selected" value="1">Pregunta de Texto</option>
+                        <option value="2">Pregunta Sí/No</option>
+                        <option value="3">Pregunta de Calificación (1 - 5)</option>
+                    </select>
+                    <button id="guardarP"  type="submit" class="btn btn-primary w-100">Añadir nueva pregunta</button>
+                </form>
+
+            <%} %>
+            </form>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
+        </section>
+    </div>
+
+    <script>window.onload = function() {
+        document.getElementById('guardarP').disabled = true; 
+    }
+    function ENABLE_BTN() {
+        var EN=document.getElementById('insertP').value;
+        if(EN=='') {
+            document.getElementById('guardarP').disabled=true;
+        } else {
+            document.getElementById('guardarP').disabled=false;
+        }
+    }
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<%- include('templates/footer.ejs') %>

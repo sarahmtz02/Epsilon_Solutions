@@ -1,40 +1,51 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/css/sidebar.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/buttons.css" />
 <link rel="stylesheet" href="/css/section.css" />
-<%-moment.locale('es-mx')-%>
 
-<%- include('templates/sidebar.ejs') %>
-
-<body style="background: url('/img/bg-sire.png');">
-
-    <div class="main">
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+    <div>
         <section class="section-card">
+            <% if (warning_empalme != '') { %>
+                <div class="alert alert-warning" role="alert">
+                    <strong>Alerta: </strong><%- warning_empalme -%>
+                </div>
+            <%} %>
+            <% if (success != '') { %>
+                <div class="alert alert-success" role="alert">
+                    <strong>Atención! </strong><%- success -%>
+                </div>
+            <%} %>
             <h2 align="center">Periodos de Evaluación:</h2>
             <hr class="db-hr">
+            <a href="/periodos/nuevoPeriodo"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo Periodo</button></a>
+            <br><br>
             <% if (periodos.length > 0) { %>
-                <% for (let periodo of periodos) { %>
-                    <div class = "row">
-                        
-                        <div class="card mb-3" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Periodo del <%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%> al <%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></h5>
-                                        <p class="card-text">Fecha de Inicio: <%- moment.tz(periodo.FechaInicio, 'UTC').format("YYYY-MM-DD")%></p>
-                                        <p class="card-text">Fecha de finalización: <%- moment.tz(periodo.FechaFin, 'UTC').format("YYYY-MM-DD")%></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <%} %>
-
+                <table class="table table-striped centered">
+                    <tr>
+                        <th>Periodo:</th>
+                        <th>Fecha Inicio:</th>
+                        <th>Fecha de Finalización:</th>
+                        <th>Modificar:</th>
+                    </tr>
+                    <% for (let periodo of periodos) { %>
+                    <tr>
+                        <td><%- periodo.idPeriodo -%></td>
+                        <td><%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%></td>
+                        <td><%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></td>
+                        <td><a href="/periodos/editPeriodo=<%- periodo.idPeriodo -%>" class = "btn btn-outline-secondary btn-sm">Modificar Periodo</a></td>
+                    </tr>
+                    <%} %>
+                </table>
             <%} else { %>
                 <p>Por ahora, no hay ningún periodo de evaluación activo.</p>
-            <% } %> 
-            <a href="/empleados/nuevoPeriodo"><button type="button" class="btn btn-dark">Registrar un nuevo Periodo</button></a>
+            <% } %>
+            <br>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
         </section>
     </div>
-</body>
+<%- include('templates/footer.ejs') %>
