@@ -2,17 +2,7 @@ const express = require('express');
 const router = express.Router();
 const isAuth = require('../util/is-auth.js');
 
-<<<<<<< HEAD
-// -  Controladores:
-const empleadosController = require('../controllers/empleados_controller');
-const loginController = require('../controllers/login_controller');
-const menteesController = require('../controllers/mentees_controller');
-const periodosController = require('../controllers/periodos_controller');
-const templatesController = require('../controllers/templates_controller');
-const preguntasController = require('../controllers/preguntas_controller');
-=======
 const empleadosController = require('../controllers/user_controller');
->>>>>>> ce3586c295d94382e621ce97a88f2bdf1e445def
 
 router.get('/login', empleadosController.get_login);
 router.post('/login', empleadosController.login);

@@ -78,11 +78,7 @@ exports.updatePregunta = async (request, response) => {
 
 // Para edición:
 
-<<<<<<< HEAD
-exports.getEditTemplate = (request, response, next) => {
-=======
 exports.getTemplate = (request, response, next) => {
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
     console.log(request.params.idTemplate);
     console.log(request.cookies);
     Template.fetchOneTemplate(request.params.idTemplate)
@@ -91,11 +87,7 @@ exports.getTemplate = (request, response, next) => {
             const templates = rows;
             console.log(templates);
             Preguntas.fetchAllPreguntas().then(([rows])=> {
-<<<<<<< HEAD
-                response.render('editarTemplate', {
-=======
                 response.render('template', {
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
                     preguntas: rows,
                     templates: templates,
                     email: request.session.email ? request.session.email : '',
@@ -106,78 +98,3 @@ exports.getTemplate = (request, response, next) => {
             console.log(err);
         }); 
 }
-<<<<<<< HEAD
-
-exports.getTemplate = async (request, response, next) => {
-    console.log('obtiene el método GET');
-    console.log(request.params.idTemplate);
-    console.log(request.cookies);
-    const templatePreguntas = await BancoPreguntas.fetchPreguntasBanco(request.params.idTemplate);
-    console.log(templatePreguntas);
-    Template.fetchOneTemplate(request.params.idTemplate)  // Por cada clase (lo verde) le pasas lo que arroja la función
-        .then(([templates, fieldData]) => {
-            request.session.templates = templates;        // Aquí pasamos los datos del template como variable de sesión
-            console.log(templates);
-
-            Preguntas.fetchAllPreguntas().then(([preguntas, fieldData]) => {
-                request.session.preguntas = preguntas;    // Aquí los de preguntas
-                console.log(preguntas);
-                    response.render('currentTemplate', { // En la clases donde haces render pasas las variables de sesión, así ya se puede acceder a ellas en el .ejs
-                        
-                        templatePreguntas: templatePreguntas,
-                        templates: templates,
-                        preguntas: preguntas,
-                        email: request.session.email ? request.session.email : '',
-                        rol: request.session.idRol ? request.session.idRol : '',
-                        idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
-                        nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
-                        apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
-                    })
-            })
-        }).catch(err => {
-            console.log(err);
-        }); 
-}
-
-
-// Para guardar las preguntas en la Template:
-
-exports.writePreguntas = async (request, response, next) => {
-
-    console.log('Guardar preguntas en Template');
-    console.log(request.body);
-
-    let preguntas = request.session.preguntas;
-    console.log(request.params.idTemplate)
-    console.log('Prueba')
-    console.log(request.session.preguntas);
-    var total = preguntas.length;
-    console.log(preguntas.length);
-
-    //Para obtener los ids de cada pregunta
-    /* Recorro cada cuestinario para obtener sus ids preguntas y los guardo en 
-        un array
-    */
-
-    var idP = [];
-
-    for (i = 0; i < preguntas.length; i++ ) {
-        idP.push(preguntas[i].idPregunta);
-    }
-
-    console.log(idP);
-
-    try {
-        //Ciclo for para realizar insert de preguntas y respuestas
-        for (i = 0; i < total; i++ ) {
-            let res = new BancoPreguntas (request.params.idTemplate, idP[i])
-            await res.save();
-        }
-        response.redirect('/listaTemplates');
-
-    } catch(error) {
-        console.log(error)
-    }
-}  
-=======
->>>>>>> 56c6eaf44418b4869c79318eab930f0dccf9c9bc
