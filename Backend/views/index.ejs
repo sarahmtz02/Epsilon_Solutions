@@ -17,23 +17,23 @@
                 <hr class="db-hr">
                 <table class="table">
                     <tr>
-                        <th class="bg-danger text-white">Dimensiones</th>
-                        <th class="bg-primary text-white">Indicador</th>
+                        <th style="background-color: rgba(159,73,110); color: white; font-family:  Helvetica, "Helvetica Neue", Arial, sans-serif;" >Dimensiones</th>
+                        <th style="background-color: rgb(244, 67, 54);color: white; font-family:  Helvetica, "Helvetica Neue", Arial, sans-serif;" >Indicador</th>
                     </tr>
                     <tr>
-                        <td>People: </td>
+                        <td>People </td>
                         <td id="nPeople"><%- nivel_P -%></td>
                     </tr>
                     <tr>
-                        <td>Craft: </td>
+                        <td>Craft </td>
                         <td id="nCraft"><%- nivel_C -%></td>
                     </tr>
                     <tr>
-                        <td>Business: </td>
+                        <td>Business </td>
                         <td id="nBusiness"><%- nivel_B -%></td>
                     </tr>
                     <tr>
-                        <td>Niveral Overall: </td>
+                        <td>Nivel Overall </td>
                         <td id="nivOverall"><%- Math.min(nivel_P+1, nivel_C, nivel_B) -%></td>
                     </tr>
                 </table>
