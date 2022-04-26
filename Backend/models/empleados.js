@@ -74,29 +74,14 @@ module.exports = class Empleado {
             }); 
     }
 
-    async update(idEmpleado){
-        return bcrypt.hash(this.password, 12)
+    static updateEmpleado(idEmpleado, nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivBusiness, nivCraft, 
+        nivOverall, puesto, equipo, email, password, fk_idChapter, fk_idRolJer){
+        return bcrypt.hash(password, 12)
         .then((password_cifrado)=>{
-        return db.execute('UPDATE Empleado SET nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,password=?,fk_idChapter=?,fk_idRolJer=?,isActive=? WHERE idEmpleado=?',
-        [this.nombre,
-            this.apellidoP,
-            this.apellidoM,
-            this.antiguedad,
-            this.nivPeople,
-            this.nivCraft,
-            this.nivBusiness,
-            this.nivOverall,
-            this.puesto,
-            this.equipo,
-            this.email,
-            password_cifrado,
-            this.fk_idChapter,
-            this.fk_idRolJer,
-            this.isActive, 
-            idEmpleado]);
-        }).catch((error)=>{
-            console.log(error);
-        }); 
+            return db.execute('UPDATE Empleado SET nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,password=?,fk_idChapter=?,fk_idRolJer=? WHERE idEmpleado=?',
+            [nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivBusiness, nivCraft, 
+                nivOverall, puesto, equipo, email, password_cifrado, fk_idChapter, fk_idRolJer, idEmpleado])
+        })
     }
 
     static findOne(email) {

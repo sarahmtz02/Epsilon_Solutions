@@ -28,7 +28,7 @@
                             </h5>
                                 <% if (feedback.tipoPregunta == '1' || feedback.tipoPregunta == '0' || feedback.tipoPregunta == null) {%>
                                     <div class="mb-3">
-                                        <textarea class="form-control" name=<%= nombre %> id=<% feedback.idPregunta %> rows="3"></textarea>
+                                        <textarea class="form-control" name=<%= nombre %> id=<% feedback.idPregunta %> rows="3" oninput="validate(this)"></textarea>
                                     </div>
 
                                 <%} else if (feedback.tipoPregunta == '2') { %>
@@ -45,11 +45,11 @@
                                     </div>
                                     <%} else if (feedback.tipoPregunta == '3') { %>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="1" name=<%= nombre %> id=<% feedback.idPregunta %> >
+                                        <input class="form-check-input" type="radio" value="1" name=<%= nombre %> id=<% feedback.idPregunta %>>
                                         <label class="form-check-label" for=<% feedback.idPregunta %>>1</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="2" name=<%= nombre %> id=<% feedback.idPregunta %> >
+                                        <input class="form-check-input" type="radio" value="2" name=<%= nombre %> id=<% feedback.idPregunta %>>
                                         <label class="form-check-label" for=<% feedback.idPregunta %>>2</label>
                                     </div>
                                     <div class="form-check form-check-inline">
@@ -75,6 +75,13 @@
             </section>
         </form>
     </div>
+
+    <script>
+        function validate(input){
+            if(/^\s/.test(input.value))
+                input.value = '';
+            }
+    </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>

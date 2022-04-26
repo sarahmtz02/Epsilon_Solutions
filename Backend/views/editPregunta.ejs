@@ -16,7 +16,7 @@
                 <br>
                 <% for (let pregunta of preguntas) { %>
                 <form id="insertPregunta" action="/templates/editPregunta=<%- pregunta.idPregunta -%>" method="POST">
-                    <input type="text" class="form-control input-lg" id="insertP" name="descPregunta" value ="<%- pregunta.descPregunta -%>" onkeydown="ENABLE_BTN()"></input>
+                    <input type="text" class="form-control input-lg" id="insertP" name="descPregunta" value ="<%- pregunta.descPregunta -%>" onkeydown="ENABLE_BTN()" oninput="validate(this)"></input>
                 <% } %>
                     <br>
                     <label>Selecciona el tipo de pregunta: </label>
@@ -45,6 +45,13 @@
         }
     }
     </script>
+
+<script>
+    function validate(input){
+        if(/^\s/.test(input.value))
+            input.value = '';
+        }
+</script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
