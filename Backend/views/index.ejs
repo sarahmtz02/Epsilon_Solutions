@@ -21,38 +21,25 @@
                         <th style="background-color: rgb(244, 67, 54);color: white; font-family:  Helvetica, "Helvetica Neue", Arial, sans-serif;" >Indicador</th>
                     </tr>
                     <tr>
-                        <td>People </td>
+                        <td><strong>People</strong> </td>
                         <td id="nPeople"><%- nivel_P -%></td>
                     </tr>
                     <tr>
-                        <td>Craft </td>
+                        <td><strong>Craft</strong> </td>
                         <td id="nCraft"><%- nivel_C -%></td>
                     </tr>
                     <tr>
-                        <td>Business </td>
+                        <td><strong>Business</strong> </td>
                         <td id="nBusiness"><%- nivel_B -%></td>
                     </tr>
                     <tr>
-                        <td>Nivel Overall </td>
+                        <td><strong>Nivel Overall</strong> </td>
                         <td id="nivOverall"><%- Math.min(nivel_P+1, nivel_C, nivel_B) -%></td>
                     </tr>
                 </table>
                 <br><br>
             </section>
         </main>
-
-    <div class="secondary">
-    <aside>
-        <section class="section-dash-aside">
-            <h1 id="principal" align="center">Boletín</h1>
-            <hr class="db-hr">
-        </section>
-        <section class="section-dash-aside">
-            <h1 id="principal" align="center">¿Cómo te sientes el día de hoy?</h1>
-            <hr class="db-hr">
-        </section>
-    </aside>
-    </div>
 
 <%- include('templates/footer.ejs') %>
 

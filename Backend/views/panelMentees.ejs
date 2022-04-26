@@ -45,9 +45,7 @@
                 </div>
             </div>
             <br>
-            <label>Agrega un comentario a la asignación: </label>
-            <input type="text" class="form-control input-lg" id="inputlg" name="descAsignacion"></input>
-            <br>
+
             <button type="submit" class="btn btn-primary w-100">Asignar</button>
         </form>
         <br><br>
@@ -57,16 +55,14 @@
             <tr>
                 <th>Nombre del Mentorado:</th>
                 <th>Nivel:</th>
-                <th>Asignación:</th>
-                <th>Periodo:</th>
+                <th>Nombre del Chapter Lead Assistant/ Chapter Lead:</th>
             </tr>
             <tbody>
                 <% for (let dataMentee of dataMentees) { %>
                 <tr>
                     <td><%- dataMentee.nombre -%> <%- dataMentee.apellidoP -%> <%- dataMentee.apellidoM -%></td>
                     <td><%- dataMentee.nivOverall -%></td>
-                    <td><%- dataMentee.descAsignacion -%></td>
-                    <td><%- moment.tz(dataMentee.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(dataMentee.FechaFin, 'UTC').format("LL") -%></td>
+                    <td><%- dataMentee.mentor -%></td>
                 </tr>
                 <% } %>
             </tbody>
