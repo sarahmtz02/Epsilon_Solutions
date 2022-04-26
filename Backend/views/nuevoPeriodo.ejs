@@ -1,31 +1,31 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" href="/css/sidebar.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/buttons.css" />
 <link rel="stylesheet" href="/css/section.css" />
-<%-moment.locale('es-mx')-%>
 
-<%- include('templates/sidebar.ejs') %>
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
 
-<body style="background: url('/img/bg-sire.png');">
-    <div class="main">
+
+    <div>
         <section class="section-card">
-
             <h1 id="principal">Periodos de Evaluación</h1>
             <h2>Agregar un nuevo periodo:</h2>
             <br>
-
-            <form action="/empleados/nuevoPeriodo" method="POST">
+            <form action="/periodos/nuevoPeriodo" method="POST">
                 <label for="FechaInicio">Fecha de Inicio: </label>
-                <input type="datetime-local" id="FechaInicio" name="FechaInicio" >
+                <input type="date" id="FechaInicio" name="FechaInicio" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>">
                 <br><br>
-
                 <label for="FechaFin">Fecha Fin: </label>
-                <input type="datetime-local" id="FechaFin" name="FechaFin" >
+                <input type="date" id="FechaFin" name="FechaFin" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>">
                 <br><br>
-
-                <button type="submit" class="btn btn-dark" id="btnRegPeriodo" onclick="checkDate()">Registrar</button>
+                <button type="submit" class="btn btn-outline-secondary" id="btnRegPeriodo" onclick="checkDate()">Registrar</button>
             </form>
+            <br>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
         </section>
     </div>
 </body>
@@ -52,3 +52,5 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<%- include('templates/footer.ejs') %>
