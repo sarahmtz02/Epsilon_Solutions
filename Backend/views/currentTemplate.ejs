@@ -17,6 +17,8 @@
                 <hr class="db-hr">
                 
                 <% for (let template of templates) { %>
+                    <a href="/templates/listaTemplates"><button type="button" class="btn-navigation">Regresar a lista de plantillas</button></a>
+                    <br> <br>
                 <label for="NombreTemplate">Nombre del Template: </label>
                 <input type="text" id="NombreTemplate" name="NombreTemplate" value="<%-template.NombreTemplate-%>" readonly/>
                 <br><br>
@@ -52,14 +54,12 @@
                         <option value="2">Pregunta Sí/No</option>
                         <option value="3">Pregunta de Calificación (1 - 5)</option>
                     </select>
-                    <button id="guardarP"  type="submit" class="btn btn-primary w-100">Añadir nueva pregunta</button>
+                    <button id="guardarP"  type="submit" class="btn-normal w-100">Añadir nueva pregunta</button>
                 </form>
 
             <%} %>
             </form>
-           
-            <a href="/templates/listaTemplates"><button type="button" class="btn btn-dark">Regresar al lista de plantillas</button></a>
-            <a href="/dashboard"><button type="button" class="btn btn-dark">Regresar al dashboard</button></a>
+            <a href="#principal"><button type="button" class="btn-navigation">Regresar arriba</button></a>
         </section>
     </div>
 

@@ -23,11 +23,11 @@
                 <label for="FechaFin">Fecha Fin: </label>
                 <input type="date" name = "FechaFin" value="<%- moment(periodo.FechaFin).utc().format("YYYY-MM-DD"); -%>" id="FechaFin" name="FechaFin" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>">
                 <br><br>
-                <button type="submit" class="btn btn-outline-secondary" id="btnRegPeriodo" onclick="checkDate()">Modificar</button>
+                <button type="submit" class="btn-normal" id="btnRegPeriodo" onclick="checkDate()">Modificar</button>
             </form>
             <% } %>
             <br>
-            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
+            <a href="/dashboard"><button type="button" class="btn-navigation">Regresar al dashboard</button></a>
         </section>
     </div>
 </body>
