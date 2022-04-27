@@ -46,10 +46,10 @@
                                             <p class="card-text">Disponible del: <%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%> al <%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></p>
                                             <% if (cuestionario.isAnswered == 0){ %>
                                                 <p class="card-text">Status de evaluación: <strong>Sin Contestar</strong></p>
-                                                <a href="/evaluacion/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn btn-dark">Contestar</label></a>
+                                                <a href="/evaluacion/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn-normal">Contestar</label></a>
                                             <% } else { %>
                                                 <p class="card-text">Status de evaluación: <strong>Contestada</strong></p>
-                                                <button type="button" class="btn btn-secondary btn-lg">Contestar</button>
+                                                <button type="button" class="btn-disabled" disabled>Completado</button>
                                             <%} %>
                                         </div>
                                     </div>
@@ -62,7 +62,9 @@
                     </div>
                 </div>
             </div>
-            <br><br>
+            <br>
+            <a href="#principal"><button type="button" class="btn-navigation">Regresar arriba</button></a>
+
             <!-- Para solicitar ser evaluado (asignación de evaluadores) -->
             <% if ((periodo.FechaInicio <= fecha) && (periodo.FechaFin >= fecha) && (cuestionarios.length < 5))  { %>
             <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#aSolicitar" aria-expanded="false" aria-controls="aSolicitar">Solicitar evaluación: </button>
@@ -78,8 +80,11 @@
                                     <% } %>
                                 </select>
                                 <button type="submit" class="btn-normal">Enviar</button>
+
+            
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>
