@@ -1,6 +1,6 @@
 const db = require('../util/database');
 
-module.exports = class Mentee{
+module.exports = class Mentee {
     constructor(nuevo_fk_idLead, nuevo_idMentee, nueva_descAsignacion, nuevo_fk_idPeriodo) {
         this.fk_idLead = nuevo_fk_idLead;
         this.idMentee = nuevo_idMentee;
@@ -16,8 +16,12 @@ module.exports = class Mentee{
     // Inserta un nuevo registro a la tabla Mentee
     save() {
         return db.execute('INSERT INTO Mentees (fk_idLead, idMentee, descAsignacion, fk_idPeriodo) VALUES (?, ?, ?, ?)',
-        [this.fk_idLead, this.idMentee, this.descAsignacion, this.fk_idPeriodo]
-    );
+            [this.fk_idLead, this.idMentee, this.descAsignacion, this.fk_idPeriodo]
+        );
+    }
+
+    static fetchMentores() {
+        return db.execute('SELECT fk_idLead FROM Mentees m')
     }
 
     // Obtiene los mentores

@@ -47,6 +47,7 @@ exports.fetchMentees = async (request, response, next) => {
                     warning : request.flash('warning'),
                     success : request.flash('success'),
                 })
+
             }).catch(err => {
                 console.log(err);
             }); 
@@ -165,7 +166,7 @@ exports.deleteObservacion = async (request, response, next) => {
 
     await Observacion.deleteObservacion(request.body.idObservacion);
 
-    request.flash('success', 'Se ha eliminado la observación exitosamente')
+    request.flash('Éxito', 'Se ha eliminado la observación exitosamente')
     response.redirect('/mentees/misMentorados')
 }
 
