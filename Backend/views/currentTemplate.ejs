@@ -13,7 +13,7 @@
         <section class="section-card">
             <% for (let template of templates) { %>
                 
-                <h1 id="principal">Visualizar Template: </h1>
+                <h1 id="principal">Visualizar Template</h1>
                 <hr class="db-hr">
                 
                 <% for (let template of templates) { %>
@@ -21,7 +21,7 @@
                 <input type="text" id="NombreTemplate" name="NombreTemplate" value="<%-template.NombreTemplate-%>" readonly/>
                 <br><br>
                 <%} %>
-                    <h4>A continuación las preguntas actuales del cuestionario: </h4>
+                    <h4>A continuación las preguntas actuales del cuestionario</h4>
                     <br>
                     <div class="form-group w-100">
                         <% for (let templatePregunta of templatePreguntas) { %>
@@ -58,8 +58,8 @@
             <%} %>
             </form>
            
-            <a href="/templates/listaTemplates"><button type="button" class="btn btn-outline-dark">Regresar al lista de plantillas</button></a>
-            <a href="/dashboard"><button type="button" class="btn btn-outline-dark">Regresar al dashboard</button></a>
+            <a href="/templates/listaTemplates"><button type="button" class="btn btn-dark">Regresar al lista de plantillas</button></a>
+            <a href="/dashboard"><button type="button" class="btn btn-dark">Regresar al dashboard</button></a>
         </section>
     </div>
 
