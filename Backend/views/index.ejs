@@ -1,0 +1,102 @@
+<%- include('templates/sidebarMain.ejs') %>
+<!-- Si es CL o CLA despliega lo siguiente: -->
+
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+
+<%- include('templates/sidebarEnd.ejs') %>
+
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/css/section.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+
+<%if(rol == 2 || rol == 1 ){ %>
+            <section class="section-dash-main" align="center">
+                <h1 id="principal">Resumen de Estado</h1>
+                <div class="canvas-container" >
+                    <canvas id="graficaD" width="180" height="200"></canvas>
+                </div>
+            </section>
+<%}else{ if(rol == 3){ %>
+            <section class="section-dash-main" align="center">
+                <h1 id="principal">Resumen de Estado</h1>
+                <div class="canvas-container" >
+                    <canvas id="graficaD" width="150" height="150"></canvas>
+                </div>
+                <div  class="canvas-container">
+                    <canvas id="grafica" id="graficaD" width="150" height="150"></canvas>
+                </div>
+            </section>
+            <%} }%>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+    function niveles() {
+        const $graficaD = document.querySelector("#graficaD");
+        const data = {
+            labels: [
+                'People',
+                'Business',
+                'Crafts'
+            ],
+            datasets: [{
+                    label: 'Mis niveles',
+                    data: [<%= nivel_P %>, <%= nivel_B %>, <%= nivel_C %>],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                }]
+        };
+        new Chart($graficaD, {
+                type: 'radar',
+                data: data,
+                options: {
+                    elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                    }
+                },
+        });
+    };
+    console.log(<%= nivel_P %>);
+    niveles();
+    </script>
+    <%if(rol == 3){ %>
+    <script>
+        const $grafica = document.querySelector("#grafica");
+        const data = {
+            labels: [
+                'Contestados',
+                'No contestados'
+            ],
+            datasets: [{
+                label: 'Cuestionarios contestados',
+                data: [<%= answered %>,<%= notanswered %>,],
+                backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)'
+                ],
+                hoverOffset: 4
+            }]
+            };
+
+            new Chart($grafica, {
+                type: 'pie',
+                data: data,
+            });
+
+    </script>
+    <%}%>
+<%- include('templates/footer.ejs') %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>

@@ -1,0 +1,43 @@
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<div>
+    <section class="section-card">
+        <h1 id="principal">Buen día, <%- nombreSesion %> <%- apellidoPSesion %> </h1>
+        <hr class="db-hr">
+        <% if (cuestCompas.length > 0) { %>
+        <h3>Estas son las evaluaciones de tus compañeros hacia a ti:</h3>
+        <table class="table table-striped" class="centered">
+            <tr>
+                <th>Evaluador:</th>
+                <th>Periodo:</th>
+                <th>Evaluación:</th>
+            </tr>
+            <tbody>
+                <% for (let cuestCompa of cuestCompas) { %>
+                <tr>
+                    <td><%- cuestCompa.nombre -%> <%- cuestCompa.apellidoP -%> <%- cuestCompa.apellidoM -%></td>
+                    <td><%- moment.tz(cuestCompa.FechaInicio, 'UTC').format("LL") -%> al <%- moment.tz(cuestCompa.FechaFin, 'UTC').format("LL") -%></td>
+                    <td><a href = "/empleados/evalCompanero=<%- cuestCompa.idCuestionario -%>" class = "btn btn-outline-secondary">Consultar Respuestas</a></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <% } else { %>
+            <p>Parece que todavía no te han evaluado, regresa más tarde.</p>
+        <% } %>
+        <br>
+        <a href="/empleados/panelFeedback"><button type="button" class="btn btn-secondary">Regresar a tu Feedback</button></a>
+    </section>
+</div>
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<%- include('templates/footer.ejs') %>

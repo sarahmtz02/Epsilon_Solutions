@@ -1,0 +1,60 @@
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<div>
+    <section class="section-card">
+        <% for (let nombreM of nombreMs) { %>
+        <h1 id="principal">Evaluación de: <%- nombreM.nombre %> <%- nombreM.apellidoP %> </h1>
+        <% } %>
+        <hr class="db-hr">
+
+        <% for (let nombreE of nombreEs) { %>
+        <h3>Evaluador: <%- nombreE.nombre %> <%- nombreE.apellidoP %></h3>
+        <% } %>
+        <br>
+        <table class="table table-striped table-sm">
+            <tr>
+                <th>Prgunta:</th>
+                <th>Respuesta:</th>
+            </tr>
+            <tbody>
+                <% for (let answer of answers) { %>
+
+                    <% if (answer.tipoPregunta == '1') { %>
+                    <tr>
+                        <td><%- answer.Pregunta -%></td>
+                        <td><%- answer.Respuesta -%></td>
+                    </tr>
+                    <%} else if (answer.tipoPregunta == '2') { %>
+                        <tr>
+                            <td><%- answer.Pregunta -%></td>
+                            <% if (answer.Respuesta == '1') { %>
+                                <td>Sí</td>
+                            <%} else { %>
+                                <td>No</td>
+                            <%} %>
+                        </tr>
+                    <%} else if (answer.tipoPregunta == '3') { %>
+                        <tr>
+                            <td><%- answer.Pregunta -%></td>
+                            <td><%- answer.Respuesta -%></td>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </tbody>
+        </table>
+        <br>
+        <a href="/empleados/evalCompaneros"><button type="button" class="btn btn-secondary">Regresar a la lista de Evaluaciones</button></a>
+    </section>
+</div>
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<%- include('templates/footer.ejs') %>
