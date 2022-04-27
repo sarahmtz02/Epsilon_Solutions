@@ -33,6 +33,8 @@
             <br>
             <div class="collapse show" id="aEvaluar">
                 <br>
+                <button class="btn-normal" type="button" data-bs-toggle="collapse" data-bs-target="#aSolicitar" aria-expanded="false" aria-controls="aSolicitar">Solicitar evaluación</button>
+                <br><br>
                 <div class="card card-body">
                     <div class="col-auto">
                     <% if (cuestionarios.length > 0) { %>
@@ -67,7 +69,6 @@
 
             <!-- Para solicitar ser evaluado (asignación de evaluadores) -->
             <% if ((periodo.FechaInicio <= fecha) && (periodo.FechaFin >= fecha) && (cuestionarios.length < 5))  { %>
-            <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#aSolicitar" aria-expanded="false" aria-controls="aSolicitar">Solicitar evaluación: </button>
             <div class="collapse" id="aSolicitar">
                 <div class="card card-body">
                     <form action="/evaluaciones" method="POST">
