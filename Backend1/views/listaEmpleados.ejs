@@ -1,0 +1,50 @@
+<%- include('templates/sidebarTest1.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+
+<div>
+<section class="section-card">
+<h1 id="principal">Lista de Empleados</h1>
+<hr class="db-hr">
+
+<!-- EMPLEADOS -->
+
+<table class="table table-striped" class="centered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Correo Electrónico</th>
+            <th>Equipo</th>
+            <th>Nivel Overall</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (let empleado of empleados) { %>
+            <tr>
+                <td><%- empleado.nombre -%></td>
+                <td><%- empleado.apellidoP + ' ' + empleado.apellidoM -%></td>
+                <td><%- empleado.email -%></td>
+                <td><%- empleado.equipo -%></td>
+                <td><%- empleado.nivOverall -%></td>
+                <td><a href = "/id-empleado=<%-empleado.idEmpleado-%>" class = "btn btn-outline-secondary">Editar</a></td>
+            </tr>
+        <%} %>
+    </tbody>
+</table>
+<hr class="db-hr">
+<a href="/nuevoEmpleado"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo empleado</button></a>
+<br><br>
+</section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<%- include('templates/footer.ejs') %>

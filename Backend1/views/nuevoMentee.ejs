@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+
+<%- include('templates/sidebar.ejs') %>
+
+<body style="background: url('/img/bg-sire.png');">
+<section class="main" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
+    
+    <form action="/nuevoMentee" method="POST">
+        <label for="idMentee">Mentor: </label>
+        <select id="nombreCLA" name="nombreCLA" data-live-search="true" class="selectpicker">
+            <% for (let empleado of empleadosCLA) { %>
+                <option style="background: rgba(77, 70, 70, 0.582)"><%= empleado.nombre %> <%= empleado.apellidoP %> <%= empleado.apellidoM %></option>
+            <% } %>
+        </select>
+
+        <br><br>
+
+        <label for="idMentee">ID del Mentee asignado: </label>
+        <select id="nombreM" name="nombreM" data-live-search="true" class="selectpicker" multiple>
+            <% for (let empleado of empleadosM) { %>
+                <option style="background: rgba(77, 70, 70, 0.582)"><%= empleado.nombre %> <%= empleado.apellidoP %> <%= empleado.apellidoM %></option>
+            <% } %>
+        </select>
+        <br><br>
+
+        <label for="descAsignacion">Descripción de la asignación: </label>
+        <input type="text" id="descAsignacion" name="descAsignacion" >
+        <br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+</section>
+</body>
+
+<script>
+    $(document).ready(function () {
+      $('.selectpicker').selectpicker();
+    });
+  </script>
+
+<%- include('templates/footer.ejs') %>

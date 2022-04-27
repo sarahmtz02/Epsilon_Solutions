@@ -1,0 +1,87 @@
+
+<%- include('templates/sidebarTest1.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+    <div>
+        <% for (let periodo of periodos) { %>
+        <section class="section-card">
+            <h1 id="principal">Evaluaciones: </h1>
+            <hr class="db-hr">
+            <!-- Para las evaluaciones que le fueron asignadas al empleado -->
+            <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#aEvaluar" aria-expanded="false" aria-controls="aEvaluar">Evaluaciones de compañeros a contestar</button>
+            <div class="collapse show" id="aEvaluar">
+                <div class="card card-body">
+                    <div class="col-auto">
+                    <% if (cuestionarios.length > 0) { %>
+                        <p>Las siguientes evaluaciones fueron solicitadas por alguno de tus compañeros: </p>
+                        <% for (let cuestionario of cuestionarios) { %>
+                            <div class = "row">
+                                <div class="card mb-3" style="max-width: 720px;">
+                                    <div class="row g-0">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Evaluación no. <%- cuestionario.idCuestionario %></h5>
+                                            <p class="card-text">Disponible del: <%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%> al <%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></p>
+                                            <% if (cuestionario.isAnswered == 0){ %>
+                                                <p class="card-text">Status de evaluación: Sin Contestar</p>
+                                                <a href="/evaluacion/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn btn-dark">Contestar</label></a>
+                                            <% } else { %>
+                                                <p class="card-text">Status de evaluación: Contestada</p>
+                                                <label class="btn btn-dark" disabled>Contestar</label>
+                                            <%} %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <%} %>
+                    <% } else { %>
+                        <p>Todavía no has recibido ninguna solicitud para contestar feedback de otro compañero. Regresa más tarde.</p>
+                    <% } %>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <!-- Para solicitar ser evaluado (asignación de evaluadores) -->
+            <% if ((periodo.FechaInicio <= fecha) && (periodo.FechaFin >= fecha) && (cuestionarios.length < 5))  { %>
+            <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#aSolicitar" aria-expanded="false" aria-controls="aSolicitar">Solicitar evaluación: </button>
+            <div class="collapse" id="aSolicitar">
+                <div class="card card-body">
+                    <form action="/evaluaciones" method="POST">
+                        <input id="periodo" name="periodo" type="hidden" value="<%= periodo.idPeriodo %>">
+                        <div class="row">
+                            <div class="col-auto">
+                                <select id="nombre" name="nombre" data-live-search="true" class="selectpicker" multiple>
+                                    <% for (let empleado of empleados) { %>
+                                        <option style="background: rgba(77, 70, 70, 0.582)"><%= empleado.nombre %> <%= empleado.apellidoP %></option>
+                                    <% } %>
+                                </select>
+                                <button type="submit" class="btn btn-dark">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <% } %>
+
+            <hr class="db-hr">
+            <br><br>
+        </section>
+        <%} %>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+      $('.selectpicker').selectpicker();
+    });
+  </script>
+
+<%- include('templates/footer.ejs') %>
+
