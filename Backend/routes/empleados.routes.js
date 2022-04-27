@@ -2,13 +2,18 @@ const express = require('express');
 const router = express.Router();
 const isAuth = require('../util/is-auth.js');
 
-const empleadosController = require('../controllers/user_controller');
+const userController = require('../controllers/user_controller');
 
-router.get('/login', empleadosController.get_login);
-router.post('/login', empleadosController.login);
-router.get('/logout', empleadosController.logout);
-router.get('/dashboard', isAuth, empleadosController.main);
+router.get('/login', userController.get_login);
+router.post('/login', userController.login);
+router.get('/logout', userController.logout);
+router.get('/dashboard', isAuth, userController.main);
 
-router.get('/', isAuth, empleadosController.root);
+router.get('/panelFeedback', isAuth, userController.panelFeedback);
+router.get('/evalCompaneros', isAuth, userController.listaFeedback);
+router.get('/obsMentores', isAuth, userController.misObservaciones);
+
+router.get('/evalCompanero=:idCuestionario', isAuth, userController.evalCompa);
+router.get('/', isAuth, userController.root);
 
 module.exports = router;

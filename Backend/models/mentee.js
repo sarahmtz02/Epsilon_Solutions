@@ -11,7 +11,7 @@ module.exports = class Mentee{
 
     // Obtiene todos los datos de la tabla mentee
     static fetchAllMentees() {
-        return db.execute('SELECT idMentee, fk_idLead, fechaAsig, a.nombre, a.apellidoP, a.apellidoM, a.nivOverall, b.nombre AS nomMentor, b.apellidoP AS apellidoPM, b.apellidoM AS apellidoMM, descAsignacion FROM Mentees m INNER JOIN Empleado a ON m.fk_idLead = a.idEmpleado INNER JOIN Empleado b ON m.idMentee = b.idEmpleado');
+        return db.execute('SELECT idMentees, idMentee, fk_idLead, fechaAsig, a.nombre, a.apellidoP, a.apellidoM, a.nivOverall, b.nombre AS nomMentor, b.apellidoP AS apellidoPM, b.apellidoM AS apellidoMM, descAsignacion FROM Mentees m INNER JOIN Empleado a ON m.fk_idLead = a.idEmpleado INNER JOIN Empleado b ON m.idMentee = b.idEmpleado');
     }
 
     // Inserta un nuevo registro a la tabla Mentee
@@ -96,5 +96,10 @@ module.exports = class Mentee{
     // Obtiene el nombre del empleado solicitado
     static getNombreEmpleado(idEmpleado){
         return db.execute('SELECT nombre, apellidoP, apellidoM FROM Empleado WHERE idEmpleado = ?', [idEmpleado])
+    }
+
+    //Elimina la asignación seleccionada
+    static deleteAsig(idMentees){
+        return db.execute('DELETE FROM Mentees WHERE idMentees = ?', [idMentees])
     }
 }

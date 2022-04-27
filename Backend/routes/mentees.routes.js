@@ -15,6 +15,8 @@ router.get('/observaciones-id-mentorado=:idMentorado', isAuth, menteesController
 
 router.get('/editObservacion=:idObservacion', isAuth, menteesController.getOneObservacion);
 router.post('/editObservacion=:idObservacion', isAuth, menteesController.updateObservacion);
-router.post('/deleteObservacion=:idObservacion', isAuth, menteesController.deleteObservacion)
+router.post('/deleteObservacion=:idObservacion', isAuth, menteesController.deleteObservacion);
+
+router.get('/deleteAsig=:idMentees', isAuth, menteesController.deleteAsig);
 
 module.exports = router;

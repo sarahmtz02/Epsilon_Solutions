@@ -15,5 +15,6 @@ router.post('/nuevoEmpleado', empleadosController.post_nuevo_empleado);
 
 router.get('/id-empleado=:idEmpleado', isAuth, empleadosController.getEmpleado);
 router.post('/id-empleado=:idEmpleado', empleadosController.updateEmpleado);
+router.get('/bajaEmpleado=:idEmpleado', isAuth, empleadosController.bajaEmpleado);
 
 module.exports = router;

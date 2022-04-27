@@ -47,6 +47,7 @@
                 <td><%- empleado.equipo -%></td>
                 <td><%- empleado.nivOverall -%></td>
                 <td><a href = "/id-empleado=<%-empleado.idEmpleado-%>" class = "btn btn-outline-secondary">Editar</a></td>
+                <td><a href="/bajaEmpleado=<%-empleado.idEmpleado-%>" type="button" class="btn btn-outline-danger btn-sm">Dar de baja</a> </td>
             </tr>
         <%} %>
     </tbody>

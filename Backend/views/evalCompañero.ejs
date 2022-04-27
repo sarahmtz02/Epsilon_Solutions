@@ -51,20 +51,8 @@
                 <% } %>
             </tbody>
         </table>
-
-        <form id="insertObservacion" action="/mentees/nuevaObservacion" method="POST">
-            <div class="form-group">
-                <input id="fk_idEvaluador" name="fk_idEvaluador" type="hidden" value="<%= idEvaluador %>">
-                <input id="fk_idEvaluado" name="fk_idEvaluado" type="hidden" value="<%= idEvaluado %>">
-                <input id="fk_idPeriodo" name="fk_idPeriodo" type="hidden" value="<%= periodo %>">
-                <label for="descObservacion">Registra tus observaciones:</label>
-                <textarea class="form-control" id="descObservacion" name="descObservacion" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Guardar observación</button>
-        </form>
-
         <br>
-        <a href="/mentees/misMentorados"><button type="button" class="btn btn-secondary">Regresar a tus Mentorados</button></a>
+        <a href="/empleados/evalCompaneros"><button type="button" class="btn btn-secondary">Regresar a la lista de Evaluaciones</button></a>
     </section>
 </div>
 

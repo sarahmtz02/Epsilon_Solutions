@@ -88,4 +88,18 @@ module.exports = class Empleado {
         return db.execute('SELECT * FROM Empleado WHERE email=?',
             [email]);
     }
+
+    static bajaEmpleado(idEmpleado) {
+        return db.execute('UPDATE Empleado SET isActive = 0 WHERE idEmpleado = ?', [idEmpleado]);
+    }
+
+    static miFeedback(idEmpleado) {
+        return db.execute('SELECT idCuestionario, nombre, apellidoP, apellidoM, FechaInicio, FechaFin FROM Empleado E, Cuestionario C, PeriodoEvaluacion PE WHERE E.idEmpleado = C.fk_idEvaluador AND C.idEvaluado = ? AND C.fk_idPeriodo = PE.idPeriodo AND C.isAnswered = 1', 
+        [idEmpleado])
+    }
+
+    static misObservaciones(idEmpleado) {
+        return db.execute('SELECT idObservacion, fk_idEvaluado, a.nombre, a.apellidoP, a.apellidoM, fk_idLead, b.nombre AS nomMentor, b.apellidoP AS apellidoPM, b.apellidoM AS apellidoMM, descObservacion FROM Observacion o INNER JOIN Empleado a ON o.fk_idEvaluado = a.idEmpleado INNER JOIN Empleado b ON o.fk_idLead = b.idEmpleado WHERE fk_idEvaluado = ?',
+        [idEmpleado])
+    }
 }

@@ -71,7 +71,7 @@
                     <td><%- dataMentee.nomMentor -%> <%- dataMentee.apellidoPM -%> <%- dataMentee.apellidoMM -%></td>
                     <td><%- dataMentee.descAsignacion -%></td>
                     <td><%- moment.tz(dataMentee.fechaAsig, 'UTC').format("YYYY-MM-DD") -%></td>
-                    <td><a href="#" type="button" class="btn btn-outline-danger btn-sm">Eliminar asignación</a> </td>
+                    <td><a href="/mentees/deleteAsig=<%- dataMentee.idMentees -%>" type="button" class="btn btn-outline-danger btn-sm">Eliminar asignación</a> </td>
                 </tr>
                 <% } %>
             </tbody>

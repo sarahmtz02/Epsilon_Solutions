@@ -1,5 +1,5 @@
 const path = require('path');
-const moment = require("moment"); // Para fechas
+const moment = require("moment-timezone"); // Para fechas
 
 // --- MAIN --- //
 
@@ -78,6 +78,13 @@ exports.updateEmpleado = async (request, response, next) => {
 
     request.flash('success', 'Se han actualizado los datos del empleado exitosamente');
     response.redirect('/lista');
+}
+
+exports.bajaEmpleado = async (request, response, next) => {
+    console.log(request.params.idEmpleado)
+    await Empleado.bajaEmpleado(request.params.idEmpleado)
+        request.flash('success', 'Se ha dado de baja al empleado exitosamente');
+        response.redirect('/lista');
 }
 
 //Listado

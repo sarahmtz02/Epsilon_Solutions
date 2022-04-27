@@ -1,8 +1,9 @@
 const path = require('path');
-const moment = require("moment"); // Para fechas
+const moment = require("moment-timezone"); // Para fechas
 moment.locale('es-mx');
 // -- MAIN -- //
 const Empleado = require('../models/empleados');
+const Mentee = require('../models/mentee');
 const bcrypt = require('bcryptjs');
 
 // -- LOGIN -- //
@@ -84,3 +85,83 @@ exports.logout = (request, response, next) => {
 exports.root = (request, response, next) => {
     response.redirect('/empleados/login'); 
 };
+
+// Cuestionarios del empleado en sesión donde él fue evaluado
+
+exports.panelFeedback = (request, response, next) => {
+    response.render('panelFeedback', {
+        email: request.session.email ? request.session.email : '',
+        rol: request.session.idRol ? request.session.idRol : '',
+        idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+        nivel_P: request.session.nPeople ? request.session.nPeople : '',
+        nivel_C: request.session.nCraft ? request.session.nCraft : '',
+        nivel_B: request.session.nBusiness ? request.session.nBusiness : '',
+        nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+        apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+        moment: moment,
+    })
+}
+
+exports.listaFeedback = async (request, response, next) => {
+    Empleado.miFeedback(request.session.idEmpleado).then(([cuestCompas, fieldData]) => {
+        response.render('cuestCompañeros', {
+            cuestCompas: cuestCompas,
+            rol: request.session.idRol ? request.session.idRol : '',
+            idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+            nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+            apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+            email: request.session.email ? request.session.email : '',
+            moment: moment,
+        })
+    })
+}
+
+exports.evalCompa = async (request, response, next) => {
+    const idEvaluador = await Mentee.getIdEvaluador(request.params.idCuestionario);
+    const idEvaluado = await Mentee.getIdEvaluado(request.params.idCuestionario);
+
+    // Ojo que este método selecciona el periodo más reciente (en el que se está evaluando)
+    const periodo = await Mentee.getPeriodo();
+
+    // Para el nombre del evaluador
+    Mentee.getNombreEmpleado(idEvaluador).then(([nombreEs, fieldData]) => {
+
+        Mentee.getNombreEmpleado(idEvaluado).then(([nombreMs, fieldData]) => {
+            console.log(request.params.idCuestionario)
+            Mentee.getAnsCuest(request.params.idCuestionario).then(([answers, fieldData]) => {
+                console.log(answers);
+                response.render('evalCompañero', {
+                    answers: answers,
+                    idEvaluador: idEvaluador,
+                    idEvaluado: idEvaluado,
+                    periodo: periodo,
+                    nombreEs: nombreEs,
+                    nombreMs: nombreMs,
+                    rol: request.session.idRol ? request.session.idRol : '',
+                    idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                    nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                    apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+                    email: request.session.email ? request.session.email : '',
+                    moment: moment,
+                })
+            })
+        }).catch(err => {
+            console.log(err);
+        }); 
+    })
+}
+
+exports.misObservaciones = async (request, response, next) => {
+    Empleado.misObservaciones(request.session.idEmpleado).then(([obsCompas, fieldData]) => {
+        response.render('obsMentores', {
+            obsCompas: obsCompas,
+            rol: request.session.idRol ? request.session.idRol : '',
+            idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+            nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+            apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+            email: request.session.email ? request.session.email : '',
+            moment: moment, 
+        })
+    })
+}
+

@@ -199,3 +199,11 @@ exports.updateObservacion = async (request, response, next) => {
         response.redirect('/mentees/misMentorados')
     })
 }
+
+exports.deleteAsig = async (request, response, next) => {
+
+    await Mentee.deleteAsig(request.params.idMentees).then(() => {
+        request.flash('success', 'Se ha eliminado la asignación exitosamente')
+        response.redirect('/mentees/panelMentees')
+    })
+}
