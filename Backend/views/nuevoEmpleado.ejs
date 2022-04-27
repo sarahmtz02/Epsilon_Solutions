@@ -24,17 +24,17 @@
             <div class="col">
                 <input id="fechaIng" name="fechaIng" type="hidden" value="<%- moment.tz(currentDate, 'UTC').format("YYYY-MM-DD")%>">
                 <label for="nombre">Nombre: </label>
-                <input class="form-control" type="text" id="nombre" name="nombre" >
+                <input class="form-control" type="text" id="nombre" name="nombre" oninput="validate(this)">
                 <br><br>
             </div>
             <div class="col">
                 <label for="apellidoP">Apellido Paterno: </label>
-                <input class="form-control" type="text" id="apellidoP" name="apellidoP">
+                <input class="form-control" type="text" id="apellidoP" name="apellidoP" oninput="validate(this)">
                 <br><br>
             </div>
             <div class="col">
                 <label for="apellidoM">Apellido Materno: </label>
-                <input class="form-control" type="text" id="apellidoM" name="apellidoM">
+                <input class="form-control" type="text" id="apellidoM" name="apellidoM" oninput="validate(this)">
                 <br><br>
             </div>
         </div>
@@ -104,20 +104,20 @@
         <input class="form-control" name="nivOverall" id="nivOverall" readonly>
         <br><br>
         <label for="puesto">Puesto: </label>
-        <input class="form-control" type="text" id="puesto" name="puesto">
+        <input class="form-control" type="text" id="puesto" name="puesto" oninput="validate(this)">
         <br><br>
         <label for="equipo">Equipo: </label>
-        <input class="form-control" type="text" id="equipo" name="equipo">
+        <input class="form-control" type="text" id="equipo" name="equipo" oninput="validate(this)">
         <br><br>
         <div class ="row">
             <div class="col">
                 <label for="password">Contraseña: </label>
-                <input class="form-control" type="password" id="password" name="password" >
+                <input class="form-control" type="password" id="password" name="password" oninput="validate(this)">
                 <br><br>
             </div>
             <div class="col">
                 <label for="email">Correo electrónico: </label>
-                <input class="form-control" type="email" id="email" name="email">
+                <input class="form-control" type="email" id="email" name="email" oninput="validate(this)">
                 <br><br>
             </div>
         </div>
@@ -161,6 +161,13 @@
     window.onload = function() {
         calcNivOv();
     }
+</script>
+
+<script>
+    function validate(input){
+        if(/^\s/.test(input.value))
+            input.value = '';
+        }
 </script>
 
 

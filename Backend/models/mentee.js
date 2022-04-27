@@ -1,22 +1,23 @@
 const db = require('../util/database');
 
 module.exports = class Mentee{
-    constructor(nuevo_fk_idLead, nuevo_idMentee, nueva_descAsignacion, nuevo_fk_idPeriodo) {
+    constructor(nuevo_fk_idLead, nuevo_idMentee, nueva_descAsignacion, nuevo_fk_idPeriodo, nueva_fechaAsig) {
         this.fk_idLead = nuevo_fk_idLead;
         this.idMentee = nuevo_idMentee;
         this.descAsignacion = nueva_descAsignacion;
         this.fk_idPeriodo = nuevo_fk_idPeriodo;
+        this.fechaAsig = nueva_fechaAsig;
     }
 
     // Obtiene todos los datos de la tabla mentee
     static fetchAllMentees() {
-        return db.execute('SELECT idMentee, nombre, apellidoP, apellidoM, nivOverall, descAsignacion, FechaInicio, FechaFin FROM Empleado e, Mentees m, PeriodoEvaluacion p WHERE e.idEmpleado = m.idMentee AND m.fk_idPeriodo = p.idPeriodo');
+        return db.execute('SELECT idMentee, fk_idLead, fechaAsig, a.nombre, a.apellidoP, a.apellidoM, a.nivOverall, b.nombre AS nomMentor, b.apellidoP AS apellidoPM, b.apellidoM AS apellidoMM, descAsignacion FROM Mentees m INNER JOIN Empleado a ON m.fk_idLead = a.idEmpleado INNER JOIN Empleado b ON m.idMentee = b.idEmpleado');
     }
 
     // Inserta un nuevo registro a la tabla Mentee
     save() {
-        return db.execute('INSERT INTO Mentees (fk_idLead, idMentee, descAsignacion, fk_idPeriodo) VALUES (?, ?, ?, ?)',
-        [this.fk_idLead, this.idMentee, this.descAsignacion, this.fk_idPeriodo]
+        return db.execute('INSERT INTO Mentees (fk_idLead, idMentee, descAsignacion, fk_idPeriodo, fechaAsig) VALUES (?, ?, ?, ?, ?)',
+        [this.fk_idLead, this.idMentee, this.descAsignacion, this.fk_idPeriodo, this.fechaAsig]
     );
     }
 

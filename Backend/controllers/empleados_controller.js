@@ -31,10 +31,19 @@ exports.post_nuevo_empleado = (request, response, next) => {
         request.body.nivCraft, request.body.nivBusiness, request.body.nivOverall, request.body.puesto, request.body.equipo, 
         request.body.email, request.body.password, request.body.fk_idChapter, request.body.fk_idRolJer, request.body.isActive);
         console.log('obtiene el método POST')
-    empleado.save().then(() => {
-        request.flash('success', 'Se ha creado el nuevo empleado exitosamente');
+
+    if (request.body.password == '') {
+        request.flash('warning', 'Un empleado requiere de al menos un password y un email!');
         response.redirect('/lista');
-    }).catch(err => console.log(err));
+    } else if (request.body.email == '') {
+        request.flash('warning', 'Un empleado requiere de al menos un password y un email!');
+        response.redirect('/lista');
+    } else {
+        empleado.save().then(() => {
+            request.flash('success', 'Se ha creado el nuevo empleado exitosamente');
+            response.redirect('/lista');
+        }).catch(err => console.log(err));
+    }
 };
 
 // Editar empleado:

@@ -16,7 +16,7 @@ exports.insertMentee = async (request, response, next) => {
     const periodo = await Mentee.getPeriodo();
     console.log(periodo);
     console.log(request.body.descAsignacion)
-    const mentee = new Mentee(mentorId, mentoradoId, request.body.descAsignacion, periodo);
+    const mentee = new Mentee(mentorId, mentoradoId, request.body.descAsignacion, periodo, request.body.fechaAsig);
     mentee.save().then(() => {
         request.flash('success', 'Se ha asignado al empleado exitosamente')
         response.redirect('/mentees/panelMentees')
@@ -26,30 +26,33 @@ exports.insertMentee = async (request, response, next) => {
 
 exports.fetchMentees = async (request, response, next) => {
     const periodo = await Mentee.getPeriodo();
+    const date = new Date();
+    const currentDate = new Date(date.toDateString());
 
     Mentee.getMentores(request.session.idEmpleado).then(([mentores, fielData]) => {
         
         Mentee.getEmpleados(request.session.idEmpleado).then(([empleados, fieldData]) => {
             
-            Mentee.fetchAllMentees().then(([dataMentees, fielData]) => {
-                
-                response.render('panelMentees', {
-                    periodo: periodo, 
-                    mentores: mentores,
-                    empleados: empleados,
-                    dataMentees: dataMentees,
-                    rol: request.session.idRol ? request.session.idRol : '',
-                    idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
-                    nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
-                    apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
-                    email: request.session.email ? request.session.email : '',
-                    moment: moment,
-                    warning : request.flash('warning'),
-                    success : request.flash('success'),
-                })
-            }).catch(err => {
-                console.log(err);
-            }); 
+                Mentee.fetchAllMentees().then(([dataMentees, fielData]) => {
+                    
+                    response.render('panelMentees', {
+                        periodo: periodo,
+                        fecha: currentDate, 
+                        mentores: mentores,
+                        empleados: empleados,
+                        dataMentees: dataMentees,
+                        rol: request.session.idRol ? request.session.idRol : '',
+                        idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+                        nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+                        apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+                        email: request.session.email ? request.session.email : '',
+                        moment: moment,
+                        warning : request.flash('warning'),
+                        success : request.flash('success'),
+                    })
+                }).catch(err => {
+                    console.log(err);
+                }); 
         })
     })
 }

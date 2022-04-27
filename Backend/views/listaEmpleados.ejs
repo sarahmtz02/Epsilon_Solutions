@@ -17,6 +17,11 @@
             <strong>Atención! </strong><%- success -%>
         </div>
     <%} %>
+    <% if (warning != '') { %>
+        <div class="alert alert-danger" role="alert">
+            <strong>Atención! </strong><%- warning -%>
+        </div>
+    <%} %>
 <h1 id="principal">Lista de Empleados</h1>
 <hr class="db-hr">
 

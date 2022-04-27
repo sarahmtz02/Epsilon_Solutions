@@ -22,6 +22,7 @@
 
         <form action="/mentees/panelMentees" method="POST">
             <input id="periodo" name="periodo" type="hidden" value="<%= periodo.idPeriodo %>">
+            <input id="fechaAsig" name="fechaAsig" type="hidden" value="<%- moment.tz(fecha, 'UTC').format("YYYY-MM-DD")%>">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -46,7 +47,7 @@
             </div>
             <br>
             <label>Agrega un comentario a la asignación: </label>
-            <input type="text" class="form-control input-lg" id="inputlg" name="descAsignacion"></input>
+            <input type="text" class="form-control input-lg" id="inputlg" name="descAsignacion" oninput="validate(this)"></input>
             <br>
             <button type="submit" class="btn btn-primary w-100">Asignar</button>
         </form>
@@ -55,18 +56,22 @@
         <br><br>
         <table class="table table-striped" class="centered">
             <tr>
-                <th>Nombre del Mentorado:</th>
+                <th>Nombre del Mentor:</th>
                 <th>Nivel:</th>
+                <th>Nombre del Mentorado:</th>
                 <th>Asignación:</th>
-                <th>Periodo:</th>
+                <th>Fecha:</th>
+                <th>Acciones:</th>
             </tr>
             <tbody>
                 <% for (let dataMentee of dataMentees) { %>
                 <tr>
                     <td><%- dataMentee.nombre -%> <%- dataMentee.apellidoP -%> <%- dataMentee.apellidoM -%></td>
                     <td><%- dataMentee.nivOverall -%></td>
+                    <td><%- dataMentee.nomMentor -%> <%- dataMentee.apellidoPM -%> <%- dataMentee.apellidoMM -%></td>
                     <td><%- dataMentee.descAsignacion -%></td>
-                    <td><%- moment.tz(dataMentee.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(dataMentee.FechaFin, 'UTC').format("LL") -%></td>
+                    <td><%- moment.tz(dataMentee.fechaAsig, 'UTC').format("YYYY-MM-DD") -%></td>
+                    <td><a href="#" type="button" class="btn btn-outline-danger btn-sm">Eliminar asignación</a> </td>
                 </tr>
                 <% } %>
             </tbody>
@@ -75,6 +80,13 @@
         <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
     </section>
 </div>
+
+<script>
+    function validate(input){
+        if(/^\s/.test(input.value))
+            input.value = '';
+        }
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
