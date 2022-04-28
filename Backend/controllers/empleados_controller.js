@@ -4,6 +4,7 @@ const moment = require("moment"); // Para fechas
 // --- MAIN --- //
 
 const Empleado = require('../models/empleados');
+const Observacion = require('../models/observacion');
 
 exports.get_nuevo_empleado = (request, response, next) => {
     console.log('obtiene el método GET')
@@ -88,3 +89,27 @@ exports.listado = (request, response, next) => {
         })
         .catch(err => console.log(err));
 };
+
+//el método para poder jalar las observaciones del empleado que está visualizando
+
+exports.getObservacionesEmpleados = async (request, response, next) => {
+    
+};
+
+exports.misObservaciones = async (request, response, next) => {
+
+    Observacion.getObservaciones(request.session.idEmpleado, request.params.idMentorado).then(([observaciones, fieldData]) => {
+        console.log(observaciones);
+        response.render('misObservaciones', {
+            observaciones: observaciones,
+            rol: request.session.idRol ? request.session.idRol : '',
+            idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
+            nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
+            apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+            email: request.session.email ? request.session.email : '',
+            moment: moment,
+        })
+    }).catch(err => {
+        console.log(err);
+    }); 
+}

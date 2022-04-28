@@ -1,7 +1,7 @@
 <%- include('templates/sidebarMain.ejs') %>
 <!-- Si es CL o CLA despliega lo siguiente: -->
 
-<% if (rol == 2) { %>
+<% if (rol == 2 || rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 
@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td>Niveral Overall: </td>
-                        <td id="nivOverall"><%- Math.min(nivel_P+1, nivel_C, nivel_B) -%></td>
+                        <td id="nivOverall"><%- Math.min((nivel_P + 1.0), (nivel_B + 1.0), nivel_C) -%></td>
                     </tr>
                 </table>
                 <br><br>

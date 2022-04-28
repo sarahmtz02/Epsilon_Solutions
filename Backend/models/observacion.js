@@ -33,4 +33,8 @@ module.exports = class Observacion{
     static getOneObservacion(idObservacion){
         return db.execute('SELECT idObservacion, descObservacion FROM Observacion WHERE idObservacion = ?', [idObservacion])
     }
+
+  //  static getObservacionesEmpleado(idEmpleado,idEvaluador){
+    //    return db.execute('SELECT descObservacio FROM Observacion WHERE fk_idEvaluado=?', []
+
 }

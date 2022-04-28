@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/section.css" />
 
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 2 || rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
@@ -54,13 +54,9 @@
                     </select>
                     <button id="guardarP"  type="submit" class="btn btn-primary w-100">Añadir nueva pregunta</button>
                 </form>
-
             <%} %>
             </form>
-<<<<<<< HEAD
-=======
             <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
->>>>>>> JMMR
         </section>
     </div>
 

@@ -52,7 +52,8 @@ exports.delete_pregunta = async (request, response, next) => {
 
 exports.getEditPregunta = async (request, response, next) => {
     const tipoP = BancoPreguntas.getTipoPregunta(request.params.idPregunta);
-    Preguntas.fetchOnePregunta(request.params.idPregunta).then(([preguntas, fieldData])=> {
+    Preguntas.fetchOnePregunta(request.params.idPregunta)
+    .then(([preguntas, fieldData])=> {
         response.render('editPregunta', {
             tipoPregunta: tipoP,
             preguntas: preguntas,

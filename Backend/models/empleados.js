@@ -103,4 +103,10 @@ module.exports = class Empleado {
         return db.execute('SELECT * FROM Empleado WHERE email=?',
             [email]);
     }
+
+    static getObservacionesEmpleados(idEvaluado, descObservacion){
+        return db.execute('SELECT descObservacion FROM Observacion WHERE fk_idEvaluado=?', 
+            [idEvaluado]);
+    }
 }
+

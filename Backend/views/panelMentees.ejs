@@ -1,5 +1,5 @@
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 2 || rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
@@ -66,7 +66,7 @@
                     <td><%- dataMentee.nombre -%> <%- dataMentee.apellidoP -%> <%- dataMentee.apellidoM -%></td>
                     <td><%- dataMentee.nivOverall -%></td>
                     <td><%- dataMentee.descAsignacion -%></td>
-                    <td><%- moment.tz(dataMentee.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(dataMentee.FechaFin, 'UTC').format("LL") -%></td>
+                    <td><%- moment.tz(dataMentee.FechaInicio, 'UTC').format("LL") -%> - <%- moment.tz(dataMentee.FechaFin, 'UTC').format("LL") -%></td>
                 </tr>
                 <% } %>
             </tbody>
