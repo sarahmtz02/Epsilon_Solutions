@@ -4,6 +4,7 @@ moment.locale('es-mx');
 // -- MAIN -- //
 const Empleado = require('../models/empleados');
 const bcrypt = require('bcryptjs');
+const swal = require('sweetalert2')
 
 // -- LOGIN -- //
 
@@ -82,5 +83,11 @@ exports.logout = (request, response, next) => {
 };
 
 exports.root = (request, response, next) => {
-    response.redirect('/empleados/login'); 
+    swal.fire({
+        title: 'Error!',
+        text: 'Usuario o contraseña incorrectos. Intenta de nuevo.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      })
+    response.redirect('/empleados/login');
 };
