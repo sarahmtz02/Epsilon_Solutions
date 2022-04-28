@@ -83,11 +83,5 @@ exports.logout = (request, response, next) => {
 };
 
 exports.root = (request, response, next) => {
-    swal.fire({
-        title: 'Error!',
-        text: 'Usuario o contraseña incorrectos. Intenta de nuevo.',
-        icon: 'error',
-        confirmButtonText: 'Aceptar'
-      })
     response.redirect('/empleados/login');
 };
