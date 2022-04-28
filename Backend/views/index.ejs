@@ -1,7 +1,7 @@
 <%- include('templates/sidebarMain.ejs') %>
 <!-- Si es CL o CLA despliega lo siguiente: -->
 
-<% if (rol == 2) { %>
+<% if (rol == 2 || rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 
