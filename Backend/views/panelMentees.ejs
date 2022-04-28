@@ -13,7 +13,7 @@
     <section class="section-card">
         <% if (success != '') { %>
             <div class="alert alert-success" role="alert">
-                <strong>Atención! </strong><%- success -%>
+                <strong>Atención! </strong><%- success %>
             </div>
         <%} %>
         <h1 id="principal">Asignación de Mentees: </h1>
@@ -66,11 +66,11 @@
             <tbody>
                 <% for (let dataMentee of dataMentees) { %>
                 <tr>
-                    <td><%- dataMentee.nombre -%> <%- dataMentee.apellidoP -%> <%- dataMentee.apellidoM -%></td>
-                    <td><%- dataMentee.nivOverall -%></td>
-                    <td><%- dataMentee.nomMentor -%> <%- dataMentee.apellidoPM -%> <%- dataMentee.apellidoMM -%></td>
-                    <td><%- dataMentee.descAsignacion -%></td>
-                    <td><%- moment.tz(dataMentee.fechaAsig, 'UTC').format("YYYY-MM-DD") -%></td>
+                    <td><%= dataMentee.nombre %> <%= dataMentee.apellidoP %> <%= dataMentee.apellidoM %></td>
+                    <td><%= dataMentee.nivOverall %></td>
+                    <td><%= dataMentee.nomMentor %> <%= dataMentee.apellidoPM %> <%= dataMentee.apellidoMM %></td>
+                    <td><%= dataMentee.descAsignacion %></td>
+                    <td><%- moment.tz(dataMentee.fechaAsig, 'UTC').format("YYYY-MM-DD") %></td>
                     <td><a href="/mentees/deleteAsig=<%- dataMentee.idMentees -%>" type="button" class="btn btn-outline-danger btn-sm">Eliminar asignación</a> </td>
                 </tr>
                 <% } %>

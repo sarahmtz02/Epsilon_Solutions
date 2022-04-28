@@ -35,14 +35,14 @@
             <tbody>
                 <% for (let mentorado of mentorados) { %>
                 <tr>
-                    <td><%- mentorado.nombre -%> <%- mentorado.apellidoP -%> <%- mentorado.apellidoM -%></td>
+                    <td><%= mentorado.nombre %> <%= mentorado.apellidoP %> <%= mentorado.apellidoM %></td>
                     <td>
-                        <label><%- mentorado.nivCraft -%> de 5.5</label><br>
+                        <label><%= mentorado.nivCraft %> de 5.5</label><br>
                         <progress data-label="test" max="5.5" value="<%- mentorado.nivCraft -%>"></progress>
                     </td>
-                    <td><%- mentorado.nivBusiness -%></td>
+                    <td><%= mentorado.nivBusiness %></td>
                     </td>
-                    <td><%- mentorado.nivPeople -%></td>
+                    <td><%= mentorado.nivPeople %></td>
                     <td><a href = "/mentees/id-mentorado=<%-mentorado.idMentee-%>" class = "btn btn-outline-secondary">Feedback de Compañeros</a>
                         <a href = "/mentees/observaciones-id-mentorado=<%-mentorado.idMentee-%>" class = "btn btn-outline-secondary">Mis Observaciones</a></td>
                 </tr>

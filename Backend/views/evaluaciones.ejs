@@ -40,11 +40,11 @@
                                 <div class="card mb-3" style="max-width: 720px;">
                                     <div class="row g-0">
                                         <div class="card-body">
-                                            <h5 class="card-title">Evaluación no. <%- cuestionario.idCuestionario %></h5>
+                                            <h5 class="card-title">Evaluación no. <%= cuestionario.idCuestionario %></h5>
                                             <p class="card-text">Disponible del: <%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%> al <%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></p>
                                             <% if (cuestionario.isAnswered == 0){ %>
                                                 <p class="card-text">Status de evaluación: <strong>Sin Contestar</strong></p>
-                                                <a href="/evaluacion/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn btn-dark">Contestar</label></a>
+                                                <a href="/evaluacion/feedback=<%-cuestionario.idCuestionario%>"><label class="btn btn-dark">Contestar</label></a>
                                             <% } else { %>
                                                 <p class="card-text">Status de evaluación: <strong>Contestada</strong></p>
                                                 <button type="button" class="btn btn-secondary btn-lg">Contestar</button>

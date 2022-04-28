@@ -11,7 +11,7 @@
 
 <div>
     <section class="section-card">
-        <h1 id="principal">Buen día, <%- nombreSesion %> <%- apellidoPSesion %> </h1>
+        <h1 id="principal">Buen día, <%= nombreSesion %> <%= apellidoPSesion %> </h1>
         <hr class="db-hr">
         <% if (observaciones.length > 0) { %>
         <h3>Estas tus observaciones:</h3>
@@ -26,9 +26,9 @@
             <tbody>
                 <% for (let observacion of observaciones) { %>
                 <tr>
-                    <td><%- observacion.nombre -%> <%- observacion.apellidoP -%> <%- observacion.apellidoM -%></td>
-                    <td><%- moment.tz(observacion.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(observacion.FechaFin, 'UTC').format("LL") -%></td>
-                    <td><%- observacion.descObservacion -%></td>
+                    <td><%= observacion.nombre %> <%= observacion.apellidoP %> <%= observacion.apellidoM %></td>
+                    <td><%- moment.tz(observacion.FechaInicio, 'UTC').format("LL") %> <%- moment.tz(observacion.FechaFin, 'UTC').format("LL") %></td>
+                    <td><%= observacion.descObservacion %></td>
                     <td>
                         <a href="/mentees/editObservacion=<%= observacion.idObservacion %>" class = "btn btn-outline-secondary btn-sm">Modificar Observación</a>
                     </td>

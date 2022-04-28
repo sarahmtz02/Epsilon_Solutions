@@ -30,12 +30,12 @@
 
                     <% if (answer.tipoPregunta == '1') { %>
                     <tr>
-                        <td><%- answer.Pregunta -%></td>
-                        <td><%- answer.Respuesta -%></td>
+                        <td><%= answer.Pregunta %></td>
+                        <td><%= answer.Respuesta %></td>
                     </tr>
                     <%} else if (answer.tipoPregunta == '2') { %>
                         <tr>
-                            <td><%- answer.Pregunta -%></td>
+                            <td><%= answer.Pregunta %></td>
                             <% if (answer.Respuesta == '1') { %>
                                 <td>Sí</td>
                             <%} else { %>
@@ -44,8 +44,8 @@
                         </tr>
                     <%} else if (answer.tipoPregunta == '3') { %>
                         <tr>
-                            <td><%- answer.Pregunta -%></td>
-                            <td><%- answer.Respuesta -%></td>
+                            <td><%= answer.Pregunta %></td>
+                            <td><%= answer.Respuesta %></td>
                         </tr>
                     <% } %>
                 <% } %>

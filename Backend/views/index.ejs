@@ -22,19 +22,19 @@
                     </tr>
                     <tr>
                         <td>People: </td>
-                        <td id="nPeople"><%- nivel_P -%></td>
+                        <td id="nPeople"><%= nivel_P %></td>
                     </tr>
                     <tr>
                         <td>Craft: </td>
-                        <td id="nCraft"><%- nivel_C -%></td>
+                        <td id="nCraft"><%= nivel_C %></td>
                     </tr>
                     <tr>
                         <td>Business: </td>
-                        <td id="nBusiness"><%- nivel_B -%></td>
+                        <td id="nBusiness"><%= nivel_B %></td>
                     </tr>
                     <tr>
-                        <td>Niveral Overall: </td>
-                        <td id="nivOverall"><%- Math.min(nivel_P+1, nivel_C, nivel_B) -%></td>
+                        <td>Nivel General: </td>
+                        <td id="nivOverall"><%= Math.min(Number(nivel_P) + 1, Number(nivel_B) + 1, Number(nivel_C)) %></td>
                     </tr>
                 </table>
                 <br><br>

@@ -41,11 +41,11 @@
     <tbody>
         <% for (let empleado of empleados) { %>
             <tr>
-                <td><%- empleado.nombre -%></td>
-                <td><%- empleado.apellidoP + ' ' + empleado.apellidoM -%></td>
-                <td><%- empleado.email -%></td>
-                <td><%- empleado.equipo -%></td>
-                <td><%- empleado.nivOverall -%></td>
+                <td><%= empleado.nombre %></td>
+                <td><%= empleado.apellidoP + ' ' + empleado.apellidoM %></td>
+                <td><%= empleado.email %></td>
+                <td><%= empleado.equipo %></td>
+                <td><%= empleado.nivOverall %></td>
                 <td><a href = "/id-empleado=<%-empleado.idEmpleado-%>" class = "btn btn-outline-secondary">Editar</a></td>
                 <td><a href="/bajaEmpleado=<%-empleado.idEmpleado-%>" type="button" class="btn btn-outline-danger btn-sm">Dar de baja</a> </td>
             </tr>

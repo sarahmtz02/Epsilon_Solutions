@@ -11,7 +11,7 @@
 
 <div>
     <section class="section-card">
-        <h1 id="principal">Buen día, <%- nombreSesion %> <%- apellidoPSesion %> </h1>
+        <h1 id="principal">Buen día, <%= nombreSesion %> <%= apellidoPSesion %> </h1>
         <hr class="db-hr">
         <% if (obsCompas.length > 0) { %>
         <h3>Estas tus observaciones:</h3>
@@ -23,8 +23,8 @@
             <tbody>
                 <% for (let obsCompa of obsCompas) { %>
                 <tr>
-                    <td><%- obsCompa.nomMentor -%> <%- obsCompa.apellidoPM -%> <%- obsCompa.apellidoMM -%></td>
-                    <td><%- obsCompa.descObservacion -%></td>
+                    <td><%= obsCompa.nomMentor %> <%= obsCompa.apellidoPM %> <%= obsCompa.apellidoMM %></td>
+                    <td><%= obsCompa.descObservacion %></td>
                 </tr>
                 <% } %>
             </tbody>
