@@ -1,7 +1,15 @@
 # Epsilon_Solutions
-Entregas de proyecto TC2005B, Equipo Epsilon Solutions.
-Autores: Sarah Martínez Navarro, Diego Reséndiz Fernández, Jaime López Hernández, José Manuel Medina, Jorge de Jesús Castro Vázquez, José Sebastián Pedrero Jiménez
+Entregas de proyecto TC2005B, Equipo Epsilon Solutions. <br>
+**Autores:**  
+> Sarah Martínez Navarro 
+> Diego Reséndiz Fernández 
+> Jaime López Hernández 
+> José Manuel Medina 
+> Jorge de Jesús Castro Vázquez 
+> José Sebastián Pedrero Jiménez
 
+## Tabla de Contenido
+[falta tabla]
 
 Este proyecto consistió en el desarrollo de un sitio web de encuestas para la empresa ZéBrands con el proposito de mejorar la eficacia y relevancia de las encuestas que se realizan adentro de la misma empresa. Como parte de la solución al problema presentado, donde las encuestas anteriormente se hacían una vez cada año y la retroalimentación podría dejar de ser relevante al empleado después de unos meses o semanas.
 
