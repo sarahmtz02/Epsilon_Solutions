@@ -18,14 +18,13 @@ img {
 }
 
 .section-dash-main{
-    position: absolute;
     background-color:#ffff;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
+    border-radius: 20px;
     width: 950px;
-    height: 600px;
+    height: 500px;
     margin: 15px;
-    padding: 25px 25px 25px 25px;
+    padding: 12px 25px 25px 25px;
     text-align: center;
 }
 
@@ -33,10 +32,10 @@ img {
     background-color:#ffff;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
-    width: 358px;
+    width: 400px;
     height: 403px;
     margin: 15px;
-    padding: 25px 25px 25px 25px;
+    padding: 8px 25px 25px 25px;
 }
 
 tr:hover td {
@@ -107,4 +106,14 @@ td {
 tr{
     background: #FFFFFF;
     box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
+}
+
+.canvas-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
