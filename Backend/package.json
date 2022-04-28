@@ -33,6 +33,7 @@
     "moment": "^2.29.2",
     "moment-timezone": "^0.5.34",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "swal": "^0.1.0"
   }
 }
