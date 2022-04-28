@@ -1,0 +1,173 @@
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<div>
+    <section class="section-card">
+        <h1 id="principal">Empleados</h1>
+        <h2>Editar un Empleado:</h2>
+        <br>
+        <a href="/lista"><button type="button" class="btn btn-secondary">Regresar al listado de empleados</button></a>
+        <br>
+        <br>
+        <form action="/nuevoEmpleado" method="POST">
+        <!-- Para los datos personales -->
+        <div class="row">
+            <div class="col">
+                <input id="fechaIng" name="fechaIng" type="hidden" value="<%- moment.tz(currentDate, 'UTC').format("YYYY-MM-DD")%>">
+                <label for="nombre">Nombre: </label>
+                <input class="form-control" type="text" id="nombre" name="nombre" oninput="validate(this)">
+                <br><br>
+            </div>
+            <div class="col">
+                <label for="apellidoP">Apellido Paterno: </label>
+                <input class="form-control" type="text" id="apellidoP" name="apellidoP" oninput="validate(this)">
+                <br><br>
+            </div>
+            <div class="col">
+                <label for="apellidoM">Apellido Materno: </label>
+                <input class="form-control" type="text" id="apellidoM" name="apellidoM" oninput="validate(this)">
+                <br><br>
+            </div>
+        </div>
+        <input id="antiguedad" name="antiguedad" type="hidden" value="0">
+        <input id="isActive" name="isActive" type="hidden" value="1">
+        <!-- Para los datos empresariales (falta hacer el cálculo, por ahora es manual) -->
+        <label for="nivPeople">Nivel People: </label>
+        <select name="nivPeople" id="nivPeople" class="form-select" onchange="calcNivOv()">
+            <option value="1.1">1.1</option>
+            <option value="1.2">1.2</option>
+            <option value="1.3">1.3</option>
+            <option value="2.1">2.1</option>
+            <option value="2.2">2.2</option>
+            <option value="2.3">2.3</option>
+            <option value="3.1">3.1</option>
+            <option value="3.2">3.2</option>
+            <option value="3.3">3.3</option>
+            <option value="4.1">4.1</option>
+            <option value="4.2">4.2</option>
+            <option value="4.3">4.3</option>
+            <option value="5.1">5.1</option>
+            <option value="5.2">5.2</option>
+            <option value="5.3">5.3</option>
+        </select>
+        <br><br>
+        <label for="nivCraft">Nivel Craft: </label>
+        <select name="nivCraft" id="nivCraft" class="form-select" onchange="calcNivOv()">
+            <option value="1.1">1.1</option>
+            <option value="1.2">1.2</option>
+            <option value="1.3">1.3</option>
+            <option value="2.1">2.1</option>
+            <option value="2.2">2.2</option>
+            <option value="2.3">2.3</option>
+            <option value="3.1">3.1</option>
+            <option value="3.2">3.2</option>
+            <option value="3.3">3.3</option>
+            <option value="4.1">4.1</option>
+            <option value="4.2">4.2</option>
+            <option value="4.3">4.3</option>
+            <option value="5.1">5.1</option>
+            <option value="5.2">5.2</option>
+            <option value="5.3">5.3</option>
+        </select>
+        <br><br>
+        <label for="nivBusiness">Nivel Business: </label>
+        <select name="nivBusiness" id="nivBusiness" class="form-select" onchange="calcNivOv()">
+            <option value="1.1">1.1</option>
+            <option value="1.2">1.2</option>
+            <option value="1.3">1.3</option>
+            <option value="2.1">2.1</option>
+            <option value="2.2">2.2</option>
+            <option value="2.3">2.3</option>
+            <option value="3.1">3.1</option>
+            <option value="3.2">3.2</option>
+            <option value="3.3">3.3</option>
+            <option value="4.1">4.1</option>
+            <option value="4.2">4.2</option>
+            <option value="4.3">4.3</option>
+            <option value="5.1">5.1</option>
+            <option value="5.2">5.2</option>
+            <option value="5.3">5.3</option>
+        </select>
+        <br><br>
+
+        <!-- TEMPORAL -->
+        <label for="nivOverall">Nivel Overall: </label>
+        <input class="form-control" name="nivOverall" id="nivOverall" readonly>
+        <br><br>
+        <label for="puesto">Puesto: </label>
+        <input class="form-control" type="text" id="puesto" name="puesto" oninput="validate(this)">
+        <br><br>
+        <label for="equipo">Equipo: </label>
+        <input class="form-control" type="text" id="equipo" name="equipo" oninput="validate(this)">
+        <br><br>
+        <div class ="row">
+            <div class="col">
+                <label for="password">Contraseña: </label>
+                <input class="form-control" type="password" id="password" name="password" oninput="validate(this)">
+                <br><br>
+            </div>
+            <div class="col">
+                <label for="email">Correo electrónico: </label>
+                <input class="form-control" type="email" id="email" name="email" oninput="validate(this)">
+                <br><br>
+            </div>
+        </div>
+        <label for="fk_idChapter">Chapter: </label>
+        <select name="fk_idChapter" id="fk_idChapter" class="form-select">
+            <option value="1">IT</option>
+        </select>
+        <br><br>
+        <label for="fk_idRolJer">Rol Jerárquico: </label>
+        <select name="fk_idRolJer" id="fk_idRolJer" class="form-select">
+            <option value="1">Member</option>
+            <option value="2">Chapter Lead Assistant</option>
+            <option value="3">Chapter Leader</option>
+        </select>
+        <br><br>
+
+        <input type="submit" value="Crear nuevo Empleado" class="btn btn-secondary">
+    </form>
+    <br><br>
+    </section>
+</div>
+
+<%- include('templates/footer.ejs') %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+    function calcNivOv() {
+        var nP =document.getElementById("nivPeople").value;
+        var nB =document.getElementById("nivBusiness").value;
+        var nC =document.getElementById("nivCraft").value;
+        var P = parseFloat(nP);
+        var B = parseFloat(nB);
+        var C = parseFloat(nC);
+        var res = Math.min(P+1, B+1, C);
+        document.getElementById("nivOverall").innerHTML = res.toFixed(1);
+        document.getElementById("nivOverall").value = res.toFixed(1);
+    }
+    
+    window.onload = function() {
+        calcNivOv();
+    }
+</script>
+
+<script>
+    function validate(input){
+        if(/^\s/.test(input.value))
+            input.value = '';
+        }
+</script>
+
+
