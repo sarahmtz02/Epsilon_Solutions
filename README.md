@@ -1,11 +1,11 @@
 # Epsilon_Solutions
 Entregas de proyecto TC2005B, Equipo Epsilon Solutions. <br>
 **Autores:**  
-> Sarah Martínez Navarro 
-> Diego Reséndiz Fernández 
-> Jaime López Hernández 
-> José Manuel Medina 
-> Jorge de Jesús Castro Vázquez 
+> Sarah Martínez Navarro <br>
+> Diego Reséndiz Fernández <br>
+> Jaime López Hernández <br>
+> José Manuel Medina <br>
+> Jorge de Jesús Castro Vázquez <br> 
 > José Sebastián Pedrero Jiménez
 
 ## Tabla de Contenido
