@@ -24,8 +24,8 @@
             <tbody>
                 <% for (let cuestMentee of cuestMentees) { %>
                 <tr>
-                    <td><%- cuestMentee.nombre -%> <%- cuestMentee.apellidoP -%> <%- cuestMentee.apellidoM -%></td>
-                    <td><%- moment.tz(cuestMentee.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(cuestMentee.FechaFin, 'UTC').format("LL") -%></td>
+                    <td><%= cuestMentee.nombre %> <%= cuestMentee.apellidoP %> <%= cuestMentee.apellidoM %></td>
+                    <td><%- moment.tz(cuestMentee.FechaInicio, 'UTC').format("LL") %> <%- moment.tz(cuestMentee.FechaFin, 'UTC').format("LL") %></td>
                     <td><a href = "/mentees/evalMentee=<%-cuestMentee.idCuestionario-%>" class = "btn btn-outline-secondary">Consultar Respuestas</a></td>
                 </tr>
                 <% } %>
