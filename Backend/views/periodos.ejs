@@ -20,9 +20,9 @@
                     <strong>Atención! </strong><%- success -%>
                 </div>
             <%} %>
-            <h2 align="center">Periodos de Evaluación:</h2>
+            <h2 align="center">Periodos de Evaluación</h2>
             <hr class="db-hr">
-            <a href="/periodos/nuevoPeriodo"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo Periodo</button></a>
+            <a href="/periodos/nuevoPeriodo"><button type="button" class="btn-normal">Registrar un nuevo Periodo</button></a>
             <br><br>
             <% if (periodos.length > 0) { %>
                 <table class="table table-striped centered">
@@ -37,7 +37,7 @@
                         <td><%- periodo.idPeriodo -%></td>
                         <td><%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%></td>
                         <td><%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></td>
-                        <td><a href="/periodos/editPeriodo=<%- periodo.idPeriodo -%>" class = "btn btn-outline-secondary btn-sm">Modificar Periodo</a></td>
+                        <td><a href="/periodos/editPeriodo=<%- periodo.idPeriodo -%>" class = "btn-normal">Modificar Periodo</a></td>
                     </tr>
                     <%} %>
                 </table>
@@ -45,7 +45,7 @@
                 <p>Por ahora, no hay ningún periodo de evaluación activo.</p>
             <% } %>
             <br>
-            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
+            <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al Dashboard</button></a>
         </section>
     </div>
 <%- include('templates/footer.ejs') %>

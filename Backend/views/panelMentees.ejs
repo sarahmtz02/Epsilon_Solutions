@@ -16,9 +16,9 @@
                 <strong>Atención! </strong><%- success -%>
             </div>
         <%} %>
-        <h1 id="principal">Asignación de Mentees: </h1>
+        <h1 id="principal">Asignación de Mentees</h1>
         <hr class="db-hr">
-        <h3>Selecciona a un Mentor y asignale un mentorado:</h3>
+        <h3>Selecciona a un Mentor y asignale un mentorado</h3>
 
         <form action="/mentees/panelMentees" method="POST">
             <input id="periodo" name="periodo" type="hidden" value="<%= periodo.idPeriodo %>">
@@ -47,9 +47,9 @@
             </div>
             <br>
             <label>Agrega un comentario a la asignación: </label>
-            <input type="text" class="form-control input-lg" id="inputlg" name="descAsignacion" oninput="validate(this)"></input>
+            <input type="text" placeholder="Descripcion corta sobre la asignación (OPCIONAL)"class="form-control input-lg" id="inputlg" name="descAsignacion" oninput="validate(this)"></input>
             <br>
-            <button type="submit" class="btn btn-primary w-100">Asignar</button>
+            <button type="submit" class="btn-normal w-100">Asignar</button>
         </form>
         <br><br>
         <h1>Lista de Mentees asignados:</h1>
@@ -71,13 +71,13 @@
                     <td><%- dataMentee.nomMentor -%> <%- dataMentee.apellidoPM -%> <%- dataMentee.apellidoMM -%></td>
                     <td><%- dataMentee.descAsignacion -%></td>
                     <td><%- moment.tz(dataMentee.fechaAsig, 'UTC').format("YYYY-MM-DD") -%></td>
-                    <td><a href="/mentees/deleteAsig=<%- dataMentee.idMentees -%>" type="button" class="btn btn-outline-danger btn-sm">Eliminar asignación</a> </td>
+                    <td><a href="/mentees/deleteAsig=<%- dataMentee.idMentees -%>" type="button" class="btn-delete">Eliminar asignación</a> </td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
         <br>
-        <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
+        <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al Dashboard</button></a>
     </section>
 </div>
 

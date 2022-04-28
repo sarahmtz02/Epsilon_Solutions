@@ -43,14 +43,16 @@
                     <td><%- mentorado.nivBusiness -%></td>
                     </td>
                     <td><%- mentorado.nivPeople -%></td>
-                    <td><a href = "/mentees/id-mentorado=<%-mentorado.idMentee-%>" class = "btn btn-outline-secondary">Feedback de Compañeros</a>
-                        <a href = "/mentees/observaciones-id-mentorado=<%-mentorado.idMentee-%>" class = "btn btn-outline-secondary">Mis Observaciones</a></td>
+                    <td><a href = "/mentees/id-mentorado=<%-mentorado.idMentee-%>" class = "btn-normal">Feedback de Compañeros</a>
+                        <br>
+                        <br>
+                        <a href = "/mentees/observaciones-id-mentorado=<%-mentorado.idMentee-%>" class = "btn-normal">Mis Observaciones</a></td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
         <br>
-        <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
+        <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al Dashboard</button></a>
     </section>
     
 </div>

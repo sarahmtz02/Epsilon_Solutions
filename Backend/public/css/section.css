@@ -1,33 +1,59 @@
+img {
+    width: 100%;
+    height: auto;
+  }
+
+  .tableH {
+    background-color:rgb(255, 0, 0);
+  }
 .section-card {
     background-color:#ffff;
     color: #231F20;
-    border-radius: 4px;
+    border-radius: 15px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; font-size: 15px;
     padding: 25px 25px 25px 25px;
     margin: 50px; /* Same as the width of the sidenav *//* Increased text to enable scrolling */
+
 }
 
 .section-dash-main{
-    position: absolute;
     background-color:#ffff;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    width: 750px;
-    height: 821px;
+    border-radius: 20px;
+    width: 950px;
+    height: 500px;
     margin: 15px;
-    padding: 25px 25px 25px 25px;
+    padding: 12px 25px 25px 25px;
+    text-align: center;
 }
 
 .section-dash-aside{
     background-color:#ffff;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    width: 358px;
+    border-radius: 15px;
+    width: 400px;
     height: 403px;
     margin: 15px;
-    padding: 25px 25px 25px 25px;
+    padding: 8px 25px 25px 25px;
 }
+
+tr:hover td {
+    background:#4E5066;
+    color:#FFFFFF;
+    border-top: 1px solid #22262e;
+  }
+
+td {
+    background:#FFFFFF;
+    padding:20px;
+    text-align:center;
+    vertical-align:middle;
+    font-weight:300;
+    font-size:18px;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #C1C3D1;
+  }
 
 .db-hr{
     width: 100%;
@@ -37,7 +63,7 @@
 }
 
 .db-dimensions{
-    background: #61366E;
+    background: #ff8800;
     color: #fff;
     box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
     position: static;
@@ -55,7 +81,7 @@
 }
 
 .db-indicators{
-    background: #005CB9;
+    background: #19242e;
     color: #fff;
     box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
     position: static;
@@ -80,4 +106,14 @@
 tr{
     background: #FFFFFF;
     box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
+}
+
+.canvas-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
