@@ -12,24 +12,18 @@
 <link rel="stylesheet" href="/css/section.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 
-<%if(rol == 2 || rol == 1 ){ %>
+
             <section class="section-dash-main" align="center">
                 <h1 id="principal">Resumen de Estado</h1>
-                <div class="canvas-container" >
-                    <canvas id="graficaD" width="180" height="200"></canvas>
+                <div class="canvas-container" style="width: 500px; height: 500px;">
+                    <canvas id="graficaD" ></canvas>
                 </div>
-            </section>
-<%}else{ if(rol == 3){ %>
-            <section class="section-dash-main" align="center">
-                <h1 id="principal">Resumen de Estado</h1>
-                <div class="canvas-container" >
-                    <canvas id="graficaD" width="150" height="150"></canvas>
+            
+                <div class="canvas-container" style="width: 300px; height: 300px;">
+                    <canvas id="grafica"></canvas>
                 </div>
-                <div  class="canvas-container">
-                    <canvas id="grafica" id="graficaD" width="150" height="150"></canvas>
-                </div>
-            </section>
-            <%} }%>
+
+        </section>
     
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -70,7 +64,7 @@
     console.log(<%= nivel_P %>);
     niveles();
     </script>
-    <%if(rol == 3){ %>
+  
     <script>
         const $grafica = document.querySelector("#grafica");
         const data = {
@@ -95,7 +89,7 @@
             });
 
     </script>
-    <%}%>
+
 <%- include('templates/footer.ejs') %>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
