@@ -8,14 +8,11 @@ const Observacion = require('../models/observacion');
 
 // MENTEES //
 
+// Método para inserción de mentee
 exports.insertMentee = async (request, response, next) => {    
     const mentorId = await Mentee.getIdEmpleado(request.body.nomMentor);
-    console.log(mentorId);
     const mentoradoId = await Mentee.getIdEmpleado(request.body.nomMentorado)
-    console.log(mentoradoId);
     const periodo = await Mentee.getPeriodo();
-    console.log(periodo);
-    console.log(request.body.descAsignacion)
     const mentee = new Mentee(mentorId, mentoradoId, request.body.descAsignacion, periodo, request.body.fechaAsig);
     mentee.save().then(() => {
         request.flash('success', 'Se ha asignado al empleado exitosamente')
@@ -24,15 +21,17 @@ exports.insertMentee = async (request, response, next) => {
     }).catch(err => console.log(err));
 };
 
+// Método para obtener datos de la tablas Mentees
 exports.fetchMentees = async (request, response, next) => {
     const periodo = await Mentee.getPeriodo();
     const date = new Date();
     const currentDate = new Date(date.toDateString());
 
+    //Obtiene los mentores
     Mentee.getMentores(request.session.idEmpleado).then(([mentores, fielData]) => {
-        
+        //Obtiene los mentorados
         Mentee.getEmpleados(request.session.idEmpleado).then(([empleados, fieldData]) => {
-            
+                //Obtiene los datos generales de la tabla
                 Mentee.fetchAllMentees().then(([dataMentees, fielData]) => {
                     
                     response.render('panelMentees', {
@@ -57,6 +56,7 @@ exports.fetchMentees = async (request, response, next) => {
     })
 }
 
+// Método para obtener los mentorados de un mentee
 exports.getMentorados = async (request, response, next) => {
     const periodo = await Mentee.getPeriodo();
 
@@ -79,6 +79,7 @@ exports.getMentorados = async (request, response, next) => {
     }); 
 }
 
+// Método para obtener las evaluaciones del mentorado
 exports.getEvalMentorado = async (request, response, next) => {
     const periodo = await Mentee.getPeriodo();
     
@@ -99,6 +100,7 @@ exports.getEvalMentorado = async (request, response, next) => {
     }); 
 }
 
+// Método para obtener las respuestas de las evaluaciones del mentorado
 exports.getResCuest = async (request, response, next) => {
     const idEvaluador = await Mentee.getIdEvaluador(request.params.idCuestionario);
     const idEvaluado = await Mentee.getIdEvaluado(request.params.idCuestionario);
@@ -110,7 +112,7 @@ exports.getResCuest = async (request, response, next) => {
     Mentee.getNombreEmpleado(idEvaluador).then(([nombreEs, fieldData]) => {
 
         Mentee.getNombreEmpleado(idEvaluado).then(([nombreMs, fieldData]) => {
-            console.log(request.params.idCuestionario)
+
             Mentee.getAnsCuest(request.params.idCuestionario).then(([answers, fieldData]) => {
                 console.log(answers);
                 response.render('evalMentee', {
@@ -134,6 +136,7 @@ exports.getResCuest = async (request, response, next) => {
     })
 }
 
+// Método para insertar una nueva observación
 exports.nuevaObservacion = async (request, response, next) => {
     let newObv = new Observacion (request.body.fk_idEvaluado, request.session.idEmpleado, 
         request.body.fk_idPeriodo, request.body.descObservacion);
@@ -145,10 +148,10 @@ exports.nuevaObservacion = async (request, response, next) => {
     
 }
 
+// Método para obtener las observaciones del mentee en sesión
 exports.misObservaciones = async (request, response, next) => {
 
     Observacion.getObservaciones(request.session.idEmpleado, request.params.idMentorado).then(([observaciones, fieldData]) => {
-        console.log(observaciones);
         response.render('misObservaciones', {
             observaciones: observaciones,
             rol: request.session.idRol ? request.session.idRol : '',
@@ -163,8 +166,8 @@ exports.misObservaciones = async (request, response, next) => {
     }); 
 }
 
+// Método para eliminar una observación
 exports.deleteObservacion = async (request, response, next) => {
-    console.log('DELETE');
 
     await Observacion.deleteObservacion(request.body.idObservacion);
 
@@ -172,8 +175,8 @@ exports.deleteObservacion = async (request, response, next) => {
     response.redirect('/mentees/misMentorados')
 }
 
+// Método para selecciona una observación (para editarla)
 exports.getOneObservacion = async (request, response, next) => {
-    console.log('GET FOR EDIT');
 
     Observacion.getOneObservacion(request.params.idObservacion).then(([observaciones, fieldData]) => {
         response.render('editObservacion', {
@@ -190,9 +193,8 @@ exports.getOneObservacion = async (request, response, next) => {
     }); 
 }
 
+// Método para modificar una observación
 exports.updateObservacion = async (request, response, next) => {
-    console.log(request.params.idObservacion);
-    console.log(request.body.descObservacion)
 
     await Observacion.updateObservacion(request.body.descObservacion, request.params.idObservacion).then(() => {
         request.flash('success', 'Se ha actualizado la observación exitosamente')
@@ -200,6 +202,7 @@ exports.updateObservacion = async (request, response, next) => {
     })
 }
 
+// Método para eliminar una asignación de mentorado
 exports.deleteAsig = async (request, response, next) => {
 
     await Mentee.deleteAsig(request.params.idMentees).then(() => {
