@@ -36,12 +36,12 @@
 
                                 <%} else if (feedback.tipoPregunta == '2') { %>
                                     <div class="mb-3">
-                                        <input class="form-check-input" type="radio" value="1" name=<%= nombre %> id=<% feedback.idPregunta %>  rows="3"></input>
+                                        <input class="form-check-input" type="radio" value="1" required name=<%= nombre %> id=<% feedback.idPregunta %>  rows="3"></input>
                                         <label class="form-check-label" for=<% feedback.idPregunta %>>
                                             Sí
                                         </label>
                                         <br>
-                                        <input class="form-check-input" type="radio" value="2" name=<%= nombre %> id=<% feedback.idPregunta %>  rows="3"></input>
+                                        <input class="form-check-input" type="radio" value="2" required name=<%= nombre %> id=<% feedback.idPregunta %>  rows="3"></input>
                                         <label class="form-check-label" for=<% feedback.idPregunta %>>
                                             No
                                         </label>
