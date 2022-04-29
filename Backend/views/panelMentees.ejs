@@ -1,0 +1,94 @@
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<div>
+    <section class="section-card">
+        <% if (success != '') { %>
+            <div class="alert alert-success" role="alert">
+                <strong>Atención! </strong><%- success -%>
+            </div>
+        <%} %>
+        <h1 id="principal">Asignación de Mentees</h1>
+        <hr class="db-hr">
+        <h3>Selecciona a un Mentor y asignale un mentorado</h3>
+
+        <form action="/mentees/panelMentees" method="POST">
+            <input id="periodo" name="periodo" type="hidden" value="<%= periodo.idPeriodo %>">
+            <input id="fechaAsig" name="fechaAsig" type="hidden" value="<%- moment.tz(fecha, 'UTC').format("YYYY-MM-DD")%>">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h3>Mentores: </h3>
+                        <select id="nomMentor" name="nomMentor" class="form-control">
+                        <% for (let mentor of mentores) { %>
+                            <option><%= mentor.nombre %> <%= mentor.apellidoP %></option>
+                        <% } %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h3>Empleados: </h3>
+                        <select id="nomMentorado" name="nomMentorado" class="form-control">
+                        <% for (let empleado of empleados) { %>
+                            <option><%= empleado.nombre %> <%= empleado.apellidoP %></option>
+                        <% } %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <label>Agrega un comentario a la asignación: </label>
+            <input type="text" placeholder="Descripcion corta sobre la asignación (OPCIONAL)"class="form-control input-lg" id="inputlg" name="descAsignacion" oninput="validate(this)"></input>
+            <br>
+            <button type="submit" class="btn-normal w-100">Asignar</button>
+        </form>
+        <br><br>
+        <h1>Lista de Mentees asignados:</h1>
+        <br><br>
+        <table class="table table-striped" class="centered">
+            <tr>
+                <th>Nombre del Mentor:</th>
+                <th>Nivel:</th>
+                <th>Nombre del Mentorado:</th>
+                <th>Asignación:</th>
+                <th>Fecha:</th>
+                <th>Acciones:</th>
+            </tr>
+            <tbody>
+                <% for (let dataMentee of dataMentees) { %>
+                <tr>
+                    <td><%- dataMentee.nombre -%> <%- dataMentee.apellidoP -%> <%- dataMentee.apellidoM -%></td>
+                    <td><%- dataMentee.nivOverall -%></td>
+                    <td><%- dataMentee.nomMentor -%> <%- dataMentee.apellidoPM -%> <%- dataMentee.apellidoMM -%></td>
+                    <td><%- dataMentee.descAsignacion -%></td>
+                    <td><%- moment.tz(dataMentee.fechaAsig, 'UTC').format("YYYY-MM-DD") -%></td>
+                    <td><a href="/mentees/deleteAsig=<%- dataMentee.idMentees -%>" type="button" class="btn-delete">Eliminar asignación</a> </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <br>
+        <a href="#principal"><button type="button" class="btn-navigation">Regresar arriba</button></a>
+        <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al Dashboard</button></a>
+    </section>
+</div>
+
+<script>
+    function validate(input){
+        if(/^\s/.test(input.value))
+            input.value = '';
+        }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<%- include('templates/footer.ejs') %>

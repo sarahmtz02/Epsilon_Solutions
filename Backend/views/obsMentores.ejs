@@ -1,0 +1,42 @@
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<div>
+    <section class="section-card">
+        <h1 id="principal">Buen día, <%- nombreSesion %> <%- apellidoPSesion %> </h1>
+        <hr class="db-hr">
+        <% if (obsCompas.length > 0) { %>
+        <h3>Estas tus observaciones:</h3>
+        <table class="table table-striped" class="centered">
+            <tr>
+                <th>Mentor:</th>
+                <th>Observación:</th>
+            </tr>
+            <tbody>
+                <% for (let obsCompa of obsCompas) { %>
+                <tr>
+                    <td><%- obsCompa.nomMentor -%> <%- obsCompa.apellidoPM -%> <%- obsCompa.apellidoMM -%></td>
+                    <td><%- obsCompa.descObservacion -%></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <% } else { %>
+            <p>Aún no te han hecho ninguna observación.</p>
+        <% } %>
+        <br>
+        <a href="/empleados/panelFeedback"><button type="button" class="btn-navigation">Regresar a tu Feedback</button></a>
+    </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<%- include('templates/footer.ejs') %>

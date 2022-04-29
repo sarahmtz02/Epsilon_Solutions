@@ -1,0 +1,27 @@
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+
+<div>
+    <section class="section-card">
+        <h1 id="principal">Mi Retroalimentación</h1>
+        <hr class="db-hr">
+
+        <table class="table table-striped" class="centered">
+            <td><a href = "/empleados/evalCompaneros" class = "btn-normal">Feedback de Compañeros</a></td>
+            <td><a href = "/empleados/obsMentores" class = "btn-normal">Observaciones de Mentores</a></td>
+        </table>
+        <a href="/dashboard"><button type="button" class="btn-navigation">Regresar al Dashboard</button></a>
+    </section>
+</div>
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<%- include('templates/footer.ejs') %>
