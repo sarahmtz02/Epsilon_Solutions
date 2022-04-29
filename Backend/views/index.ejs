@@ -52,6 +52,7 @@
             </div>
         </section>
 
+        <% if(rol==3) { %>
         <section class="section-dash-main" style="height: 380px;">
             <h1 id="principal">Cuestionarios Contestados</h1>
             <div class="canvas-container" style="width: 100px; height: 100x;">
@@ -62,6 +63,7 @@
                 <canvas id="grafica"></canvas>
             </div>
         </section>
+        <% }%>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
        
@@ -109,6 +111,7 @@
     niveles();
     </script>
 
+<% if(rol==3) { %>
 <script>
     const $grafica = document.querySelector("#grafica");
     const data = {
@@ -131,3 +134,4 @@
             data: data,
         });
 </script>
+<%  }%>
