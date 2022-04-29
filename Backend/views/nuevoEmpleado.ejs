@@ -1,6 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 
@@ -13,15 +16,9 @@
 <div>
     <section class="section-card">
         <h1 id="principal">Empleados</h1>
-<<<<<<< HEAD
-        <h2>Editar un Empleado:</h2>
-        <br>
-        <a href="/lista"><button type="button" class="btn btn-secondary">Regresar al listado de empleados</button></a>
-=======
         <h2>Editar un Empleado</h2>
         <br>
         <a href="/lista"><button type="button" class="btn-navigation">Regresar al listado de empleados</button></a>
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
         <br>
         <br>
         <form action="/nuevoEmpleado" method="POST">
@@ -140,17 +137,11 @@
         </select>
         <br><br>
 
-<<<<<<< HEAD
-        <input type="submit" value="Crear nuevo Empleado" class="btn btn-secondary">
-    </form>
-    <br><br>
-=======
         <input type="submit" value="Crear nuevo Empleado" class="btn-normal">
     </form>
     <br><br>
     <a href="/lista"><button type="button" class="btn-navigation">Regresar al listado de empleados</button></a>
     <a href="/dashboard"><button type="button" class="btn-navigation">Regresar al Dashboard</button></a>
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     </section>
 </div>
 

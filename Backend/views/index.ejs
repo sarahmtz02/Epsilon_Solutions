@@ -2,6 +2,10 @@
 <!-- Si es CL o CLA despliega lo siguiente: -->
 
 <% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
+<% } %>
+
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 
@@ -11,36 +15,12 @@
 <link rel="stylesheet" href="/css/section.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 
-<<<<<<< HEAD
-        <main >
-            <section class="section-dash-main">
-=======
         <main>
-            <section class="section-dash-main" style="height: 350px;">
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
+            <section class="section-dash-main" style="height: 850px;">
                 <h1 id="principal">Resumen de Estado</h1>
                 <hr class="db-hr">
                 <table class="table">
                     <tr>
-<<<<<<< HEAD
-                        <th class="bg-danger text-white">Dimensiones</th>
-                        <th class="bg-primary text-white">Indicador</th>
-                    </tr>
-                    <tr>
-                        <td>People: </td>
-                        <td id="nPeople"><%- nivel_P -%></td>
-                    </tr>
-                    <tr>
-                        <td>Craft: </td>
-                        <td id="nCraft"><%- nivel_C -%></td>
-                    </tr>
-                    <tr>
-                        <td>Business: </td>
-                        <td id="nBusiness"><%- nivel_B -%></td>
-                    </tr>
-                    <tr>
-                        <td>Niveral Overall: </td>
-=======
                         <th style="background-color: rgba(159,73,110); color: white; font-family:  Helvetica, "Helvetica Neue", Arial, sans-serif;" >Dimensiones</th>
                         <th style="background-color: rgb(244, 67, 54);color: white; font-family:  Helvetica, "Helvetica Neue", Arial, sans-serif;" >Indicador</th>
                     </tr>
@@ -58,63 +38,37 @@
                     </tr>
                     <tr>
                         <td><strong>Nivel Overall</strong> </td>
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
                         <td id="nivOverall"><%- Math.min(nivel_P+1, nivel_C, nivel_B) -%></td>
                     </tr>
                 </table>
-                <br><br>
+                <br>
+                <h1 id="principal">Niveles Dimensiones</h1>
+                <div class="canvas-container" style="width: 500px; height: 500px;">
+                    <canvas id="graficaD" ></canvas>
+                </div>
             </section>
-        </main>
+    
+    </main>
 
-<<<<<<< HEAD
+    <% if(rol==3) { %>
+    
     <div class="secondary">
-    <aside>
-        <section class="section-dash-aside">
-            <h1 id="principal" align="center">Boletín</h1>
-            <hr class="db-hr">
-        </section>
-        <section class="section-dash-aside">
-            <h1 id="principal" align="center">¿Cómo te sientes el día de hoy?</h1>
-            <hr class="db-hr">
-        </section>
-    </aside>
+        <aside>
+            <section class="section-dash-aside" style="height: 500px">
+                <h1 id="principal">Cuestionarios Contestados</h1>
+            
+                <div class="canvas-container" style="width: 300px; height: 300px; padding: auto;">
+                    <canvas id="grafica"></canvas>
+                </div>
+            </section>
+        </aside>
     </div>
+    <% }%>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <%- include('templates/footer.ejs') %>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="/bootstrap/js/bootstrap.min.js"></script>
-=======
-        <section class="section-dash-main">
-            <h1 id="principal">Niveles Dimensiones</h1>
-            <div class="canvas-container" style="width: 500px; height: 500px;">
-                <canvas id="graficaD" ></canvas>
-            </div>
-        
-            <div class="canvas-container" style="width: 300px; height: 300px;">
-                <canvas id="grafica"></canvas>
-            </div>
-        </section>
-
-        <% if(rol==3) { %>
-        <section class="section-dash-main" style="height: 380px;">
-            <h1 id="principal">Cuestionarios Contestados</h1>
-            <div class="canvas-container" style="width: 100px; height: 100x;">
-                <canvas id="graficaD" ></canvas>
-            </div>
-        
-            <div class="canvas-container" style="width: 300px; height: 300px padding: auto;">
-                <canvas id="grafica"></canvas>
-            </div>
-        </section>
-        <% }%>
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-       
-       
-<%- include('templates/footer.ejs') %>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 
 
@@ -179,4 +133,3 @@
         });
 </script>
 <%  }%>
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e

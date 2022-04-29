@@ -1,6 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 
@@ -16,17 +19,10 @@
         <hr class="db-hr">
 
         <table class="table table-striped" class="centered">
-<<<<<<< HEAD
-            <td><a href = "/empleados/evalCompaneros" class = "btn btn-outline-secondary">Feedback de Compañeros</a></td>
-            <td><a href = "/empleados/obsMentores" class = "btn btn-outline-secondary">Observaciones de Mentores</a></td>
-        </table>
-        <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
-=======
             <td><a href = "/empleados/evalCompaneros" class = "btn-normal">Feedback de Compañeros</a></td>
             <td><a href = "/empleados/obsMentores" class = "btn-normal">Observaciones de Mentores</a></td>
         </table>
         <a href="/dashboard"><button type="button" class="btn-navigation">Regresar al Dashboard</button></a>
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     </section>
 </div>
 

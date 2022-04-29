@@ -1,6 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 
@@ -36,32 +39,20 @@
                 <% for (let mentorado of mentorados) { %>
                 <tr>
                     <td><%- mentorado.nombre -%> <%- mentorado.apellidoP -%> <%- mentorado.apellidoM -%></td>
-                    <td>
-                        <label><%- mentorado.nivCraft -%> de 5.5</label><br>
-                        <progress data-label="test" max="5.5" value="<%- mentorado.nivCraft -%>"></progress>
-                    </td>
+                    <td><%- mentorado.nivCraft -%></td>
                     <td><%- mentorado.nivBusiness -%></td>
                     </td>
                     <td><%- mentorado.nivPeople -%></td>
-<<<<<<< HEAD
-                    <td><a href = "/mentees/id-mentorado=<%-mentorado.idMentee-%>" class = "btn btn-outline-secondary">Feedback de Compañeros</a>
-                        <a href = "/mentees/observaciones-id-mentorado=<%-mentorado.idMentee-%>" class = "btn btn-outline-secondary">Mis Observaciones</a></td>
-=======
-                    <td><a href = "/mentees/id-mentorado=<%-mentorado.idMentee-%>" class = "btn-normal">Feedback de Compañeros</a>
+                    <td><a href = "/mentees/id-mentorado=<%-mentorado.idMentee-%>" class = "btn-normal w-75">Feedback de Compañeros</a>
                         <br>
                         <br>
-                        <a href = "/mentees/observaciones-id-mentorado=<%-mentorado.idMentee-%>" class = "btn-normal">Mis Observaciones</a></td>
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
+                        <a href = "/mentees/observaciones-id-mentorado=<%-mentorado.idMentee-%>" class = "btn-normal w-75">Mis Observaciones</a></td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
         <br>
-<<<<<<< HEAD
-        <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
-=======
         <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al Dashboard</button></a>
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     </section>
     
 </div>

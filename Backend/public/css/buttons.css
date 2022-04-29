@@ -20,8 +20,6 @@
     padding: 6px 8px 6px 16px;
     display: block;
     font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; font-size: 15px;
-<<<<<<< HEAD
-=======
 }
 
 .btn-normal {
@@ -223,5 +221,4 @@
 
 .btn-modify:focus {
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 }

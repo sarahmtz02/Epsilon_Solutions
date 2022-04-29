@@ -135,8 +135,6 @@ module.exports = class Cuestionario{
             return 0;
         });
     }
-<<<<<<< HEAD
-=======
 
     static get_answered(){
         return db.execute("SELECT count(*) AS contestados FROM Cuestionario WHERE isAnswered = 1").then(([rows, fielData]) => {
@@ -157,5 +155,4 @@ module.exports = class Cuestionario{
         });
 
     };
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 }

@@ -4,8 +4,11 @@
 <link rel="stylesheet" href="/css/section.css" />
 
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 
@@ -14,11 +17,7 @@
     <h1 id="principal">Empleados</h1>
     <h2>Editar un Empleado:</h2>
     <br>
-<<<<<<< HEAD
-    <a href="/lista"><button type="button" class="btn btn-secondary">Regresar al listado de empleados</button></a>
-=======
     <a href="/lista"><button type="button" class="btn-navigation">Regresar al listado de empleados</button></a>
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     <br>
     <br>
     <% for (let empleado of empleados) { %>
@@ -122,12 +121,12 @@
         <div class ="row">
             <div class="col">
                 <label for="password">Nueva Contraseña: </label>
-                <input class="form-control" type="password" id="password" name="password" >
+                <input class="form-control" type="password" id="password" name="password" required>
                 <br><br>
             </div>
             <div class="col">
                 <label for="email">Correo electrónico: </label>
-                <input class="form-control" type="email" id="email" name="email" value=<%- empleado.email -%>>
+                <input class="form-control" type="email" id="email" name="email" value=<%- empleado.email -%> required>
                 <br><br>
             </div>
         </div>
@@ -144,11 +143,7 @@
         </select>
         <br><br>
 
-<<<<<<< HEAD
-        <input type="submit" value="Guardar Cambios" class="btn btn-secondary">
-=======
         <input type="submit" value="Guardar Cambios" class="btn-normal">
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     </form>
     <%} %>
     <br><br>

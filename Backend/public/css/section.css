@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-.section-card {
-    background-color:#ffff;
-    color: #231F20;
-    border-radius: 4px;
-=======
 img {
     width: 100%;
     height: auto;
@@ -16,56 +10,33 @@ img {
     background-color:#ffff;
     color: #231F20;
     border-radius: 15px;
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     font-family: Helvetica, "Helvetica Neue", Arial, sans-serif; font-size: 15px;
     padding: 25px 25px 25px 25px;
     margin: 50px; /* Same as the width of the sidenav *//* Increased text to enable scrolling */
-<<<<<<< HEAD
+
 }
 
 .section-dash-main{
     position: absolute;
     background-color:#ffff;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    width: 750px;
-    height: 821px;
-    margin: 15px;
-    padding: 25px 25px 25px 25px;
-=======
-
-}
-
-.section-dash-main{
-    background-color:#ffff;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    width: 950px;
+    width: 850px;
     height: 500px;
     margin: 15px;
     padding: 12px 25px 25px 25px;
     text-align: center;
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 }
 
 .section-dash-aside{
     background-color:#ffff;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-<<<<<<< HEAD
-    border-radius: 4px;
-    width: 358px;
-    height: 403px;
-    margin: 15px;
-    padding: 25px 25px 25px 25px;
-}
-
-=======
     border-radius: 15px;
     width: 400px;
-    height: 403px;
+    height: 415px;
     margin: 15px;
-    padding: 8px 25px 25px 25px;
+    padding: 25px 25px 25px 25px;
 }
 
 tr:hover td {
@@ -85,7 +56,6 @@ td {
     border-right: 1px solid #C1C3D1;
   }
 
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 .db-hr{
     width: 100%;
     border: 0;
@@ -94,11 +64,7 @@ td {
 }
 
 .db-dimensions{
-<<<<<<< HEAD
-    background: #61366E;
-=======
     background: #ff8800;
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     color: #fff;
     box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
     position: static;
@@ -116,11 +82,7 @@ td {
 }
 
 .db-indicators{
-<<<<<<< HEAD
-    background: #005CB9;
-=======
     background: #19242e;
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     color: #fff;
     box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
     position: static;
@@ -145,8 +107,6 @@ td {
 tr{
     background: #FFFFFF;
     box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
-<<<<<<< HEAD
-=======
 }
 
 .canvas-container {
@@ -157,5 +117,4 @@ tr{
     margin-left: auto;
     margin-right: auto;
     width: 50%;
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 }

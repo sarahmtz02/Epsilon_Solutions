@@ -5,10 +5,7 @@ moment.locale('es-mx');
 const Empleado = require('../models/empleados');
 const Mentee = require('../models/mentee');
 const bcrypt = require('bcryptjs');
-<<<<<<< HEAD
-=======
 const Cuestionario = require('../models/cuestionario');
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 
 // -- LOGIN -- //
 
@@ -20,11 +17,6 @@ exports.get_login = (request, response, next) => {
     }); 
 };
 
-<<<<<<< HEAD
-exports.main = (request, response, next) => {
-    let roles = [1, 2, 3]; // roles autorizados
-    response.render('index', { // mandamos su informacion al sidenav
-=======
 exports.main =  async (request, response, next) =>  {
     let roles = [1, 2, 3]; // roles autorizados
     const answered = await Cuestionario.get_answered();
@@ -32,7 +24,6 @@ exports.main =  async (request, response, next) =>  {
     console.log(answered);
     console.log(notanswered);
     response.render('index', { 
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
         email: request.session.email ? request.session.email : '',
         rol: request.session.idRol ? request.session.idRol : '',
         roles_autorizados: roles,
@@ -42,12 +33,8 @@ exports.main =  async (request, response, next) =>  {
         nivel_B: request.session.nBusiness ? request.session.nBusiness : '',
         nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
         apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
-<<<<<<< HEAD
-
-=======
         answered: answered,
         notanswered: notanswered
->>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     });
 };
 
