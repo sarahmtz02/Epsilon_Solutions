@@ -26,7 +26,11 @@
                 <tr>
                     <td><%- cuestMentee.nombre -%> <%- cuestMentee.apellidoP -%> <%- cuestMentee.apellidoM -%></td>
                     <td><%- moment.tz(cuestMentee.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(cuestMentee.FechaFin, 'UTC').format("LL") -%></td>
+<<<<<<< HEAD
                     <td><a href = "/mentees/evalMentee=<%-cuestMentee.idCuestionario-%>" class = "btn btn-outline-secondary">Consultar Respuestas</a></td>
+=======
+                    <td><a href = "/mentees/evalMentee=<%-cuestMentee.idCuestionario-%>" class = "btn-normal">Consultar Respuestas</a></td>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
                 </tr>
                 <% } %>
             </tbody>
@@ -35,7 +39,11 @@
             <p>Parece que a tu mentee no lo han evaluado aún, regresa más tarde.</p>
         <% } %>
         <br>
+<<<<<<< HEAD
         <a href="/mentees/misMentorados"><button type="button" class="btn btn-secondary">Regresar a tus Mentorados</button></a>
+=======
+        <a href="/mentees/misMentorados"><button type="button" class="btn-navigatioin">Regresar a tus Mentorados</button></a>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     </section>
 </div>
 

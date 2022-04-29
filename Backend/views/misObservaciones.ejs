@@ -30,12 +30,20 @@
                     <td><%- moment.tz(observacion.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(observacion.FechaFin, 'UTC').format("LL") -%></td>
                     <td><%- observacion.descObservacion -%></td>
                     <td>
+<<<<<<< HEAD
                         <a href="/mentees/editObservacion=<%= observacion.idObservacion %>" class = "btn btn-outline-secondary btn-sm">Modificar Observación</a>
+=======
+                        <a href="/mentees/editObservacion=<%= observacion.idObservacion %>" class = "btn-modify">Modificar Observación</a>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
                     </td>
                     <td>
                         <form class="form-inline" id="deletePregunta" action="/mentees/deleteObservacion=<%= observacion.idObservacion %>" method="POST">
                             <input id="idObservacion" name="idObservacion" type="hidden" value="<%= observacion.idObservacion %>">
+<<<<<<< HEAD
                             <button type="submit" class = "btn btn-outline-danger btn-sm">Eliminar Observación</a>
+=======
+                            <button type="submit" class = "btn-delete">Eliminar Observación</a>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
                         </form>
                     </td>
                 </tr>
@@ -46,7 +54,11 @@
             <p>Aún no has hecho ninguna observación.</p>
         <% } %>
         <br>
+<<<<<<< HEAD
         <a href="/mentees/misMentorados"><button type="button" class="btn btn-secondary">Regresar a tus Mentorados</button></a>
+=======
+        <a href="/mentees/misMentorados"><button type="button" class="btn-navigation">Regresar a tus Mentorados</button></a>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     </section>
 </div>
 

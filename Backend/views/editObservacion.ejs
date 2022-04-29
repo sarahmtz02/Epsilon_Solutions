@@ -15,7 +15,11 @@
         <form id="insertObservacion" action="/mentees/editObservacion=<%= observacion.idObservacion %>" method="POST">
             <div class="form-group">
                 <label for="descObservacion">Modifica tu observación:</label>
+<<<<<<< HEAD
                 <textarea class="form-control" id="descObservacion" name="descObservacion" rows="3" oninput="validate(this)"><%- observacion.descObservacion -%> </textarea>
+=======
+                <textarea class="form-control" id="descObservacion" name="descObservacion" rows="3"><%- observacion.descObservacion -%></textarea>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
             </div>
             <button type="submit" class="btn btn-primary w-100">Guardar cambios</button>
         </form>
@@ -25,6 +29,7 @@
     </section>
 </div>
 
+<<<<<<< HEAD
 <script>
     function validate(input){
         if(/^\s/.test(input.value))
@@ -32,6 +37,8 @@
         }
 </script>
 
+=======
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <%- include('templates/footer.ejs') %>

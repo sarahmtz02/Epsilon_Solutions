@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 .sidenav {
     height: 100%;
     width: 300px;
@@ -32,7 +42,11 @@
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
   .secondary{
     margin-left: 775px; /* Same as the width of the sidenav */
     font-size: 28px; /* Increased text to enable scrolling */

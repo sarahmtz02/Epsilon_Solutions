@@ -16,9 +16,15 @@
                 <strong>Atención! </strong><%- success -%>
             </div>
         <%} %>
+<<<<<<< HEAD
         <h1 id="principal">Asignación de Mentees: </h1>
         <hr class="db-hr">
         <h3>Selecciona a un Mentor y asignale un mentorado:</h3>
+=======
+        <h1 id="principal">Asignación de Mentees</h1>
+        <hr class="db-hr">
+        <h3>Selecciona a un Mentor y asignale un mentorado</h3>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 
         <form action="/mentees/panelMentees" method="POST">
             <input id="periodo" name="periodo" type="hidden" value="<%= periodo.idPeriodo %>">
@@ -47,9 +53,15 @@
             </div>
             <br>
             <label>Agrega un comentario a la asignación: </label>
+<<<<<<< HEAD
             <input type="text" class="form-control input-lg" id="inputlg" name="descAsignacion" oninput="validate(this)"></input>
             <br>
             <button type="submit" class="btn btn-primary w-100">Asignar</button>
+=======
+            <input type="text" placeholder="Descripcion corta sobre la asignación (OPCIONAL)"class="form-control input-lg" id="inputlg" name="descAsignacion" oninput="validate(this)"></input>
+            <br>
+            <button type="submit" class="btn-normal w-100">Asignar</button>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
         </form>
         <br><br>
         <h1>Lista de Mentees asignados:</h1>
@@ -71,13 +83,22 @@
                     <td><%- dataMentee.nomMentor -%> <%- dataMentee.apellidoPM -%> <%- dataMentee.apellidoMM -%></td>
                     <td><%- dataMentee.descAsignacion -%></td>
                     <td><%- moment.tz(dataMentee.fechaAsig, 'UTC').format("YYYY-MM-DD") -%></td>
+<<<<<<< HEAD
                     <td><a href="/mentees/deleteAsig=<%- dataMentee.idMentees -%>" type="button" class="btn btn-outline-danger btn-sm">Eliminar asignación</a> </td>
+=======
+                    <td><a href="/mentees/deleteAsig=<%- dataMentee.idMentees -%>" type="button" class="btn-delete">Eliminar asignación</a> </td>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
                 </tr>
                 <% } %>
             </tbody>
         </table>
         <br>
+<<<<<<< HEAD
         <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al Dashboard</button></a>
+=======
+        <a href="#principal"><button type="button" class="btn-navigation">Regresar arriba</button></a>
+        <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al Dashboard</button></a>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
     </section>
 </div>
 

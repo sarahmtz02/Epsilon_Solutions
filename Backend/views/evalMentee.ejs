@@ -22,12 +22,19 @@
         <br>
         <table class="table table-striped table-sm">
             <tr>
+<<<<<<< HEAD
                 <th>Prgunta:</th>
+=======
+                <th>Pregunta:</th>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
                 <th>Respuesta:</th>
             </tr>
             <tbody>
                 <% for (let answer of answers) { %>
+<<<<<<< HEAD
 
+=======
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
                     <% if (answer.tipoPregunta == '1') { %>
                     <tr>
                         <td><%- answer.Pregunta -%></td>
@@ -60,6 +67,7 @@
                 <label for="descObservacion">Registra tus observaciones:</label>
                 <textarea class="form-control" id="descObservacion" name="descObservacion" rows="3"></textarea>
             </div>
+<<<<<<< HEAD
             <button type="submit" class="btn btn-primary w-100">Guardar observación</button>
         </form>
 
@@ -68,5 +76,16 @@
     </section>
 </div>
 
+=======
+            <button type="submit" class="btn-normal w-100">Guardar observación</button>
+        </form>
+
+        <br>
+        <a href="/mentees/misMentorados"><button type="button" class="btn-navigation">Regresar a tus Mentorados</button></a>
+    </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+>>>>>>> bae4f75f8e07711af4e7509fd2294eb5a54b078e
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <%- include('templates/footer.ejs') %>
