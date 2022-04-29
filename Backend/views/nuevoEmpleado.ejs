@@ -22,19 +22,19 @@
         <!-- Para los datos personales -->
         <div class="row">
             <div class="col">
-                <input id="fechaIng" name="fechaIng" type="hidden" value="<%- moment.tz(currentDate, 'UTC').format("YYYY-MM-DD")%>">
+                <input id="fechaIng" name="fechaIng" type="hidden" required value="<%- moment.tz(currentDate, 'UTC').format("YYYY-MM-DD")%>">
                 <label for="nombre">Nombre: </label>
-                <input class="form-control" type="text" id="nombre" name="nombre" oninput="validate(this)">
+                <input class="form-control" type="text" id="nombre" name="nombre" oninput="validate(this)" required>
                 <br><br>
             </div>
             <div class="col">
                 <label for="apellidoP">Apellido Paterno: </label>
-                <input class="form-control" type="text" id="apellidoP" name="apellidoP" oninput="validate(this)">
+                <input class="form-control" type="text" id="apellidoP" name="apellidoP" oninput="validate(this)" required>
                 <br><br>
             </div>
             <div class="col">
                 <label for="apellidoM">Apellido Materno: </label>
-                <input class="form-control" type="text" id="apellidoM" name="apellidoM" oninput="validate(this)">
+                <input class="form-control" type="text" id="apellidoM" name="apellidoM" oninput="validate(this)" required>
                 <br><br>
             </div>
         </div>

@@ -18,6 +18,7 @@ img {
 }
 
 .section-dash-main{
+    position: absolute;
     background-color:#ffff;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
