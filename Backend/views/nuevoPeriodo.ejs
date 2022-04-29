@@ -22,10 +22,17 @@
                 <label for="FechaFin">Fecha Fin: </label>
                 <input type="date" id="FechaFin" name="FechaFin" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>">
                 <br><br>
+<<<<<<< HEAD
                 <button type="submit" class="btn-normal" id="btnRegPeriodo" onclick="checkDate()">Registrar</button>
             </form>
             <br>
             <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al dashboard</button></a>
+=======
+                <button type="submit" class="btn btn-outline-secondary" id="btnRegPeriodo" onclick="checkDate()">Registrar</button>
+            </form>
+            <br>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
         </section>
     </div>
 </body>

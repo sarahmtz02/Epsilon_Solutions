@@ -25,9 +25,20 @@ exports.listado = (request, response, next) => {
         .catch(err => console.log(err));
 };
 
+<<<<<<< HEAD
 exports.postPregunta = async (request, response, next) => {
 
     const idP = await BancoPreguntas.getNewIdPreg();
+=======
+exports.post_preguntas = async (request, response, next) => {
+    console.log('obtiene el método POST');
+    console.log(request.params.idTemplate);
+    console.log(request.body);
+    console.log(request.body.nuevapregunta);
+    const idP = await BancoPreguntas.getNewIdPreg();
+    console.log(idP)
+    console.log(request.body.tipoPregunta)
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
 
     if (request.body.nuevapregunta == '') {
         request.flash('warning', 'La pregunta debe de llevar un encabezado!')
@@ -42,7 +53,14 @@ exports.postPregunta = async (request, response, next) => {
     }
 }
 
+<<<<<<< HEAD
 exports.deletePregunta = async (request, response, next) => {
+=======
+exports.delete_pregunta = async (request, response, next) => {
+    console.log('DELETE');
+    console.log(request.body.idTemplate)
+    console.log(request.params.idPregunta);
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
 
     await BancoPreguntas.deletePregunta(request.params.idPregunta, request.body.idTemplate);
 
@@ -67,6 +85,12 @@ exports.getEditPregunta = async (request, response, next) => {
 }
 
 exports.updatePregunta = async (request, response) => {
+<<<<<<< HEAD
+=======
+    console.log(request.params.idPregunta);
+    console.log(request.body.descPregunta);
+    console.log(request.body.tipoPregunta)
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
 
     if (request.body.descPregunta == '') {
         request.flash('warning', 'La pregunta debe de llevar un encabezado!')
@@ -82,7 +106,12 @@ exports.updatePregunta = async (request, response) => {
 // Para edición:
 
 exports.getEditTemplate = (request, response, next) => {
+<<<<<<< HEAD
 
+=======
+    console.log(request.params.idTemplate);
+    console.log(request.cookies);
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
     Template.fetchOneTemplate(request.params.idTemplate)
         .then(([rows, fieldData]) => {
             console.log(rows);
@@ -102,7 +131,13 @@ exports.getEditTemplate = (request, response, next) => {
 }
 
 exports.getTemplate = async (request, response, next) => {
+<<<<<<< HEAD
 
+=======
+    console.log('obtiene el método GET');
+    console.log(request.params.idTemplate);
+    console.log(request.cookies);
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
     const templatePreguntas = await BancoPreguntas.fetchPreguntasBanco(request.params.idTemplate);
     console.log(templatePreguntas);
     Template.fetchOneTemplate(request.params.idTemplate)  // Por cada clase (lo verde) le pasas lo que arroja la función
@@ -135,8 +170,26 @@ exports.getTemplate = async (request, response, next) => {
 
 exports.writePreguntas = async (request, response, next) => {
 
+<<<<<<< HEAD
     let preguntas = request.session.preguntas;
     var total = preguntas.length;
+=======
+    console.log('Guardar preguntas en Template');
+    console.log(request.body);
+
+    let preguntas = request.session.preguntas;
+    console.log(request.params.idTemplate)
+    console.log('Prueba')
+    console.log(request.session.preguntas);
+    var total = preguntas.length;
+    console.log(preguntas.length);
+
+    //Para obtener los ids de cada pregunta
+    /* Recorro cada cuestinario para obtener sus ids preguntas y los guardo en 
+        un array
+    */
+
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
     var idP = [];
 
     for (i = 0; i < preguntas.length; i++ ) {

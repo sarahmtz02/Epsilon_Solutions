@@ -35,6 +35,10 @@ exports.main =  async (request, response, next) =>  {
         apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
         answered: answered,
         notanswered: notanswered
+<<<<<<< HEAD
+=======
+
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
     });
 };
 

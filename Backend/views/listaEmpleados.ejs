@@ -26,7 +26,11 @@
 <hr class="db-hr">
 
 <!-- EMPLEADOS -->
+<<<<<<< HEAD
 <a href="/nuevoEmpleado"><button type="button" class="btn-normal">Registrar un nuevo empleado</button></a>
+=======
+<a href="/nuevoEmpleado"><button type="button" class="btn btn-outline-secondary">Registrar un nuevo empleado</button></a>
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
 <br>
 <table class="table table-striped" class="centered">
     <thead>
@@ -46,14 +50,22 @@
                 <td><%- empleado.email -%></td>
                 <td><%- empleado.equipo -%></td>
                 <td><%- empleado.nivOverall -%></td>
+<<<<<<< HEAD
                 <td><a href = "/id-empleado=<%-empleado.idEmpleado-%>" class = "btn-normal">Editar</a></td>
                 <td><a href="/bajaEmpleado=<%-empleado.idEmpleado-%>" type="button" class="btn-delete">Dar de baja</a> </td>
+=======
+                <td><a href = "/id-empleado=<%-empleado.idEmpleado-%>" class = "btn btn-outline-secondary">Editar</a></td>
+                <td><a href="/bajaEmpleado=<%-empleado.idEmpleado-%>" type="button" class="btn btn-outline-danger btn-sm">Dar de baja</a> </td>
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
             </tr>
         <%} %>
     </tbody>
 </table>
 <br><br>
+<<<<<<< HEAD
 <a href="#principal"><button type="button" class="btn-navigation">Regresar arriba</button></a>
+=======
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
 </section>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

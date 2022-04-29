@@ -18,6 +18,7 @@
             <% for (let periodo of periodos) { %>
             <form action="/periodos/editPeriodo=<%- periodo.idPeriodo -%>" method="POST">
                 <label for="FechaInicio">Fecha de Inicio: </label>
+<<<<<<< HEAD
                 <input type="date" name = "FechaInicio" value="<%- moment(periodo.FechaInicio).utc().format("YYYY-MM-DD"); -%>" id="FechaInicio" name="FechaInicio" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>">
                 <br><br>
                 <label for="FechaFin">Fecha Fin: </label>
@@ -28,6 +29,18 @@
             <% } %>
             <br>
             <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al dashboard</button></a>
+=======
+                <input type="date" name = "FechaInicio" value="<%- moment(periodo.FechaInicio).utc().format("YYYY-MM-DD"); -%>" id="FechaInicio" name="FechaInicio" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%> " oninput="validate(this)">
+                <br><br>
+                <label for="FechaFin">Fecha Fin: </label>
+                <input type="date" name = "FechaFin" value="<%- moment(periodo.FechaFin).utc().format("YYYY-MM-DD"); -%>" id="FechaFin" name="FechaFin" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>" oninput="validate(this)">
+                <br><br>
+                <button type="submit" class="btn btn-outline-secondary" id="btnRegPeriodo" onclick="checkDate()">Modificar</button>
+            </form>
+            <% } %>
+            <br>
+            <a href="/dashboard"><button type="button" class="btn btn-secondary">Regresar al dashboard</button></a>
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
         </section>
     </div>
 </body>
@@ -37,10 +50,20 @@
     function checkDate() {
         var fechaInicio = document.getElementById("FechaInicio");
         var fechaFin = document.getElementById("FechaFin");
+<<<<<<< HEAD
         fechaInicio = moment(fechaInicio).utc().format("YYYY-MM-DD");
         fechaFin = moment(fechaFin).utc().format("YYYY-MM-DD");
         console.log(fechaInicio);
         console.log(fechaFin);
+=======
+
+        fechaInicio = moment(fechaInicio).utc().format("YYYY-MM-DD");
+        fechaFin = moment(fechaFin).utc().format("YYYY-MM-DD");
+
+        console.log(fechaInicio);
+        console.log(fechaFin);
+
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
         if (fechaFin < fechaInicio) {
             alert("La fecha final no puede ser menor a la fecha inicial")
         } else if (fechaFin == fechaInicio) {
@@ -49,6 +72,16 @@
     }
 </script>
 
+<<<<<<< HEAD
+=======
+<script>
+    function validate(input){
+        if(/^\s/.test(input.value))
+            input.value = '';
+        }
+</script>
+
+>>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 
