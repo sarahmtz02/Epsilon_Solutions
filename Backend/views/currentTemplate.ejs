@@ -48,7 +48,7 @@
                 <label>Escribe la nueva pregunta: </label>
                 <br>
                 <form id="insertPregunta" action="/templates/template=<%-template.idTemplate-%>" method="POST">
-                    <input type="text" class="form-control input-lg" id="insertP" name="nuevapregunta" onkeydown="ENABLE_BTN()" oninput="validate(this)"></input>
+                    <input type="text" class="form-control input-lg" id="insertP" name="nuevapregunta" onkeydown="ENABLE_BTN()" oninput="validate(this)" required></input>
                     <br>
                     <label>Selecciona el tipo de pregunta: </label>
                     <br>

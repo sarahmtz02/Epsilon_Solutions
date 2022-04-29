@@ -22,7 +22,7 @@ img {
     background-color:#ffff;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    width: 850px;
+    width: 950px;
     height: 500px;
     margin: 15px;
     padding: 12px 25px 25px 25px;
@@ -34,9 +34,9 @@ img {
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     width: 400px;
-    height: 415px;
+    height: 403px;
     margin: 15px;
-    padding: 25px 25px 25px 25px;
+    padding: 8px 25px 25px 25px;
 }
 
 tr:hover td {
