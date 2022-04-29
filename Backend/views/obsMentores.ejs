@@ -1,6 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 
@@ -33,7 +36,7 @@
             <p>Aún no te han hecho ninguna observación.</p>
         <% } %>
         <br>
-        <a href="/empleados/panelFeedback"><button type="button" class="btn btn-secondary">Regresar a tu Feedback</button></a>
+        <a href="/empleados/panelFeedback"><button type="button" class="btn-navigation">Regresar a tu Feedback</button></a>
     </section>
 </div>
 

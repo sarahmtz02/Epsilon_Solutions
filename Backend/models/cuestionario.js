@@ -135,4 +135,24 @@ module.exports = class Cuestionario{
             return 0;
         });
     }
+
+    static get_answered(){
+        return db.execute("SELECT count(*) AS contestados FROM Cuestionario WHERE isAnswered = 1").then(([rows, fielData]) => {
+            return rows[0].contestados;
+        })
+        .catch((error) => {
+            console.log(error);
+            return rows;
+        });
+    };
+    static get_notanswered(){
+        return db.execute("SELECT count(*) AS noContestados FROM Cuestionario WHERE isAnswered = 0").then(([rows, fielData]) => {
+            return rows[0].noContestados;
+        })
+        .catch((error) => {
+            console.log(error);
+            return rows;
+        });
+
+    };
 }
