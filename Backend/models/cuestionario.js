@@ -32,29 +32,6 @@ module.exports = class Cuestionario{
         });
     }
 
-<<<<<<< HEAD
-=======
-    static get_answered(){
-        return db.execute("SELECT count(*) AS contestados FROM Cuestionario WHERE isAnswered = 1").then(([rows, fielData]) => {
-            return rows[0].contestados;
-        })
-        .catch((error) => {
-            console.log(error);
-            return rows;
-        });
-    };
-    static get_notanswered(){
-        return db.execute("SELECT count(*) AS noContestados FROM Cuestionario WHERE isAnswered = 0").then(([rows, fielData]) => {
-            return rows[0].noContestados;
-        })
-        .catch((error) => {
-            console.log(error);
-            return rows;
-        });
-
-    };
-
->>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
     static fetchCuestionarioData(id_Evaluado) {
         //console.log('SELECT nombre, apellidoM, apellidoP FROM Empleado, Cuestionario WHERE idEmpleado = ?', [idEvaluado]);
         return db.execute('SELECT nombre, apellidoM, apellidoP FROM Empleado WHERE idEmpleado = ? ', [id_Evaluado]);
@@ -158,7 +135,6 @@ module.exports = class Cuestionario{
             return 0;
         });
     }
-<<<<<<< HEAD
 
     static get_answered(){
         return db.execute("SELECT count(*) AS contestados FROM Cuestionario WHERE isAnswered = 1").then(([rows, fielData]) => {
@@ -179,6 +155,4 @@ module.exports = class Cuestionario{
         });
 
     };
-=======
->>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
 }

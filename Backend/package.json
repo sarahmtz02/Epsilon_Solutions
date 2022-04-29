@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "Epsilon_Solutions",
-=======
-  "name": "backend-jmmr-branch",
->>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
   "version": "1.0.0",
   "description": "SIRE testing",
   "main": "app.js",

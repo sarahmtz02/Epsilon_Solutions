@@ -26,11 +26,7 @@
                 <tr>
                     <td><%- cuestCompa.nombre -%> <%- cuestCompa.apellidoP -%> <%- cuestCompa.apellidoM -%></td>
                     <td><%- moment.tz(cuestCompa.FechaInicio, 'UTC').format("LL") -%> al <%- moment.tz(cuestCompa.FechaFin, 'UTC').format("LL") -%></td>
-<<<<<<< HEAD
                     <td><a href = "/empleados/evalCompanero=<%- cuestCompa.idCuestionario -%>" class = "btn-normal">Consultar Respuestas</a></td>
-=======
-                    <td><a href = "/empleados/evalCompanero=<%- cuestCompa.idCuestionario -%>" class = "btn btn-outline-secondary">Consultar Respuestas</a></td>
->>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
                 </tr>
                 <% } %>
             </tbody>
@@ -39,11 +35,7 @@
             <p>Parece que todavía no te han evaluado, regresa más tarde.</p>
         <% } %>
         <br>
-<<<<<<< HEAD
         <a href="/empleados/panelFeedback"><button type="button" class="btn-navigatioin">Regresar a tu Feedback</button></a>
-=======
-        <a href="/empleados/panelFeedback"><button type="button" class="btn btn-secondary">Regresar a tu Feedback</button></a>
->>>>>>> a040aa970b39f7b3ed75f4332eadc21f9b32756f
     </section>
 </div>
 
