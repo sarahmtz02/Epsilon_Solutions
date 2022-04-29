@@ -1,5 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
+<<<<<<< HEAD
 <% if (rol == 3) { %>
+=======
+<% if (rol == 2 || rol == 3) { %>
+>>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <% if (rol == 2) { %>
@@ -44,6 +48,7 @@
     <tbody>
         <% for (let empleado of empleados) { %>
             <tr>
+<<<<<<< HEAD
                 <td><%- empleado.nombre -%></td>
                 <td><%- empleado.apellidoP + ' ' + empleado.apellidoM -%></td>
                 <td><%- empleado.email -%></td>
@@ -51,6 +56,15 @@
                 <td><%- empleado.nivOverall -%></td>
                 <td><a href = "/id-empleado=<%-empleado.idEmpleado-%>" class = "btn-normal">Editar</a></td>
                 <td><a href="/bajaEmpleado=<%-empleado.idEmpleado-%>" type="button" class="btn-delete">Dar de baja</a> </td>
+=======
+                <td><%= empleado.nombre %></td>
+                <td><%= empleado.apellidoP + ' ' + empleado.apellidoM %></td>
+                <td><%= empleado.email %></td>
+                <td><%= empleado.equipo %></td>
+                <td><%= empleado.nivOverall %></td>
+                <td><a href = "/id-empleado=<%-empleado.idEmpleado-%>" class = "btn btn-outline-secondary">Editar</a></td>
+                <td><a href="/bajaEmpleado=<%-empleado.idEmpleado-%>" type="button" class="btn btn-outline-danger btn-sm">Dar de baja</a> </td>
+>>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
             </tr>
         <%} %>
     </tbody>

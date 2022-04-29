@@ -1,5 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
+<<<<<<< HEAD
 <% if (rol == 3) { %>
+=======
+<% if (rol == 2 || rol == 3) { %>
+>>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <% if (rol == 2) { %>
@@ -32,12 +36,12 @@
                 <% for (let answer of answers) { %>
                     <% if (answer.tipoPregunta == '1') { %>
                     <tr>
-                        <td><%- answer.Pregunta -%></td>
-                        <td><%- answer.Respuesta -%></td>
+                        <td><%= answer.Pregunta %></td>
+                        <td><%= answer.Respuesta %></td>
                     </tr>
                     <%} else if (answer.tipoPregunta == '2') { %>
                         <tr>
-                            <td><%- answer.Pregunta -%></td>
+                            <td><%= answer.Pregunta %></td>
                             <% if (answer.Respuesta == '1') { %>
                                 <td>Sí</td>
                             <%} else { %>
@@ -46,8 +50,8 @@
                         </tr>
                     <%} else if (answer.tipoPregunta == '3') { %>
                         <tr>
-                            <td><%- answer.Pregunta -%></td>
-                            <td><%- answer.Respuesta -%></td>
+                            <td><%= answer.Pregunta %></td>
+                            <td><%= answer.Respuesta %></td>
                         </tr>
                     <% } %>
                 <% } %>

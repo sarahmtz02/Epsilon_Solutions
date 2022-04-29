@@ -1,5 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
+<<<<<<< HEAD
 <% if (rol == 3) { %>
+=======
+<% if (rol == 2 || rol == 3) { %>
+>>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <% if (rol == 2) { %>
@@ -14,7 +18,7 @@
 
 <div>
     <section class="section-card">
-        <h1 id="principal">Buen día, <%- nombreSesion %> <%- apellidoPSesion %> </h1>
+        <h1 id="principal">Buen día, <%= nombreSesion %> <%= apellidoPSesion %> </h1>
         <hr class="db-hr">
         <% if (obsCompas.length > 0) { %>
         <h3>Estas tus observaciones:</h3>
@@ -26,8 +30,8 @@
             <tbody>
                 <% for (let obsCompa of obsCompas) { %>
                 <tr>
-                    <td><%- obsCompa.nomMentor -%> <%- obsCompa.apellidoPM -%> <%- obsCompa.apellidoMM -%></td>
-                    <td><%- obsCompa.descObservacion -%></td>
+                    <td><%= obsCompa.nomMentor %> <%= obsCompa.apellidoPM %> <%= obsCompa.apellidoMM %></td>
+                    <td><%= obsCompa.descObservacion %></td>
                 </tr>
                 <% } %>
             </tbody>

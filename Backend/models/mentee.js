@@ -23,7 +23,7 @@ module.exports = class Mentee{
 
     // Obtiene los mentores
     static getMentores(idEmpleadoSsn) {
-        return db.execute('SELECT idEmpleado, nombre, apellidoP FROM Empleado WHERE idEmpleado <> ? AND fk_idRolJer = 2',[idEmpleadoSsn])
+        return db.execute('SELECT idEmpleado, nombre, apellidoP FROM Empleado WHERE idEmpleado <> ? AND (fk_idRolJer = 2 OR fk_idRolJer = 3)',[idEmpleadoSsn])
     }
 
     // Obtiene los empleados
