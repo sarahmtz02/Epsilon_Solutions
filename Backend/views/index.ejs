@@ -1,15 +1,11 @@
 <%- include('templates/sidebarMain.ejs') %>
 <!-- Si es CL o CLA despliega lo siguiente: -->
 
-<<<<<<< HEAD
 <% if (rol == 2) { %>
     <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 
 <% if (rol == 3) { %>
-=======
-<% if (rol == 2 || rol == 3) { %>
->>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 
@@ -29,7 +25,6 @@
                         <th style="background-color: rgb(244, 67, 54);color: white; font-family:  Helvetica, "Helvetica Neue", Arial, sans-serif;" >Indicador</th>
                     </tr>
                     <tr>
-<<<<<<< HEAD
                         <td><strong>People</strong> </td>
                         <td id="nPeople"><%- nivel_P -%></td>
                     </tr>
@@ -44,22 +39,6 @@
                     <tr>
                         <td><strong>Nivel Overall</strong> </td>
                         <td id="nivOverall"><%- Math.min(nivel_P+1, nivel_C, nivel_B) -%></td>
-=======
-                        <td>People: </td>
-                        <td id="nPeople"><%= nivel_P %></td>
-                    </tr>
-                    <tr>
-                        <td>Craft: </td>
-                        <td id="nCraft"><%= nivel_C %></td>
-                    </tr>
-                    <tr>
-                        <td>Business: </td>
-                        <td id="nBusiness"><%= nivel_B %></td>
-                    </tr>
-                    <tr>
-                        <td>Nivel General: </td>
-                        <td id="nivOverall"><%= Math.min(Number(nivel_P) + 1, Number(nivel_B) + 1, Number(nivel_C)) %></td>
->>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
                     </tr>
                 </table>
                 <br>

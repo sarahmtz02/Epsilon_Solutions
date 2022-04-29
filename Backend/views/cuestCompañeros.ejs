@@ -1,9 +1,5 @@
 <%- include('templates/sidebarMain.ejs') %>
-<<<<<<< HEAD
 <% if (rol == 3) { %>
-=======
-<% if (rol == 2 || rol == 3) { %>
->>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <% if (rol == 2) { %>
@@ -31,15 +27,9 @@
             <tbody>
                 <% for (let cuestCompa of cuestCompas) { %>
                 <tr>
-<<<<<<< HEAD
                     <td><%- cuestCompa.nombre -%> <%- cuestCompa.apellidoP -%> <%- cuestCompa.apellidoM -%></td>
                     <td><%- moment.tz(cuestCompa.FechaInicio, 'UTC').format("LL") -%> al <%- moment.tz(cuestCompa.FechaFin, 'UTC').format("LL") -%></td>
                     <td><a href = "/empleados/evalCompanero=<%- cuestCompa.idCuestionario -%>" class = "btn-normal">Consultar Respuestas</a></td>
-=======
-                    <td><%= cuestCompa.nombre %> <%= cuestCompa.apellidoP %> <%= cuestCompa.apellidoM %></td>
-                    <td><%= moment.tz(cuestCompa.FechaInicio, 'UTC').format("LL") %> al <%= moment.tz(cuestCompa.FechaFin, 'UTC').format("LL") %></td>
-                    <td><a href = "/empleados/evalCompanero=<%- cuestCompa.idCuestionario -%>" class = "btn btn-outline-secondary">Consultar Respuestas</a></td>
->>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
                 </tr>
                 <% } %>
             </tbody>

@@ -1,9 +1,5 @@
 <%- include('templates/sidebarMain.ejs') %>
-<<<<<<< HEAD
 <% if (rol == 3) { %>
-=======
-<% if (rol == 2 || rol == 3) { %>
->>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <% if (rol == 2) { %>
@@ -49,11 +45,7 @@
                                             <p class="card-text">Disponible del: <%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%> al <%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></p>
                                             <% if (cuestionario.isAnswered == 0){ %>
                                                 <p class="card-text">Status de evaluación: <strong>Sin Contestar</strong></p>
-<<<<<<< HEAD
                                                 <a href="/evaluacion/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn-normal">Contestar</label></a>
-=======
-                                                <a href="/evaluacion/feedback=<%-cuestionario.idCuestionario%>"><label class="btn btn-dark">Contestar</label></a>
->>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
                                             <% } else { %>
                                                 <p class="card-text">Status de evaluación: <strong>Contestada</strong></p>
                                                 <button type="button" class="btn-disabled" disabled>Completado</button>

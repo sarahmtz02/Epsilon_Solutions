@@ -1,9 +1,5 @@
 <%- include('templates/sidebarMain.ejs') %>
-<<<<<<< HEAD
 <% if (rol == 3) { %>
-=======
-<% if (rol == 2 || rol == 3) { %>
->>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 <% if (rol == 2) { %>
@@ -31,15 +27,9 @@
             <tbody>
                 <% for (let cuestMentee of cuestMentees) { %>
                 <tr>
-<<<<<<< HEAD
                     <td><%- cuestMentee.nombre -%> <%- cuestMentee.apellidoP -%> <%- cuestMentee.apellidoM -%></td>
                     <td><%- moment.tz(cuestMentee.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(cuestMentee.FechaFin, 'UTC').format("LL") -%></td>
                     <td><a href = "/mentees/evalMentee=<%-cuestMentee.idCuestionario-%>" class = "btn-normal">Consultar Respuestas</a></td>
-=======
-                    <td><%= cuestMentee.nombre %> <%= cuestMentee.apellidoP %> <%= cuestMentee.apellidoM %></td>
-                    <td><%- moment.tz(cuestMentee.FechaInicio, 'UTC').format("LL") %> <%- moment.tz(cuestMentee.FechaFin, 'UTC').format("LL") %></td>
-                    <td><a href = "/mentees/evalMentee=<%-cuestMentee.idCuestionario-%>" class = "btn btn-outline-secondary">Consultar Respuestas</a></td>
->>>>>>> c66453f2ac9410bd5e3f0a86a6b5ec86bd92e68f
                 </tr>
                 <% } %>
             </tbody>
