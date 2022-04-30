@@ -15,14 +15,22 @@
     <div>
         <section class="section-card">
                 <h5>Modificar Pregunta:</h5>
-                <label>Escribe la nueva pregunta: </label>
+                <label><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                    </svg>Campo requerido</label>
+                <br><br>
+                <label>Escribe la nueva pregunta: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                    </svg></label>
                 <br>
                 <% for (let pregunta of preguntas) { %>
                 <form id="insertPregunta" action="/templates/editPregunta=<%- pregunta.idPregunta -%>" method="POST">
-                    <input type="text" class="form-control input-lg" id="insertP" name="descPregunta" value ="<%- pregunta.descPregunta -%>" onkeydown="ENABLE_BTN()" oninput="validate(this)"></input>
+                    <input type="text" class="form-control input-lg" id="insertP" name="descPregunta" value ="<%- pregunta.descPregunta -%>" onkeydown="ENABLE_BTN()" oninput="validate(this)" maxlength="128" required></input>
                 <% } %>
                     <br>
-                    <label>Selecciona el tipo de pregunta: </label>
+                    <label>Selecciona el tipo de pregunta: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                        <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                        </svg></label>
                     <br>
                     <select name="tipoPregunta" id="tipoPregunta" class="form-select">
                         <option selected="selected" value="1">Pregunta de Texto</option>
