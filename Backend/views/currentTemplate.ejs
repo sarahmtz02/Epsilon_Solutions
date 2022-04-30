@@ -21,9 +21,8 @@
                 <% for (let template of templates) { %>
                     <a href="/templates/listaTemplates"><button type="button" class="btn-navigation">Regresar a lista de plantillas</button></a>
                     <br> <br>
-                <label for="NombreTemplate">Nombre del Template: </label>
-                <input type="text" id="NombreTemplate" name="NombreTemplate" value="<%-template.NombreTemplate-%>" readonly/>
-                <br><br>
+                <h2><%-template.NombreTemplate-%></h2>
+                <br>
                 <%} %>
                     <h4>A continuación las preguntas actuales del cuestionario</h4>
                     <br>
