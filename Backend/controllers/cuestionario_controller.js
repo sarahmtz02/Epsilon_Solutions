@@ -13,8 +13,10 @@ exports.fetchCuestionarios = async (request, response, next) => {
     const date = new Date();
     const currentDate = new Date(date.toDateString());
     const periodo = await Cuestionario.getPeriodo();
-    console.log(periodo)
-    const cuestionarios = await Cuestionario.fetchMyCuestionarios(request.session.idEmpleado);
+    console.log(periodo);
+    console.log(periodo[0].idPeriodo);
+    const cuestionarios = await Cuestionario.fetchMyCuestionarios(request.session.idEmpleado, periodo[0].idPeriodo);
+    console.log(cuestionarios);
     const requests = await Cuestionario.getMyRequests(request.session.idEmpleado);
     console.log(requests)
     request.session.requests = requests.length;

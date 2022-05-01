@@ -56,7 +56,7 @@
                             </div>
                         <%} %>
                     <% } else { %>
-                        <p>Todavía no has recibido ninguna solicitud para contestar feedback de otro compañero. Regresa más tarde.</p>
+                        <p>Todavía no has recibido ninguna solicitud para contestar feedback de otro compañero en este periodo, regresa más tarde.</p>
                     <% } %>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
             </div>
             <br>
             <!-- Para solicitar ser evaluado (asignación de evaluadores) -->
-            <% if ((periodo.FechaInicio <= fecha) && (periodo.FechaFin >= fecha) && (cuestionarios.length < 5))  { %>
+            <% if (fecha && requests.length < 5)  { %>
                 <br> <br>
                 <button class="btn-normal" type="button" data-bs-toggle="collapse" data-bs-target="#aSolicitar" aria-expanded="false" aria-controls="aSolicitar">Solicitar evaluación</button>
                 <br>   <br>
@@ -90,6 +90,7 @@
             <% } %>
             <hr class="db-hr">
             <br><br>
+            <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al dashboard</button></a>
         </section>
         <%} %>
 </div>

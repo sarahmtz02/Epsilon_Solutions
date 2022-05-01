@@ -58,11 +58,17 @@ exports.updatePeriodo = async (request, response, next) => {
     console.log(request.params.idPeriodo);
     console.log(request.body.FechaInicio);
     console.log(request.body.FechaFin);
-
-    await Periodo.editPeriodo(request.body.FechaInicio, request.body.FechaFin, request.params.idPeriodo).then(() => {
-        request.flash('success', 'Se ha actualizado el periodo exitosamente')
+    const checkOlap = await Periodo.checkOverlap(request.body.FechaInicio, request.body.FechaFin);
+    console.log(checkOlap);
+    if (checkOlap != null || checkOlap != '') {
+        request.flash('warningE', 'No se pudo modificar el periodo, existe un empalme')
         response.redirect('/periodos')
-    })
+    } else {
+        await Periodo.editPeriodo(request.body.FechaInicio, request.body.FechaFin, request.params.idPeriodo).then(() => {
+            request.flash('success', 'Se ha actualizado el periodo exitosamente')
+            response.redirect('/periodos')
+        })
+    }
 }
 
 exports.get_nuevo_periodo = (request, response, next) => {
@@ -93,14 +99,13 @@ exports.post_nuevo_periodo = async (request, response, next) => {
     const checkOlap = await Periodo.checkOverlap(request.body.FechaInicio, request.body.FechaFin);
     console.log(checkOlap);
 
-    if (checkOlap[0] != null) {
+    if (checkOlap != null || checkOlap != '') {
         request.flash('warningE', 'No se pudo agregar el periodo, existe un empalme')
         response.redirect('/periodos')
     } else {
         const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
         console.log('obtiene el método POST')
         periodo.save().then(() => {
-        response.setHeader('Set-Cookie', 'ultimo_periodo='+periodo.nombre+'; HttpOnly', 'utf8');
         response.redirect('/periodos')
         }).catch(err => console.log(err));
     }

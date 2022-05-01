@@ -10,8 +10,8 @@ module.exports = class Cuestionario{
         this.isAnswered = status;
     }
 
-    static fetchMyCuestionarios(idEmpleadoSsn) {
-        return db.execute('SELECT idCuestionario, fk_idPeriodo, isAnswered, nombre, apellidoP, apellidoM, FechaInicio, FechaFin FROM Cuestionario, Empleado, PeriodoEvaluacion WHERE idEvaluado = idEmpleado AND fk_idPeriodo = idPeriodo AND fk_idEvaluador = ?', [idEmpleadoSsn]).then(([rows, fielData]) => {
+    static fetchMyCuestionarios(idEmpleadoSsn, idPeriodo) {
+        return db.execute('SELECT idCuestionario, fk_idPeriodo, isAnswered, nombre, apellidoP, apellidoM, FechaInicio, FechaFin FROM Cuestionario, Empleado, PeriodoEvaluacion WHERE idEvaluado = idEmpleado AND fk_idPeriodo = idPeriodo AND fk_idEvaluador = ? AND fk_idPeriodo = ?', [idEmpleadoSsn, idPeriodo]).then(([rows, fielData]) => {
             return rows;
         })
         .catch((error) => {
