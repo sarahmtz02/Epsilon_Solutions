@@ -1,6 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 
@@ -53,11 +56,17 @@
 
         <form id="insertObservacion" action="/mentees/nuevaObservacion" method="POST">
             <div class="form-group">
+                <label><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                    </svg>Campo requerido</label>
+                <br><br>
                 <input id="fk_idEvaluador" name="fk_idEvaluador" type="hidden" value="<%= idEvaluador %>">
                 <input id="fk_idEvaluado" name="fk_idEvaluado" type="hidden" value="<%= idEvaluado %>">
                 <input id="fk_idPeriodo" name="fk_idPeriodo" type="hidden" value="<%= periodo %>">
-                <label for="descObservacion">Registra tus observaciones:</label>
-                <textarea class="form-control" id="descObservacion" name="descObservacion" rows="3"></textarea>
+                <label for="descObservacion">Registra tus observaciones: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                    </svg></label>
+                <textarea class="form-control" id="descObservacion" name="descObservacion" rows="3" maxlength="500" required></textarea>
             </div>
             <button type="submit" class="btn-normal w-100">Guardar observación</button>
         </form>

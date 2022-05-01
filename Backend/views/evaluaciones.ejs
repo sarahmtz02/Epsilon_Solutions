@@ -1,6 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 
@@ -38,8 +41,8 @@
                                 <div class="card mb-3" style="max-width: 720px;">
                                     <div class="row g-0">
                                         <div class="card-body">
-                                            <h5 class="card-title">Evaluación no. <%- cuestionario.idCuestionario %></h5>
-                                            <p class="card-text">Disponible del: <%- moment.tz(periodo.FechaInicio, 'UTC').format("LL")%> al <%- moment.tz(periodo.FechaFin, 'UTC').format("LL")%></p>
+                                            <h5 class="card-title">Evaluación de <%- cuestionario.nombre -%> <%- cuestionario.apellidoP -%> <%- cuestionario.apellidoM -%></h5>
+                                            <p class="card-text">Disponible del: <%- moment.tz(cuestionario.FechaInicio, 'UTC').format("LL")%> al <%- moment.tz(cuestionario.FechaFin, 'UTC').format("LL")%></p>
                                             <% if (cuestionario.isAnswered == 0){ %>
                                                 <p class="card-text">Status de evaluación: <strong>Sin Contestar</strong></p>
                                                 <a href="/evaluacion/feedback=<%-cuestionario.idCuestionario-%>"><label class="btn-normal">Contestar</label></a>
@@ -53,7 +56,7 @@
                             </div>
                         <%} %>
                     <% } else { %>
-                        <p>Todavía no has recibido ninguna solicitud para contestar feedback de otro compañero. Regresa más tarde.</p>
+                        <p>Todavía no has recibido ninguna solicitud para contestar feedback de otro compañero en este periodo, regresa más tarde.</p>
                     <% } %>
                     </div>
                 </div>
@@ -61,7 +64,7 @@
             </div>
             <br>
             <!-- Para solicitar ser evaluado (asignación de evaluadores) -->
-            <% if ((periodo.FechaInicio <= fecha) && (periodo.FechaFin >= fecha) && (cuestionarios.length < 5))  { %>
+            <% if (fecha && requests.length < 5)  { %>
                 <br> <br>
                 <button class="btn-normal" type="button" data-bs-toggle="collapse" data-bs-target="#aSolicitar" aria-expanded="false" aria-controls="aSolicitar">Solicitar evaluación</button>
                 <br>   <br>
@@ -87,8 +90,10 @@
             <% } %>
             <hr class="db-hr">
             <br><br>
+            <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al dashboard</button></a>
         </section>
         <%} %>
 </div>
 
 <%- include('templates/footer.ejs') %>
+

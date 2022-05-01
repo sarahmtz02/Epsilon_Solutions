@@ -1,7 +1,11 @@
 <%- include('templates/sidebarMain.ejs') %>
 <!-- Si es CL o CLA despliega lo siguiente: -->
 
-<% if (rol == 2 || rol == 3 ) { %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
+<% } %>
+
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
 <% } %>
 
@@ -12,7 +16,7 @@
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 
         <main>
-            <section class="section-dash-main" style="height: 350px;">
+            <section class="section-dash-main" style="height: 850px;">
                 <h1 id="principal">Resumen de Estado</h1>
                 <hr class="db-hr">
                 <table class="table">
@@ -37,40 +41,34 @@
                         <td id="nivOverall"><%- Math.min(nivel_P+1, nivel_C, nivel_B) -%></td>
                     </tr>
                 </table>
-                <br><br>
+                <br>
+                <h1 id="principal">Niveles Dimensiones</h1>
+                <div class="canvas-container" style="width: 500px; height: 500px;">
+                    <canvas id="graficaD" ></canvas>
+                </div>
             </section>
-        </main>
+    
+    </main>
 
-        <section class="section-dash-main">
-            <h1 id="principal">Niveles Dimensiones</h1>
-            <div class="canvas-container" style="width: 500px; height: 500px;">
-                <canvas id="graficaD" ></canvas>
-            </div>
-        
-            <div class="canvas-container" style="width: 300px; height: 300px;">
-                <canvas id="grafica"></canvas>
-            </div>
-        </section>
+    <% if(rol==3) { %>
+    
+    <div class="secondary">
+        <aside>
+            <section class="section-dash-aside" style="height: 500px">
+                <h1 id="principal">Cuestionarios Contestados</h1>
+            
+                <div class="canvas-container" style="width: 300px; height: 300px; padding: auto;">
+                    <canvas id="grafica"></canvas>
+                </div>
+            </section>
+        </aside>
+    </div>
+    <% }%>
 
-        <% if(rol == 2 || rol == 3 ) { %>
-        <section class="section-dash-main" style="height: 380px;">
-            <h1 id="principal">Cuestionarios Contestados</h1>
-            <div class="canvas-container" style="width: 100px; height: 100x;">
-                <canvas id="graficaD" ></canvas>
-            </div>
-        
-            <div class="canvas-container" style="width: 300px; height: 300px padding: auto;">
-                <canvas id="grafica"></canvas>
-            </div>
-        </section>
-        <% }%>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-       
-       
 <%- include('templates/footer.ejs') %>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 
 
@@ -111,7 +109,7 @@
     niveles();
     </script>
 
-<% if(rol == 2 || rol == 3 ) { %>
+<% if(rol==3) { %>
 <script>
     const $grafica = document.querySelector("#grafica");
     const data = {

@@ -13,8 +13,10 @@ exports.fetchCuestionarios = async (request, response, next) => {
     const date = new Date();
     const currentDate = new Date(date.toDateString());
     const periodo = await Cuestionario.getPeriodo();
-    console.log(periodo)
-    const cuestionarios = await Cuestionario.fetchMyCuestionarios(request.session.idEmpleado);
+    console.log(periodo);
+    console.log(periodo[0].idPeriodo);
+    const cuestionarios = await Cuestionario.fetchMyCuestionarios(request.session.idEmpleado, periodo[0].idPeriodo);
+    console.log(cuestionarios);
     const requests = await Cuestionario.getMyRequests(request.session.idEmpleado);
     console.log(requests)
     request.session.requests = requests.length;
@@ -139,9 +141,14 @@ exports.nuevoCuestionario = async (request,response,next) => {
 exports.getCuestionario = async (request, response, next) => {
     console.log(request.params.idCuestionario);
     console.log(request.cookies);
-    PreguntaRespuesta.fetchFeedback(request.params.idCuestionario)  
+    PreguntaRespuesta.fetchFeedback(request.params.idCuestionario)
         .then(([feedbacks, fieldData]) => {
             request.session.feedbacks = feedbacks;
+            console.log(feedbacks)
+            if (feedbacks.length == 0) {
+                request.flash('warning', 'Ha ocurrido un error: Plantilla vacía, por favor contacte al administrador');
+                response.redirect('/evaluaciones');
+            }
             request.params.fk_idPregunta = feedbacks[0].idPregunta;        
             console.log(feedbacks);
             console.log('error no está aquí');

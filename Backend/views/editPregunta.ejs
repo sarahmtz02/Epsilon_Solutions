@@ -4,29 +4,40 @@
 <link rel="stylesheet" href="/css/section.css" />
 
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 
     <div>
         <section class="section-card">
                 <h5>Modificar Pregunta:</h5>
-                <label>Escribe la nueva pregunta: </label>
+                <label><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                    </svg>Campo requerido</label>
+                <br><br>
+                <label>Escribe la nueva pregunta: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                    </svg></label>
                 <br>
                 <% for (let pregunta of preguntas) { %>
                 <form id="insertPregunta" action="/templates/editPregunta=<%- pregunta.idPregunta -%>" method="POST">
-                    <input type="text" class="form-control input-lg" id="insertP" name="descPregunta" value ="<%- pregunta.descPregunta -%>" onkeydown="ENABLE_BTN()"></input>
+                    <input type="text" class="form-control input-lg" id="insertP" name="descPregunta" value ="<%- pregunta.descPregunta -%>" onkeydown="ENABLE_BTN()" oninput="validate(this)" maxlength="128" required></input>
                 <% } %>
                     <br>
-                    <label>Selecciona el tipo de pregunta: </label>
+                    <label>Selecciona el tipo de pregunta: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                        <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                        </svg></label>
                     <br>
                     <select name="tipoPregunta" id="tipoPregunta" class="form-select">
-                        <option selected="selected" value="<%- tipoPregunta -%>">Pregunta de Texto</option>
+                        <option selected="selected" value="1">Pregunta de Texto</option>
                         <option value="2">Pregunta Sí/No</option>
                         <option value="3">Pregunta de Calificación (1 - 5)</option>
                     </select>
-                    <button id="guardarP"  type="submit" class="btn-normal w-100">Añadir nueva pregunta</button>
+                    <button id="guardarP"  type="submit" class="btn-normal w-100">Guardar cambios</button>
                 </form>
             </form>
             <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al dashboard</button></a>
@@ -45,6 +56,13 @@
         }
     }
     </script>
+
+<script>
+    function validate(input){
+        if(/^\s/.test(input.value))
+            input.value = '';
+        }
+</script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

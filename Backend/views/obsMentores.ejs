@@ -1,6 +1,9 @@
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 

@@ -23,8 +23,8 @@ module.exports = class Periodo{
     }
 
     static checkOverlap(FechaInicio, FechaFin){
-        console.log('SELECT idPeriodo FROM PeriodoEvaluacion WHERE FechaInicio BETWEEN ? and ?');
-        return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE FechaInicio BETWEEN ? and ?', 
+        console.log('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio');
+        return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio', 
         [FechaInicio, FechaFin]).then(([rows, fielData]) => {
             return rows;
         })

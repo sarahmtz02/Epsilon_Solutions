@@ -4,8 +4,11 @@
 <link rel="stylesheet" href="/css/section.css" />
 
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
 
@@ -15,17 +18,25 @@
             <h1 id="principal">Periodos de Evaluación</h1>
             <h2>Agregar un nuevo periodo:</h2>
             <br>
+            <label><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                </svg>Campo requerido</label>
+            <br><br>
             <form action="/periodos/nuevoPeriodo" method="POST">
-                <label for="FechaInicio">Fecha de Inicio: </label>
-                <input type="date" id="FechaInicio" name="FechaInicio" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>">
+                <label for="FechaInicio">Fecha de Inicio: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                    </svg></label>
+                <input type="date" id="FechaInicio" name="FechaInicio" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>" required>
                 <br><br>
-                <label for="FechaFin">Fecha Fin: </label>
-                <input type="date" id="FechaFin" name="FechaFin" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>">
+                <label for="FechaFin">Fecha Fin: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+                    </svg></label>
+                <input type="date" id="FechaFin" name="FechaFin" min="<%- moment(fecha).utc().format("YYYY-MM-DD") -%>" required>
                 <br><br>
                 <button type="submit" class="btn-normal" id="btnRegPeriodo" onclick="checkDate()">Registrar</button>
             </form>
             <br>
-            <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al dashboard</button></a>
+            <a href="/periodos"><button type="button" class="btn-navigation">Regresar a la lista de Periodos</button></a>
         </section>
     </div>
 </body>

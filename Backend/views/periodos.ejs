@@ -4,14 +4,17 @@
 <link rel="stylesheet" href="/css/section.css" />
 
 <%- include('templates/sidebarMain.ejs') %>
-<% if (rol == 2) { %>
+<% if (rol == 3) { %>
     <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
 <% } %>
 <%- include('templates/sidebarEnd.ejs') %>
     <div>
         <section class="section-card">
             <% if (warning_empalme != '') { %>
-                <div class="alert alert-warning" role="alert">
+                <div class="alert alert-danger" role="alert">
                     <strong>Alerta: </strong><%- warning_empalme -%>
                 </div>
             <%} %>

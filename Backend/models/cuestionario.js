@@ -10,8 +10,8 @@ module.exports = class Cuestionario{
         this.isAnswered = status;
     }
 
-    static fetchMyCuestionarios(idEmpleadoSsn) {
-        return db.execute('SELECT * FROM Cuestionario WHERE fk_idEvaluador = ?', [idEmpleadoSsn]).then(([rows, fielData]) => {
+    static fetchMyCuestionarios(idEmpleadoSsn, idPeriodo) {
+        return db.execute('SELECT idCuestionario, fk_idPeriodo, isAnswered, nombre, apellidoP, apellidoM, FechaInicio, FechaFin FROM Cuestionario, Empleado, PeriodoEvaluacion WHERE idEvaluado = idEmpleado AND fk_idPeriodo = idPeriodo AND fk_idEvaluador = ? AND fk_idPeriodo = ?', [idEmpleadoSsn, idPeriodo]).then(([rows, fielData]) => {
             return rows;
         })
         .catch((error) => {
@@ -22,7 +22,7 @@ module.exports = class Cuestionario{
 
     // Para obtener las solicitudes de feedback que ha hecho el empleado en la sesión actual
     static getMyRequests(idEmpleadoSsn) {
-        return db.execute('SELECT idEvaluado, fk_idEvaluador, nombre, apellidoP, fk_idPeriodo, nivOverall, isAnswered FROM Cuestionario R, Empleado E WHERE R.fk_idEvaluador = E.idEmpleado AND fk_idPeriodo in (SELECT MAX(fk_idPeriodo) FROM PeriodoEvaluacion) AND R.idEvaluado = ? ORDER BY isAnswered, nombre ASC', 
+        return db.execute('SELECT idEvaluado, fk_idEvaluador, nombre, apellidoP, fk_idPeriodo, nivOverall, isAnswered FROM Cuestionario R, Empleado E WHERE R.fk_idEvaluador = E.idEmpleado AND fk_idPeriodo in (SELECT MAX(idPeriodo) FROM PeriodoEvaluacion) AND R.idEvaluado = ? ORDER BY isAnswered, nombre ASC', 
         [idEmpleadoSsn]).then(([rows, fielData]) => {
             return rows;
         })
