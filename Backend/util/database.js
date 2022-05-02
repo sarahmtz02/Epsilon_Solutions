@@ -15,11 +15,11 @@
 const { createPool } = require("mysql2");
 
 const pool = createPool({
-    host: 'bpnzdg3qreqalbxfqwow-mysql.services.clever-cloud.com',
-    user: 'u5sokjl76zng6fqs',
-    password: 'dIpxqPIEwLvAmwnGxFl4',
+    host: 'localhost',
+    user: 'root',
+    password: 'Epsil0n*',
     port: 3306,
-    database: 'bpnzdg3qreqalbxfqwow',
+    database: 'SIRE',
     timezone: 'Z'
 });
 
