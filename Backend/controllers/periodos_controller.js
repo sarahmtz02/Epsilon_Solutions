@@ -103,6 +103,7 @@ exports.post_nuevo_periodo = async (request, response, next) => {
         const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
         console.log('obtiene el método POST')
         periodo.save().then(() => {
+        request.flash('success', 'Se ha creado el periodo exitosamente')
         response.redirect('/periodos')
         }).catch(err => console.log(err));
     }

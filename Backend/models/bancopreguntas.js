@@ -26,6 +26,7 @@ module.exports = class BancoPreguntas{
         [this.fk_idTemplate, this.fk_idPregunta, this.descPregunta, this.tipoPregunta]
     );
     }
+    
 
     static getNewIdPreg (){
         return db.execute('CALL p_getIdPregunta').then(([rows, fielData]) => {
