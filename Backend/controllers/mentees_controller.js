@@ -28,7 +28,7 @@ exports.fetchMentees = async (request, response, next) => {
     const currentDate = new Date(date.toDateString());
 
     //Obtiene los mentores
-    Mentee.getMentores(request.session.idEmpleado).then(([mentores, fielData]) => {
+    Mentee.getMentores().then(([mentores, fielData]) => {
         //Obtiene los mentorados
         Mentee.getEmpleados(request.session.idEmpleado).then(([empleados, fieldData]) => {
                 //Obtiene los datos generales de la tabla

@@ -52,7 +52,8 @@
         </div>
         <!-- TEMPORAL -->
         <label for="antiguedad">Antiguedad: </label>
-        <input class="form-control" type="number" min="0" id="antiguedad" name="antiguedad" value=<%- empleado.antiguedad -%>>
+        <input id="antiguedad" name="antiguedad" type="hidden" value="<%- moment(currentDate).diff(moment(empleado.fechaIng), 'months', true).toFixed(0) -%>">
+        <input class="form-control" id="antiguedaddisp" name="antiguedaddisp" readonly value="<%- moment(currentDate).diff(moment(empleado.fechaIng), 'months', true).toFixed(0) -%> mes/meses">
         <br><br>
 
         <label for="nivPeople">Nivel People: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
