@@ -98,15 +98,15 @@ exports.post_nuevo_periodo = async (request, response, next) => {
     
     const checkOlap = await Periodo.checkOverlap(request.body.FechaInicio, request.body.FechaFin);
     console.log(checkOlap);
-
-    if (checkOlap != null || checkOlap != '') {
-        request.flash('warningE', 'No se pudo agregar el periodo, existe un empalme')
-        response.redirect('/periodos')
-    } else {
+    if(checkOlap == 0 || checkOlap == null){
         const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
         console.log('obtiene el método POST')
         periodo.save().then(() => {
         response.redirect('/periodos')
         }).catch(err => console.log(err));
+    }
+    else{
+        request.flash('warningE', 'No se pudo agregar el periodo, existe un empalme')
+        response.redirect('/periodos')
     }
 };

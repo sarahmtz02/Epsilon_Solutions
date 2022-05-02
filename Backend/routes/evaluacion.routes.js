@@ -10,6 +10,7 @@ router.get('/dashboard', isAuth, cuestionarioController.main);
 router.get('/evaluaciones', isAuth, cuestionarioController.fetchCuestionarios); 
 router.post('/evaluaciones', isAuth, cuestionarioController.nuevoCuestionario);
 
+
 router.get('/feedback=:idCuestionario', isAuth, cuestionarioController.getCuestionario);
 router.post('/feedback=:idCuestionario', isAuth, cuestionarioController.writeFeedback);
 
