@@ -60,16 +60,18 @@ exports.updatePeriodo = async (request, response, next) => {
     console.log(request.body.FechaFin);
     const checkOlap = await Periodo.checkOverlap(request.body.FechaInicio, request.body.FechaFin);
     console.log(checkOlap);
-    if (checkOlap != null || checkOlap != '') {
-        request.flash('warningE', 'No se pudo modificar el periodo, existe un empalme')
+    if(checkOlap == 0 || checkOlap == null){
+        const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
+        console.log('obtiene el método POST')
+        periodo.save().then(() => {
         response.redirect('/periodos')
-    } else {
-        await Periodo.editPeriodo(request.body.FechaInicio, request.body.FechaFin, request.params.idPeriodo).then(() => {
-            request.flash('success', 'Se ha actualizado el periodo exitosamente')
-            response.redirect('/periodos')
-        })
+        }).catch(err => console.log(err));
     }
-}
+    else{
+        request.flash('warningE', 'No se pudo agregar el periodo, existe un empalme')
+        response.redirect('/periodos')
+    }
+};
 
 exports.get_nuevo_periodo = (request, response, next) => {
     console.log('obtiene el método GET')
