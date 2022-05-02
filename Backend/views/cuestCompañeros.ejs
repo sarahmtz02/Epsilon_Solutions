@@ -14,7 +14,7 @@
 
 <div>
     <section class="section-card">
-        <h1 id="principal">Buen día, <%- nombreSesion %> <%- apellidoPSesion %> </h1>
+        <h1 id="principal">Buen día, <%= nombreSesion %> <%= apellidoPSesion %> </h1>
         <hr class="db-hr">
         <% if (cuestCompas.length > 0) { %>
         <h3>Estas son las evaluaciones de tus compañeros hacia ti:</h3>
@@ -27,9 +27,9 @@
             <tbody>
                 <% for (let cuestCompa of cuestCompas) { %>
                 <tr>
-                    <td><%- cuestCompa.nombre -%> <%- cuestCompa.apellidoP -%> <%- cuestCompa.apellidoM -%></td>
-                    <td><%- moment.tz(cuestCompa.FechaInicio, 'UTC').format("LL") -%> al <%- moment.tz(cuestCompa.FechaFin, 'UTC').format("LL") -%></td>
-                    <td><a href = "/empleados/evalCompanero=<%- cuestCompa.idCuestionario -%>" class = "btn-normal">Consultar Respuestas</a></td>
+                    <td><%= cuestCompa.nombre %> <%= cuestCompa.apellidoP %> <%= cuestCompa.apellidoM %></td>
+                    <td><%- moment.tz(cuestCompa.FechaInicio, 'UTC').format("LL") %> al <%- moment.tz(cuestCompa.FechaFin, 'UTC').format("LL") %></td>
+                    <td><a href = "/empleados/evalCompanero= <%= cuestCompa.idCuestionario %>" class = "btn-normal">Consultar Respuestas</a></td>
                 </tr>
                 <% } %>
             </tbody>
