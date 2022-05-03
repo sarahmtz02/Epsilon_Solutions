@@ -243,9 +243,9 @@ CREATE TABLE `Empleado` (
 --
 
 INSERT INTO `Empleado` (`idEmpleado`, `fechaIng`, `nombre`, `apellidoP`, `apellidoM`, `antiguedad`, `nivPeople`, `nivCraft`, `nivBusiness`, `nivOverall`, `puesto`, `equipo`, `email`, `password`, `fk_idChapter`, `fk_idRolJer`, `isActive`) VALUES
-(1, '2022-04-07', 'Ramiro', 'Ledesma', 'Ramos', 1, '2.2', '5.1', '1.3', '2.3', 'Tester', 'ZeCore', 'ramiro.lr@test.com', '$2a$12$Mkwoi0hPchfIFxOypUHfBeAw49NOZRfvj3CEeMMjTzfZSkmngNUlu', 1, 1, 1),
+(1, '2022-04-07', 'Ramiro', 'Ledesma', 'Ramos', 1, '2.2', '5.1', '1.3', '2.3', 'Tester', 'ZeCore', 'ramiro.lr@test.com', '$2a$12$Mkwoi0hPchfIFxOypUHfBeAw49NOZRfvj3CEeMMjTzfZSkmngNUlu', 1, 3, 1),
 (3, '2022-04-04', 'Maria', 'Ledesma', 'Editado', 1, '3.3', '3.1', '3.1', '3.1', 'Ingeniera', 'PE', 'maria.ls@zeb.mx', '$2a$12$cqrH6UHfC.2hBGLoSU6thOrKyG5OiY/9zeKq5TCGK4MBgNLaa8iwy', 1, 1, 1),
-(8, '2022-04-07', 'Isabela', 'Vales', 'Chavarria', 0, '1.1', '1.1', '1.1', '1.1', 'Programmer', 'WMS', 'isabela.vc@test.com', '$2a$12$k7h.09GH77mKMh6T7Cjv3uWzUFPTclWbEcBamk2gwK0vOk37lkYf6', 1, 1, 1),
+(8, '2022-04-07', 'Isabela', 'Vales', 'Chavarria', 0, '1.1', '1.1', '1.1', '1.1', 'Programmer', 'WMS', 'isabela.vc@test.com', '$2a$12$k7h.09GH77mKMh6T7Cjv3uWzUFPTclWbEcBamk2gwK0vOk37lkYf6', 1, 3, 1),
 (36, '2022-05-03', 'Nicolas', 'Ramirez', 'Aguilar', 0, '3.3', '4.1', '3.2', '4.1', '', 'Example', 'nico@example.com', '$2a$12$VtN.rWTgKkqgMc3kZDlLTOvvDEM4Q.Ikb3GhEGun1zcDuMMl9DT0O', 1, 1, 1),
 (37, '2022-05-03', 'Valter', 'Núñez', 'Vázquez', 0, '2.2', '3.3', '2.2', '3.2', '', 'Example', 'valter@example.com', '$2a$12$cut4LbxR02kpekMw.0AvPOln7w6PQ28Pzy1VUXyefiu5OlWV7iYPy', 1, 1, 1),
 (38, '2022-05-03', 'Oscar', 'Puentes', 'Lederma', 0, '1.1', '1.1', '1.1', '1.1', 'Ingeniero', 'CMD', 'oscar@test.com', '$2a$12$b.sR3R/Yos3eMDVXbyljduyoS2yPayrVHadHV5VwIw0DHLkvWCDoG', 1, 1, 0),
