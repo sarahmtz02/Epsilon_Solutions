@@ -25,7 +25,7 @@
 .btn-normal {
     appearance: none;
     backface-visibility: hidden;
-    background-color: #2f80ed;
+    background-color: #5876ec;
     border-radius: 15px;
     border-style: none;
     box-shadow: none;
@@ -142,7 +142,7 @@
 .btn-delete {
     appearance: none;
     backface-visibility: hidden;
-    background-color: #da333c;
+    background-color: #cb456c;
     border-radius: 15px;
     border-style: none;
     box-shadow: none;
@@ -184,7 +184,7 @@
 .btn-modify {
     appearance: none;
     backface-visibility: hidden;
-    background-color: #1976D2;
+    background-color: #62a0b2;
     border-radius: 15px;
     border-style: none;
     box-shadow: none;
