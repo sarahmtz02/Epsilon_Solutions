@@ -25,7 +25,7 @@
                 <br>
                 <% for (let pregunta of preguntas) { %>
                 <form id="insertPregunta" action="/templates/editPregunta=<%- pregunta.idPregunta -%>" method="POST">
-                    <input type="text" class="form-control input-lg" id="insertP" name="descPregunta" value ="<%= pregunta.descPregunta %>" onkeydown="ENABLE_BTN()" oninput="validate(this)" maxlength="500"></input>
+                    <input type="text" class="form-control input-lg" id="insertP" name="descPregunta" value ="<%= pregunta.descPregunta %>" oninput="validate(this)" maxlength="500"></input>
                 <% } %>
                     <br>
                     <label>Selecciona el tipo de pregunta: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
@@ -43,19 +43,6 @@
             <a href="/empleados/dashboard"><button type="button" class="btn-navigation">Regresar al dashboard</button></a>
         </section>
     </div>
-
-    <script>window.onload = function() {
-        document.getElementById('guardarP').disabled = true; 
-    }
-    function ENABLE_BTN() {
-        var EN=document.getElementById('insertP').value;
-        if(EN=='') {
-            document.getElementById('guardarP').disabled=true;
-        } else {
-            document.getElementById('guardarP').disabled=false;
-        }
-    }
-    </script>
 
 <script>
     function validate(input){
