@@ -23,7 +23,7 @@ exports.fetchCuestionarios = async (request, response, next) => {
     console.log(requests)
     request.session.requests = requests.length;
     
-    Cuestionario.getEmpleados(request.session.idEmpleado).then(([empleados, fieldData]) => {
+    Cuestionario.getEmpleados(request.session.idEmpleado, activeP).then(([empleados, fieldData]) => {
         response.render('evaluaciones', {
             fecha: currentDate,
             pActivo : activeP,
