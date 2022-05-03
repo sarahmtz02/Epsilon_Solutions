@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: bpnzdg3qreqalbxfqwow-mysql.services.clever-cloud.com:3306
--- Generation Time: May 01, 2022 at 06:05 PM
+-- Generation Time: May 03, 2022 at 11:38 PM
 -- Server version: 8.0.15-5
 -- PHP Version: 7.2.34
 
@@ -124,17 +124,18 @@ CREATE TABLE `BancoPreguntas` (
 --
 
 INSERT INTO `BancoPreguntas` (`idBancoP`, `fk_idTemplate`, `fk_idPregunta`, `tipoPregunta`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 1),
-(4, 2, 5, 1),
-(5, 1, 6, 2),
-(11, 1, 12, 3),
-(12, 2, 13, 2),
-(13, 1, 14, 1),
-(17, 1, 18, 2),
-(21, 1, 22, 1),
-(22, 1, 23, 3),
-(23, 1, 24, 2);
+(33, 2, 34, 1),
+(34, 3, 34, 1),
+(35, 4, 33, NULL),
+(36, 5, 33, 1),
+(37, 3, 35, 2),
+(38, 1, 36, 1),
+(39, 1, 37, 1),
+(40, 1, 38, 2),
+(41, 1, 39, 3),
+(42, 4, 40, 2),
+(46, 1, 44, 1),
+(47, 1, 45, 1);
 
 -- --------------------------------------------------------
 
@@ -176,46 +177,40 @@ CREATE TABLE `Cuestionario` (
 --
 
 INSERT INTO `Cuestionario` (`idCuestionario`, `fk_idPeriodo`, `fk_idEvaluador`, `fk_idTemplate`, `idEvaluado`, `nivelEvaluado`, `isAnswered`) VALUES
-(1, 1, 1, 1, 8, '1.1', 1),
-(2, 1, 3, 1, 8, '1.1', 0),
-(3, 1, 22, 1, 8, '1.1', 0),
-(4, 1, 23, 1, 8, '1.1', 0),
-(5, 1, 24, 1, 8, '1.1', 0),
-(6, 1, 7, 1, 1, '1.1', 0),
-(7, 1, 8, 1, 1, '1.1', 1),
-(8, 1, 1, 2, 23, '2.1', 1),
-(9, 1, 2, 2, 23, '2.1', 1),
-(10, 1, 9, 1, 1, '1.1', 0),
-(11, 1, 10, 1, 1, '1.1', 0),
-(12, 1, 23, 2, 1, '2.1', 1),
-(13, 1, 24, 2, 1, '2.1', 0),
-(14, 10, 1, 2, 19, '2.2', 1),
-(15, 10, 8, 2, 19, '2.2', 1),
-(16, 10, 1, 2, 20, '2.1', 1),
-(17, 10, 7, 2, 20, '2.1', 0),
-(18, 10, 8, 2, 20, '2.1', 1),
-(19, 10, 19, 1, 18, '1.2', 0),
-(20, 10, 20, 1, 18, '1.2', 1),
-(21, 10, 1, 1, 18, '1.2', 1),
-(22, 10, 2, 1, 18, '1.2', 1),
-(23, 10, 5, 1, 18, '1.2', 0),
-(24, 10, 7, 1, 18, '1.2', 0),
-(25, 10, 9, 1, 18, '1.2', 0),
-(26, 10, 1, 1, 29, '1.1', 1),
-(27, 10, 2, 1, 29, '1.1', 1),
-(28, 10, 3, 1, 29, '1.1', 0),
-(29, 12, 10, 2, 2, '2.2', 0),
-(30, 12, 29, 2, 2, '2.2', 0),
-(31, 12, 3, 2, 2, '2.2', 0),
-(32, 12, 4, 2, 2, '2.2', 1),
-(33, 12, 5, 2, 2, '2.2', 0),
-(34, 12, 1, 5, 31, '5.2', 0),
-(35, 12, 2, 5, 31, '5.2', 0),
-(36, 12, 3, 5, 31, '5.2', 0),
-(37, 12, 4, 5, 31, '5.2', 0),
-(38, 12, 5, 5, 31, '5.2', 0),
-(39, 13, 4, 2, 28, '2.1', 0),
-(40, 13, 8, 2, 28, '2.1', 1);
+(50, 23, 3, 2, 1, '2.2', 0),
+(51, 23, 8, 2, 1, '2.2', 0),
+(52, 23, 1, 1, 8, '1.1', 1),
+(53, 23, 3, 1, 8, '1.1', 1),
+(54, 23, 36, 1, 8, '1.1', 0),
+(55, 23, 37, 1, 8, '1.1', 1),
+(56, 23, 3, 3, 37, '3.2', 1),
+(57, 23, 8, 3, 37, '3.2', 1),
+(58, 26, 36, 2, 1, '2.2', 0),
+(59, 26, 38, 2, 1, '2.2', 1),
+(60, 26, 1, 1, 38, '1.1', 0),
+(61, 26, 3, 1, 38, '1.1', 0),
+(62, 26, 1, 3, 3, '3.1', 1),
+(63, 26, 8, 3, 3, '3.1', 0),
+(64, 27, 1, 3, 3, '3.1', 1),
+(65, 27, 8, 3, 3, '3.1', 0),
+(66, 27, 37, 2, 1, '2.2', 0),
+(67, 27, 38, 2, 1, '2.2', 0),
+(68, 27, 38, 1, 8, '1.1', 0),
+(69, 27, 1, 1, 8, '1.1', 0),
+(70, 27, 3, 1, 8, '1.1', 0),
+(71, 23, 3, 2, 1, '2.2', 0),
+(72, 23, 36, 1, 8, '1.1', 0),
+(73, 23, 3, 2, 1, '2.2', 0),
+(74, 23, 37, 2, 1, '2.2', 0),
+(75, 23, 36, 2, 1, '2.2', 0),
+(76, 23, 38, 1, 8, '1.1', 0),
+(77, 23, 39, 1, 8, '1.1', 0),
+(78, 28, 36, 2, 1, '2.2', 0),
+(79, 28, 38, 2, 1, '2.2', 0),
+(80, 23, 38, 2, 1, '2.2', 0),
+(81, 23, 1, 3, 3, '3.1', 1),
+(82, 23, 39, 2, 1, '2.2', 0),
+(83, 23, 44, 2, 1, '2.2', 0);
 
 -- --------------------------------------------------------
 
@@ -248,35 +243,14 @@ CREATE TABLE `Empleado` (
 --
 
 INSERT INTO `Empleado` (`idEmpleado`, `fechaIng`, `nombre`, `apellidoP`, `apellidoM`, `antiguedad`, `nivPeople`, `nivCraft`, `nivBusiness`, `nivOverall`, `puesto`, `equipo`, `email`, `password`, `fk_idChapter`, `fk_idRolJer`, `isActive`) VALUES
-(1, '2022-04-07', 'Ramiro', 'Ledesma', 'Ramos', 0, '1.2', '5.1', '1.3', '2.2', 'Tester', 'ZeCore', 'ramiro.lr@test.com', '$2a$12$Mkwoi0hPchfIFxOypUHfBeAw49NOZRfvj3CEeMMjTzfZSkmngNUlu', 1, 3, 1),
-(2, '2022-04-01', 'Jorge', 'Castro', 'Vazquez', 20, '1.1', '1.1', '1.3', '1.1', 'Ingeniero', 'WMS', 'jcastro@tec.mx', '$2a$12$ZOI0ESUrjEPcRdPLarIqEOvVABnWx6N8sRTbsYs1L.ZsIKTINGmK2', 1, 1, 1),
-(3, '2022-04-04', 'Maria isabel', 'ledesma', 'Solis', 1, '1.1', '1.1', '2.1', '1.1', 'Ingeniera jr', 'Feedback', 'sarah@zeb.mx', '$2a$12$sHnVlfe04mFO2EB3Im0YHuCkfHXG1fvPTNPbdmIn3neFaPVRWqkoK', 1, 2, 1),
-(4, '2022-04-04', 'Diegod', 'Resendiz', 'Fernandez', 20, '3.2', '5.3', '5.2', '4.2', 'Ingeniero', 'Equipo9', 'A01708017@itesm.mx', '$2a$12$dwkYl6MsZ3HpWDpdgKbnW./ORUt8PppVBF28aYUh5PWUpPIaHa1KO', 1, 1, 1),
-(5, '2022-04-04', 'Sebastian', 'Pedrero', 'Jimenez', 20, '1.1', '2.2', '2.2', '2.2', 'Ingeniero', 'Equipo9', 'fontanero123@gmail.com', '$2a$12$WPi8g62UhYqG8Kz5bu7.pek9OjYCaxT8yCN8Dh6Gk7N9d45TQmXGq', 1, 1, 1),
-(6, '2022-04-04', 'Alex', 'Ruiz', 'Garcia-Rojas', 20, '3.3', '2.2', '3.3', '3.3', 'Ingeniero', 'Equipo9', 'a.ruiz@zeb.mx', '$2a$12$b2wsvEkzzb4ZUN4bPHfcMOT63hB01Q6HIRGE/sHZMoCw8HLO8GpAO', 1, 1, 1),
-(7, '2022-04-04', 'Manolo', 'Medina', 'Rodriguez', 20, '1.1', '1.1', '1.1', '1.1', 'Ingeniero', 'Equipo9', 'JMMR@tec.mx', '$2a$12$BBUXQrVvCpSUL50TKDHgtOhTSZ2uyK.YfNXNYCMX3tyDPz4BCFSoO\r\n', 1, 2, 1),
+(1, '2022-04-07', 'Ramiro', 'Ledesma', 'Ramos', 1, '2.2', '5.1', '1.3', '2.3', 'Tester', 'ZeCore', 'ramiro.lr@test.com', '$2a$12$Mkwoi0hPchfIFxOypUHfBeAw49NOZRfvj3CEeMMjTzfZSkmngNUlu', 1, 1, 1),
+(3, '2022-04-04', 'Maria', 'Ledesma', 'Editado', 1, '3.3', '3.1', '3.1', '3.1', 'Ingeniera', 'PE', 'maria.ls@zeb.mx', '$2a$12$cqrH6UHfC.2hBGLoSU6thOrKyG5OiY/9zeKq5TCGK4MBgNLaa8iwy', 1, 1, 1),
 (8, '2022-04-07', 'Isabela', 'Vales', 'Chavarria', 0, '1.1', '1.1', '1.1', '1.1', 'Programmer', 'WMS', 'isabela.vc@test.com', '$2a$12$k7h.09GH77mKMh6T7Cjv3uWzUFPTclWbEcBamk2gwK0vOk37lkYf6', 1, 1, 1),
-(9, '2022-04-07', 'Marcos', 'Polos', 'Romos', 0, '1.1', '1.1', '1.1', '1.1', 'Programmer Junior', 'ZeCore Client', 'marcos.pr@test.com', '$2a$12$TtITQup2BYOY1lHRaQ2Ld.RfRTWPuh4NjkmgfgbzwOAjhmH.nICF2', 1, 1, 1),
-(10, '2022-04-08', 'Sofia', 'Bermúdez', 'Jimenez', 2, '1.1', '1.1', '1.1', '1.1', 'Ingeniero', 'Equipo9', 'sofia@tec.mx', '$2a$12$pB6oQZl94am5ncLNyu6fY.awN1GEnP.DM9u.B3pE.3ls3JPT.dshW', 1, 3, 1),
-(11, '2022-04-19', 'Alejandro', 'Magno', 'Rivera', 0, '1.1', '1.1', '1.1', '1.1', 'Ingeniero', 'Equipo9', 'alejandro@ze.com', '$2a$12$U4pKyKPavmaJWBWEz2ax.unvOK9OoV/1D1liP0aR3YDHwjrPL.Luy', 1, 1, 0),
-(12, '2022-04-21', 'Pedro', 'Caseres', 'Najera', 0, '1.1', '1.1', '1.1', '1.1', 'Ingeniero', 'Equipo10', 'Najera.lr@test.com', '$2a$12$AHP4oZtVJ1l7Cm3MjRTREO.W8I.51jAgqf/BYzgrPHbK5L.6d7mm2', 1, 1, 1),
-(14, '2022-04-29', 'Miranjo', 'Ruiz', 'Jimenez', 0, '1.1', '1.1', '1.1', '1.1', 'Ingeniero', 'Equipo10', 'miranjo.MJ@test.com', '$2a$12$MmPKbPk5k3wKZXF/y07VyOuhw7Q.UCglL4gHiF93A0DpRYESz4owW', 1, 1, 1),
-(16, '2022-04-20', 'José Sebastián', 'Martinez', 'Hernandez', 0, '1.1', '1.1', '1.1', '1.1', 'Ingeniero', 'Equipo10', 'Sebas.@test.com', '$2a$12$E2BQrVR8KFqUY130kD0KyuXYJuiishAiOEW3zFN1J.lKMLWT.bj1K', 1, 1, 1),
-(17, '2022-04-21', 'juan', 'de borbon', 'perez', 2, '2.1', '2.2', '2.2', '2.1', 'test', 'tester', 'jaun.bp@test.com', '$2a$12$oTCLBbdY75v.ycg9FAQDqO9023MxYjz6MBn6CVxhzoGxQZ8SHk2TO', 1, 1, 1),
-(18, '2022-04-21', 'test', 'test', 'test', 2, '1.2', '2.1', '2.1', '1.2', 'test', 'test', 'test', '$2a$12$LNnb2E2j759ahBOz.9xz9eftLNFagAnsKmDinN6JyNIYd8rH6woCu', 1, 1, 1),
-(19, '2022-04-21', 'Valter', 'Nunez', 'Vazquez', 5, '1.3', '2.2', '2.1', '2.2', 'Backend Engineer', 'Zecore Client', 'valter.nunez@zeb.mx', '$2a$12$LNbE5C7p4p6qZ7HStAY78e5mlu.6Bl6nHlxZkePvBlMA3dhIiJtMq', 1, 1, 1),
-(20, '2022-04-21', 'Luis', 'Medina', 'Villarreal', 2, '3.1', '2.3', '2.1', '2.1', 'Tester', 'Develop', 'luis.mv@test.com', '$2a$12$kXo3oBgwFPZO8ZLyxcq7aOtpqOH4NgUo7CUA1PWYVCbxm2I/8meVi', 1, 2, 1),
-(21, '2022-04-22', 'Sancho', 'Panza', 'Ranza', 2, '2.3', '2.3', '2.3', '2.3', 'test', 'test', 'sancho.pr@test.com', '$2a$12$.tUOUwHodpHWvV3ZlTHf9.QYt2t/Pi7XO/jfjvmstHavSUn2aT2qq', 1, 1, 1),
-(22, '2022-04-22', 'Juan', 'Chavez', 'Valdez', 2, '2.1', '2.1', '2.2', '2.1', 'Programmer', 'ZeCore Client', 'juan.cv@zb.com', '$2a$12$5E7HhD0fRUPdtOiLAQVQ2.S2cZI3eHScjPMDEk0kogjukU7jOeLBi', 1, 2, 0),
-(23, '2022-04-22', 'Enrique', 'Fraire', 'Santos', 2, '2.2', '2.2', '2.1', '2.1', 'Programmer', 'WMS', 'enrique.sf@ze.com', '$2a$12$8e1WMwtkWn6bl9NFwd7.U.rtMaslEoukiFNw1xuMkyi6du8UbTJjy', 1, 2, 1),
-(24, '2022-04-22', 'Diego', 'Emilio', 'Pacheco', 2, '2.1', '2.1', '2.1', '2.1', 'Programmer', 'WMS', 'diego.ep@zb.com', '$2a$12$3kb/rdLB9y8XlvYzxzkcn.JHoaXDkJjiZ2I9n5ae54v1DGForh1WK', 1, 1, 1),
-(28, '2022-04-25', 'Test2', 'test2', 'test2', 0, '2.1', '2.1', '1.3', '2.1', 'tester', 'testing', 'test2@test', '$2a$12$x088/aDsILwxFGqgR627PuD.a28cSsnu1/zFlGeCNnuVWLxQrJ9vG', 1, 1, 1),
-(29, '2022-04-11', 'Bernardo', 'Laing', 'Prueba', 1, '1.1', '2.2', '3.3', '1.1', 'Backend engineer', 'Zecore Client', 'bernardo.laing@zeb.com', '$2a$12$ufyQlr6nYyuiFotSdL1NQuRXY2rmP3Ns/vm21i8yzIqL0WzBz5ERa', 1, 1, 1),
-(30, '2022-03-18', 'Gabriela Montesori', 'Sanchez', 'Ortíz', 35, '2.3', '3.2', '3.1', '2.3', 'Atracción ', 'RRHH', 'gmon@test.com', '$2a$12$VbGyhjuOJjDuzpbPY8kJ/uwefSg0C089M1FO7.1fzkf4QD3aSH9aq', 1, 2, 1),
-(31, '2022-04-30', 'Alejandro', 'Ruiz', 'Garcia Rojas', 3, '5.2', '5.2', '5.2', '5.2', 'Ingeniero de Software', 'Equipo', 'a01611451@tec.mx', '$2a$12$nWKHHPov10u0EtU8I7Nlb.c.RhEJ6o/3LoVGt17r/j3DrL2JkWAY.', 1, 3, 1),
-(32, '2022-04-26', 'Nico', 'Rosberg', 'berg', 0, '1.1', '1.1', '1.1', '1.1', 'ex piloto', 'mercedes', 'nico.rb@test.com', '$2a$12$tE9nyHc7vyeJVhMJ1r/80eZYXSxzru.5OQ6fPlGoea8fc/Q1CHF4e', 1, 1, 1),
-(33, '2022-04-26', 'prueba', 'vacío', '', 0, '1.1', '1.1', '1.1', '1.1', '', '', 'test4', '$2a$12$adAfOeuP4Ys9ZrMzo5aOHer2MT6Fo0.9LhJj3foScQybaDC0CuoEa', 1, 1, 1),
-(34, '2022-04-29', 'Grogu', 'Mandalorian', 'Yoda', 0, '2.1', '2.3', '2.2', '2.3', 'Software Engineer', 'CRM', 'grogu@zeb.mx', '$2a$12$JbgS5yki1V8S1Lg.kRucM.oaBdoXR.0hZaJSVLjYy/BNyC8qn/FcC', 1, 1, 1);
+(36, '2022-05-03', 'Nicolas', 'Ramirez', 'Aguilar', 0, '3.3', '4.1', '3.2', '4.1', '', 'Example', 'nico@example.com', '$2a$12$VtN.rWTgKkqgMc3kZDlLTOvvDEM4Q.Ikb3GhEGun1zcDuMMl9DT0O', 1, 1, 1),
+(37, '2022-05-03', 'Valter', 'Núñez', 'Vázquez', 0, '2.2', '3.3', '2.2', '3.2', '', 'Example', 'valter@example.com', '$2a$12$cut4LbxR02kpekMw.0AvPOln7w6PQ28Pzy1VUXyefiu5OlWV7iYPy', 1, 1, 1),
+(38, '2022-05-03', 'Oscar', 'Puentes', 'Lederma', 0, '1.1', '1.1', '1.1', '1.1', 'Ingeniero', 'CMD', 'oscar@test.com', '$2a$12$b.sR3R/Yos3eMDVXbyljduyoS2yPayrVHadHV5VwIw0DHLkvWCDoG', 1, 1, 0),
+(39, '2022-05-03', 'Juan', 'Perez', 'Rodriguez', 0, '1.3', '2.3', '3.1', '2.3', 'Backend Engineer', 'ZeClient', 'mau@zeb.mx', '$2a$12$J1OJen.dg.jmVIqJ/Nw1guwYv4z0qaAPMavh4HFL7D0/5vzGZ0q2q', 1, 1, 0),
+(44, '2022-05-03', 'Oscar', 'Valtierra ', 'Guzman', 0, '3.2', '2.1', '2.1', '2.1', 'Ingeniero', 'CMD', 'oscarTest@test.com', '$2a$12$qYRB7hzZKxaUkoJfC0Ast.wZMQ.sq.qNNbY3YsZiOAiDdvtoq2eKm', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -298,25 +272,12 @@ CREATE TABLE `Mentees` (
 --
 
 INSERT INTO `Mentees` (`idMentees`, `fk_idLead`, `idMentee`, `descAsignacion`, `fechaAsig`, `fk_idPeriodo`) VALUES
-(101, 4, 10, '', NULL, NULL),
-(103, 4, 12, '', NULL, NULL),
-(104, 4, 5, '', NULL, NULL),
-(107, 7, 1, '', NULL, NULL),
-(109, 7, 1, '', NULL, NULL),
-(110, 7, 1, '', NULL, NULL),
-(112, 7, 1, '', NULL, NULL),
-(113, 7, 4, '', NULL, NULL),
-(114, 7, 4, 'Resendiz', NULL, 1),
-(115, 22, 5, 'aaaa', NULL, 1),
-(116, 20, 9, 'aaaaa', NULL, 1),
-(117, 20, 19, 'Asignación de Valter Nunez a Luis Medina para que le de seguimiento', NULL, 1),
-(118, 20, 18, 'Asig. de Luis Medina a test', NULL, 10),
-(119, 20, 29, 'Aisgnación LM a BL', NULL, 10),
-(121, 23, 1, '', NULL, 13),
-(122, 8, 28, '', '2022-04-26', 13),
-(123, 3, 21, '', '2022-04-29', 13),
-(124, 23, 34, '', '2022-04-29', 15),
-(125, 8, 2, '', '2022-04-29', 15);
+(129, 36, 3, '', '2022-05-03', 23),
+(130, 1, 3, '', '2022-05-03', 23),
+(131, 36, 8, 'Test', '2022-05-03', 23),
+(132, 36, 3, '', '2022-05-03', 23),
+(133, 1, 37, '', '2022-05-02', 27),
+(134, 1, 39, 'Prueba', '2022-05-03', 28);
 
 -- --------------------------------------------------------
 
@@ -325,12 +286,12 @@ INSERT INTO `Mentees` (`idMentees`, `fk_idLead`, `idMentee`, `descAsignacion`, `
 -- (See below for the actual view)
 --
 CREATE TABLE `nombres_cuestionario` (
-`apellidoM_evaluado` varchar(45)
-,`apellidoP_evaluado` varchar(45)
-,`idCuestionario` int(11)
+`idCuestionario` int(11)
 ,`idEvaluado` int(11)
 ,`idEvaluador` int(11)
 ,`nombreEvaluado` varchar(45)
+,`apellidoP_evaluado` varchar(45)
+,`apellidoM_evaluado` varchar(45)
 );
 
 -- --------------------------------------------------------
@@ -352,13 +313,7 @@ CREATE TABLE `Observacion` (
 --
 
 INSERT INTO `Observacion` (`idObservacion`, `fk_idEvaluado`, `fk_idLead`, `fk_idPeriodo`, `descObservacion`) VALUES
-(1, 19, 8, 10, 'Valter, me parece que tu desempeño ha sido muy bueno, espero poder verte con por aquí'),
-(2, 19, 8, 10, 'test'),
-(3, 19, 8, 10, 'Prueba de alerta success de observación'),
-(20, 8, 19, 10, 'prueba de observacion'),
-(23, 19, 20, 10, 'Prueba de update'),
-(25, 19, 20, 10, 'Otro insert'),
-(28, 28, 8, 13, 'Excelente decisión ');
+(29, 8, 1, 23, 'Podrías mejorar tu entendimiento de negocio');
 
 -- --------------------------------------------------------
 
@@ -377,11 +332,12 @@ CREATE TABLE `PeriodoEvaluacion` (
 --
 
 INSERT INTO `PeriodoEvaluacion` (`idPeriodo`, `FechaInicio`, `FechaFin`) VALUES
-(1, '2022-04-28', '2022-04-28'),
-(10, '2022-04-28', '2022-04-28'),
-(12, '2022-04-28', '2022-04-28'),
-(13, '2022-04-28', '2022-04-28'),
-(14, '2022-04-29', '2022-05-07');
+(23, '2022-05-03', '2022-05-05'),
+(24, '2022-06-15', '2022-06-17'),
+(25, '2022-05-13', '2022-05-26'),
+(26, '2022-07-14', '2022-07-16'),
+(27, '2022-08-02', '2022-08-10'),
+(28, '2022-05-07', '2022-05-10');
 
 -- --------------------------------------------------------
 
@@ -402,7 +358,7 @@ CREATE TABLE `Permisos` (
 
 CREATE TABLE `Pregunta` (
   `idPregunta` int(11) NOT NULL,
-  `descPregunta` varchar(128) COLLATE utf8mb4_spanish_ci NOT NULL
+  `descPregunta` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -410,31 +366,20 @@ CREATE TABLE `Pregunta` (
 --
 
 INSERT INTO `Pregunta` (`idPregunta`, `descPregunta`) VALUES
-(1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?'),
-(2, 'Consideras que tu coworker ha dado su mejor desempeño?'),
-(3, 'Prueba de inserción resendiz'),
-(4, 'resendiz'),
-(5, 'Plantilla 2 prueba'),
-(6, 'Cómo te sientes trabajando en ZeBrands?'),
-(7, 'Consideras que tu compañero te ha apoyado en todo momento?'),
-(8, 'Prueba de inserción después de un delete'),
-(9, 'Consideras que el evaluado es apto para subir de nivel?'),
-(10, 'Consideras que el evaluado es digno de subir de nivel?'),
-(11, 'Prueba de pregunta booleana'),
-(12, 'Prueba de pregunta calificativa'),
-(13, 'Volverías a utilizar este sistema?'),
-(14, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?'),
-(15, 'Consideras un aumento de nivel para el evaluado?'),
-(16, 'prueba de botón disabled'),
-(17, 'prueba'),
-(18, 'modificación de pregunta para probar algo'),
-(19, ''),
-(20, ''),
-(21, '¿Recomendarías a algún familiar o amigo trabajar en Zebrands? '),
-(22, 'Ha diseñado sistemas robustos y escalables? ¿Cuáles?'),
-(23, '¿Te gustan las mantecadas?'),
-(24, '¿Apoya a miembros del equipo cuando no pueden avanzar con sus tareas?'),
-(25, 'Inserción tras modificación del nombre');
+(33, '¿En qué proyectos/iniciativas pudiste interactuar con esta persona? ¿Cuál fue el alcance de dichos proyectos?'),
+(34, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  '),
+(35, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?'),
+(36, '¿En qué proyectos has trabajado con el evaluado?'),
+(37, '¿Cómo es su dominio de python?'),
+(38, 'SI/NO'),
+(39, '¿Qué nivel le asignarías en craft?'),
+(40, '¿Hace buenas revisiones de PRs y da sugerencias?'),
+(41, 'Prueba de redireccionamiento'),
+(42, 'prueba'),
+(43, 'prueba 2'),
+(44, 'prueba'),
+(45, 'Cómo evaluarías su claridad para comunicarse en una escala de 1 a 5? (5 es mejor)'),
+(46, 'Resendiz ');
 
 -- --------------------------------------------------------
 
@@ -457,138 +402,76 @@ CREATE TABLE `PreguntaRespuesta` (
 --
 
 INSERT INTO `PreguntaRespuesta` (`idRespuesta`, `fk_idCuestionario`, `Template`, `idPregunta`, `tipoPregunta`, `Pregunta`, `Respuesta`) VALUES
-(1, 1, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', 'Los proyectos con los que he estado con Isabela...'),
-(2, 1, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', 'Considero que Isabela ha...'),
-(3, 1, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', '1'),
-(4, 1, 1, 12, 3, 'Prueba de pregunta calificativa', '5'),
-(5, 2, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(6, 2, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(7, 2, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(8, 2, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(9, 3, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(10, 3, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(11, 3, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(12, 3, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(13, 4, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(14, 4, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(15, 4, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(16, 4, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(17, 5, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(18, 5, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(19, 5, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(20, 5, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(21, 6, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(22, 6, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(23, 6, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(24, 6, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(25, 7, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', 'a'),
-(26, 7, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', 'a'),
-(27, 7, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', '1'),
-(28, 7, 1, 12, 3, 'Prueba de pregunta calificativa', '3'),
-(29, 8, 2, 5, 1, 'Plantilla 2 prueba', 'Resendiz'),
-(30, 9, 2, 5, 1, 'Plantilla 2 prueba', ''),
-(31, 10, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(32, 10, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(33, 10, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(34, 10, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(35, 11, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(36, 11, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(37, 11, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(38, 11, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(39, 12, 2, 5, 1, 'Plantilla 2 prueba', 'bien probada'),
-(40, 12, 2, 13, 2, 'Volverías a utilizar este sistema?', '1'),
-(41, 13, 2, 5, 1, 'Plantilla 2 prueba', NULL),
-(42, 13, 2, 13, 2, 'Volverías a utilizar este sistema?', NULL),
-(43, 14, 2, 5, 1, 'Plantilla 2 prueba', 'prueba 2'),
-(44, 14, 2, 13, 2, 'Volverías a utilizar este sistema?', '1'),
-(45, 15, 2, 5, 1, 'Plantilla 2 prueba', 'prueba de mentees'),
-(46, 15, 2, 13, 2, 'Volverías a utilizar este sistema?', '1'),
-(47, 16, 2, 5, 1, 'Plantilla 2 prueba', 'respuesta'),
-(48, 16, 2, 13, 2, 'Volverías a utilizar este sistema?', '1'),
-(49, 17, 2, 5, 1, 'Plantilla 2 prueba', NULL),
-(50, 17, 2, 13, 2, 'Volverías a utilizar este sistema?', NULL),
-(51, 18, 2, 5, 1, 'Plantilla 2 prueba', ''),
-(52, 18, 2, 13, 2, 'Volverías a utilizar este sistema?', NULL),
-(53, 19, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(54, 19, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(55, 19, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(56, 19, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(57, 19, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', NULL),
-(58, 19, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', NULL),
-(59, 20, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', 'prueba de relleno'),
-(60, 20, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', 'sí'),
-(61, 20, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', '1'),
-(62, 20, 1, 12, 3, 'Prueba de pregunta calificativa', '5'),
-(63, 20, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', 'muy bueno'),
-(64, 20, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', '1'),
-(65, 21, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', 'En el desarrollo del microservicio de ms-catalog'),
-(66, 21, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', 'Generalmente sí, aunque ha habido días que no está tan motivado'),
-(67, 21, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', '1'),
-(68, 21, 1, 12, 3, 'Prueba de pregunta calificativa', '4'),
-(69, 21, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', 'Muy bueno'),
-(70, 21, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', '1'),
-(71, 22, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', ''),
-(72, 22, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', ''),
-(73, 22, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(74, 22, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(75, 22, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', NULL),
-(76, 22, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', NULL),
-(77, 23, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(78, 23, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(79, 23, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(80, 23, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(81, 23, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', NULL),
-(82, 23, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', NULL),
-(83, 24, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(84, 24, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(85, 24, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(86, 24, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(87, 24, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', NULL),
-(88, 24, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', NULL),
-(89, 25, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(90, 25, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(91, 25, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(92, 25, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(93, 25, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', NULL),
-(94, 25, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', NULL),
-(95, 26, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', 'En implemntación de backend ...'),
-(96, 26, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', 'Considero que ...'),
-(97, 26, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', '1'),
-(98, 26, 1, 12, 3, 'Prueba de pregunta calificativa', '5'),
-(99, 26, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', 'Fue un buen desempeño...'),
-(100, 26, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', '1'),
-(101, 26, 1, 18, 2, 'modificación de pregunta para probar algo', '1'),
-(102, 26, 1, 22, 1, 'Ha diseñado sistemas robustos y escalables? ¿Cuáles?', 'Aún no'),
-(103, 27, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', 'Zebrands '),
-(104, 27, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', 'Si'),
-(105, 27, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', '1'),
-(106, 27, 1, 12, 3, 'Prueba de pregunta calificativa', '5'),
-(107, 27, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', '10/100'),
-(108, 27, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', '2'),
-(109, 27, 1, 18, 2, 'modificación de pregunta para probar algo', '1'),
-(110, 27, 1, 22, 1, 'Ha diseñado sistemas robustos y escalables? ¿Cuáles?', 'ZeCore Zebrands SIRE'),
-(111, 28, 1, 1, 1, '¿En que proyectos/iniciativas pudiste interactuar con ésta persona? ¿Cuál fue el alcance de dichos proyectos?', NULL),
-(112, 28, 1, 2, 1, 'Consideras que tu coworker ha dado su mejor desempeño?', NULL),
-(113, 28, 1, 6, 2, 'Cómo te sientes trabajando en ZeBrands?', NULL),
-(114, 28, 1, 12, 3, 'Prueba de pregunta calificativa', NULL),
-(115, 28, 1, 14, 1, 'Desde tu punto de vista, cuál fue tu desempeño en el proyecto?', NULL),
-(116, 28, 1, 15, 2, 'Consideras un aumento de nivel para el evaluado?', NULL),
-(117, 28, 1, 18, 2, 'modificación de pregunta para probar algo', NULL),
-(118, 28, 1, 22, 1, 'Ha diseñado sistemas robustos y escalables? ¿Cuáles?', NULL),
-(119, 29, 2, 5, 1, 'Plantilla 2 prueba', NULL),
-(120, 29, 2, 13, 2, 'Volverías a utilizar este sistema?', NULL),
-(121, 30, 2, 5, 1, 'Plantilla 2 prueba', NULL),
-(122, 30, 2, 13, 2, 'Volverías a utilizar este sistema?', NULL),
-(123, 31, 2, 5, 1, 'Plantilla 2 prueba', NULL),
-(124, 31, 2, 13, 2, 'Volverías a utilizar este sistema?', NULL),
-(125, 32, 2, 5, 1, 'Plantilla 2 prueba', 'Bastante bien'),
-(126, 32, 2, 13, 2, 'Volverías a utilizar este sistema?', '1'),
-(127, 33, 2, 5, 1, 'Plantilla 2 prueba', NULL),
-(128, 33, 2, 13, 2, 'Volverías a utilizar este sistema?', NULL),
-(129, 39, 2, 5, 1, 'Plantilla 2 prueba', NULL),
-(130, 39, 2, 13, 2, 'Volverías a utilizar este sistema?', NULL),
-(131, 40, 2, 5, 1, 'Plantilla 2 prueba', ''),
-(132, 40, 2, 13, 2, 'Volverías a utilizar este sistema?', '1');
+(189, 52, 1, 33, 1, '¿En qué proyectos/iniciativas pudiste interactuar con esta persona? ¿Cuál fue el alcance de dichos proyectos?', 'Xd'),
+(190, 52, 1, 34, 2, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', '1'),
+(191, 53, 1, 33, 1, '¿En qué proyectos/iniciativas pudiste interactuar con esta persona? ¿Cuál fue el alcance de dichos proyectos?', 'El proyecto tuvo gran impacto en la empresa'),
+(192, 53, 1, 34, 2, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', '1'),
+(193, 54, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
+(194, 54, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
+(195, 54, 1, 38, 2, 'SI/NO', NULL),
+(196, 54, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
+(197, 55, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', 'Trabajamos juntos en zecore client'),
+(198, 55, 1, 37, 1, '¿Cómo es su dominio de python?', 'Muy bueno'),
+(199, 55, 1, 38, 2, 'SI/NO', '2'),
+(200, 55, 1, 39, 3, '¿Qué nivel le asignarías en craft?', '4'),
+(201, 56, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Considero que tiene grandes aptitudes dentro y fuera de su área'),
+(202, 56, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '2'),
+(203, 57, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Buen diseño de arquitectura'),
+(204, 57, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '1'),
+(205, 58, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(206, 59, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Considero que posee un liderazgo natural y sabe como gestionar a todos los miembros del equipo para repartir los trabajos de acuerdo con las capacidades de cada quien. '),
+(207, 60, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
+(208, 60, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
+(209, 60, 1, 38, 2, 'SI/NO', NULL),
+(210, 60, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
+(211, 61, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
+(212, 61, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
+(213, 61, 1, 38, 2, 'SI/NO', NULL),
+(214, 61, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
+(215, 62, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Tiene una gran destreza y facilidad de adaptarse a nuevos lenguajes de programación. '),
+(216, 62, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '2'),
+(217, 63, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(218, 63, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', NULL),
+(219, 64, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Considero que tiene una gran destreza en adaptarse a nuevos ambientes con gran facilidad'),
+(220, 64, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '2'),
+(221, 65, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(222, 65, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', NULL),
+(223, 66, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(224, 67, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(225, 69, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
+(226, 69, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
+(227, 69, 1, 38, 2, 'SI/NO', NULL),
+(228, 69, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
+(229, 70, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
+(230, 70, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
+(231, 70, 1, 38, 2, 'SI/NO', NULL),
+(232, 70, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
+(233, 72, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
+(234, 72, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
+(235, 72, 1, 38, 2, 'SI/NO', NULL),
+(236, 72, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
+(237, 73, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(238, 74, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(239, 75, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(240, 76, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
+(241, 76, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
+(242, 76, 1, 38, 2, 'SI/NO', NULL),
+(243, 76, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
+(244, 76, 1, 44, 1, 'prueba', NULL),
+(245, 76, 1, 45, 3, 'Cómo evaluarías su claridad para comunicarse en una escala de 1 a 5? (5 es mejor)', NULL),
+(246, 77, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
+(247, 77, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
+(248, 77, 1, 38, 2, 'SI/NO', NULL),
+(249, 77, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
+(250, 77, 1, 44, 1, 'prueba', NULL),
+(251, 77, 1, 45, 3, 'Cómo evaluarías su claridad para comunicarse en una escala de 1 a 5? (5 es mejor)', NULL),
+(252, 78, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(253, 79, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(254, 80, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(255, 81, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Considero que es un lider natural, ya que conoce como gestionar a todos los miembros de un equipo de manera efectiva'),
+(256, 81, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '2'),
+(257, 82, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
+(258, 83, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL);
 
 -- --------------------------------------------------------
 
@@ -679,9 +562,9 @@ INSERT INTO `Template` (`idTemplate`, `NombreTemplate`) VALUES
 -- (See below for the actual view)
 --
 CREATE TABLE `usuario_permisos` (
-`id_rol_sistema` int(11)
-,`idEmpleado` int(11)
+`idEmpleado` int(11)
 ,`nombre_empleado` varchar(45)
+,`id_rol_sistema` int(11)
 ,`rol_sistema` varchar(45)
 );
 
@@ -822,7 +705,7 @@ ALTER TABLE `Template`
 -- AUTO_INCREMENT for table `BancoPreguntas`
 --
 ALTER TABLE `BancoPreguntas`
-  MODIFY `idBancoP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idBancoP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `Chapter`
@@ -834,31 +717,31 @@ ALTER TABLE `Chapter`
 -- AUTO_INCREMENT for table `Cuestionario`
 --
 ALTER TABLE `Cuestionario`
-  MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `Empleado`
 --
 ALTER TABLE `Empleado`
-  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `Mentees`
 --
 ALTER TABLE `Mentees`
-  MODIFY `idMentees` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `idMentees` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `Observacion`
 --
 ALTER TABLE `Observacion`
-  MODIFY `idObservacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `idObservacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `PeriodoEvaluacion`
 --
 ALTER TABLE `PeriodoEvaluacion`
-  MODIFY `idPeriodo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idPeriodo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `Permisos`
@@ -870,13 +753,13 @@ ALTER TABLE `Permisos`
 -- AUTO_INCREMENT for table `Pregunta`
 --
 ALTER TABLE `Pregunta`
-  MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `PreguntaRespuesta`
 --
 ALTER TABLE `PreguntaRespuesta`
-  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 
 --
 -- AUTO_INCREMENT for table `RolJerarquico`
