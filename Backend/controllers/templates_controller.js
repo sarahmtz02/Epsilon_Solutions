@@ -68,7 +68,7 @@ exports.getEditPregunta = async (request, response, next) => {
 }
 
 exports.updatePregunta = async (request, response) => {
-
+    const idTemp = await BancoPreguntas.getIdTemplate(request.params.idPregunta);
     if (request.body.descPregunta == '') {
         request.flash('warning', 'La pregunta debe de llevar un encabezado!')
         response.redirect('/templates/template=' + idTemp);
