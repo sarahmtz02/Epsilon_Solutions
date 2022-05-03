@@ -25,42 +25,42 @@
         </svg>Campo requerido</label>
     <br><br>
     <% for (let empleado of empleados) { %>
-    <form action="/id-empleado=<%-empleado.idEmpleado-%>" method="POST">
+    <form action="/id-empleado=<%= empleado.idEmpleado%>" method="POST">
         <!-- Para los datos personales -->
         <div class="row">
             <div class="col">
                 <label for="nombre">Nombre: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
                     <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
                     </svg></label>
-                <input class="form-control" type="text" id="nombre" name="nombre" value=<%- empleado.nombre -%> required maxlength="45">
+                <input class="form-control" type="text" id="nombre" name="nombre" value=<%= empleado.nombre %> required maxlength="45">
                 <br><br>
             </div>
             <div class="col">
                 <label for="apellidoP">Apellido Paterno: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
                     <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
                     </svg></label>
-                <input class="form-control" type="text" id="apellidoP" name="apellidoP" value=<%- empleado.apellidoP -%> required maxlength="45">
+                <input class="form-control" type="text" id="apellidoP" name="apellidoP" value=<%= empleado.apellidoP %> required maxlength="45">
                 <br><br>
             </div>
             <div class="col">
                 <label for="apellidoM">Apellido Materno: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
                     <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
                     </svg></label>
-                <input class="form-control" type="text" id="apellidoM" name="apellidoM" value=<%- empleado.apellidoM -%> required maxlength="45">
+                <input class="form-control" type="text" id="apellidoM" name="apellidoM" value= <%= empleado.apellidoM %> required maxlength="45">
                 <br><br>
             </div>
         </div>
         <!-- TEMPORAL -->
         <label for="antiguedad">Antiguedad: </label>
-        <input id="antiguedad" name="antiguedad" type="hidden" value="<%- moment(currentDate).diff(moment(empleado.fechaIng), 'months', true).toFixed(0) -%>">
-        <input class="form-control" id="antiguedaddisp" name="antiguedaddisp" readonly value="<%- moment(currentDate).diff(moment(empleado.fechaIng), 'months', true).toFixed(0) -%> mes/meses">
+        <input id="antiguedad" name="antiguedad" type="hidden" value="<%- moment(currentDate).diff(moment(empleado.fechaIng), 'months', true).toFixed(0) %>">
+        <input class="form-control" id="antiguedaddisp" name="antiguedaddisp" readonly value="<%- moment(currentDate).diff(moment(empleado.fechaIng), 'months', true).toFixed(0) %> mes/meses">
         <br><br>
 
         <label for="nivPeople">Nivel People: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
             <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
             </svg></label>
         <select name="nivPeople" id="nivPeople" class="form-select" onchange="calcNivOv()">
-            <option value=<%- empleado.nivPeople -%> selected><%- empleado.nivPeople -%></option>
+            <option value= <%= empleado.nivPeople %> selected> <%= empleado.nivPeople %></option>
             <option value="1.1">1.1</option>
             <option value="1.2">1.2</option>
             <option value="1.3">1.3</option>
@@ -81,7 +81,7 @@
         <label for="nivCraft">Nivel Craft: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
             <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
             </svg></label>
-        <select name="nivCraft" id="nivCraft" class="form-select" value=<%- empleado.nivCraft -%> onchange="calcNivOv()">
+        <select name="nivCraft" id="nivCraft" class="form-select" value=<%= empleado.nivCraft %> onchange="calcNivOv()">
             <option value=<%- empleado.nivCraft -%> selected><%- empleado.nivCraft -%></option>
             <option value="1.1">1.1</option>
             <option value="1.2">1.2</option>
@@ -103,8 +103,8 @@
         <label for="nivBusiness">Nivel Business: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
             <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
             </svg></label>
-        <select name="nivBusiness" id="nivBusiness" class="form-select" value=<%- empleado.nivBusiness -%> onchange="calcNivOv()">
-            <option value=<%- empleado.nivBusiness -%> selected><%- empleado.nivBusiness -%></option>
+        <select name="nivBusiness" id="nivBusiness" class="form-select" value=<%= empleado.nivBusiness %> onchange="calcNivOv()">
+            <option value=<%= empleado.nivBusiness %> selected><%- empleado.nivBusiness -%></option>
             <option value="1.1">1.1</option>
             <option value="1.2">1.2</option>
             <option value="1.3">1.3</option>
@@ -125,13 +125,13 @@
 
         <!-- TEMPORAL -->
         <label for="nivOverall">Nivel Overall: </label>
-        <input class="form-control" name="nivOverall" id="nivOverall" readonly value="<%- empleado.nivOverall -%>">
+        <input class="form-control" name="nivOverall" id="nivOverall" readonly value="<%= empleado.nivOverall %>">
         <br><br>
         <label for="puesto">Puesto: </label>
-        <input class="form-control" type="text" id="puesto" name="puesto" value=<%- empleado.puesto -%>>
+        <input class="form-control" type="text" id="puesto" name="puesto" value=<%= empleado.puesto %>>
         <br><br>
         <label for="equipo">Equipo: </label>
-        <input class="form-control" type="text" id="equipo" name="equipo" value=<%- empleado.equipo -%>>
+        <input class="form-control" type="text" id="equipo" name="equipo" value=<%= empleado.equipo %>>
         <br><br>
         <div class ="row">
             <div class="col">
@@ -145,21 +145,21 @@
                 <label for="email">Correo electrónico: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
                     <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
                     </svg></label>
-                <input class="form-control" type="email" id="email" name="email" value=<%- empleado.email -%> required maxlength="128">
+                <input class="form-control" type="email" id="email" name="email" value=<%= empleado.email %> required maxlength="128">
                 <br><br>
             </div>
         </div>
         <label for="fk_idChapter">Chapter: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
             <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
             </svg></label>
-        <select name="fk_idChapter" id="fk_idChapter" class="form-select" value=<%- empleado.fk_idChapter -%>>
+        <select name="fk_idChapter" id="fk_idChapter" class="form-select" value=<%= empleado.fk_idChapter %>>
             <option value="1">IT</option>
         </select>
         <br><br>
         <label for="fk_idRolJer">Rol Jerárquico: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
             <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
             </svg></label>
-        <select name="fk_idRolJer" id="fk_idRolJer" class="form-select" value=<%- empleado.fk_idRolJer -%>>
+        <select name="fk_idRolJer" id="fk_idRolJer" class="form-select" value=<%= empleado.fk_idRolJer %>>
             <option value="1">Member</option>
             <option value="2">Chapter Lead Assistant</option>
             <option value="3">Chapter Leader</option>

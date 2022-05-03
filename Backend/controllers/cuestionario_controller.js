@@ -26,6 +26,7 @@ exports.fetchCuestionarios = async (request, response, next) => {
             fecha: currentDate,
             cuestionarios: cuestionarios,
             periodos: periodo,
+            
             requests: requests,
             rol: request.session.idRol ? request.session.idRol : '',
             periodo: request.body.periodo ? request.body.periodo : '',
