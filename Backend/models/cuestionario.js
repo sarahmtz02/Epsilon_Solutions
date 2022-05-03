@@ -77,6 +77,17 @@ module.exports = class Cuestionario{
         });
     }
 
+    // Obtiene el periodo activo o regresa null en caso de no existir
+    static periodoActivo(currentDate) {
+        return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? BETWEEN FechaInicio AND FechaFin', [currentDate]).then(([rows, fielData]) => {
+            return rows[0].idPeriodo;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
+    }
+
     // Obtiene el identificador del empleado que fue seleccionado como evaluador en la solicitud
     static getIdEvaluador(Evaluador){
         return db.execute('SELECT idEmpleado FROM Empleado WHERE CONCAT(nombre , " ", apellidoP) = ?;', [Evaluador]).then(([rows, fielData]) => {

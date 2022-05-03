@@ -24,11 +24,5 @@ module.exports = class Template {
         return db.execute('SELECT *  FROM Template WHERE idTemplate = (?)',[this.id]
         );
     }
-
-    async getTemplateId(){
-        //let query = ('SELECT id_rol_sistema FROM usuario_permisos WHERE nombre_empleado=?', [this.nombre]);
-        res = await db.query('SELECT idTemplate FROM Template WHERE NombreTemplate=?', [this.NombreTemplate]);
-        return res;
-    };
 }
 

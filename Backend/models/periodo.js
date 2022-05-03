@@ -43,7 +43,7 @@ module.exports = class Periodo{
         .catch((error) => {
             console.log(error);
             return 0;
-        });;
+        });
     }
 
     // Obtiene el periodo más reciente

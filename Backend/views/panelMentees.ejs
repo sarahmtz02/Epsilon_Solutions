@@ -19,6 +19,11 @@
                 <strong>Atención! </strong><%- success -%>
             </div>
         <%} %>
+        <% if (warning != '') { %>
+            <div class="alert alert-danger" role="alert">
+                <strong>Atención! </strong><%- warning -%>
+            </div>
+        <%} %>
         <h1 id="principal">Asignación de Mentees</h1>
         <hr class="db-hr">
         <h3>Selecciona a un Mentor y asignale un mentorado</h3>

@@ -27,8 +27,19 @@ module.exports = class Mentee{
     }
 
     // Obtiene los empleados
-    static getEmpleados(){
-        return db.execute('SELECT idEmpleado, nombre, apellidoP FROM Empleado WHERE fk_idRolJer = 1')
+    static getEmpleados(idEmpleado){
+        return db.execute('SELECT idEmpleado, nombre, apellidoP FROM Empleado WHERE idEmpleado <> ?', [idEmpleado])
+    }
+
+    // Verificación de que ya existe una asignación
+    static checkIfExists(fk_idLead, idMentee){
+        return db.execute('SELECT idMentees FROM Mentees WHERE fk_idLead = ? AND idMentee = ?', [fk_idLead, idMentee]).then(([rows, fielData]) => {
+            return rows[0].idMentees
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
     }
 
     // Obtiene el periodo más reciente

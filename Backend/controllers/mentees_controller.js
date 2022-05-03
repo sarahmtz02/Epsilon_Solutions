@@ -13,12 +13,19 @@ exports.insertMentee = async (request, response, next) => {
     const mentorId = await Mentee.getIdEmpleado(request.body.nomMentor);
     const mentoradoId = await Mentee.getIdEmpleado(request.body.nomMentorado)
     const periodo = await Mentee.getPeriodo();
-    const mentee = new Mentee(mentorId, mentoradoId, request.body.descAsignacion, periodo, request.body.fechaAsig);
-    mentee.save().then(() => {
-        request.flash('success', 'Se ha asignado al empleado exitosamente')
-        response.redirect('/mentees/panelMentees')
+    const checkExists = await Mentee.checkIfExists(mentorId, mentoradoId);
+    console.log(checkExists);
 
-    }).catch(err => console.log(err));
+    if (checkExists == null || checkExists == 0) {
+        const mentee = new Mentee(mentorId, mentoradoId, request.body.descAsignacion, periodo, request.body.fechaAsig);
+        mentee.save().then(() => {
+            request.flash('success', 'Se ha asignado al empleado exitosamente')
+            response.redirect('/mentees/panelMentees')
+        }).catch(err => console.log(err));
+    } else {
+        request.flash('warning', 'Ya existe esa asignación')
+        response.redirect('/mentees/panelMentees')
+    }
 };
 
 // Método para obtener datos de la tablas Mentees
