@@ -22,16 +22,28 @@ module.exports = class Periodo{
     );
     }
 
-    static checkOverlap(FechaInicio, FechaFin){
-        console.log('SELECT idPeriodo count(*) AS per FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio');
-        return db.execute('SELECT count(*) AS per FROM  PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio', 
-        [FechaInicio, FechaFin]).then(([rows, fielData]) => {
-            return rows[0].per;
+    static checkOverlapEdit(FechaInicio, FechaFin, idPeriodo){
+        console.log('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio');
+        return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio AND idPeriodo <> ?', 
+        [FechaInicio, FechaFin, idPeriodo]).then(([rows, fielData]) => {
+            return rows;
         })
         .catch((error) => {
             console.log(error);
             return 0;
         });;
+    }
+
+    static checkOverlapNew(FechaInicio, FechaFin){
+        console.log('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio');
+        return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio', 
+        [FechaInicio, FechaFin]).then(([rows, fielData]) => {
+            return rows;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
     }
 
     // Obtiene el periodo más reciente

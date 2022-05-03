@@ -13,20 +13,22 @@ exports.fetchCuestionarios = async (request, response, next) => {
     const date = new Date();
     const currentDate = new Date(date.toDateString());
     const periodo = await Cuestionario.getPeriodo();
+    const activeP = await Cuestionario.periodoActivo(currentDate);
     console.log(periodo);
     console.log(periodo[0].idPeriodo);
-    const cuestionarios = await Cuestionario.fetchMyCuestionarios(request.session.idEmpleado, periodo[0].idPeriodo);
+    console.log(activeP);
+    const cuestionarios = await Cuestionario.fetchMyCuestionarios(request.session.idEmpleado, activeP);
     console.log(cuestionarios);
     const requests = await Cuestionario.getMyRequests(request.session.idEmpleado);
     console.log(requests)
     request.session.requests = requests.length;
     
-    Cuestionario.getEmpleados(request.session.idEmpleado).then(([empleados, fieldData]) => {
+    Cuestionario.getEmpleados(request.session.idEmpleado, activeP).then(([empleados, fieldData]) => {
         response.render('evaluaciones', {
             fecha: currentDate,
             cuestionarios: cuestionarios,
             periodos: periodo,
-            
+            pActivo : activeP,
             requests: requests,
             rol: request.session.idRol ? request.session.idRol : '',
             periodo: request.body.periodo ? request.body.periodo : '',
@@ -55,6 +57,8 @@ exports.nuevoCuestionario = async (request,response,next) => {
     console.log(numRequests);
     let lvlEv = request.session.nOverall;
     let isArray = Array.isArray(evaluadores);
+    let str = typeof evaluadores === 'string';
+    console.log(isArray);
     console.log(request.body.periodo);
     console.log(request.session.idEmpleado);
     let unexpectedError = false;
@@ -74,15 +78,7 @@ exports.nuevoCuestionario = async (request,response,next) => {
     console.log('template nivel:')
     console.log(tempNiv);
 
-    if (numRequests < 1) {
-        request.flash('warning', 'Por favor selecciona al menos un evaluador')
-    }
-
-    if (numRequests >= 5) {
-        request.flash('warning', 'Has llegado al límite de solicitudes por periodo')
-    }
-
-    if (isArray && ((numRequests + evaluadores.length) <= 5)) {
+    if (isArray) {
         
         for await (let evaluador of evaluadores ) {
             // Proceso para crear un nuevo cuestionario: //
@@ -124,16 +120,46 @@ exports.nuevoCuestionario = async (request,response,next) => {
             }
             
         }
-    } else {
-        console.log('error');
-        unexpectedError = true;
+    } else if (str) {
+        // Proceso para crear un nuevo cuestionario: //
+            const evaluadorId = await Cuestionario.getIdEvaluador(evaluadores);
+            const cuestId = await Cuestionario.getNewIdC(); //Para obtener el id del nuevo cuestionario = ultid+1
+            const preguntasData = await Cuestionario.getPreguntas(tempNiv);
+            console.log(cuestId[0][0]);
+            console.log(preguntasData);
+            if (cuestId[0][0].nuevoIdCuest == null){
+                cuestId[0][0].nuevoIdCuest == 1;
+            }
+            console.log(cuestId[0][0].nuevoIdCuest);
+            let idP = []
+
+            for (let i = 0; i < preguntasData.length; i++){
+                idP.push(preguntasData[i].fk_idPregunta)
+            }
+            console.log(idP);
+            console.log(cuestId[0][0].nuevoIdCuest)
+            
+            console.log(evaluadorId[0].idEmpleado);
+            const req = new Cuestionario(request.body.periodo, tempNiv, evaluadorId[0].idEmpleado, request.session.idEmpleado,
+                request.session.nOverall);
+
+            req.save();
+            
+            //Una vez se guarda el nuevo cuestionario se debe llamar al procedure que crea su registro para sacar los datos de preguntas y respuestas
+            console.log('success save en cuestionarios');
+            console.log(cuestId[0][0].nuevoIdCuest);
+
+            const Bp = await Cuestionario.totalPreguntas(tempNiv);
+            console.log(Bp);
+
+            for (let i = 0; i < Bp; i++) {
+                console.log('iteration')
+                await Cuestionario.insertIntoPR(cuestId[0][0].nuevoIdCuest, idP[i]);
+                await Cuestionario.fillPregRes(cuestId[0][0].nuevoIdCuest);
+                
+            }
     }
-    if (unexpectedError == true) {
-        request.flash('warning', 'Ha ocurrido un error')
-    }
-    else {
-        request.flash('success', 'Se han enviado tus solicitudes con éxito')
-    }
+    request.flash('success', 'Se han enviado tus solicitudes con éxito')
     response.redirect('/evaluaciones')
 }
 

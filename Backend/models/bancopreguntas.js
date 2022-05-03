@@ -40,7 +40,7 @@ module.exports = class BancoPreguntas{
 
     static getTipoPregunta (idPregunta){
         return db.execute('SELECT tipoPregunta FROM BancoPreguntas bp, Pregunta p WHERE p.idPregunta = ?', [idPregunta]).then(([rows, fielData]) => {
-            return rows[0][0].tipoPregunta;
+            return rows[0].tipoPregunta;
         })
         .catch((error) => {
             console.log(error);
@@ -77,7 +77,13 @@ module.exports = class BancoPreguntas{
         });
     }
 
-    static getTipoPregunta(idPregunta){
-        return db.execute('SELECT tipoPregunta FROM BancoPreguntas WHERE fk_idPregunta = ?', [idPregunta])
-    }
+    static getIdTemplate(fk_idPregunta){
+        return db.execute('SELECT fk_idTemplate FROM BancoPreguntas WHERE fk_idPregunta = ?', [fk_idPregunta]).then(([rows, fielData]) => {
+            return rows[0].fk_idTemplate;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });;
+    };
 }

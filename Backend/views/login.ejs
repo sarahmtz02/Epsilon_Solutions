@@ -3,6 +3,11 @@
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 
 <body>
+    <% if (warning != '') { %>
+        <div class="alert alert-danger" role="alert">
+            <strong>Atención! </strong><%- warning -%>
+        </div>
+    <%} %>
 <section class="login-dark" style="background: url('/img/abstract.jpg');">
     <form method="post" style="background: var(--bs-light);filter: blur(0px);--bs-body-bg: #fff;border-style: double;">
         <h2 class="visually-hidden">Login Form</h2>
