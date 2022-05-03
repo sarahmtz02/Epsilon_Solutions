@@ -65,7 +65,7 @@ exports.login = (request, response, next) => {
     // Password del empleado para comparar
     request.session.pw = rows[0].password;
 
-    // Si el password es correcto, has lo que está adentro del if
+    // Si el password es correcto
     bcrypt.compare(request.body.password, request.session.pw).then(doMatch => {
         if (doMatch) {
             // Redirección al Dashboard
