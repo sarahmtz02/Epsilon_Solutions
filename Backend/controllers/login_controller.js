@@ -10,8 +10,9 @@ const bcrypt = require('bcryptjs');
 // - Getter de la vista Login
 exports.get_login = (request, response, next) => {
     response.render('login', {
+        
         email: request.session.email ? request.session.email : '',
-        info: ''
+        info: '',
     }); 
 };
 
@@ -25,6 +26,7 @@ exports.dashboard = (request, response, next) => {
         nCraft: request.session.nCraft ? request.session.nCraft : '',
         nBusiness: request.session.nBusiness ? request.session.nBusiness : '',
         nOverall: request.session.nOverall ? request.session.nOverall : '',
+        warning : request.flash('warning'),
     });
 };
 
@@ -36,6 +38,7 @@ exports.login = (request, response, next) => {
             //Si no existe el usuario, redirige a la pantalla de login
             if (rows.length < 1) {
                 console.log('no existe el usuario')
+                request.flash('warning', 'Verifique que haya ingresado bien sus credenciales');
                 return response.redirect('/empleados/login');
             }
 
@@ -84,6 +87,7 @@ exports.login = (request, response, next) => {
                         });
                     }
                     console.log('password incorrecto')
+                    request.flash('warning', 'Password incorrecto')
                     response.redirect('/empleados/login');
                 }).catch(err => {
                     response.redirect('/empleados/login');

@@ -55,19 +55,23 @@ exports.getEditPeriodo = async (request, response, next) => {
 }
 
 exports.updatePeriodo = async (request, response, next) => {
-    console.log(request.params.idPeriodo);
-    console.log(request.body.FechaInicio);
-    console.log(request.body.FechaFin);
-    const checkOlap = await Periodo.checkOverlap(request.body.FechaInicio, request.body.FechaFin);
+    const fechaI = request.body.FechaInicio;
+    const fechaF = request.body.FechaFin;
+    const checkOlap = await Periodo.checkOverlapEdit(request.body.FechaInicio, request.body.FechaFin, request.params.idPeriodo);
     console.log(checkOlap);
-    if (checkOlap != null || checkOlap != '') {
-        request.flash('warningE', 'No se pudo modificar el periodo, existe un empalme')
+    if (fechaF < fechaI) {
+        request.flash('warningE', 'No se pudo modificar el periodo, la fecha final es menor a la inicial')
+        console.log('true en fecha menor')
         response.redirect('/periodos')
-    } else {
+    } else if (checkOlap == 0 || checkOlap == '') {
         await Periodo.editPeriodo(request.body.FechaInicio, request.body.FechaFin, request.params.idPeriodo).then(() => {
             request.flash('success', 'Se ha actualizado el periodo exitosamente')
             response.redirect('/periodos')
         })
+    } else {
+        request.flash('warningE', 'No se pudo modificar el periodo, existe un empalme')
+        console.log('true en overlap')
+        response.redirect('/periodos')
     }
 }
 
@@ -95,18 +99,23 @@ exports.get_nuevo_periodo = (request, response, next) => {
 };
 
 exports.post_nuevo_periodo = async (request, response, next) => {
-    
-    const checkOlap = await Periodo.checkOverlap(request.body.FechaInicio, request.body.FechaFin);
+    const fechaI = request.body.FechaInicio;
+    const fechaF = request.body.FechaFin;
+    const checkOlap = await Periodo.checkOverlapNew(request.body.FechaInicio, request.body.FechaFin);
     console.log(checkOlap);
-
-    if (checkOlap != null || checkOlap != '') {
-        request.flash('warningE', 'No se pudo agregar el periodo, existe un empalme')
+    if (fechaF < fechaI) {
+        request.flash('warningE', 'No se pudo crear el periodo, la fecha final es menor a la inicial')
+        console.log('true en fecha menor')
         response.redirect('/periodos')
-    } else {
+    } else if (checkOlap == 0 || checkOlap == '') {
         const periodo = new Periodo(request.body.FechaInicio, request.body.FechaFin);
         console.log('obtiene el método POST')
         periodo.save().then(() => {
-        response.redirect('/periodos')
+            request.flash('success', 'Se ha creado el periodo exitosamente')
+            response.redirect('/periodos')
         }).catch(err => console.log(err));
+    } else {
+        request.flash('warningE', 'No se pudo agregar el periodo, existe un empalme')
+        response.redirect('/periodos')
     }
 };

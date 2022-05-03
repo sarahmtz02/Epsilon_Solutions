@@ -12,6 +12,7 @@ const Cuestionario = require('../models/cuestionario');
 // - Getter de la vista Login
 exports.get_login = (request, response, next) => {
     response.render('login', {
+        warning : request.flash('warning'),
         email: request.session.email ? request.session.email : '',
         info: ''
     }); 
@@ -44,6 +45,7 @@ exports.login = (request, response, next) => {
 
         //Si no existe el correo, redirige a la pantalla de login
         if (rows.length < 1) {
+            request.flash('warning', 'Verifique que haya ingresado bien sus credenciales');
             return response.redirect('/empleados/login');
         }
 
@@ -72,6 +74,7 @@ exports.login = (request, response, next) => {
             console.log('success login');
             return response.redirect('./dashboard');       
         } else {
+            request.flash('warning', 'Password incorrecto')
             return response.redirect('/empleados/login')
         }
     });

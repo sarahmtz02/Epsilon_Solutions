@@ -22,7 +22,19 @@ module.exports = class Periodo{
     );
     }
 
-    static checkOverlap(FechaInicio, FechaFin){
+    static checkOverlapEdit(FechaInicio, FechaFin, idPeriodo){
+        console.log('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio');
+        return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio AND idPeriodo <> ?', 
+        [FechaInicio, FechaFin, idPeriodo]).then(([rows, fielData]) => {
+            return rows;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });;
+    }
+
+    static checkOverlapNew(FechaInicio, FechaFin){
         console.log('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio');
         return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? < FechaFin  AND ? > FechaInicio', 
         [FechaInicio, FechaFin]).then(([rows, fielData]) => {
