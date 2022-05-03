@@ -31,14 +31,14 @@ exports.postPregunta = async (request, response, next) => {
 
     if (request.body.nuevapregunta == '') {
         request.flash('warning', 'La pregunta debe de llevar un encabezado!')
-        response.redirect('/templates/listaTemplates');
+        response.redirect('/templates/template=' + request.params.idTemplate);
     } else {
         let newBP = new BancoPreguntas (request.params.idTemplate, idP, request.body.nuevapregunta, request.body.tipoPregunta);
     
         await newBP.save2();
 
         request.flash('success', 'Se ha añadido la pregunta con éxito')
-        response.redirect('/templates/listaTemplates');
+        response.redirect('/templates/template=' + request.params.idTemplate);
     }
 }
 
@@ -47,7 +47,7 @@ exports.deletePregunta = async (request, response, next) => {
     await BancoPreguntas.deletePregunta(request.params.idPregunta, request.body.idTemplate);
 
     request.flash('success', 'Se ha eliminado la pregunta con éxito')
-    response.redirect('/templates/listaTemplates');
+    response.redirect('/templates/template=' + request.body.idTemplate);
 }
 
 exports.getEditPregunta = async (request, response, next) => {
@@ -71,12 +71,12 @@ exports.updatePregunta = async (request, response) => {
 
     if (request.body.descPregunta == '') {
         request.flash('warning', 'La pregunta debe de llevar un encabezado!')
-        response.redirect('/templates/listaTemplates');
+        response.redirect('/templates/template=' + idTemp);
     } else {
         await Preguntas.updatePregunta(request.body.descPregunta, request.params.idPregunta, request.body.tipoPregunta);
 
         request.flash('success', 'Se ha actualizado la pregunta con éxito')
-        response.redirect('/templates/listaTemplates');
+        response.redirect('/templates/template=' + idTemp);
     }
 }
 
@@ -124,6 +124,8 @@ exports.getTemplate = async (request, response, next) => {
                         idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
                         nombreSesion: request.session.nombreSesion ? request.session.nombreSesion : '',
                         apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
+                        warning : request.flash('warning'),
+                        success : request.flash('success'),
                     })
             })
         }).catch(err => {

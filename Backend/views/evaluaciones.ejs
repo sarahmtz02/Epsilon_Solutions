@@ -64,17 +64,17 @@
             </div>
             <br>
             <!-- Para solicitar ser evaluado (asignación de evaluadores) -->
-            <% if (fecha && requests.length < 5)  { %>
+            <% if (pActivo != 0)  { %>
                 <br> <br>
                 <button class="btn-normal" type="button" data-bs-toggle="collapse" data-bs-target="#aSolicitar" aria-expanded="false" aria-controls="aSolicitar">Solicitar Evaluación</button>
                 <br>   <br>
                 <div class="collapse" id="aSolicitar">
                 <div class="card card-body">
                     <form action="/evaluaciones" method="POST">
-                        <input id="periodo" name="periodo" type="hidden" value="<%= periodo.idPeriodo %>">
+                        <input id="periodo" name="periodo" type="hidden" value="<%= pActivo %>">
                         <div class="row">
                             <div class="col-auto">
-                                <select id="nombre" name="nombre" data-live-search="true" class="selectpicker" multiple>
+                                <select id="nombre" name="nombre" data-live-search="true" required class="selectpicker" multiple>
                                     <% for (let empleado of empleados) { %>
                                         <option style="background: rgba(77, 70, 70, 0.582)"><%= empleado.nombre %> <%= empleado.apellidoP %></option>
                                     <% } %>
@@ -94,6 +94,13 @@
         </section>
         <%} %>
 </div>
+
+<script>
+    function validate(input){
+        if(/^\s/.test(input.value))
+            input.value = '';
+        }
+</script>
 
 <%- include('templates/footer.ejs') %>
 

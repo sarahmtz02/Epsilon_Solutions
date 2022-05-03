@@ -75,12 +75,16 @@ module.exports = class Empleado {
     }
 
     static updateEmpleado(idEmpleado, nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivBusiness, nivCraft, 
-        nivOverall, puesto, equipo, email, password, fk_idChapter, fk_idRolJer){
+        nivOverall, puesto, equipo, email, fk_idChapter, fk_idRolJer){
+        return db.execute('UPDATE Empleado SET nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,fk_idChapter=?,fk_idRolJer=? WHERE idEmpleado=?',
+        [nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivBusiness, nivCraft, 
+                nivOverall, puesto, equipo, email, fk_idChapter, fk_idRolJer, idEmpleado])
+    }
+
+    static changePassword(password, idEmpleado){
         return bcrypt.hash(password, 12)
         .then((password_cifrado)=>{
-            return db.execute('UPDATE Empleado SET nombre=?,apellidoP=?,apellidoM=?,antiguedad=?,nivPeople=?,nivCraft=?,nivBusiness=?,nivOverall=?,puesto=?,equipo=?,email=?,password=?,fk_idChapter=?,fk_idRolJer=? WHERE idEmpleado=?',
-            [nombre, apellidoP, apellidoM, antiguedad, nivPeople, nivBusiness, nivCraft, 
-                nivOverall, puesto, equipo, email, password_cifrado, fk_idChapter, fk_idRolJer, idEmpleado])
+            return db.execute('UPDATE Empleado SET password=? WHERE idEmpleado = ?', [password_cifrado, idEmpleado])
         })
     }
 

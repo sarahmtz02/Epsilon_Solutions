@@ -50,9 +50,9 @@ module.exports = class Cuestionario{
     }
 
     // Obtiene todos los empleados que no he seleccionado para que me evalúen
-    static getEmpleados(idEmpleadoSsn){
-        return db.execute('SELECT idEmpleado, nombre, apellidoP FROM Empleado WHERE idEmpleado <> ? AND idEmpleado NOT IN (SELECT fk_idEvaluador FROM Cuestionario WHERE idEvaluado = ? AND fk_idPeriodo = (SELECT MAX(idPeriodo) FROM PeriodoEvaluacion))', 
-        [idEmpleadoSsn, idEmpleadoSsn])
+    static getEmpleados(idEmpleadoSsn, idPeriodo){
+        return db.execute('SELECT idEmpleado, nombre, apellidoP FROM Empleado WHERE idEmpleado <> ? AND idEmpleado NOT IN (SELECT fk_idEvaluador FROM Cuestionario WHERE idEvaluado = ? AND fk_idPeriodo = ?)', 
+        [idEmpleadoSsn, idEmpleadoSsn, idPeriodo])
     }
 
     // Obtiene la clave del nuevo cuestionario, ojo que siempre va a ser el identificador del último cuestionario + 1
@@ -70,6 +70,17 @@ module.exports = class Cuestionario{
     static getPeriodo() {
         return db.execute('SELECT * FROM PeriodoEvaluacion ORDER BY idPeriodo DESC LIMIT 1;').then(([rows, fielData]) => {
             return rows;
+        })
+        .catch((error) => {
+            console.log(error);
+            return 0;
+        });
+    }
+    
+    // Obtiene el periodo activo o regresa null en caso de no existir
+    static periodoActivo(currentDate) {
+        return db.execute('SELECT idPeriodo FROM PeriodoEvaluacion WHERE ? BETWEEN FechaInicio AND FechaFin', [currentDate]).then(([rows, fielData]) => {
+            return rows[0].idPeriodo;
         })
         .catch((error) => {
             console.log(error);

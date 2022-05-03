@@ -13,6 +13,17 @@
 <%- include('templates/sidebarEnd.ejs') %>
     <div>
         <section class="section-card">
+            <% if (success != '') { %>
+                <div class="alert alert-success" role="alert">
+                    <strong>Atención! </strong><%- success -%>
+                </div>
+            <%} %>
+
+            <% if (warning != '') { %>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Atención! </strong><%- warning -%>
+                </div>
+            <%} %>
             <% for (let template of templates) { %>
                 
                 <h1 id="principal">Visualizar Template</h1>

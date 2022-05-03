@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/buttons.css" />
+<link rel="stylesheet" href="/css/section.css" />
+
+<%- include('templates/sidebarMain.ejs') %>
+<% if (rol == 3) { %>
+    <%- include('templates/sidebarPanelLead.ejs') %>
+<% } %>
+<% if (rol == 2) { %>
+    <%- include('templates/sidebarCLA.ejs') %>
+<% } %>
+<%- include('templates/sidebarEnd.ejs') %>
+
+<div>
+    <section class="section-card">
+    <% for (let empleado of empleados) { %>
+    <h1 id="principal">Empleados</h1>
+    <h2>Editar la Contraseña de <%-empleado.nombre-%> <%-empleado.apellidoP-%>:</h2>
+    <br>
+    <a href="/id-empleado=<%-empleado.idEmpleado-%>"><button type="button" class="btn-navigation">Regresar a los datos del empleado</button></a>
+    <br>
+    <br>
+    <label><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+        <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+        </svg>Campo requerido</label>
+    <br><br>
+    <form action="/change-pw=<%-empleado.idEmpleado-%>" method="POST">
+        <!-- Para cambiar el Password (OPCIONAL) -->
+        <label for="equipo">Nueva Contraseña: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
+            <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
+            </svg></label>
+        <input class="form-control" type="password" id="password" name="password">
+        <br><br>
+        <input type="submit" value="Guardar nueva Contraseña" class="btn-normal">
+    </form>
+    <%} %>
+    <br><br>
+    </section>
+</div>
+
+<%- include('templates/footer.ejs') %>
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
