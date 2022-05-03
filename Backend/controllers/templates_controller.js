@@ -52,10 +52,10 @@ exports.deletePregunta = async (request, response, next) => {
 
 exports.getEditPregunta = async (request, response, next) => {
     const tipoP = await BancoPreguntas.getTipoPregunta(request.params.idPregunta);
-    console.log(tipoP[0].tipoPregunta);
+    console.log(tipoP);
     Preguntas.fetchOnePregunta(request.params.idPregunta).then(([preguntas, fieldData])=> {
         response.render('editPregunta', {
-            tipoPregunta: tipoP[0].tipoPregunta,
+            tipoPregunta: tipoP,
             preguntas: preguntas,
             email: request.session.email ? request.session.email : '',
             rol: request.session.idRol ? request.session.idRol : '',
