@@ -50,7 +50,7 @@
                 <td><%- empleado.equipo -%></td>
                 <td><%- empleado.nivOverall -%></td>
                 <td><a href = "/id-empleado=<%-empleado.idEmpleado-%>" class = "btn-normal">Editar</a></td>
-                <td><a href="/bajaEmpleado=<%-empleado.idEmpleado-%>" type="button" class="btn-delete">Dar de baja</a> </td>
+                    <td id="deleteUser"><a href="/bajaEmpleado=<%-empleado.idEmpleado-%>" type="button" class="btn-delete">Dar de baja</a></td>
             </tr>
         <%} %>
     </tbody>
