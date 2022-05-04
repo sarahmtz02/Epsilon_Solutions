@@ -22,7 +22,11 @@
     <h1 id="principal">Empleados</h1>
     <h2>Editar un Empleado:</h2>
     <br>
-    <a href="/lista"><button type="button" class="btn-navigation">Regresar al listado de empleados</button></a>
+    <a href="/lista"><button type="button" class="btn-navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        Regresar al listado de empleados</button></a>
     <br>
     <br>
     <label><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
@@ -49,8 +53,7 @@
             </div>
             <div class="col">
                 <label for="apellidoM">Apellido Materno: </label>
-                <input class="form-control" type="text" id="apellidoM" name="apellidoM" value= <%= empleado.apellidoM %> maxlength="45" oninput="validate(this)">
-                <br><br>
+                <input class="form-control" type="text" id="apellidoM" name="apellidoM" maxlength="45" oninput="validate(this)" value=<%= empleado.apellidoM %>>                <br><br>
             </div>
         </div>
         <!-- TEMPORAL -->
@@ -131,10 +134,9 @@
         <input class="form-control" name="nivOverall" id="nivOverall" readonly value="<%= empleado.nivOverall %>">
         <br><br>
         <label for="puesto">Puesto: </label>
-        <input class="form-control" type="text" id="puesto" name="puesto" oninput="validate(this)" value=<%= empleado.puesto %>>
-        <br><br>
+        <input class="form-control" type="text" id="puesto" name="puesto" oninput="validate(this)" value="<%= empleado.puesto %>">        <br><br>
         <label for="equipo">Equipo: </label>
-        <input class="form-control" type="text" id="equipo" name="equipo" oninput="validate(this)" value=<%= empleado.equipo %>>
+        <input class="form-control" type="text" id="equipo" name="equipo" oninput="validate(this)" value="<%= empleado.equipo %>">
         <br><br>
         <div class ="row">
             <div class="col">
@@ -167,7 +169,7 @@
         </select>
         <br><br>
         <div class="text-center">
-            <input type="submit" value="Guardar Cambios" class="btn-normal">
+            <input type="submit" value="Guardar Cambios" class="btn-normal w-50">
         </div>
     </form>
     <%} %>
