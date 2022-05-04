@@ -155,14 +155,20 @@ exports.getResCuest = async (request, response, next) => {
 
 // Método para insertar una nueva observación
 exports.nuevaObservacion = async (request, response, next) => {
-    let newObv = new Observacion (request.body.fk_idEvaluado, request.session.idEmpleado, 
-        request.body.fk_idPeriodo, request.body.descObservacion);
 
-    await newObv.nuevaObservacion().then(() => {
-        request.flash('success', 'Se ha registrado la observación exitosamente')
-        response.redirect('/mentees/misMentorados')
-    })
+    if (request.body.descObservacion != '') {
+        let newObv = new Observacion (request.body.fk_idEvaluado, request.session.idEmpleado, 
+            request.body.fk_idPeriodo, request.body.descObservacion);
     
+        await newObv.nuevaObservacion().then(() => {
+            request.flash('success', 'Se ha registrado la observación exitosamente')
+            response.redirect('/mentees/misMentorados')
+        })
+    } else {
+        request.flash('warning', 'La observación debe de llevar texto.')
+        response.redirect('/mentees/misMentorados')
+    }
+
 }
 
 // Método para obtener las observaciones del mentee en sesión
@@ -215,10 +221,15 @@ exports.getOneObservacion = async (request, response, next) => {
 // Método para modificar una observación
 exports.updateObservacion = async (request, response, next) => {
 
-    await Observacion.updateObservacion(request.body.descObservacion, request.params.idObservacion).then(() => {
-        request.flash('success', 'Se ha actualizado la observación exitosamente')
+    if (request.body.descObservacion != '') {
+        await Observacion.updateObservacion(request.body.descObservacion, request.params.idObservacion).then(() => {
+            request.flash('success', 'Se ha actualizado la observación exitosamente')
+            response.redirect('/mentees/observaciones-id-mentorado=' + request.body.idEvaluado)
+        })
+    } else {
+        request.flash('warning', 'La observación debe de llevar texto.')
         response.redirect('/mentees/observaciones-id-mentorado=' + request.body.idEvaluado)
-    })
+    }
 }
 
 // Método para eliminar una asignación de mentorado
