@@ -16,8 +16,8 @@ module.exports = pool.promise();
 
 
 // DB en CleverCloud, las tablas no van en minuscula!
-/*
-const { createPool } = require("mysql2");
+
+/*const { createPool } = require("mysql2");
 
 const pool = createPool({
     host: 'localhost',

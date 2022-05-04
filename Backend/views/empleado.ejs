@@ -48,10 +48,8 @@
                 <br><br>
             </div>
             <div class="col">
-                <label for="apellidoM">Apellido Materno: <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="red" class="bi bi-asterisk" viewBox="0 0 16 16">
-                    <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"></path>
-                    </svg></label>
-                <input class="form-control" type="text" id="apellidoM" name="apellidoM" value= <%= empleado.apellidoM %> required maxlength="45">
+                <label for="apellidoM">Apellido Materno: </label>
+                <input class="form-control" type="text" id="apellidoM" name="apellidoM" value= <%= empleado.apellidoM %> maxlength="45" oninput="validate(this)">
                 <br><br>
             </div>
         </div>
@@ -133,10 +131,10 @@
         <input class="form-control" name="nivOverall" id="nivOverall" readonly value="<%= empleado.nivOverall %>">
         <br><br>
         <label for="puesto">Puesto: </label>
-        <input class="form-control" type="text" id="puesto" name="puesto" value=<%= empleado.puesto %>>
+        <input class="form-control" type="text" id="puesto" name="puesto" oninput="validate(this)" value=<%= empleado.puesto %>>
         <br><br>
         <label for="equipo">Equipo: </label>
-        <input class="form-control" type="text" id="equipo" name="equipo" value=<%= empleado.equipo %>>
+        <input class="form-control" type="text" id="equipo" name="equipo" oninput="validate(this)" value=<%= empleado.equipo %>>
         <br><br>
         <div class ="row">
             <div class="col">
@@ -199,3 +197,9 @@
     }
     </script>
 
+<script>
+    function validate(input){
+        if(/^\s/.test(input.value))
+            input.value = '';
+        }
+</script>
