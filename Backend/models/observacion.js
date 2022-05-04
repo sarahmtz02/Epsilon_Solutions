@@ -16,7 +16,7 @@ module.exports = class Observacion{
 
     // Obtiene los datos de las observacions de un empleado
     static getObservaciones(idEmpleado, idMentorado){
-        return db.execute('SELECT idObservacion, descObservacion, nombre, apellidoP, apellidoM, fk_idPeriodo, FechaInicio, FechaFin FROM Observacion O, Empleado E, PeriodoEvaluacion PE WHERE O.fk_idLead = ? AND O.fk_idEvaluado = ? AND O.fk_idEvaluado = E.idEmpleado AND O.fk_idPeriodo = PE.idPeriodo', 
+        return db.execute('SELECT idObservacion, fk_idEvaluado, descObservacion, nombre, apellidoP, apellidoM, fk_idPeriodo, FechaInicio, FechaFin FROM Observacion O, Empleado E, PeriodoEvaluacion PE WHERE O.fk_idLead = ? AND O.fk_idEvaluado = ? AND O.fk_idEvaluado = E.idEmpleado AND O.fk_idPeriodo = PE.idPeriodo', 
         [idEmpleado, idMentorado])
     }
 
@@ -31,6 +31,6 @@ module.exports = class Observacion{
     }
 
     static getOneObservacion(idObservacion){
-        return db.execute('SELECT idObservacion, descObservacion FROM Observacion WHERE idObservacion = ?', [idObservacion])
+        return db.execute('SELECT idObservacion, descObservacion, fk_idEvaluado FROM Observacion WHERE idObservacion = ?', [idObservacion])
     }
 }

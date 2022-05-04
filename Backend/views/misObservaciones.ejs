@@ -14,6 +14,11 @@
 
 <div>
     <section class="section-card">
+        <% if (success != '') { %>
+            <div class="alert alert-success" role="alert">
+                <strong>Atención! </strong><%- success -%>
+            </div>
+        <%} %>
         <h1 id="principal">Buen día, <%- nombreSesion %> <%- apellidoPSesion %> </h1>
         <hr class="db-hr">
         <% if (observaciones.length > 0) { %>
@@ -30,7 +35,7 @@
                 <% for (let observacion of observaciones) { %>
                 <tr>
                     <td><%- observacion.nombre -%> <%- observacion.apellidoP -%> <%- observacion.apellidoM -%></td>
-                    <td><%- moment.tz(observacion.FechaInicio, 'UTC').format("LL") -%> <%- moment.tz(observacion.FechaFin, 'UTC').format("LL") -%></td>
+                    <td><%- moment.tz(observacion.FechaInicio, 'UTC').format("LL") -%> al <%- moment.tz(observacion.FechaFin, 'UTC').format("LL") -%></td>
                     <td><%- observacion.descObservacion -%></td>
                     <td>
                         <a href="/mentees/editObservacion=<%= observacion.idObservacion %>" class = "btn-modify">Modificar Observación</a>

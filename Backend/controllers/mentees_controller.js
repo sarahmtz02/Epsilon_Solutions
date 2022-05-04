@@ -12,12 +12,15 @@ const Observacion = require('../models/observacion');
 exports.insertMentee = async (request, response, next) => {    
     const mentorId = await Mentee.getIdEmpleado(request.body.nomMentor);
     const mentoradoId = await Mentee.getIdEmpleado(request.body.nomMentorado)
+    const date = new Date();
+    const currentDate = new Date(date.toDateString());
+    const activeP = await Mentee.periodoActivo(currentDate);
     const periodo = await Mentee.getPeriodo();
     const checkExists = await Mentee.checkIfExists(mentorId, mentoradoId);
     console.log(checkExists);
 
     if (checkExists == null || checkExists == 0) {
-        const mentee = new Mentee(mentorId, mentoradoId, request.body.descAsignacion, periodo, request.body.fechaAsig);
+        const mentee = new Mentee(mentorId, mentoradoId, request.body.descAsignacion, activeP, request.body.fechaAsig);
         mentee.save().then(() => {
             request.flash('success', 'Se ha asignado al empleado exitosamente')
             response.redirect('/mentees/panelMentees')
@@ -33,6 +36,7 @@ exports.fetchMentees = async (request, response, next) => {
     const periodo = await Mentee.getPeriodo();
     const date = new Date();
     const currentDate = new Date(date.toDateString());
+    const activeP = await Mentee.periodoActivo(currentDate);
 
     //Obtiene los mentores
     Mentee.getMentores().then(([mentores, fielData]) => {
@@ -42,7 +46,7 @@ exports.fetchMentees = async (request, response, next) => {
                 Mentee.fetchAllMentees().then(([dataMentees, fielData]) => {
                     
                     response.render('panelMentees', {
-                        periodo: periodo,
+                        periodo: activeP,
                         fecha: currentDate, 
                         mentores: mentores,
                         empleados: empleados,
@@ -89,11 +93,14 @@ exports.getMentorados = async (request, response, next) => {
 // Método para obtener las evaluaciones del mentorado
 exports.getEvalMentorado = async (request, response, next) => {
     const periodo = await Mentee.getPeriodo();
+    const date = new Date();
+    const currentDate = new Date(date.toDateString());
+    const activeP = await Mentee.periodoActivo(currentDate);
     
-    Mentee.getCuestMentorado(request.params.idMentorado, periodo).then(([cuestMentees, fieldData]) => {
+    Mentee.getCuestMentorado(request.params.idMentorado, activeP).then(([cuestMentees, fieldData]) => {
 
         response.render('mentee', {
-            periodo: periodo,
+            periodo: activeP,
             cuestMentees: cuestMentees,
             rol: request.session.idRol ? request.session.idRol : '',
             idEmpleado: request.session.idEmpleado ? request.session.idEmpleado : '',
@@ -114,6 +121,9 @@ exports.getResCuest = async (request, response, next) => {
 
     // Ojo que este método selecciona el periodo más reciente (en el que se está evaluando)
     const periodo = await Mentee.getPeriodo();
+    const date = new Date();
+    const currentDate = new Date(date.toDateString());
+    const activeP = await Mentee.periodoActivo(currentDate);
 
     // Para el nombre del evaluador
     Mentee.getNombreEmpleado(idEvaluador).then(([nombreEs, fieldData]) => {
@@ -126,7 +136,7 @@ exports.getResCuest = async (request, response, next) => {
                     answers: answers,
                     idEvaluador: idEvaluador,
                     idEvaluado: idEvaluado,
-                    periodo: periodo,
+                    periodo: activeP,
                     nombreEs: nombreEs,
                     nombreMs: nombreMs,
                     rol: request.session.idRol ? request.session.idRol : '',
@@ -167,6 +177,8 @@ exports.misObservaciones = async (request, response, next) => {
             apellidoPSesion: request.session.apellidoPSesion ? request.session.apellidoPSesion : '',
             email: request.session.email ? request.session.email : '',
             moment: moment,
+            warning : request.flash('warning'),
+            success : request.flash('success'),
         })
     }).catch(err => {
         console.log(err);
@@ -205,7 +217,7 @@ exports.updateObservacion = async (request, response, next) => {
 
     await Observacion.updateObservacion(request.body.descObservacion, request.params.idObservacion).then(() => {
         request.flash('success', 'Se ha actualizado la observación exitosamente')
-        response.redirect('/mentees/misMentorados')
+        response.redirect('/mentees/observaciones-id-mentorado=' + request.body.idEvaluado)
     })
 }
 

@@ -29,8 +29,8 @@
         <h3>Selecciona a un Mentor y asignale un mentorado</h3>
 
         <form action="/mentees/panelMentees" method="POST">
-            <input id="periodo" name="periodo" type="hidden" value="<%= periodo.idPeriodo %>">
-            <input id="fechaAsig" name="fechaAsig" type="hidden" value="<%- moment.tz(fecha, 'UTC').format("YYYY-MM-DD")%>">
+            <input id="periodo" name="periodo" type="hidden" value="<%= periodo %>">
+            <input id="fechaAsig" name="fechaAsig" type="hidden" value="<%= moment.tz(fecha, 'UTC').format("YYYY-MM-DD")%>">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
