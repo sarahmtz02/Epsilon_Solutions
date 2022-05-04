@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: bpnzdg3qreqalbxfqwow-mysql.services.clever-cloud.com:3306
--- Generation Time: May 03, 2022 at 11:38 PM
+-- Generation Time: May 04, 2022 at 06:02 PM
 -- Server version: 8.0.15-5
 -- PHP Version: 7.2.34
 
@@ -98,17 +98,6 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `AsignacionPermisos`
---
-
-CREATE TABLE `AsignacionPermisos` (
-  `fk_idRolSis` int(11) NOT NULL,
-  `fk_idFuncSis` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `BancoPreguntas`
 --
 
@@ -118,24 +107,6 @@ CREATE TABLE `BancoPreguntas` (
   `fk_idPregunta` int(11) NOT NULL,
   `tipoPregunta` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Dumping data for table `BancoPreguntas`
---
-
-INSERT INTO `BancoPreguntas` (`idBancoP`, `fk_idTemplate`, `fk_idPregunta`, `tipoPregunta`) VALUES
-(33, 2, 34, 1),
-(34, 3, 34, 1),
-(35, 4, 33, NULL),
-(36, 5, 33, 1),
-(37, 3, 35, 2),
-(38, 1, 36, 1),
-(39, 1, 37, 1),
-(40, 1, 38, 2),
-(41, 1, 39, 3),
-(42, 4, 40, 2),
-(46, 1, 44, 1),
-(47, 1, 45, 1);
 
 -- --------------------------------------------------------
 
@@ -154,7 +125,7 @@ CREATE TABLE `Chapter` (
 --
 
 INSERT INTO `Chapter` (`idChapter`, `nombreCh`, `nEmpleados`) VALUES
-(1, 'IT', 0);
+(1, 'Software Development', 0);
 
 -- --------------------------------------------------------
 
@@ -171,46 +142,6 @@ CREATE TABLE `Cuestionario` (
   `nivelEvaluado` decimal(10,1) DEFAULT NULL,
   `isAnswered` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Dumping data for table `Cuestionario`
---
-
-INSERT INTO `Cuestionario` (`idCuestionario`, `fk_idPeriodo`, `fk_idEvaluador`, `fk_idTemplate`, `idEvaluado`, `nivelEvaluado`, `isAnswered`) VALUES
-(50, 23, 3, 2, 1, '2.2', 0),
-(51, 23, 8, 2, 1, '2.2', 0),
-(52, 23, 1, 1, 8, '1.1', 1),
-(53, 23, 3, 1, 8, '1.1', 1),
-(54, 23, 36, 1, 8, '1.1', 0),
-(55, 23, 37, 1, 8, '1.1', 1),
-(56, 23, 3, 3, 37, '3.2', 1),
-(57, 23, 8, 3, 37, '3.2', 1),
-(58, 26, 36, 2, 1, '2.2', 0),
-(59, 26, 38, 2, 1, '2.2', 1),
-(60, 26, 1, 1, 38, '1.1', 0),
-(61, 26, 3, 1, 38, '1.1', 0),
-(62, 26, 1, 3, 3, '3.1', 1),
-(63, 26, 8, 3, 3, '3.1', 0),
-(64, 27, 1, 3, 3, '3.1', 1),
-(65, 27, 8, 3, 3, '3.1', 0),
-(66, 27, 37, 2, 1, '2.2', 0),
-(67, 27, 38, 2, 1, '2.2', 0),
-(68, 27, 38, 1, 8, '1.1', 0),
-(69, 27, 1, 1, 8, '1.1', 0),
-(70, 27, 3, 1, 8, '1.1', 0),
-(71, 23, 3, 2, 1, '2.2', 0),
-(72, 23, 36, 1, 8, '1.1', 0),
-(73, 23, 3, 2, 1, '2.2', 0),
-(74, 23, 37, 2, 1, '2.2', 0),
-(75, 23, 36, 2, 1, '2.2', 0),
-(76, 23, 38, 1, 8, '1.1', 0),
-(77, 23, 39, 1, 8, '1.1', 0),
-(78, 28, 36, 2, 1, '2.2', 0),
-(79, 28, 38, 2, 1, '2.2', 0),
-(80, 23, 38, 2, 1, '2.2', 0),
-(81, 23, 1, 3, 3, '3.1', 1),
-(82, 23, 39, 2, 1, '2.2', 0),
-(83, 23, 44, 2, 1, '2.2', 0);
 
 -- --------------------------------------------------------
 
@@ -243,14 +174,7 @@ CREATE TABLE `Empleado` (
 --
 
 INSERT INTO `Empleado` (`idEmpleado`, `fechaIng`, `nombre`, `apellidoP`, `apellidoM`, `antiguedad`, `nivPeople`, `nivCraft`, `nivBusiness`, `nivOverall`, `puesto`, `equipo`, `email`, `password`, `fk_idChapter`, `fk_idRolJer`, `isActive`) VALUES
-(1, '2022-04-07', 'Ramiro', 'Ledesma', 'Ramos', 1, '2.2', '5.1', '1.3', '2.3', 'Tester', 'ZeCore', 'ramiro.lr@test.com', '$2a$12$Mkwoi0hPchfIFxOypUHfBeAw49NOZRfvj3CEeMMjTzfZSkmngNUlu', 1, 3, 1),
-(3, '2022-04-04', 'Maria', 'Ledesma', 'Editado', 1, '3.3', '3.1', '3.1', '3.1', 'Ingeniera', 'PE', 'maria.ls@zeb.mx', '$2a$12$cqrH6UHfC.2hBGLoSU6thOrKyG5OiY/9zeKq5TCGK4MBgNLaa8iwy', 1, 1, 1),
-(8, '2022-04-07', 'Isabela', 'Vales', 'Chavarria', 0, '1.1', '1.1', '1.1', '1.1', 'Programmer', 'WMS', 'isabela.vc@test.com', '$2a$12$k7h.09GH77mKMh6T7Cjv3uWzUFPTclWbEcBamk2gwK0vOk37lkYf6', 1, 3, 1),
-(36, '2022-05-03', 'Nicolas', 'Ramirez', 'Aguilar', 0, '3.3', '4.1', '3.2', '4.1', '', 'Example', 'nico@example.com', '$2a$12$VtN.rWTgKkqgMc3kZDlLTOvvDEM4Q.Ikb3GhEGun1zcDuMMl9DT0O', 1, 1, 1),
-(37, '2022-05-03', 'Valter', 'Núñez', 'Vázquez', 0, '2.2', '3.3', '2.2', '3.2', '', 'Example', 'valter@example.com', '$2a$12$cut4LbxR02kpekMw.0AvPOln7w6PQ28Pzy1VUXyefiu5OlWV7iYPy', 1, 1, 1),
-(38, '2022-05-03', 'Oscar', 'Puentes', 'Lederma', 0, '1.1', '1.1', '1.1', '1.1', 'Ingeniero', 'CMD', 'oscar@test.com', '$2a$12$b.sR3R/Yos3eMDVXbyljduyoS2yPayrVHadHV5VwIw0DHLkvWCDoG', 1, 1, 0),
-(39, '2022-05-03', 'Juan', 'Perez', 'Rodriguez', 0, '1.3', '2.3', '3.1', '2.3', 'Backend Engineer', 'ZeClient', 'mau@zeb.mx', '$2a$12$J1OJen.dg.jmVIqJ/Nw1guwYv4z0qaAPMavh4HFL7D0/5vzGZ0q2q', 1, 1, 0),
-(44, '2022-05-03', 'Oscar', 'Valtierra ', 'Guzman', 0, '3.2', '2.1', '2.1', '2.1', 'Ingeniero', 'CMD', 'oscarTest@test.com', '$2a$12$qYRB7hzZKxaUkoJfC0Ast.wZMQ.sq.qNNbY3YsZiOAiDdvtoq2eKm', 1, 1, 0);
+(1, '2022-05-04', 'Ramiro', 'Ledesma', 'Solis', 0, '1.1', '1.1', '1.1', '1.1', 'Backend Developer', 'Backend DEV', 'ramiro@ze.mx', 'test', 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -266,18 +190,6 @@ CREATE TABLE `Mentees` (
   `fechaAsig` date DEFAULT NULL,
   `fk_idPeriodo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Dumping data for table `Mentees`
---
-
-INSERT INTO `Mentees` (`idMentees`, `fk_idLead`, `idMentee`, `descAsignacion`, `fechaAsig`, `fk_idPeriodo`) VALUES
-(129, 36, 3, '', '2022-05-03', 23),
-(130, 1, 3, '', '2022-05-03', 23),
-(131, 36, 8, 'Test', '2022-05-03', 23),
-(132, 36, 3, '', '2022-05-03', 23),
-(133, 1, 37, '', '2022-05-02', 27),
-(134, 1, 39, 'Prueba', '2022-05-03', 28);
 
 -- --------------------------------------------------------
 
@@ -308,13 +220,6 @@ CREATE TABLE `Observacion` (
   `descObservacion` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
---
--- Dumping data for table `Observacion`
---
-
-INSERT INTO `Observacion` (`idObservacion`, `fk_idEvaluado`, `fk_idLead`, `fk_idPeriodo`, `descObservacion`) VALUES
-(29, 8, 1, 23, 'Podrías mejorar tu entendimiento de negocio');
-
 -- --------------------------------------------------------
 
 --
@@ -327,29 +232,6 @@ CREATE TABLE `PeriodoEvaluacion` (
   `FechaFin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
---
--- Dumping data for table `PeriodoEvaluacion`
---
-
-INSERT INTO `PeriodoEvaluacion` (`idPeriodo`, `FechaInicio`, `FechaFin`) VALUES
-(23, '2022-05-03', '2022-05-05'),
-(24, '2022-06-15', '2022-06-17'),
-(25, '2022-05-13', '2022-05-26'),
-(26, '2022-07-14', '2022-07-16'),
-(27, '2022-08-02', '2022-08-10'),
-(28, '2022-05-07', '2022-05-10');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Permisos`
---
-
-CREATE TABLE `Permisos` (
-  `idFuncSis` int(11) NOT NULL,
-  `Funcion` varchar(128) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
 -- --------------------------------------------------------
 
 --
@@ -360,26 +242,6 @@ CREATE TABLE `Pregunta` (
   `idPregunta` int(11) NOT NULL,
   `descPregunta` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Dumping data for table `Pregunta`
---
-
-INSERT INTO `Pregunta` (`idPregunta`, `descPregunta`) VALUES
-(33, '¿En qué proyectos/iniciativas pudiste interactuar con esta persona? ¿Cuál fue el alcance de dichos proyectos?'),
-(34, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  '),
-(35, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?'),
-(36, '¿En qué proyectos has trabajado con el evaluado?'),
-(37, '¿Cómo es su dominio de python?'),
-(38, 'SI/NO'),
-(39, '¿Qué nivel le asignarías en craft?'),
-(40, '¿Hace buenas revisiones de PRs y da sugerencias?'),
-(41, 'Prueba de redireccionamiento'),
-(42, 'prueba'),
-(43, 'prueba 2'),
-(44, 'prueba'),
-(45, 'Cómo evaluarías su claridad para comunicarse en una escala de 1 a 5? (5 es mejor)'),
-(46, 'Resendiz ');
 
 -- --------------------------------------------------------
 
@@ -396,102 +258,6 @@ CREATE TABLE `PreguntaRespuesta` (
   `Pregunta` varchar(128) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `Respuesta` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Dumping data for table `PreguntaRespuesta`
---
-
-INSERT INTO `PreguntaRespuesta` (`idRespuesta`, `fk_idCuestionario`, `Template`, `idPregunta`, `tipoPregunta`, `Pregunta`, `Respuesta`) VALUES
-(189, 52, 1, 33, 1, '¿En qué proyectos/iniciativas pudiste interactuar con esta persona? ¿Cuál fue el alcance de dichos proyectos?', 'Xd'),
-(190, 52, 1, 34, 2, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', '1'),
-(191, 53, 1, 33, 1, '¿En qué proyectos/iniciativas pudiste interactuar con esta persona? ¿Cuál fue el alcance de dichos proyectos?', 'El proyecto tuvo gran impacto en la empresa'),
-(192, 53, 1, 34, 2, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', '1'),
-(193, 54, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
-(194, 54, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
-(195, 54, 1, 38, 2, 'SI/NO', NULL),
-(196, 54, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
-(197, 55, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', 'Trabajamos juntos en zecore client'),
-(198, 55, 1, 37, 1, '¿Cómo es su dominio de python?', 'Muy bueno'),
-(199, 55, 1, 38, 2, 'SI/NO', '2'),
-(200, 55, 1, 39, 3, '¿Qué nivel le asignarías en craft?', '4'),
-(201, 56, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Considero que tiene grandes aptitudes dentro y fuera de su área'),
-(202, 56, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '2'),
-(203, 57, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Buen diseño de arquitectura'),
-(204, 57, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '1'),
-(205, 58, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(206, 59, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Considero que posee un liderazgo natural y sabe como gestionar a todos los miembros del equipo para repartir los trabajos de acuerdo con las capacidades de cada quien. '),
-(207, 60, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
-(208, 60, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
-(209, 60, 1, 38, 2, 'SI/NO', NULL),
-(210, 60, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
-(211, 61, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
-(212, 61, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
-(213, 61, 1, 38, 2, 'SI/NO', NULL),
-(214, 61, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
-(215, 62, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Tiene una gran destreza y facilidad de adaptarse a nuevos lenguajes de programación. '),
-(216, 62, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '2'),
-(217, 63, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(218, 63, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', NULL),
-(219, 64, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Considero que tiene una gran destreza en adaptarse a nuevos ambientes con gran facilidad'),
-(220, 64, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '2'),
-(221, 65, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(222, 65, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', NULL),
-(223, 66, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(224, 67, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(225, 69, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
-(226, 69, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
-(227, 69, 1, 38, 2, 'SI/NO', NULL),
-(228, 69, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
-(229, 70, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
-(230, 70, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
-(231, 70, 1, 38, 2, 'SI/NO', NULL),
-(232, 70, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
-(233, 72, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
-(234, 72, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
-(235, 72, 1, 38, 2, 'SI/NO', NULL),
-(236, 72, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
-(237, 73, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(238, 74, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(239, 75, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(240, 76, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
-(241, 76, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
-(242, 76, 1, 38, 2, 'SI/NO', NULL),
-(243, 76, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
-(244, 76, 1, 44, 1, 'prueba', NULL),
-(245, 76, 1, 45, 3, 'Cómo evaluarías su claridad para comunicarse en una escala de 1 a 5? (5 es mejor)', NULL),
-(246, 77, 1, 36, 1, '¿En qué proyectos has trabajado con el evaluado?', NULL),
-(247, 77, 1, 37, 1, '¿Cómo es su dominio de python?', NULL),
-(248, 77, 1, 38, 2, 'SI/NO', NULL),
-(249, 77, 1, 39, 3, '¿Qué nivel le asignarías en craft?', NULL),
-(250, 77, 1, 44, 1, 'prueba', NULL),
-(251, 77, 1, 45, 3, 'Cómo evaluarías su claridad para comunicarse en una escala de 1 a 5? (5 es mejor)', NULL),
-(252, 78, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(253, 79, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(254, 80, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(255, 81, 3, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', 'Considero que es un lider natural, ya que conoce como gestionar a todos los miembros de un equipo de manera efectiva'),
-(256, 81, 3, 35, 2, 'Has tenido algún inconveniente con tomar el liderazgo de tu equipo?', '2'),
-(257, 82, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL),
-(258, 83, 2, 34, 1, 'Tomando en cuenta las competencias esperadas del nivel Craft ¿Cuáles crees que son sus fortalezas?  ', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `RegistroAuth`
---
-
-CREATE TABLE `RegistroAuth` (
-  `fk_idEmpleado` int(11) NOT NULL,
-  `fk_idRolSis` int(11) NOT NULL,
-  `Fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Dumping data for table `RegistroAuth`
---
-
-INSERT INTO `RegistroAuth` (`fk_idEmpleado`, `fk_idRolSis`, `Fecha`) VALUES
-(1, 1, '2022-04-07'),
-(3, 2, '2022-04-18');
 
 -- --------------------------------------------------------
 
@@ -511,8 +277,7 @@ CREATE TABLE `RolJerarquico` (
 INSERT INTO `RolJerarquico` (`idRolJer`, `descRolJer`) VALUES
 (1, 'Member'),
 (2, 'Chapter Lead Assitant'),
-(3, 'Chapter Leader'),
-(5860, 'empleado');
+(3, 'Chapter Leader');
 
 -- --------------------------------------------------------
 
@@ -562,10 +327,6 @@ INSERT INTO `Template` (`idTemplate`, `NombreTemplate`) VALUES
 -- (See below for the actual view)
 --
 CREATE TABLE `usuario_permisos` (
-`idEmpleado` int(11)
-,`nombre_empleado` varchar(45)
-,`id_rol_sistema` int(11)
-,`rol_sistema` varchar(45)
 );
 
 -- --------------------------------------------------------
@@ -589,14 +350,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`u5sokjl76zng6fqs`@`%` SQL SECURITY DEFINER V
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `AsignacionPermisos`
---
-ALTER TABLE `AsignacionPermisos`
-  ADD PRIMARY KEY (`fk_idRolSis`,`fk_idFuncSis`),
-  ADD KEY `fk_RolSistema_has_FuncionesSistema_FuncionesSistema1_idx` (`fk_idFuncSis`),
-  ADD KEY `fk_RolSistema_has_FuncionesSistema_RolSistema1_idx` (`fk_idRolSis`);
 
 --
 -- Indexes for table `BancoPreguntas`
@@ -654,12 +407,6 @@ ALTER TABLE `PeriodoEvaluacion`
   ADD UNIQUE KEY `idPeriodo_UNIQUE` (`idPeriodo`);
 
 --
--- Indexes for table `Permisos`
---
-ALTER TABLE `Permisos`
-  ADD PRIMARY KEY (`idFuncSis`);
-
---
 -- Indexes for table `Pregunta`
 --
 ALTER TABLE `Pregunta`
@@ -671,13 +418,6 @@ ALTER TABLE `Pregunta`
 ALTER TABLE `PreguntaRespuesta`
   ADD PRIMARY KEY (`idRespuesta`,`fk_idCuestionario`),
   ADD KEY `fk_PreguntaRespuesta_Cuestionario_idx` (`fk_idCuestionario`);
-
---
--- Indexes for table `RegistroAuth`
---
-ALTER TABLE `RegistroAuth`
-  ADD PRIMARY KEY (`fk_idEmpleado`,`fk_idRolSis`),
-  ADD KEY `fk_Empleado_has_RolSistema_RolSistema1_idx` (`fk_idRolSis`);
 
 --
 -- Indexes for table `RolJerarquico`
@@ -705,7 +445,7 @@ ALTER TABLE `Template`
 -- AUTO_INCREMENT for table `BancoPreguntas`
 --
 ALTER TABLE `BancoPreguntas`
-  MODIFY `idBancoP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `idBancoP` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Chapter`
@@ -717,49 +457,43 @@ ALTER TABLE `Chapter`
 -- AUTO_INCREMENT for table `Cuestionario`
 --
 ALTER TABLE `Cuestionario`
-  MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Empleado`
 --
 ALTER TABLE `Empleado`
-  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Mentees`
 --
 ALTER TABLE `Mentees`
-  MODIFY `idMentees` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `idMentees` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Observacion`
 --
 ALTER TABLE `Observacion`
-  MODIFY `idObservacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `idObservacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `PeriodoEvaluacion`
 --
 ALTER TABLE `PeriodoEvaluacion`
-  MODIFY `idPeriodo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `Permisos`
---
-ALTER TABLE `Permisos`
-  MODIFY `idFuncSis` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPeriodo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Pregunta`
 --
 ALTER TABLE `Pregunta`
-  MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `PreguntaRespuesta`
 --
 ALTER TABLE `PreguntaRespuesta`
-  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `RolJerarquico`
@@ -782,13 +516,6 @@ ALTER TABLE `Template`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `AsignacionPermisos`
---
-ALTER TABLE `AsignacionPermisos`
-  ADD CONSTRAINT `fk_RolSistema_has_FuncionesSistema_FuncionesSistema1` FOREIGN KEY (`fk_idFuncSis`) REFERENCES `Permisos` (`idFuncSis`),
-  ADD CONSTRAINT `fk_RolSistema_has_FuncionesSistema_RolSistema1` FOREIGN KEY (`fk_idRolSis`) REFERENCES `RolSistema` (`idRolSis`);
 
 --
 -- Constraints for table `BancoPreguntas`
@@ -825,13 +552,6 @@ ALTER TABLE `Mentees`
 --
 ALTER TABLE `PreguntaRespuesta`
   ADD CONSTRAINT `fk_PreguntaRespuesta_Cuestionario` FOREIGN KEY (`fk_idCuestionario`) REFERENCES `Cuestionario` (`idCuestionario`);
-
---
--- Constraints for table `RegistroAuth`
---
-ALTER TABLE `RegistroAuth`
-  ADD CONSTRAINT `fk_Empleado_has_RolSistema_Empleado1` FOREIGN KEY (`fk_idEmpleado`) REFERENCES `Empleado` (`idEmpleado`),
-  ADD CONSTRAINT `fk_Empleado_has_RolSistema_RolSistema1` FOREIGN KEY (`fk_idRolSis`) REFERENCES `RolSistema` (`idRolSis`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
