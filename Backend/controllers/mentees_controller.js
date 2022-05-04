@@ -8,6 +8,8 @@ const Observacion = require('../models/observacion');
 
 // MENTEES //
 
+// BOTONES MENOS COLORIDOS //
+
 exports.insertMentee = async (request, response, next) => {    
     const mentorId = await Mentee.getIdEmpleado(request.body.nomMentor);
     console.log(mentorId);
