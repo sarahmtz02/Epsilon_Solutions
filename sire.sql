@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: bpnzdg3qreqalbxfqwow-mysql.services.clever-cloud.com:3306
--- Generation Time: May 04, 2022 at 06:02 PM
+-- Generation Time: May 04, 2022 at 07:45 PM
 -- Server version: 8.0.15-5
 -- PHP Version: 7.2.34
 
@@ -108,6 +108,15 @@ CREATE TABLE `BancoPreguntas` (
   `tipoPregunta` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+--
+-- Dumping data for table `BancoPreguntas`
+--
+
+INSERT INTO `BancoPreguntas` (`idBancoP`, `fk_idTemplate`, `fk_idPregunta`, `tipoPregunta`) VALUES
+(1, 1, 1, 2),
+(2, 1, 2, 3),
+(3, 1, 3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -143,6 +152,13 @@ CREATE TABLE `Cuestionario` (
   `isAnswered` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+--
+-- Dumping data for table `Cuestionario`
+--
+
+INSERT INTO `Cuestionario` (`idCuestionario`, `fk_idPeriodo`, `fk_idEvaluador`, `fk_idTemplate`, `idEvaluado`, `nivelEvaluado`, `isAnswered`) VALUES
+(1, 1, 1, 1, 3, '1.1', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -174,7 +190,9 @@ CREATE TABLE `Empleado` (
 --
 
 INSERT INTO `Empleado` (`idEmpleado`, `fechaIng`, `nombre`, `apellidoP`, `apellidoM`, `antiguedad`, `nivPeople`, `nivCraft`, `nivBusiness`, `nivOverall`, `puesto`, `equipo`, `email`, `password`, `fk_idChapter`, `fk_idRolJer`, `isActive`) VALUES
-(1, '2022-05-04', 'Ramiro', 'Ledesma', 'Solis', 0, '1.1', '1.1', '1.1', '1.1', 'Backend Developer', 'Backend DEV', 'ramiro@ze.mx', 'test', 1, 3, 1);
+(1, '2022-05-04', 'Ramiro', 'Ledesma', 'Solis', 0, '1.1', '1.1', '1.1', '1.1', 'Backend Developer', 'Backend DEV', 'ramiro@zeb.com', '$2a$12$Eu08wpkN2gbroiFzNsKE/.r2l/EA4VBWuIkbxDGO9guCi8tBdIs.2', 1, 3, 1),
+(2, '2022-05-04', 'Juan', 'Torrijos', '', 0, '1.1', '1.1', '1.1', '1.1', '', '', 'juan@zeb.com', '$2a$12$2qw4OUIh5ypn37gzTS3pwe.AGeeC36Ixo94YBvM25Ervu2XaMyy7G', 1, 1, 1),
+(3, '2022-05-04', 'Enrique', 'Santos', 'Fraire', 0, '1.1', '1.1', '1.1', '1.1', '', '', 'enrique@zeb.com', '$2a$12$6iw/GGpHzth8puiJ8ZnadeT/YGukO6TiRVvNy1MK85CPLCmHoAZma', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -190,6 +208,14 @@ CREATE TABLE `Mentees` (
   `fechaAsig` date DEFAULT NULL,
   `fk_idPeriodo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Dumping data for table `Mentees`
+--
+
+INSERT INTO `Mentees` (`idMentees`, `fk_idLead`, `idMentee`, `descAsignacion`, `fechaAsig`, `fk_idPeriodo`) VALUES
+(1, 1, 2, '', '2022-05-04', 1),
+(2, 1, 3, '', '2022-05-04', 1);
 
 -- --------------------------------------------------------
 
@@ -220,6 +246,13 @@ CREATE TABLE `Observacion` (
   `descObservacion` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+--
+-- Dumping data for table `Observacion`
+--
+
+INSERT INTO `Observacion` (`idObservacion`, `fk_idEvaluado`, `fk_idLead`, `fk_idPeriodo`, `descObservacion`) VALUES
+(1, 3, 1, 1, 'Excelente trabajo, Enrique, esperamos verte con nosotros en el futuro.');
+
 -- --------------------------------------------------------
 
 --
@@ -232,6 +265,13 @@ CREATE TABLE `PeriodoEvaluacion` (
   `FechaFin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+--
+-- Dumping data for table `PeriodoEvaluacion`
+--
+
+INSERT INTO `PeriodoEvaluacion` (`idPeriodo`, `FechaInicio`, `FechaFin`) VALUES
+(1, '2022-05-04', '2022-05-07');
+
 -- --------------------------------------------------------
 
 --
@@ -242,6 +282,15 @@ CREATE TABLE `Pregunta` (
   `idPregunta` int(11) NOT NULL,
   `descPregunta` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Dumping data for table `Pregunta`
+--
+
+INSERT INTO `Pregunta` (`idPregunta`, `descPregunta`) VALUES
+(1, 'Consideras que tu compañero ha tenido un buen desempeño a lo largo del periodo?'),
+(2, 'Del 1 al 5, cómo calificarías a tu compañero?'),
+(3, 'Si pudieras elegir una dimensión en la que ha destacado tu compañero, cuál sería?');
 
 -- --------------------------------------------------------
 
@@ -258,6 +307,15 @@ CREATE TABLE `PreguntaRespuesta` (
   `Pregunta` varchar(128) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `Respuesta` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Dumping data for table `PreguntaRespuesta`
+--
+
+INSERT INTO `PreguntaRespuesta` (`idRespuesta`, `fk_idCuestionario`, `Template`, `idPregunta`, `tipoPregunta`, `Pregunta`, `Respuesta`) VALUES
+(1, 1, 1, 1, 2, 'Consideras que tu compañero ha tenido un buen desempeño a lo largo del periodo?', '1'),
+(2, 1, 1, 2, 3, 'Del 1 al 5, cómo calificarías a tu compañero?', '5'),
+(3, 1, 1, 3, 1, 'Si pudieras elegir una dimensión en la que ha destacado tu compañero, cuál sería?', 'Yo diría que en donde más destacó fue en Craft');
 
 -- --------------------------------------------------------
 
@@ -445,7 +503,7 @@ ALTER TABLE `Template`
 -- AUTO_INCREMENT for table `BancoPreguntas`
 --
 ALTER TABLE `BancoPreguntas`
-  MODIFY `idBancoP` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idBancoP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Chapter`
@@ -457,43 +515,43 @@ ALTER TABLE `Chapter`
 -- AUTO_INCREMENT for table `Cuestionario`
 --
 ALTER TABLE `Cuestionario`
-  MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Empleado`
 --
 ALTER TABLE `Empleado`
-  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Mentees`
 --
 ALTER TABLE `Mentees`
-  MODIFY `idMentees` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idMentees` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Observacion`
 --
 ALTER TABLE `Observacion`
-  MODIFY `idObservacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idObservacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `PeriodoEvaluacion`
 --
 ALTER TABLE `PeriodoEvaluacion`
-  MODIFY `idPeriodo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPeriodo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Pregunta`
 --
 ALTER TABLE `Pregunta`
-  MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `PreguntaRespuesta`
 --
 ALTER TABLE `PreguntaRespuesta`
-  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `RolJerarquico`
