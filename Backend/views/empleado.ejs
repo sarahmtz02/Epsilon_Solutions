@@ -49,7 +49,7 @@
             </div>
             <div class="col">
                 <label for="apellidoM">Apellido Materno: </label>
-                <input class="form-control" type="text" id="apellidoM" name="apellidoM" value= <%= empleado.apellidoM %> maxlength="45" oninput="validate(this)">
+                <input class="form-control" type="text" id="apellidoM" name="apellidoM" maxlength="45" oninput="validate(this)" value=<%= empleado.apellidoM %>>
                 <br><br>
             </div>
         </div>
@@ -131,10 +131,10 @@
         <input class="form-control" name="nivOverall" id="nivOverall" readonly value="<%= empleado.nivOverall %>">
         <br><br>
         <label for="puesto">Puesto: </label>
-        <input class="form-control" type="text" id="puesto" name="puesto" oninput="validate(this)" value=<%= empleado.puesto %>>
+        <input class="form-control" type="text" id="puesto" name="puesto" oninput="validate(this)" value="<%= empleado.puesto %>">
         <br><br>
         <label for="equipo">Equipo: </label>
-        <input class="form-control" type="text" id="equipo" name="equipo" oninput="validate(this)" value=<%= empleado.equipo %>>
+        <input class="form-control" type="text" id="equipo" name="equipo" oninput="validate(this)" value="<%= empleado.equipo %>">
         <br><br>
         <div class ="row">
             <div class="col">
