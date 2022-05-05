@@ -1,7 +1,7 @@
 //const mysql = require('mysql2');
 
 // Para revertir y hacer pruebas sólo hay que conectarse a la DB local con el código siguiente: (Las tablas van en minuscula!)
-
+/*
 const { createPool } = require("mysql2");
 const pool = createPool({
     host: 'bpnzdg3qreqalbxfqwow-mysql.services.clever-cloud.com',
@@ -13,10 +13,10 @@ const pool = createPool({
 });
 
 module.exports = pool.promise();
-
+*/
 
 // DB en CleverCloud, las tablas no van en minuscula!
-/*
+
 const { createPool } = require("mysql2");
 
 const pool = createPool({
@@ -30,4 +30,4 @@ const pool = createPool({
 
 
 module.exports = pool.promise();
-*/
+
