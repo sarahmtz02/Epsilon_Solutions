@@ -23,7 +23,7 @@ const pool = createPool({
     host: 'localhost',
     user: 'root',
     password: 'Epsil0n*',
-    port: 80,
+    port: 3000,
     database: 'SIRE',
     timezone: 'Z'
 });
